@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm08npaxrl23n"]
+
+[ext_resource type="Script" path="res://Systems/Token_List.gd" id="1_5lsg3"]
+
+[node name="Token_List" type="Node"]
+script = ExtResource("1_5lsg3")

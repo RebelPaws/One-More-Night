@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://uypb3h2kqqdn"]
+
+[ext_resource type="Script" path="res://Objects/Projectiles/Projectile.gd" id="1_702x7"]
+[ext_resource type="PackedScene" uid="uid://dbtgq2gi5sd0r" path="res://Systems/Damage_Box.tscn" id="2_nvhbd"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_702x7")
+
+[node name="DamageBox" parent="." instance=ExtResource("2_nvhbd")]
+
+[editable path="DamageBox"]

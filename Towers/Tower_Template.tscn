@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://chcfn41cdw6hq"]
+
+[ext_resource type="Script" path="res://Towers/Tower_Core.gd" id="1_vv8j5"]
+
+[node name="Tower_Template" type="Node3D"]
+script = ExtResource("1_vv8j5")
+
+[node name="Anchor" type="Node3D" parent="."]
+
+[node name="Detection_Range" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection_Range"]

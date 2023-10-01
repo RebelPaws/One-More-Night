@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nav4aosewie"]
+
+[ext_resource type="Script" path="res://Systems/Health_Manager.gd" id="1_vhl2g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65gwc"]
+size = Vector3(2.39149, 4.95742, 2.13418)
+
+[node name="Health_Manager" type="Node3D"]
+script = ExtResource("1_vhl2g")
+
+[node name="HitBox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collider" type="CollisionShape3D" parent="HitBox"]
+shape = SubResource("BoxShape3D_65gwc")
+
+[connection signal="area_entered" from="HitBox" to="." method="hitbox_hit"]

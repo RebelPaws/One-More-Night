@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dp46s1ve43yhf"]
+
+[ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="1_0ecbo"]
+
+[resource]
+shader = ExtResource("1_0ecbo")
+shader_parameter/day_bottom_color = Color(0.309804, 0.360784, 0.74902, 1)
+shader_parameter/day_top_color = Color(0.482353, 0.533333, 0.862745, 1)
+shader_parameter/sunset_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/sunset_top_color = Color(0, 0, 0, 1)
+shader_parameter/night_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/night_top_color = Color(0, 0, 0, 1)
+shader_parameter/horizon_color_day = Color(0.239216, 0.239216, 0.239216, 1)
+shader_parameter/horizon_color_sunset = Color(0.156863, 0.156863, 0.156863, 1)
+shader_parameter/horizon_color_night = Color(0, 0.8, 1, 1)
+shader_parameter/horizon_falloff = null
+shader_parameter/sun_col = Color(0.670588, 0.670588, 0.670588, 1)
+shader_parameter/sun_size = 0.01
+shader_parameter/sun_blur = 0.01
+shader_parameter/moon_col = Color(1, 1, 1, 1)
+shader_parameter/moon_size = 0.219
+shader_parameter/moon_crescent_offset = 0.5
+shader_parameter/clouds_main_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_edge_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_speed = null
+shader_parameter/clouds_scale = null
+shader_parameter/clouds_cutoff = null
+shader_parameter/clouds_fuzziness = null
+shader_parameter/stars_cutoff = null
+shader_parameter/stars_speed = null
