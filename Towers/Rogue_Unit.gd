@@ -12,6 +12,7 @@ func shoot(_target):
 	arrow.activate()
 	
 	$AnimationPlayer.play("2H_Ranged_Shoot")
+	$Shoot_Sound.play()
 	await $AnimationPlayer.animation_finished
 	reload()
 

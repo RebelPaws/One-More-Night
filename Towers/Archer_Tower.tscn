@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_1nron"]
 [ext_resource type="Script" path="res://Towers/Archer_Tower.gd" id="2_dlf6t"]
-[ext_resource type="Material" uid="uid://d3s080v877ura" path="res://materials/materials/Wood.material" id="2_hbxcp"]
-[ext_resource type="Material" uid="uid://dq52xohwr6i1n" path="res://materials/materials/Stone_Mid.material" id="3_3ttjc"]
-[ext_resource type="Material" uid="uid://ca7kart542pgu" path="res://materials/materials/Stone_Light.material" id="4_lrto1"]
-[ext_resource type="Material" uid="uid://b53n2x1a1ylpy" path="res://materials/materials/Stone_Dark.material" id="5_7c74e"]
+[ext_resource type="Material" uid="uid://d3s080v877ura" path="res://Materials/Environment/Wood.material" id="2_hbxcp"]
+[ext_resource type="Material" uid="uid://dq52xohwr6i1n" path="res://Materials/Buildings/Stone_Mid.material" id="3_3ttjc"]
+[ext_resource type="Material" uid="uid://ca7kart542pgu" path="res://Materials/Buildings/Stone_Light.material" id="4_lrto1"]
+[ext_resource type="Material" uid="uid://b53n2x1a1ylpy" path="res://Materials/Buildings/Stone_Dark.material" id="5_7c74e"]
 [ext_resource type="PackedScene" uid="uid://bw0adrqc8c7xy" path="res://Characters/Units/Archer/Archer_Unit.tscn" id="7_8vltn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5ujg"]

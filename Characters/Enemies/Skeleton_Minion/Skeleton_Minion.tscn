@@ -1,18 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://1spp8udlt2bw"]
+[gd_scene load_steps=14 format=3 uid="uid://1spp8udlt2bw"]
 
 [ext_resource type="PackedScene" uid="uid://ct6nc7cdbyuax" path="res://Characters/Enemies/Enemy_Core/Enemy.tscn" id="1_8mfxl"]
 [ext_resource type="PackedScene" uid="uid://r5jf55oamn2m" path="res://Characters/Enemies/Skeleton_Minion/character_skeleton_minion.gltf" id="2_vs1qo"]
+[ext_resource type="Shader" path="res://Shaders/cel-shader-base.gdshader" id="3_8jpdh"]
 [ext_resource type="Material" uid="uid://dg7w3urgqmy0r" path="res://Materials/Characters/Skeleton_Bone.material" id="3_ncxqw"]
 [ext_resource type="Material" uid="uid://dnvlpeg4no6w3" path="res://Materials/Others/outline.tres" id="3_wcx6j"]
 [ext_resource type="Shader" path="res://Materials/Shaders/cel-shader-base.gdshader" id="4_vb022"]
 [ext_resource type="Material" uid="uid://bqsynug2kv81m" path="res://Materials/Characters/Metal_Silver.material" id="5_r2a3q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c20a2"]
+render_priority = 0
+shader = ExtResource("3_8jpdh")
+shader_parameter/color = Color(0.443137, 0.356863, 0.266667, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_brltr"]
 render_priority = 0
 next_pass = ExtResource("3_wcx6j")
-shader = ExtResource("4_vb022")
+shader = ExtResource("3_8jpdh")
 shader_parameter/color = Color(0.34902, 0.196078, 0.00784314, 1)
 shader_parameter/specular = Color(0.25098, 0.25098, 0.25098, 0.501961)
 shader_parameter/fresnel = Color(0.219608, 0.219608, 0.219608, 0.301961)
@@ -23,21 +31,11 @@ shader_parameter/uv_offset = Vector2(0, 0)
 render_priority = 0
 next_pass = ExtResource("3_wcx6j")
 shader = ExtResource("4_vb022")
-shader_parameter/color = Color(0.690326, 0.693903, 0.676142, 1)
-shader_parameter/specular = Color(0.25098, 0.25098, 0.25098, 0.501961)
-shader_parameter/fresnel = Color(0.219608, 0.219608, 0.219608, 0.301961)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n8lsk"]
 render_priority = 0
 next_pass = ExtResource("3_wcx6j")
 shader = ExtResource("4_vb022")
-shader_parameter/color = Color(0.909804, 0.203922, 0, 1)
-shader_parameter/specular = Color(0.682353, 0.384314, 0.337255, 0.501961)
-shader_parameter/fresnel = Color(0.219608, 0.219608, 0.219608, 0.301961)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hf5hd"]
 size = Vector3(1.7706, 1.69806, 1.646)

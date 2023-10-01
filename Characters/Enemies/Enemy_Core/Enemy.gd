@@ -35,8 +35,13 @@ func set_state(_new_state):
 			pass
 		
 		"Hurt":
-			pass
+			$Sounds/Attack_Sound.play()
+			await get_tree().create_timer(0.5).timeout
+			set_state("Idle")
+			return
+		
 		"Dead":
+			$Sounds/Death_Sound.play()
 			game_info.modify_currency(currency_worth)
 			hide()
 			active = false
@@ -62,6 +67,7 @@ func target_reached():
 	$Attack_Timer.start()
 
 func Attack():
+	$Sounds/Attack_Sound.play()
 	$DamageBox.toggle_collider()
 	await get_tree().create_timer(0.5).timeout
 	$DamageBox.toggle_collider()
