@@ -3,9 +3,15 @@ extends Node3D
 signal CurrencyChanged
 
 var currency = 50
+var currency_total = 0
+
+var nights_survived = 0
 
 func _ready():
 	modify_currency(0)
+
+func night_survived():
+	nights_survived += 1
 
 func has_currency(_needed):
 	if currency >= _needed:
@@ -16,6 +22,9 @@ func has_currency(_needed):
 func modify_currency(_amount):
 	currency += _amount
 	emit_signal("CurrencyChanged", currency)
+	
+	if _amount > 0:
+		currency_total += _amount
 
 #This will start enemies attacking
 func start_night():

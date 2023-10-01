@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=48 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="Environment" uid="uid://0rj3q4fk6n3p" path="res://Shaders/World_Enviro.tres" id="2_tgdhb"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Archer_Tower.tscn" id="21_wo32j"]
 [ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Shield_Tower.tscn" id="22_7cr7j"]
 [ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Healer_Tower.tscn" id="23_lp6q5"]
+[ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Branding/KayKit_logo.png" id="26_pwwoa"]
+[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Interface/Currency/Coin_Icon.png" id="27_jihxw"]
+[ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
 
 [sub_resource type="Animation" id="Animation_16s06"]
 resource_name = "Day"
@@ -49,7 +52,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(9.3, 24.5, 38.4, 55.1),
+"times": PackedFloat32Array(9.3, 21.6, 40.9, 52.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -63,6 +66,23 @@ tracks/1/keys = {
 }, {
 "args": [],
 "method": &"end_night"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(21.8, 53.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"night_survived"
+}, {
+"args": [],
+"method": &"night_survived"
 }]
 }
 
@@ -519,6 +539,25 @@ outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
 font = ExtResource("5_a3okp")
 font_size = 95
+outline_size = 10
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_muo2u"]
+font = ExtResource("5_a3okp")
+font_size = 136
+outline_size = 10
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_317w6"]
+font = ExtResource("5_a3okp")
+font_size = 120
+outline_size = 10
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ectpw"]
+font = ExtResource("5_a3okp")
+font_size = 120
+font_color = Color(0.984314, 0.364706, 0.368627, 1)
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
@@ -2738,6 +2777,11 @@ offset_top = -540.0
 offset_right = 957.84
 offset_bottom = 553.0
 
+[node name="KayKitLogo" type="Sprite2D" parent="UI/Title"]
+position = Vector2(1576, 188)
+scale = Vector2(0.470703, 0.470703)
+texture = ExtResource("26_pwwoa")
+
 [node name="Title" type="Label" parent="UI/Title"]
 layout_mode = 0
 offset_left = 6.0
@@ -2755,7 +2799,7 @@ offset_left = 6.0
 offset_top = 142.0
 offset_right = 1925.0
 offset_bottom = 258.0
-text = "An adventure by Vespir and Even"
+text = "An adventure by Vespir, Even; and      "
 label_settings = SubResource("LabelSettings_48fgh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2798,10 +2842,162 @@ label_settings = SubResource("LabelSettings_hnysj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GameOver" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchor_left = 0.498
+anchor_top = 0.5
+anchor_right = 0.498
+anchor_bottom = 0.5
+offset_left = -956.16
+offset_top = -540.0
+offset_right = 957.84
+offset_bottom = 553.0
+script = ExtResource("27_ncdx1")
+
+[node name="KayKitLogo" type="Sprite2D" parent="UI/GameOver"]
+position = Vector2(1552.25, 980.25)
+scale = Vector2(0.329102, 0.329102)
+texture = ExtResource("26_pwwoa")
+
+[node name="Title" type="Label" parent="UI/GameOver"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 1925.0
+offset_bottom = 167.0
+text = "You Survived X Days!"
+label_settings = SubResource("LabelSettings_vlmgr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/GameOver"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 942.0
+offset_right = 1925.0
+offset_bottom = 1058.0
+text = "Crafted by Vespir, Even; and"
+label_settings = SubResource("LabelSettings_48fgh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="Control" parent="UI/GameOver"]
+anchors_preset = 0
+offset_left = 288.0
+offset_right = 328.0
+offset_bottom = 40.0
+
+[node name="Currency" type="Control" parent="UI/GameOver/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CoinIcon" type="Sprite2D" parent="UI/GameOver/Stats/Currency"]
+position = Vector2(600, 229.098)
+scale = Vector2(0.268293, 0.268293)
+texture = ExtResource("27_jihxw")
+
+[node name="Subtitle2" type="Label" parent="UI/GameOver/Stats/Currency"]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 169.0
+offset_right = 1289.0
+offset_bottom = 309.0
+text = "0"
+label_settings = SubResource("LabelSettings_muo2u")
+
+[node name="Towers" type="Control" parent="UI/GameOver/Stats"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Subtitle5" type="Label" parent="UI/GameOver/Stats/Towers"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 285.0
+offset_right = 1291.0
+offset_bottom = 425.0
+text = "0"
+label_settings = SubResource("LabelSettings_muo2u")
+
+[node name="Subtitle6" type="Label" parent="UI/GameOver/Stats/Towers"]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 287.0
+offset_right = 663.0
+offset_bottom = 411.0
+text = "Stories Built"
+label_settings = SubResource("LabelSettings_317w6")
+
+[node name="Kills" type="Control" parent="UI/GameOver/Stats"]
+anchors_preset = 0
+offset_left = -40.0
+offset_top = 99.0
+offset_bottom = 139.0
+
+[node name="Subtitle3" type="Label" parent="UI/GameOver/Stats/Kills"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 311.0
+offset_right = 1331.0
+offset_bottom = 451.0
+text = "0"
+label_settings = SubResource("LabelSettings_muo2u")
+
+[node name="Subtitle4" type="Label" parent="UI/GameOver/Stats/Kills"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 313.0
+offset_right = 666.0
+offset_bottom = 437.0
+text = "Enemies Slain"
+label_settings = SubResource("LabelSettings_ectpw")
+
+[node name="Options" type="Control" parent="UI/GameOver"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Play" type="Button" parent="UI/GameOver/Options"]
+layout_mode = 0
+offset_left = 837.0
+offset_top = 678.0
+offset_right = 1130.0
+offset_bottom = 767.0
+
+[node name="Label" type="Label" parent="UI/GameOver/Options/Play"]
+layout_mode = 0
+offset_right = 286.0
+offset_bottom = 80.0
+text = "Try Again"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="UI/GameOver/Options"]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 800.0
+offset_right = 1138.0
+offset_bottom = 889.0
+
+[node name="Label" type="Label" parent="UI/GameOver/Options/Quit"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 290.0
+offset_bottom = 100.0
+text = "Quit
+"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="CurrencyChanged" from="." to="Tower/Currency" method="_update_currency"]
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower/TowerHurt_Sound" method="play"]
+[connection signal="Dead" from="Tower/Health_Manager" to="UI/GameOver" method="_open"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower/TowerHealed_Sound" method="play"]
 [connection signal="timeout" from="Enemy_Manager/Spawn_Timer" to="Enemy_Manager" method="spawn_enemy"]
@@ -2818,3 +3014,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="UI/Build/Build_Button" to="UI/Build" method="show_categories"]
 [connection signal="pressed" from="UI/Title/Options/Play" to="." method="start_game"]
 [connection signal="pressed" from="UI/Title/Options/Quit" to="." method="quit_game"]
+[connection signal="pressed" from="UI/GameOver/Options/Play" to="UI/GameOver" method="try_again"]
+[connection signal="pressed" from="UI/GameOver/Options/Quit" to="UI/GameOver" method="quit_game"]

@@ -58,17 +58,17 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 specular_smoothness={
 "type": "float",
-"value": 0.0
-}
-fresnel_smoothness={
-"type": "float",
-"value": 0.0
+"value": 5.0
 }
 outline_width={
 "type": "float",
-"value": 0.0
+"value": 5.0
 }
 outline_color={
 "type": "color",
 "value": Color(0, 0, 0, 1)
+}
+fresnel_smoothness={
+"type": "float",
+"value": 5.0
 }

@@ -28,7 +28,7 @@ func _take_damage(_damage):
 	
 	_damage -= (_damage * reduction_percent)
 	
-	health_current = clamp(health_current - _damage, 0, health_max) #Damage is reduced and health is clamped
+	health_current = clamp(floor(health_current - _damage), 0, health_max) #Damage is reduced and health is clamped
 	
 	if health_current == 0: #If health is 0 then the object is dead
 		emit_signal("Dead") #We emit the dead signal
@@ -38,12 +38,14 @@ func _take_damage(_damage):
 
 #This handles healing the object
 func _heal(_heal_amount):
-	health_current = clamp(health_current + _heal_amount, 0, health_max)
+	health_current += _heal_amount
+	health_current = clamp(floor(health_current), 0, health_max)
 	emit_signal("Healed", health_current)
 
 #This handles getting hit by a hazard
 func hitbox_hit(area):
-	if area.is_in_group("Enemy"): return
+	if get_parent().is_in_group("Enemy") and area.is_in_group("Enemy"): 
+		return
 	
 	var damage = area.damage #We grab the damage from the hazard
 	_take_damage(damage) #Then we apply the damage to the object

@@ -67,6 +67,7 @@ func target_reached():
 	$Attack_Timer.start()
 
 func Attack():
+	print("attack")
 	$Sounds/Attack_Sound.play()
 	$DamageBox.toggle_collider()
 	await get_tree().create_timer(0.5).timeout
