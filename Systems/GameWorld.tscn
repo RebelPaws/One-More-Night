@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=54 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="Environment" uid="uid://0rj3q4fk6n3p" path="res://Shaders/World_Enviro.tres" id="2_tgdhb"]
@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Objects/Projectiles/Branding/KayKit_Logo.png" id="26_pwwoa"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="27_nseor"]
-[ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Branding/KayKit_logo.png" id="27_vebgw"]
 [ext_resource type="BankAsset" uid="uid://b5kcrpkiyghej" path="res://addons/FMOD/editor/resources/banks/{57e3e267-3726-4819-bb75-85cb8a640fa7}.tres" id="28_snhj5"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="28_tcf0u"]
 [ext_resource type="BankAsset" uid="uid://bf0y6iv74sp3o" path="res://addons/FMOD/editor/resources/banks/{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}.tres" id="29_fopvu"]
@@ -2798,7 +2797,7 @@ offset_bottom = 553.0
 [node name="KayKitLogo" type="Sprite2D" parent="UI/Title"]
 position = Vector2(1576, 188)
 scale = Vector2(0.470703, 0.470703)
-texture = ExtResource("27_vebgw")
+texture = ExtResource("26_pwwoa")
 
 [node name="Title" type="Label" parent="UI/Title"]
 layout_mode = 0
