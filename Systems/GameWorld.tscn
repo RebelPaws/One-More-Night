@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=55 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="Environment" uid="uid://0rj3q4fk6n3p" path="res://Shaders/World_Enviro.tres" id="2_tgdhb"]
@@ -17,17 +17,23 @@
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Script" path="res://Systems/TowerSettings.gd" id="20_1njmi"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="20_i37xf"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_w1ync"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="21_b02wb"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Interface/Health/Heart.png" id="21_ky7vq"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="21_ky7vq"]
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Archer_Tower.tscn" id="21_wo32j"]
 [ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Shield_Tower.tscn" id="22_7cr7j"]
 [ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Healer_Tower.tscn" id="23_lp6q5"]
-[ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Branding/KayKit_logo.png" id="26_pwwoa"]
-[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="27_jihxw"]
+[ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="24_ivexk"]
+[ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="25_tchy0"]
+[ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="26_jfjjo"]
+[ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="26_k0ky1"]
+[ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Objects/Projectiles/Branding/KayKit_Logo.png" id="26_pwwoa"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Interface/Currency/Coin_Icon.png" id="28_tcf0u"]
+[ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="27_nseor"]
+[ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Branding/KayKit_logo.png" id="27_vebgw"]
+[ext_resource type="BankAsset" uid="uid://b5kcrpkiyghej" path="res://addons/FMOD/editor/resources/banks/{57e3e267-3726-4819-bb75-85cb8a640fa7}.tres" id="28_snhj5"]
+[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="28_tcf0u"]
+[ext_resource type="BankAsset" uid="uid://bf0y6iv74sp3o" path="res://addons/FMOD/editor/resources/banks/{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}.tres" id="29_fopvu"]
+[ext_resource type="EventAsset" uid="uid://o54ruuvlarrq" path="res://addons/FMOD/editor/resources/events/{12147500-7e94-4702-8e12-1aaf9c9b1112}.tres" id="30_dohd3"]
 
 [sub_resource type="Animation" id="Animation_16s06"]
 resource_name = "Day"
@@ -561,6 +567,13 @@ font_color = Color(0.984314, 0.364706, 0.368627, 1)
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
+[sub_resource type="EventAsset" id="EventAsset_td41c"]
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/dayMusic"
+guid = "{a333156e-f8d8-4d1e-b7b4-be5dacbc2123}"
+name = "dayMusic"
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_fsulb")
 
@@ -603,7 +616,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Currency"]
 transform = Transform3D(0.315, 0, -1.86265e-09, 0, 0.315, 0, 1.86265e-09, 0, 0.315, -0.884146, 0.822362, 0.00938225)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Health" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -8.3819e-09, 0, 0.755, 0, 8.3819e-09, 0, 0.755, 0.0139065, 2.36082, 0.962259)
@@ -620,7 +633,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Health"]
 transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
-texture = ExtResource("21_b02wb")
+texture = ExtResource("21_ky7vq")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
@@ -637,7 +650,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Armor"]
 transform = Transform3D(0.02, 0, -1.60071e-10, 0, 0.02, 0, 1.60071e-10, 0, 0.02, -0.872658, 0.651967, 0.00926018)
-texture = ExtResource("20_w1ync")
+texture = ExtResource("20_i37xf")
 
 [node name="Cam_Rig" type="Node3D" parent="Tower"]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, 0.99863, 0, 0.301895, 0)
@@ -2527,7 +2540,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Attack_Towers/Archer_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Cost" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -2542,7 +2555,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 modulate = Color(0.654902, 0.129412, 0.184314, 1)
 position = Vector2(137, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Damage" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -2599,7 +2612,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Cost" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 layout_mode = 0
@@ -2670,7 +2683,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Cost" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0
@@ -2760,11 +2773,16 @@ damage = 0
 healing = 1.0
 scene = ExtResource("23_lp6q5")
 
-[node name="TowerBuild_Sound" type="AudioStreamPlayer" parent="UI/Build"]
-
-[node name="CantAfford_Sound" type="AudioStreamPlayer" parent="UI/Build"]
-
 [node name="GeneralButtonPress_Sound" type="AudioStreamPlayer" parent="UI/Build"]
+
+[node name="TowerBuild" type="StudioEventEmitter3D" parent="UI/Build"]
+event = ExtResource("24_ivexk")
+
+[node name="CantAfford" type="StudioEventEmitter3D" parent="UI/Build"]
+event = ExtResource("25_tchy0")
+
+[node name="ButtonPress" type="StudioEventEmitter3D" parent="UI/Build"]
+event = ExtResource("26_jfjjo")
 
 [node name="Title" type="Control" parent="UI"]
 layout_mode = 3
@@ -2780,7 +2798,7 @@ offset_bottom = 553.0
 [node name="KayKitLogo" type="Sprite2D" parent="UI/Title"]
 position = Vector2(1576, 188)
 scale = Vector2(0.470703, 0.470703)
-texture = ExtResource("26_pwwoa")
+texture = ExtResource("27_vebgw")
 
 [node name="Title" type="Label" parent="UI/Title"]
 layout_mode = 0
@@ -2992,6 +3010,25 @@ text = "Quit
 label_settings = SubResource("LabelSettings_hnysj")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StudioBankLoader" type="StudioBankLoader" parent="."]
+load_on = 2
+unload_on = 3
+num_banks = 4
+bank_0 = ExtResource("26_k0ky1")
+bank_1 = ExtResource("27_nseor")
+bank_2 = ExtResource("28_snhj5")
+bank_3 = ExtResource("29_fopvu")
+
+[node name="Day_Music" type="StudioEventEmitter3D" parent="."]
+play_event = 2
+event = SubResource("EventAsset_td41c")
+
+[node name="StudioParameterTrigger" type="StudioParameterTrigger" parent="."]
+studio_event_emitter = NodePath("../Night_Music")
+
+[node name="Night_Music" type="StudioEventEmitter3D" parent="."]
+event = ExtResource("30_dohd3")
 
 [connection signal="CurrencyChanged" from="." to="Tower/Currency" method="_update_currency"]
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]

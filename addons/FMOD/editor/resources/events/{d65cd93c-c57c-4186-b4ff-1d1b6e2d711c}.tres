@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://h5iq0xh5f0jo"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/goblinDie"
+guid = "{d65cd93c-c57c-4186-b4ff-1d1b6e2d711c}"
+name = "goblinDie"

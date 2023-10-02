@@ -1,0 +1,8 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cu0473ccm8gti"]
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/dayMusic"
+guid = "{a333156e-f8d8-4d1e-b7b4-be5dacbc2123}"
+name = "dayMusic"

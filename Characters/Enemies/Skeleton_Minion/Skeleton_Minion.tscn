@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://1spp8udlt2bw"]
+[gd_scene load_steps=18 format=3 uid="uid://1spp8udlt2bw"]
 
 [ext_resource type="PackedScene" uid="uid://ct6nc7cdbyuax" path="res://Characters/Enemies/Enemy_Core/Enemy.tscn" id="1_8mfxl"]
 [ext_resource type="PackedScene" uid="uid://r5jf55oamn2m" path="res://Characters/Enemies/Skeleton_Minion/character_skeleton_minion.gltf" id="2_vs1qo"]
@@ -8,6 +8,9 @@
 [ext_resource type="Shader" path="res://Materials/Shaders/cel-shader-base.gdshader" id="4_vb022"]
 [ext_resource type="Material" uid="uid://bqsynug2kv81m" path="res://Materials/Characters/Metal_Silver.material" id="5_r2a3q"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="8_xadrv"]
+[ext_resource type="EventAsset" uid="uid://h5iq0xh5f0jo" path="res://addons/FMOD/editor/resources/events/{d65cd93c-c57c-4186-b4ff-1d1b6e2d711c}.tres" id="9_3jcsn"]
+[ext_resource type="EventAsset" uid="uid://nwu3grncmj1t" path="res://addons/FMOD/editor/resources/events/{e0109767-133c-4bf2-af20-c53f40dcf5b5}.tres" id="10_qcqfn"]
+[ext_resource type="EventAsset" uid="uid://cfge8bfh3u3tg" path="res://addons/FMOD/editor/resources/events/{61d4bd47-2e1d-4fe6-8c6e-de9267fe0860}.tres" id="11_pqafe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c20a2"]
 render_priority = 0
@@ -97,6 +100,15 @@ shape = SubResource("BoxShape3D_340p8")
 
 [node name="Attack_Timer" parent="." index="5"]
 wait_time = 3.0
+
+[node name="Death_Sound" parent="Sounds" index="0"]
+event = ExtResource("9_3jcsn")
+
+[node name="Hurt_Sound" parent="Sounds" index="1"]
+event = ExtResource("10_qcqfn")
+
+[node name="Attack_Sound" parent="Sounds" index="2"]
+event = ExtResource("11_pqafe")
 
 [editable path="character_skeleton_minion"]
 [editable path="Health_Manager"]

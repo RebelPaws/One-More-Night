@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://nwu3grncmj1t"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/goblinHurt"
+guid = "{e0109767-133c-4bf2-af20-c53f40dcf5b5}"
+name = "goblinHurt"

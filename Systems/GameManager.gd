@@ -28,13 +28,15 @@ func modify_currency(_amount):
 
 #This will start enemies attacking
 func start_night():
+	$Night_Music.play()
+	$Day_Music.stop()
 	$Enemy_Manager._toggle()
 
 #This will end enemies attacking
 func end_night():
+	$Day_Music.play()
+	$Night_Music.stop()
 	$Enemy_Manager._toggle()
-
-
 
 func start_game():
 	$UI/Build.show()

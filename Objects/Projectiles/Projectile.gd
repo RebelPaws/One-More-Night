@@ -33,6 +33,7 @@ func _process(delta):
 
 
 func arrow_hit(area):
+	$Hit.play()
 	hide()
 	set_process(false)
 	active = false

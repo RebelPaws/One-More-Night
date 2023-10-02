@@ -1,0 +1,8 @@
+[gd_resource type="BankAsset" format=3 uid="uid://b5kcrpkiyghej"]
+
+[resource]
+file_path = "res://Audio//SFXGoblin.bank"
+modified_time = 1696211936
+path = "bank:/SFXGoblin"
+guid = "{57e3e267-3726-4819-bb75-85cb8a640fa7}"
+name = "SFXGoblin"

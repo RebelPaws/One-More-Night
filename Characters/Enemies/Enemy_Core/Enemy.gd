@@ -35,7 +35,7 @@ func set_state(_new_state):
 			pass
 		
 		"Hurt":
-			$Sounds/Attack_Sound.play()
+			$Sounds/Hurt_Sound.play()
 			await get_tree().create_timer(0.5).timeout
 			set_state("Idle")
 			return
@@ -67,7 +67,6 @@ func target_reached():
 	$Attack_Timer.start()
 
 func Attack():
-	print("attack")
 	$Sounds/Attack_Sound.play()
 	$DamageBox.toggle_collider()
 	await get_tree().create_timer(0.5).timeout

@@ -1,0 +1,8 @@
+[gd_resource type="BankAsset" format=3 uid="uid://bf0y6iv74sp3o"]
+
+[resource]
+file_path = "res://Audio//SFXUI.bank"
+modified_time = 1696211936
+path = "bank:/SFXUI"
+guid = "{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}"
+name = "SFXUI"

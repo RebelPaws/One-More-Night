@@ -30,11 +30,11 @@ path_max_distance = 3.01
 
 [node name="Sounds" type="Node3D" parent="."]
 
-[node name="Death_Sound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="Death_Sound" type="StudioEventEmitter3D" parent="Sounds"]
 
-[node name="Hurt_Sound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="Hurt_Sound" type="StudioEventEmitter3D" parent="Sounds"]
 
-[node name="Attack_Sound" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="Attack_Sound" type="StudioEventEmitter3D" parent="Sounds"]
 
 [connection signal="Damaged" from="Health_Manager" to="." method="set_state" binds= ["Hurt"]]
 [connection signal="Dead" from="Health_Manager" to="." method="set_state" binds= ["Dead"]]

@@ -1,0 +1,18 @@
+[gd_resource type="ParameterAsset" load_steps=3 format=3 uid="uid://duwfebkywikax"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_ym57f"]
+data1 = 2521796447
+data2 = 2683642432
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_d0mby"]
+name = "terror"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_ym57f")
+maximum = 40.0
+flags = 4
+guid = "{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}"
+
+[resource]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_d0mby")
+path = "parameter:/terror"
+guid = "{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}"
+name = "terror"
