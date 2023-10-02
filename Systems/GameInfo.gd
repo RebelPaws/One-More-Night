@@ -1,7 +1,7 @@
 extends Node
 
 var biome = "Maple_Forest"
-var biome_list = ["Maple_Forest", "Oak_Forest", "Snow"]
+var biome_list = ["Maple_Forest", "Oak_Forest"]
 
 var game_is_in_play = false
 

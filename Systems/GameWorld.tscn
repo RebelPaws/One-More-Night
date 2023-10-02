@@ -5,11 +5,8 @@
 [ext_resource type="Script" path="res://Towers/Tower.gd" id="3_87d61"]
 [ext_resource type="Script" path="res://Interface/Currency_UI.gd" id="4_wmpif"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="5_a3okp"]
-[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="6_qiowp"]
 [ext_resource type="Script" path="res://Interface/Health_UI.gd" id="7_jibyv"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="8_u6ygn"]
 [ext_resource type="Script" path="res://Interface/Armor_UI.gd" id="9_2n73j"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="10_00ies"]
 [ext_resource type="Script" path="res://Systems/Cam_Rig.gd" id="11_keoyo"]
 [ext_resource type="PackedScene" uid="uid://c7nav4aosewie" path="res://Systems/Health_Manager.tscn" id="12_sy8pw"]
 [ext_resource type="PackedScene" uid="uid://d2qkth4w6d5km" path="res://Towers/Tower_Foundation.tscn" id="13_yk463"]
@@ -20,14 +17,17 @@
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Script" path="res://Systems/TowerSettings.gd" id="20_1njmi"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="20_w1ync"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Interface/Health/Heart.png" id="21_b02wb"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="20_i37xf"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_w1ync"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="21_b02wb"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Interface/Health/Heart.png" id="21_ky7vq"]
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Archer_Tower.tscn" id="21_wo32j"]
 [ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Shield_Tower.tscn" id="22_7cr7j"]
 [ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Healer_Tower.tscn" id="23_lp6q5"]
 [ext_resource type="Texture2D" uid="uid://cdxtfag00hvsh" path="res://Branding/KayKit_logo.png" id="26_pwwoa"]
-[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Interface/Currency/Coin_Icon.png" id="27_jihxw"]
+[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="27_jihxw"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
+[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Interface/Currency/Coin_Icon.png" id="28_tcf0u"]
 
 [sub_resource type="Animation" id="Animation_16s06"]
 resource_name = "Day"
@@ -603,7 +603,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Currency"]
 transform = Transform3D(0.315, 0, -1.86265e-09, 0, 0.315, 0, 1.86265e-09, 0, 0.315, -0.884146, 0.822362, 0.00938225)
-texture = ExtResource("6_qiowp")
+texture = ExtResource("27_jihxw")
 
 [node name="Health" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -8.3819e-09, 0, 0.755, 0, 8.3819e-09, 0, 0.755, 0.0139065, 2.36082, 0.962259)
@@ -620,7 +620,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Health"]
 transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
-texture = ExtResource("8_u6ygn")
+texture = ExtResource("21_b02wb")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
@@ -637,7 +637,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Armor"]
 transform = Transform3D(0.02, 0, -1.60071e-10, 0, 0.02, 0, 1.60071e-10, 0, 0.02, -0.872658, 0.651967, 0.00926018)
-texture = ExtResource("10_00ies")
+texture = ExtResource("20_w1ync")
 
 [node name="Cam_Rig" type="Node3D" parent="Tower"]
 transform = Transform3D(0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, 0.99863, 0, 0.301895, 0)
@@ -2527,7 +2527,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Attack_Towers/Archer_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("6_qiowp")
+texture = ExtResource("27_jihxw")
 
 [node name="Cost" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -2542,7 +2542,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 modulate = Color(0.654902, 0.129412, 0.184314, 1)
 position = Vector2(137, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("6_qiowp")
+texture = ExtResource("27_jihxw")
 
 [node name="Damage" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -2599,7 +2599,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("6_qiowp")
+texture = ExtResource("27_jihxw")
 
 [node name="Cost" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 layout_mode = 0
@@ -2613,7 +2613,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 [node name="Defense_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(137, -12)
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("20_w1ync")
+texture = ExtResource("20_i37xf")
 
 [node name="Defense" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 layout_mode = 0
@@ -2670,7 +2670,7 @@ vertical_alignment = 1
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 position = Vector2(20, -12)
 scale = Vector2(0.177, 0.177)
-texture = ExtResource("6_qiowp")
+texture = ExtResource("27_jihxw")
 
 [node name="Cost" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0
@@ -2684,7 +2684,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 [node name="Heal_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 position = Vector2(137, -12)
 scale = Vector2(0.037, 0.037)
-texture = ExtResource("21_b02wb")
+texture = ExtResource("21_ky7vq")
 
 [node name="Heal" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0
@@ -2896,7 +2896,7 @@ offset_bottom = 40.0
 [node name="CoinIcon" type="Sprite2D" parent="UI/GameOver/Stats/Currency"]
 position = Vector2(600, 229.098)
 scale = Vector2(0.268293, 0.268293)
-texture = ExtResource("27_jihxw")
+texture = ExtResource("28_tcf0u")
 
 [node name="Subtitle2" type="Label" parent="UI/GameOver/Stats/Currency"]
 layout_mode = 0
