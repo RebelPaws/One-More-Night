@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b22c4h6unakla"
-path="res://.godot/imported/detail_treeB.gltf.glb-90effb9384c8dd6785b8b3dbb28eac12.scn"
+uid="uid://dqe48vlkvhhqw"
+path="res://.godot/imported/detail_forestB.fbx-cf164bbcb07b4ec1d54676a4f68bc3af.scn"
 
 [deps]
 
-source_file="res://Environment/Objects/detail_treeB.gltf.glb"
-dest_files=["res://.godot/imported/detail_treeB.gltf.glb-90effb9384c8dd6785b8b3dbb28eac12.scn"]
+source_file="res://Environment/Tile_Decor/detail_forestB.fbx"
+dest_files=["res://.godot/imported/detail_forestB.fbx-cf164bbcb07b4ec1d54676a4f68bc3af.scn"]
 
 [params]
 

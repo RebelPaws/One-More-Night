@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=55 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="Environment" uid="uid://0rj3q4fk6n3p" path="res://Shaders/World_Enviro.tres" id="2_tgdhb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Characters/Units/Archer/Pool_Manager.gd" id="16_et66q"]
 [ext_resource type="PackedScene" uid="uid://1spp8udlt2bw" path="res://Characters/Enemies/Skeleton_Minion/Skeleton_Minion.tscn" id="17_1kf0g"]
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
+[ext_resource type="PackedScene" uid="uid://cv1ulq2pkqh31" path="res://Environment/Tile_Decor/Maple_Forest/Oak_Trees.tscn" id="19_33iyo"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Script" path="res://Systems/TowerSettings.gd" id="20_1njmi"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
@@ -728,6 +729,9 @@ can_decorate = false
 
 [node name="Tile2" parent="NavRegion/Ground/Row_1" instance=ExtResource("18_ivqro")]
 transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 24.421, 0.238996, -0.77471)
+
+[node name="Maple_Trees_1" parent="NavRegion/Ground/Row_1/Tile2" instance=ExtResource("19_33iyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07651, 0)
 
 [node name="Tile3" parent="NavRegion/Ground/Row_1" instance=ExtResource("18_ivqro")]
 transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 28.2964, 0.238996, -0.77471)

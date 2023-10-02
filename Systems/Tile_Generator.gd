@@ -15,9 +15,10 @@ func _ready():
 	
 	
 	if not can_decorate: return
-	return
+	
 	if randf_range(0, 100) <= biome.chance_of_trees:
 		var tree_bunch = biome.trees.pick_random().instantiate()
 		decor_node.add_child(tree_bunch)
-		tree_bunch.global_position = self.global_position + Vector3(0, 1.9, 0)
+		tree_bunch.global_position = self.global_position + Vector3(0, 0.4, 0)
+		tree_bunch.scale = Vector3(0.7, 0.7, 0.7)
 
