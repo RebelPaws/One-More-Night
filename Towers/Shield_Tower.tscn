@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_o10u0"]
 [ext_resource type="Script" path="res://Towers/Shield_Tower.gd" id="2_hjovx"]
-[ext_resource type="Material" uid="uid://d3s080v877ura" path="res://materials/materials/Wood.material" id="3_4j0tf"]
-[ext_resource type="Material" uid="uid://ca7kart542pgu" path="res://materials/materials/Stone_Light.material" id="5_xrvf6"]
-[ext_resource type="Material" uid="uid://dnvlpeg4no6w3" path="res://materials/outline.tres" id="6_nrxp5"]
-[ext_resource type="Material" uid="uid://b53n2x1a1ylpy" path="res://materials/materials/Stone_Dark.material" id="6_rkf45"]
+[ext_resource type="Material" uid="uid://d3s080v877ura" path="res://Materials/Environment/Wood.material" id="3_4j0tf"]
+[ext_resource type="Material" uid="uid://ca7kart542pgu" path="res://Materials/Buildings/Stone_Light.material" id="5_xrvf6"]
+[ext_resource type="Material" uid="uid://dnvlpeg4no6w3" path="res://Materials/Others/outline.tres" id="6_nrxp5"]
+[ext_resource type="Material" uid="uid://b53n2x1a1ylpy" path="res://Materials/Buildings/Stone_Dark.material" id="6_rkf45"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="7_4h0b7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjlcg"]
@@ -109,7 +109,6 @@ size = Vector3(4.059, 5000, 5.067)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og83i"]
 resource_name = "knight_texture"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.272166
 
@@ -158,6 +157,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [node name="Shield_Tower" instance=ExtResource("1_o10u0")]
 script = ExtResource("2_hjovx")
 armor_value = 5.0
+chance_for_perfect_defense = 15.0
 
 [node name="Anchor" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954794, 0)

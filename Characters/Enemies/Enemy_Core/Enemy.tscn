@@ -36,6 +36,8 @@ path_max_distance = 3.01
 
 [node name="Attack_Sound" type="StudioEventEmitter3D" parent="Sounds"]
 
-[connection signal="Damaged" from="Health_Manager" to="." method="set_state" binds= ["Hurt"]]
+[node name="Retreat_Position" type="Node3D" parent="."]
+
+[connection signal="Damaged_Default" from="Health_Manager" to="." method="set_state" binds= ["Hurt"]]
 [connection signal="Dead" from="Health_Manager" to="." method="set_state" binds= ["Dead"]]
 [connection signal="timeout" from="Attack_Timer" to="." method="Attack"]

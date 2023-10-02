@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2qkth4w6d5km"]
+[gd_scene load_steps=13 format=3 uid="uid://d2qkth4w6d5km"]
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_lh1wg"]
 [ext_resource type="Material" uid="uid://ca7kart542pgu" path="res://Materials/Buildings/Stone_Light.material" id="2_ij1a6"]
@@ -132,6 +132,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cyeiw")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ahv1s"]
+points = PackedVector3Array(-0.147225, 0.831295, -0.0215547, 0.135294, 0.0149557, -1.9685, 0.480771, -0.236159, 0.0414023, -0.492702, -0.487275, -0.0843151, -0.403801, -0.400278, -1.90897, 0.277534, -0.700595, -1.91567, 0.229533, 0.768645, -0.0215547, 0.418011, -0.173165, -1.78002, 0.386533, -0.738562, -0.0843151, -0.201435, -0.831052, 0.00230125, -0.288165, -0.731571, -1.73851, -0.398365, -0.141841, -1.78002, -0.304126, 0.611505, 0.00992382, 0.51225, -0.581421, -0.96355, -0.209986, -0.0163691, -1.9685, 0.51225, -0.236159, -1.05759, -0.050574, -0.801328, -1.92987, -0.461224, -0.173338, 0.0414023, 0.100119, -0.860086, 0.000886641, 0.189859, -0.797172, -1.74448, -0.366985, -0.769887, -0.0843151, 0.292392, 0.643002, 0.00992382, 0.355152, -0.141841, -1.9685, -0.404142, -0.578042, -1.73229, -0.429844, -0.204662, -1.78002, -0.0216064, 0.862792, -0.0215547, -0.0804419, -0.828693, -1.74598, 0.393206, -0.488083, -1.90744, 0.166675, 0.831295, 0.00992382, -0.304126, -0.0790188, -1.9685, -0.272746, 0.391715, 0.0414023, -0.492702, -0.298809, -0.0528365)
+
 [node name="Tower_Foundation" instance=ExtResource("1_lh1wg")]
 
 [node name="Towers" type="Node3D" parent="." index="0"]
@@ -144,6 +147,12 @@ surface_material_override/0 = ExtResource("2_ij1a6")
 surface_material_override/1 = ExtResource("3_7s8w0")
 surface_material_override/2 = ExtResource("4_y6nv6")
 surface_material_override/3 = ExtResource("5_c5u8i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Towers/Tower_Foundation" index="0"]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Towers/Tower_Foundation/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_ahv1s")
 
 [node name="Anchor" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)

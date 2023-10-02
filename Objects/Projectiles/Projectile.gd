@@ -25,6 +25,7 @@ func _process(delta):
 	
 	if seek_target:
 		move_to = (dir * move_speed) * delta
+		look_at(target.global_position)
 	else:
 		if move_to == Vector3():
 			move_to = (dir * move_speed) * delta

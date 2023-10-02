@@ -1,6 +1,9 @@
 extends "res://Towers/Tower_Core.gd"
 
 var can_attack = true
+var chance_for_quickdraw = 35.0
+
+@export var attack_time_default = 2.0
 
 func _ready():
 	attack()
@@ -31,6 +34,12 @@ func attack():
 	
 	for archer in $Units.get_children():
 		archer.shoot(new_targets.pick_random())
+	
+	var chance_roll = randf_range(0, 100)
+	if chance_roll <= chance_for_quickdraw:
+		$Attack_Timer.wait_time = attack_time_default * 0.5
+	else:
+		$Attack_Timer.wait_time = attack_time_default
 	
 	$Attack_Timer.start()
 

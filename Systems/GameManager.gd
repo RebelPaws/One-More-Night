@@ -2,7 +2,7 @@ extends Node3D
 
 signal CurrencyChanged
 
-var currency = 50
+var currency = 100
 var currency_total = 0
 
 var nights_survived = 0
@@ -30,15 +30,20 @@ func modify_currency(_amount):
 func start_night():
 	$Night_Music.play()
 	$Day_Music.stop()
-	$Enemy_Manager._toggle()
+	$Enemy_Manager._toggle(true)
+	
+	$UI/Game_Speed.toggle_skip_night(false)
 
 #This will end enemies attacking
 func end_night():
+	$UI/Game_Speed.toggle_skip_night(true)
+	$Enemy_Manager.enemies_spawned = 0
 	$Day_Music.play()
 	$Night_Music.stop()
-	$Enemy_Manager._toggle()
+	$Enemy_Manager._toggle(false)
 
 func start_game():
+	$UI/Game_Speed.show()
 	$UI/Build.show()
 	$Tower/Health.show()
 	$Tower/Armor.show()

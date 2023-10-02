@@ -1,12 +1,15 @@
 extends Node3D
 
 signal Damaged
+signal Damaged_Default
 signal Dead
 signal Healed
 signal ArmorChanged
 
 @export var health_max : float ##This is the most health the object can have.
 @onready var health_current = health_max #This is the current health of the object.
+
+var is_hurt = false
 
 @export var armor : float:
 	set(val):
@@ -23,8 +26,19 @@ func _get_percent():
 
 #This handles taking damage
 func _take_damage(_damage):
+	if is_hurt: return
+	
+	is_hurt = true
+	
 	var reduction_percent = armor * 0.01
 	if reduction_percent > 0.9: reduction_percent = 0.9
+	
+	if get_parent().name == "Tower":
+		for block in get_parent().get_node("Blocks").get_children():
+			if "Shield" in block.name:
+				var chance_roll = randf_range(0, 100)
+				if chance_roll <= block.chance_for_perfect_defense:
+					return
 	
 	_damage -= (_damage * reduction_percent)
 	
@@ -34,7 +48,10 @@ func _take_damage(_damage):
 		emit_signal("Dead") #We emit the dead signal
 		return #Then leave the function
 	
+	emit_signal("Damaged_Default")
 	emit_signal("Damaged", health_current) #If the object doesn't die then they just emit the Damaged signal
+	await get_tree().create_timer(0.3).timeout
+	is_hurt = false
 
 #This handles healing the object
 func _heal(_heal_amount):

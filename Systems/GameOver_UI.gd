@@ -3,6 +3,9 @@ extends Control
 func _open():
 	if GameInfo.game_is_in_play == false: return
 	
+	get_parent().get_node("Build").hide()
+	get_parent().get_node("Game_Speed").hide()
+	
 	update_stats()
 	GameInfo.game_is_in_play = false
 	show()
