@@ -1,12 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://citafdildktbl"]
+[gd_scene load_steps=23 format=3 uid="uid://citafdildktbl"]
 
 [ext_resource type="Script" path="res://Systems/Tile_Generator.gd" id="1_3xj1w"]
 [ext_resource type="Material" uid="uid://c1grvqijv0q1g" path="res://Materials/Environment/Dirt.material" id="2_tug31"]
 [ext_resource type="Material" uid="uid://dnvlpeg4no6w3" path="res://Materials/Others/outline.tres" id="5_i770g"]
-[ext_resource type="PackedScene" uid="uid://cqr64ma6ayruh" path="res://Environment/Tile_Decor/Maple_Forest/Maple_Trees_1.tscn" id="5_vmb4a"]
+[ext_resource type="PackedScene" uid="uid://cqr64ma6ayruh" path="res://Environment/Tile_Decor/Maple_Forest/Maple_Trees_1.tscn" id="5_kejw8"]
 [ext_resource type="Shader" path="res://Shaders/cel-shader-base.gdshader" id="6_qmjfs"]
-[ext_resource type="PackedScene" uid="uid://cv1ulq2pkqh31" path="res://Environment/Tile_Decor/Maple_Forest/Oak_Trees.tscn" id="7_uwjgr"]
+[ext_resource type="PackedScene" uid="uid://cv1ulq2pkqh31" path="res://Environment/Tile_Decor/Oak_Forest/Oak_Trees.tscn" id="7_81c3d"]
 [ext_resource type="Script" path="res://Environment/Tile_Biome_Info.gd" id="8_6pi68"]
+[ext_resource type="PackedScene" uid="uid://bk6segm2j167e" path="res://Environment/Tile_Decor/Snow/Snowperson.tscn" id="8_s385c"]
+[ext_resource type="PackedScene" uid="uid://b2c28wxx6hs1j" path="res://Environment/Tile_Decor/Snow/Snow_Trees.tscn" id="9_qgu47"]
+[ext_resource type="PackedScene" uid="uid://b2tp5shb373qk" path="res://Environment/Tile_Decor/Snow/Snow_Trees_2.tscn" id="10_mqui8"]
+[ext_resource type="PackedScene" uid="uid://sudfn10pvkmq" path="res://Environment/Tile_Decor/Snow/Snow_Trees_3.tscn" id="11_auvx6"]
+[ext_resource type="PackedScene" uid="uid://c117m1q8pfqjw" path="res://Environment/Tile_Decor/Desert/Cactus.tscn" id="12_tshul"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1hna"]
 resource_name = "Green"
@@ -473,6 +478,16 @@ render_priority = 0
 next_pass = ExtResource("5_i770g")
 shader = SubResource("Shader_tub77")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uj2n"]
+render_priority = 0
+next_pass = ExtResource("5_i770g")
+shader = SubResource("Shader_hlfuj")
+shader_parameter/color = Color(0.678431, 0.584314, 0.486275, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [node name="Tile" type="Node3D"]
 script = ExtResource("1_3xj1w")
 
@@ -485,8 +500,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_wdaq1")
 surface_material_override/1 = ExtResource("2_tug31")
 script = ExtResource("8_6pi68")
-trees = Array[PackedScene]([ExtResource("5_vmb4a")])
-chance_of_trees = 60.0
+decor = Array[PackedScene]([ExtResource("5_kejw8")])
+chance_of_decor = 60.0
 
 [node name="Oak_Forest" type="MeshInstance3D" parent="Biome"]
 transform = Transform3D(5.185, 0, 0, 0, 2, 0, 0, 0, 5.185, 0, 0, 0)
@@ -496,8 +511,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_drytt")
 surface_material_override/1 = ExtResource("2_tug31")
 script = ExtResource("8_6pi68")
-trees = Array[PackedScene]([ExtResource("7_uwjgr")])
-chance_of_trees = 60.0
+decor = Array[PackedScene]([ExtResource("7_81c3d")])
+chance_of_decor = 60.0
 
 [node name="Snow" type="MeshInstance3D" parent="Biome"]
 transform = Transform3D(5.185, 0, 0, 0, 2, 0, 0, 0, 5.185, 0, 0, 0)
@@ -507,3 +522,16 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_r06cl")
 surface_material_override/1 = ExtResource("2_tug31")
 script = ExtResource("8_6pi68")
+decor = Array[PackedScene]([ExtResource("8_s385c"), ExtResource("9_qgu47"), ExtResource("10_mqui8"), ExtResource("11_auvx6")])
+chance_of_decor = 60.0
+
+[node name="Desert" type="MeshInstance3D" parent="Biome"]
+transform = Transform3D(5.185, 0, 0, 0, 2, 0, 0, 0, 5.185, 0, 0, 0)
+visible = false
+mesh = SubResource("ArrayMesh_sm73l")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_3uj2n")
+surface_material_override/1 = ExtResource("2_tug31")
+script = ExtResource("8_6pi68")
+decor = Array[PackedScene]([ExtResource("12_tshul")])
+chance_of_decor = 20.0

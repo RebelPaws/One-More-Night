@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3y0hy5t6dsiw"]
+[gd_scene load_steps=7 format=3 uid="uid://d3y0hy5t6dsiw"]
 
 [ext_resource type="PackedScene" uid="uid://uypb3h2kqqdn" path="res://Objects/Projectiles/Projectile.tscn" id="1_jhfve"]
 [ext_resource type="Texture2D" uid="uid://ui256ijqvfeu" path="res://Characters/Units/Arrows-4ab01399cd372b43d9eead9243200b22_rogue_texture.png" id="2_3d8g5"]
-[ext_resource type="EventAsset" uid="uid://bvg4fknjdtjh4" path="res://addons/FMOD/editor/resources/events/{9aa6bea1-1145-4754-b16a-3a6845a70880}.tres" id="3_wo7ba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3xrn"]
 resource_name = "rogue_texture"
@@ -68,7 +67,6 @@ disabled = false
 wait_time = 8.0
 
 [node name="Hit" type="StudioEventEmitter3D" parent="." index="3"]
-event = ExtResource("3_wo7ba")
 
 [connection signal="area_entered" from="DamageBox" to="." method="arrow_hit"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="out_of_bounds"]

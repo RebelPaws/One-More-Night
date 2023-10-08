@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=64 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="Environment" uid="uid://0rj3q4fk6n3p" path="res://Shaders/World_Enviro.tres" id="2_tgdhb"]
@@ -19,12 +19,9 @@
 [ext_resource type="Script" path="res://Systems/TowerSettings.gd" id="20_1njmi"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="21_ky7vq"]
-[ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Archer_Tower.tscn" id="21_wo32j"]
-[ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Shield_Tower.tscn" id="22_7cr7j"]
-[ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Healer_Tower.tscn" id="23_lp6q5"]
-[ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="24_ivexk"]
-[ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="25_tchy0"]
-[ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="26_jfjjo"]
+[ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Defense/Shield_Tower.tscn" id="22_7cr7j"]
+[ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Attack/Archer_Tower.tscn" id="25_eaawd"]
+[ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Support/Healer_Tower.tscn" id="26_708l6"]
 [ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="26_k0ky1"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="27_nseor"]
@@ -35,13 +32,10 @@
 [ext_resource type="BankAsset" uid="uid://bf0y6iv74sp3o" path="res://addons/FMOD/editor/resources/banks/{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}.tres" id="29_fopvu"]
 [ext_resource type="Texture2D" uid="uid://dir8wjgwb6hd7" path="res://Interface/Buttons/Rectangle/Button_Rect_Focused.png" id="29_ya5w0"]
 [ext_resource type="Texture2D" uid="uid://b7aw8vbu2o0fa" path="res://Interface/Buttons/Rectangle/Button_Rect_Pressed.png" id="30_58qkj"]
-[ext_resource type="EventAsset" uid="uid://o54ruuvlarrq" path="res://addons/FMOD/editor/resources/events/{12147500-7e94-4702-8e12-1aaf9c9b1112}.tres" id="30_dohd3"]
 [ext_resource type="Script" path="res://Systems/GameSpeed_Manager.gd" id="33_pdm5h"]
 [ext_resource type="Texture2D" uid="uid://b4n7ipbo5gduk" path="res://Interface/Buttons/Square/Button_Square_Normal.png" id="33_pn8f2"]
 [ext_resource type="Texture2D" uid="uid://dkhimaosi08as" path="res://Interface/Buttons/Square/Button_Square_Pressed.png" id="34_ecbhy"]
-[ext_resource type="ParameterAsset" uid="uid://duwfebkywikax" path="res://addons/FMOD/editor/resources/parameters/{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}.tres" id="35_m31p3"]
 [ext_resource type="Texture2D" uid="uid://g046psmclqur" path="res://Interface/Buttons/Square/Button_Square_Focused.png" id="35_xdpig"]
-[ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Interface/Fonts/Main_Font.ttf" id="36_s8yos"]
 [ext_resource type="Texture2D" uid="uid://b8mqcow5v7td8" path="res://Interface/Skip_to_Night_Icon.png" id="38_bn0jb"]
 [ext_resource type="Texture2D" uid="uid://djvm6k5curyyy" path="res://Interface/Buttons/Danger_Button/Button_Danger_Normal.png" id="38_nclwv"]
 [ext_resource type="Texture2D" uid="uid://bnsk2l0oespva" path="res://Interface/Buttons/Danger_Button/Button_Danger_Pressed.png" id="39_73jf0"]
@@ -174,7 +168,7 @@ vertices = PackedVector3Array(36.7035, -0.734234, -21.8799, 36.4535, -0.734234, 
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(45, 42, 46), PackedInt32Array(46, 42, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(53, 52, 51), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 59), PackedInt32Array(56, 59, 58), PackedInt32Array(56, 58, 57), PackedInt32Array(61, 60, 62), PackedInt32Array(62, 60, 63), PackedInt32Array(66, 65, 64), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 72), PackedInt32Array(69, 72, 71), PackedInt32Array(69, 71, 70), PackedInt32Array(75, 74, 73), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 79), PackedInt32Array(82, 81, 80), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(86, 83, 87), PackedInt32Array(87, 83, 88), PackedInt32Array(91, 90, 89), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 97), PackedInt32Array(94, 97, 95), PackedInt32Array(95, 97, 96), PackedInt32Array(100, 99, 98), PackedInt32Array(102, 101, 103), PackedInt32Array(103, 101, 105), PackedInt32Array(103, 105, 104), PackedInt32Array(107, 106, 108), PackedInt32Array(108, 106, 109), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 114), PackedInt32Array(112, 114, 113), PackedInt32Array(115, 119, 116), PackedInt32Array(116, 119, 117), PackedInt32Array(117, 119, 118), PackedInt32Array(122, 121, 120), PackedInt32Array(125, 124, 123), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 129), PackedInt32Array(131, 130, 132), PackedInt32Array(132, 130, 133), PackedInt32Array(135, 134, 136), PackedInt32Array(136, 134, 137), PackedInt32Array(139, 138, 140), PackedInt32Array(140, 138, 141), PackedInt32Array(142, 144, 143), PackedInt32Array(145, 147, 146), PackedInt32Array(149, 148, 150), PackedInt32Array(150, 148, 151), PackedInt32Array(152, 154, 153), PackedInt32Array(156, 155, 157), PackedInt32Array(157, 155, 158), PackedInt32Array(161, 160, 159), PackedInt32Array(164, 163, 162), PackedInt32Array(167, 166, 165), PackedInt32Array(168, 170, 169), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(176, 175, 177), PackedInt32Array(177, 175, 178), PackedInt32Array(181, 180, 179), PackedInt32Array(184, 183, 182), PackedInt32Array(187, 186, 185), PackedInt32Array(190, 189, 188), PackedInt32Array(192, 191, 193), PackedInt32Array(193, 191, 194), PackedInt32Array(196, 195, 197), PackedInt32Array(197, 195, 199), PackedInt32Array(197, 199, 198), PackedInt32Array(201, 200, 202), PackedInt32Array(202, 200, 204), PackedInt32Array(202, 204, 203), PackedInt32Array(206, 205, 207), PackedInt32Array(207, 205, 208), PackedInt32Array(211, 210, 209), PackedInt32Array(213, 212, 214), PackedInt32Array(214, 212, 216), PackedInt32Array(214, 216, 215), PackedInt32Array(219, 218, 217), PackedInt32Array(222, 221, 220), PackedInt32Array(225, 224, 223), PackedInt32Array(227, 226, 228), PackedInt32Array(228, 226, 230), PackedInt32Array(228, 230, 229), PackedInt32Array(232, 231, 233), PackedInt32Array(233, 231, 234), PackedInt32Array(234, 231, 235), PackedInt32Array(235, 231, 236), PackedInt32Array(238, 237, 239), PackedInt32Array(239, 237, 240), PackedInt32Array(240, 237, 241), PackedInt32Array(241, 237, 242), PackedInt32Array(244, 243, 245), PackedInt32Array(245, 243, 247), PackedInt32Array(245, 247, 246), PackedInt32Array(249, 248, 250), PackedInt32Array(250, 248, 253), PackedInt32Array(250, 253, 252), PackedInt32Array(250, 252, 251), PackedInt32Array(255, 254, 256), PackedInt32Array(256, 254, 257), PackedInt32Array(259, 258, 260), PackedInt32Array(260, 258, 261), PackedInt32Array(263, 262, 264), PackedInt32Array(264, 262, 265), PackedInt32Array(268, 267, 266), PackedInt32Array(271, 270, 269), PackedInt32Array(273, 272, 274), PackedInt32Array(274, 272, 275), PackedInt32Array(278, 277, 276), PackedInt32Array(281, 280, 279), PackedInt32Array(283, 282, 284), PackedInt32Array(284, 282, 285), PackedInt32Array(287, 286, 288), PackedInt32Array(288, 286, 289), PackedInt32Array(292, 291, 290), PackedInt32Array(294, 293, 295), PackedInt32Array(295, 293, 296), PackedInt32Array(298, 297, 299), PackedInt32Array(299, 297, 300), PackedInt32Array(303, 302, 301), PackedInt32Array(306, 305, 304), PackedInt32Array(309, 308, 307), PackedInt32Array(312, 311, 310), PackedInt32Array(314, 313, 315), PackedInt32Array(315, 313, 317), PackedInt32Array(315, 317, 316), PackedInt32Array(319, 318, 320), PackedInt32Array(320, 318, 322), PackedInt32Array(320, 322, 321), PackedInt32Array(324, 323, 325), PackedInt32Array(325, 323, 326), PackedInt32Array(328, 327, 329), PackedInt32Array(329, 327, 330), PackedInt32Array(332, 331, 333), PackedInt32Array(333, 331, 334), PackedInt32Array(334, 331, 335), PackedInt32Array(337, 336, 338), PackedInt32Array(338, 336, 339), PackedInt32Array(341, 340, 342), PackedInt32Array(342, 340, 343), PackedInt32Array(343, 340, 344), PackedInt32Array(347, 346, 345), PackedInt32Array(350, 349, 348), PackedInt32Array(352, 351, 353), PackedInt32Array(353, 351, 354), PackedInt32Array(357, 356, 355), PackedInt32Array(359, 358, 360), PackedInt32Array(360, 358, 361), PackedInt32Array(361, 358, 362), PackedInt32Array(365, 364, 363), PackedInt32Array(368, 367, 366), PackedInt32Array(370, 369, 371), PackedInt32Array(371, 369, 372), PackedInt32Array(374, 373, 375), PackedInt32Array(375, 373, 376), PackedInt32Array(378, 377, 379), PackedInt32Array(379, 377, 380), PackedInt32Array(382, 381, 383), PackedInt32Array(383, 381, 384), PackedInt32Array(384, 381, 385), PackedInt32Array(385, 381, 386), PackedInt32Array(388, 387, 389), PackedInt32Array(389, 387, 390), PackedInt32Array(390, 387, 391), PackedInt32Array(391, 387, 392), PackedInt32Array(394, 393, 395), PackedInt32Array(395, 393, 396), PackedInt32Array(396, 393, 398), PackedInt32Array(396, 398, 397), PackedInt32Array(400, 399, 401), PackedInt32Array(401, 399, 402), PackedInt32Array(405, 404, 403), PackedInt32Array(407, 406, 408), PackedInt32Array(408, 406, 409), PackedInt32Array(410, 412, 411), PackedInt32Array(415, 414, 413), PackedInt32Array(418, 417, 416), PackedInt32Array(420, 419, 421), PackedInt32Array(421, 419, 422), PackedInt32Array(424, 423, 425), PackedInt32Array(425, 423, 426), PackedInt32Array(426, 423, 427), PackedInt32Array(427, 423, 428), PackedInt32Array(431, 430, 429), PackedInt32Array(434, 433, 432), PackedInt32Array(436, 435, 437), PackedInt32Array(437, 435, 438), PackedInt32Array(441, 440, 439), PackedInt32Array(444, 443, 442), PackedInt32Array(445, 447, 446), PackedInt32Array(450, 449, 448), PackedInt32Array(453, 452, 451), PackedInt32Array(455, 454, 456), PackedInt32Array(456, 454, 458), PackedInt32Array(456, 458, 457), PackedInt32Array(461, 460, 459), PackedInt32Array(463, 462, 464), PackedInt32Array(464, 462, 465), PackedInt32Array(467, 466, 468), PackedInt32Array(468, 466, 469), PackedInt32Array(472, 471, 470), PackedInt32Array(475, 474, 473), PackedInt32Array(477, 476, 478), PackedInt32Array(481, 480, 479), PackedInt32Array(484, 483, 482), PackedInt32Array(487, 486, 485), PackedInt32Array(490, 489, 488), PackedInt32Array(492, 491, 493), PackedInt32Array(493, 491, 494), PackedInt32Array(497, 496, 495), PackedInt32Array(500, 499, 498), PackedInt32Array(503, 502, 501), PackedInt32Array(506, 505, 504), PackedInt32Array(509, 508, 507)]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7mibu"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 65
 
 [sub_resource type="LabelSettings" id="LabelSettings_qkqbi"]
@@ -183,7 +177,7 @@ outline_size = 2
 outline_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4w6g7"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 255
 outline_size = 10
 outline_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
@@ -584,16 +578,16 @@ _data = {
 "Show_Support": SubResource("Animation_axg7o")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_vlmgr"]
-font = ExtResource("5_a3okp")
-font_size = 176
-font_color = Color(0.992157, 0.847059, 0, 1)
-outline_size = 10
-outline_color = Color(0.196078, 0.196078, 0.196078, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_48fgh"]
 font = ExtResource("5_a3okp")
 font_size = 111
+outline_size = 10
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vlmgr"]
+font = ExtResource("5_a3okp")
+font_size = 176
+font_color = Color(0.901961, 0.866667, 0.568627, 1)
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
@@ -623,35 +617,28 @@ outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0mpu3"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 216
 outline_size = 10
 outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1jrnk"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 536
 outline_size = 10
 outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3q7rj"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 536
 outline_size = 10
 outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cnd3c"]
-font = ExtResource("36_s8yos")
+font = ExtResource("5_a3okp")
 font_size = 306
 outline_size = 10
 outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-
-[sub_resource type="EventAsset" id="EventAsset_td41c"]
-min_distance = 1.0
-max_distance = 20.0
-path = "event:/dayMusic"
-guid = "{a333156e-f8d8-4d1e-b7b4-be5dacbc2123}"
-name = "dayMusic"
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_fsulb")
@@ -740,7 +727,7 @@ rotation_speed = {
 "Y-Axis": 0.5,
 "Z-Axis": 0.0
 }
-zoom_speed = 0.5
+zoom_speed = 0.3
 
 [node name="X" type="Node3D" parent="Tower/Cam_Rig"]
 transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 0, 0)
@@ -748,7 +735,7 @@ transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 
 [node name="Z" type="Node3D" parent="Tower/Cam_Rig/X"]
 
 [node name="Camera3D" type="Camera3D" parent="Tower/Cam_Rig/X/Z"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294, 10.295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.839, 19.015)
 attributes = SubResource("CameraAttributesPractical_u5wk5")
 current = true
 far = 88.74
@@ -2605,9 +2592,9 @@ vertical_alignment = 1
 
 [node name="Attack_Towers" type="Control" parent="UI/Build"]
 anchors_preset = 0
-offset_left = 2.0
-offset_right = 42.0
-offset_bottom = 40.0
+offset_top = 280.0
+offset_right = 40.0
+offset_bottom = 320.0
 
 [node name="Archer_Tower" type="Button" parent="UI/Build/Attack_Towers"]
 layout_mode = 0
@@ -2615,6 +2602,7 @@ offset_left = 358.0
 offset_top = 834.0
 offset_right = 654.0
 offset_bottom = 1069.0
+disabled = true
 
 [node name="Label" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -2661,6 +2649,7 @@ offset_left = 17.0
 offset_top = 984.0
 offset_right = 313.0
 offset_bottom = 1066.0
+disabled = true
 
 [node name="Label" type="Label" parent="UI/Build/Attack_Towers/Back_Button"]
 layout_mode = 0
@@ -2849,7 +2838,7 @@ libraries = {
 
 [node name="Archer" type="Node" parent="UI/Build/Towers/Attack"]
 script = ExtResource("20_1njmi")
-scene = ExtResource("21_wo32j")
+scene = ExtResource("25_eaawd")
 
 [node name="Defense" type="Node" parent="UI/Build/Towers"]
 
@@ -2867,18 +2856,15 @@ script = ExtResource("20_1njmi")
 cost = 50
 damage = 0
 healing = 1.0
-scene = ExtResource("23_lp6q5")
+scene = ExtResource("26_708l6")
 
 [node name="GeneralButtonPress_Sound" type="AudioStreamPlayer" parent="UI/Build"]
 
 [node name="TowerBuild" type="StudioEventEmitter3D" parent="UI/Build"]
-event = ExtResource("24_ivexk")
 
 [node name="CantAfford" type="StudioEventEmitter3D" parent="UI/Build"]
-event = ExtResource("25_tchy0")
 
 [node name="ButtonPress" type="StudioEventEmitter3D" parent="UI/Build"]
-event = ExtResource("26_jfjjo")
 
 [node name="Title" type="Control" parent="UI"]
 layout_mode = 3
@@ -2891,30 +2877,24 @@ offset_top = -540.0
 offset_right = 957.84
 offset_bottom = 553.0
 
-[node name="KayKit_Logo" type="Sprite2D" parent="UI/Title"]
-position = Vector2(1576, 188)
-scale = Vector2(0.470703, 0.470703)
-texture = ExtResource("27_vn81t")
-
-[node name="Title" type="Label" parent="UI/Title"]
+[node name="Subtitle" type="Label" parent="UI/Title"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 1925.0
-offset_bottom = 167.0
-text = "One More Night..."
-label_settings = SubResource("LabelSettings_vlmgr")
+offset_left = -50.0
+offset_top = 104.0
+offset_right = 1869.0
+offset_bottom = 260.0
+text = "New Lands AHOY!"
+label_settings = SubResource("LabelSettings_48fgh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="UI/Title"]
+[node name="Title" type="Label" parent="UI/Title"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 142.0
-offset_right = 1925.0
-offset_bottom = 258.0
-text = "An adventure by Vespir, Evan; and      "
-label_settings = SubResource("LabelSettings_48fgh")
+offset_left = 53.0
+offset_right = 1972.0
+offset_bottom = 180.0
+text = "One More Night..."
+label_settings = SubResource("LabelSettings_vlmgr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -3275,17 +3255,13 @@ bank_3 = ExtResource("29_fopvu")
 
 [node name="Day_Music" type="StudioEventEmitter3D" parent="."]
 play_event = 2
-event = SubResource("EventAsset_td41c")
 
 [node name="StudioParameterTrigger" type="StudioParameterTrigger" parent="."]
 studio_event_emitter = NodePath("../Night_Music")
 
 [node name="Night_Music" type="StudioEventEmitter3D" parent="."]
-event = ExtResource("30_dohd3")
 
 [node name="Terror_Param" type="StudioGlobalParameterTrigger" parent="."]
-parameter = ExtResource("35_m31p3")
-value = 0.0
 
 [connection signal="CurrencyChanged" from="." to="Tower/Currency" method="_update_currency"]
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]

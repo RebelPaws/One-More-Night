@@ -28,6 +28,10 @@ path_max_distance = 3.01
 
 [node name="Attack_Timer" type="Timer" parent="."]
 
+[node name="Retreat_Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="Death_Sound" type="StudioEventEmitter3D" parent="Sounds"]
@@ -41,3 +45,4 @@ path_max_distance = 3.01
 [connection signal="Damaged_Default" from="Health_Manager" to="." method="set_state" binds= ["Hurt"]]
 [connection signal="Dead" from="Health_Manager" to="." method="set_state" binds= ["Dead"]]
 [connection signal="timeout" from="Attack_Timer" to="." method="Attack"]
+[connection signal="timeout" from="Retreat_Timer" to="." method="_disable"]

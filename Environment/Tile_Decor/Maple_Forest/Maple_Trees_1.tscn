@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqr64ma6ayruh"]
 
-[ext_resource type="Script" path="res://Environment/Tile_Decor/Maple_Forest/Tree_Manage.gd" id="1_fq4aq"]
+[ext_resource type="Script" path="res://Environment/Tile_Decor/Tree_Manage.gd" id="1_fq4aq"]
 [ext_resource type="Material" uid="uid://d3s080v877ura" path="res://Materials/Environment/Wood.material" id="2_iiumd"]
 [ext_resource type="Material" uid="uid://b0hu1o2vcmkr6" path="res://Materials/Environment/Maple.material" id="3_gq4qm"]
 

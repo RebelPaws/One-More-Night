@@ -11,33 +11,39 @@ func _ready():
 	set_process(false)
 
 func activate():
+	if target == null: return
+	
 	show()
 	set_process(true)
 	active = true
 	look_at(target.global_position)
 
 func _process(delta):
-	if target == null: 
-		arrow_hit(null)
+	if target.active == false or target == null or self == null: 
+		disable()
 		return
 	
-	var dir = (target.global_position - global_position).normalized()
+	var dir = (self.global_position - target.global_position).normalized()
 	
 	if seek_target:
-		move_to = (dir * move_speed) * delta
+		move_to = (dir * move_speed)
 		look_at(target.global_position)
 	else:
 		if move_to == Vector3():
-			move_to = (dir * move_speed) * delta
+			move_to = (dir * move_speed) 
 	
-	global_position += move_to
-
+	global_position -= move_to * delta
 
 func arrow_hit(area):
 	$Hit.play()
+	disable()
+
+func disable():
 	hide()
 	set_process(false)
 	active = false
+	target = null
+	move_to = Vector3()
 
 func out_of_bounds():
-	$VisibleOnScreenNotifier3D/Timer.start()
+	arrow_hit(null)
