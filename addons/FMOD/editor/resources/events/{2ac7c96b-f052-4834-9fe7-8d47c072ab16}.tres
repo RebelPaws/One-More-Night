@@ -4,6 +4,6 @@
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/arrowShoot"
+path = "event:/sFX/arrowShoot"
 guid = "{2ac7c96b-f052-4834-9fe7-8d47c072ab16}"
 name = "arrowShoot"

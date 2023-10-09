@@ -1,4 +1,4 @@
-[gd_resource type="ProjectCache" load_steps=20 format=3 uid="uid://pagb2jnuwh8r"]
+[gd_resource type="ProjectCache" load_steps=32 format=3 uid="uid://pagb2jnuwh8r"]
 
 [ext_resource type="BankAsset" uid="uid://daufm74kykm4x" path="res://addons/FMOD/editor/resources/banks/{fefac786-6009-46d5-8d87-803daee1cd0e}.tres" id="1_a4x8w"]
 [ext_resource type="BankAsset" uid="uid://drnx0cvdafke5" path="res://addons/FMOD/editor/resources/banks/{66e7e752-1172-0a97-0bce-0ac35f12cb96}.tres" id="2_muyh8"]
@@ -20,6 +20,84 @@
 [ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="18_wf0bp"]
 [ext_resource type="ParameterAsset" uid="uid://duwfebkywikax" path="res://addons/FMOD/editor/resources/parameters/{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}.tres" id="19_4ecuy"]
 
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_y7fel"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_y7fel")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_mdhcp"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[sub_resource type="EventAsset" id="EventAsset_kljah"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_mdhcp")
+}
+path = "event:/maple/mapleForest"
+guid = "{5dff2e81-f719-49f2-87b0-adfbfb657856}"
+name = "mapleForest"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_pc1st"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_gi5rp"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_pc1st")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_wa17r"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_gi5rp")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[sub_resource type="EventAsset" id="EventAsset_nrhny"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_wa17r")
+}
+path = "event:/oak/oakForest"
+guid = "{35ac2166-cbac-4d18-8ef9-ba084aafcec3}"
+name = "oakForest"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_o442q"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_c2n0t"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_o442q")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_7n44c"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_c2n0t")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[sub_resource type="EventAsset" id="EventAsset_wfpck"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_7n44c")
+}
+path = "event:/snow/snowLevel"
+guid = "{4ee1bc1f-293a-42ed-ad20-17269a869b8c}"
+name = "snowLevel"
+
 [resource]
 banks = {
 "{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}": ExtResource("6_1qvwo"),
@@ -32,6 +110,9 @@ banks = {
 events = {
 "{12147500-7e94-4702-8e12-1aaf9c9b1112}": ExtResource("15_yewg5"),
 "{2ac7c96b-f052-4834-9fe7-8d47c072ab16}": ExtResource("10_wpxtp"),
+"{35ac2166-cbac-4d18-8ef9-ba084aafcec3}": SubResource("EventAsset_nrhny"),
+"{4ee1bc1f-293a-42ed-ad20-17269a869b8c}": SubResource("EventAsset_wfpck"),
+"{5dff2e81-f719-49f2-87b0-adfbfb657856}": SubResource("EventAsset_kljah"),
 "{61d4bd47-2e1d-4fe6-8c6e-de9267fe0860}": ExtResource("12_lhoia"),
 "{63243b9a-9af9-446e-858b-8ca4d6bc1335}": ExtResource("17_0twju"),
 "{77b0da36-31df-43ed-ad7f-7e9333ba97b8}": ExtResource("16_5nlo1"),
@@ -86,65 +167,107 @@ bank_tree = [{
 "resource": ExtResource("6_1qvwo")
 }]
 event_tree = [{
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "mapleForest",
+"path": "event:/maple/mapleForest",
+"resource": SubResource("EventAsset_kljah")
+}],
+"item_type": 7,
+"node_name": "maple",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "dayMusic",
+"path": "event:/oak/dayMusic",
+"resource": ExtResource("11_22nyb")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "nightMusic",
+"path": "event:/oak/nightMusic",
+"resource": ExtResource("15_yewg5")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "oakForest",
+"path": "event:/oak/oakForest",
+"resource": SubResource("EventAsset_nrhny")
+}],
+"item_type": 7,
+"node_name": "oak",
+"path": "",
+"resource": null
+}, {
+"children": [{
 "children": [],
 "item_type": 1,
 "node_name": "arrowHit",
-"path": "event:/arrowHit",
+"path": "event:/sFX/arrowHit",
 "resource": ExtResource("9_bal8c")
 }, {
 "children": [],
 "item_type": 1,
 "node_name": "arrowShoot",
-"path": "event:/arrowShoot",
+"path": "event:/sFX/arrowShoot",
 "resource": ExtResource("10_wpxtp")
 }, {
 "children": [],
 "item_type": 1,
-"node_name": "dayMusic",
-"path": "event:/dayMusic",
-"resource": ExtResource("11_22nyb")
-}, {
-"children": [],
-"item_type": 1,
 "node_name": "goblinAttack",
-"path": "event:/goblinAttack",
+"path": "event:/sFX/goblinAttack",
 "resource": ExtResource("12_lhoia")
 }, {
 "children": [],
 "item_type": 1,
 "node_name": "goblinDie",
-"path": "event:/goblinDie",
+"path": "event:/sFX/goblinDie",
 "resource": ExtResource("13_d0kqm")
 }, {
 "children": [],
 "item_type": 1,
 "node_name": "goblinHurt",
-"path": "event:/goblinHurt",
+"path": "event:/sFX/goblinHurt",
 "resource": ExtResource("14_jw3gu")
 }, {
 "children": [],
 "item_type": 1,
-"node_name": "nightMusic",
-"path": "event:/nightMusic",
-"resource": ExtResource("15_yewg5")
-}, {
-"children": [],
-"item_type": 1,
 "node_name": "towerBuild",
-"path": "event:/towerBuild",
+"path": "event:/sFX/towerBuild",
 "resource": ExtResource("16_5nlo1")
 }, {
 "children": [],
 "item_type": 1,
 "node_name": "towerBuy",
-"path": "event:/towerBuy",
+"path": "event:/sFX/towerBuy",
 "resource": ExtResource("17_0twju")
 }, {
 "children": [],
 "item_type": 1,
 "node_name": "towerNoMoney",
-"path": "event:/towerNoMoney",
+"path": "event:/sFX/towerNoMoney",
 "resource": ExtResource("18_wf0bp")
+}],
+"item_type": 7,
+"node_name": "sFX",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "snowLevel",
+"path": "event:/snow/snowLevel",
+"resource": SubResource("EventAsset_wfpck")
+}],
+"item_type": 7,
+"node_name": "snow",
+"path": "",
+"resource": null
 }]
 bus_tree = [{
 "children": [{

@@ -1,0 +1,27 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://dq560bqkdq7pl"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_pc1st"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_gi5rp"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_pc1st")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_wa17r"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_gi5rp")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_wa17r")
+}
+path = "event:/oak/oakForest"
+guid = "{35ac2166-cbac-4d18-8ef9-ba084aafcec3}"
+name = "oakForest"

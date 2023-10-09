@@ -4,6 +4,6 @@
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/towerBuild"
+path = "event:/sFX/towerBuild"
 guid = "{77b0da36-31df-43ed-ad7f-7e9333ba97b8}"
 name = "towerBuild"

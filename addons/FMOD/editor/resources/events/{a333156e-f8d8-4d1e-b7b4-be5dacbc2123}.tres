@@ -3,6 +3,6 @@
 [resource]
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/dayMusic"
+path = "event:/oak/dayMusic"
 guid = "{a333156e-f8d8-4d1e-b7b4-be5dacbc2123}"
 name = "dayMusic"

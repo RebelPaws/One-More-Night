@@ -4,6 +4,6 @@
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/goblinHurt"
+path = "event:/sFX/goblinHurt"
 guid = "{e0109767-133c-4bf2-af20-c53f40dcf5b5}"
 name = "goblinHurt"

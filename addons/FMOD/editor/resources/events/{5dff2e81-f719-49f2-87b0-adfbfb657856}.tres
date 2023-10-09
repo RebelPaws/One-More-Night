@@ -1,0 +1,27 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://b2umxa3bxkeuc"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_y7fel"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_y7fel")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_mdhcp"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_mdhcp")
+}
+path = "event:/maple/mapleForest"
+guid = "{5dff2e81-f719-49f2-87b0-adfbfb657856}"
+name = "mapleForest"

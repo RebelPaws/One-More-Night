@@ -1,0 +1,27 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://diw475d7cc7gu"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_o442q"]
+data1 = 2367018974
+data2 = 2247537550
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_c2n0t"]
+name = "dayNight"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_o442q")
+maximum = 100.0
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_7n44c"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_c2n0t")
+path = "parameter:/dayNight"
+guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
+name = "dayNight"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_7n44c")
+}
+path = "event:/snow/snowLevel"
+guid = "{4ee1bc1f-293a-42ed-ad20-17269a869b8c}"
+name = "snowLevel"

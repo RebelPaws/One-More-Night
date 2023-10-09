@@ -25,7 +25,7 @@
 [ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="26_k0ky1"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="27_nseor"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="BankAsset" uid="uid://b5kcrpkiyghej" path="res://addons/FMOD/editor/resources/banks/{57e3e267-3726-4819-bb75-85cb8a640fa7}.tres" id="28_snhj5"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="28_tcf0u"]

@@ -2,7 +2,7 @@
 
 [resource]
 file_path = "res://Audio//SFXArcher.bank"
-modified_time = 1696211936
+modified_time = 1696811984
 path = "bank:/SFXArcher"
 guid = "{6e5a9b98-cd98-4e47-a618-1598e74f1011}"
 name = "SFXArcher"
