@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c117m1q8pfqjw"]
+
+[ext_resource type="Script" path="res://Environment/Tree_Manage.gd" id="1_f3q6s"]
+[ext_resource type="PackedScene" uid="uid://6bsedk7ydm4a" path="res://Environment/Mirage_Mesa/Cactus/Cactus.tscn" id="2_5ojcy"]
+[ext_resource type="Material" uid="uid://bdtywnoifqr48" path="res://Environment/Mirage_Mesa/Cactus/Materials/Cactus_2.material" id="3_scao4"]
+
+[node name="Desert_Scene_1" type="Node3D"]
+script = ExtResource("1_f3q6s")
+
+[node name="Cactus" parent="." instance=ExtResource("2_5ojcy")]
+transform = Transform3D(46.9549, 88.2907, 1.05251e-05, 0, -1.19209e-05, 100, 88.2907, -46.9549, -5.59746e-06, 0, 1, 0)
+surface_material_override/0 = ExtResource("3_scao4")
+
+[node name="Cactus2" parent="." instance=ExtResource("2_5ojcy")]
+transform = Transform3D(46.9549, 88.2907, 1.05251e-05, 0, -1.19209e-05, 100, 88.2907, -46.9549, -5.59746e-06, -2.21708, 1, 0)
+surface_material_override/0 = ExtResource("3_scao4")
+
+[node name="Cactus3" parent="." instance=ExtResource("2_5ojcy")]
+transform = Transform3D(98.7662, -15.6607, -1.86689e-06, -3.13672e-13, -1.19209e-05, 100, -15.6607, -98.7662, -1.17739e-05, 1.6959, 1, 1.19958)
+surface_material_override/0 = ExtResource("3_scao4")

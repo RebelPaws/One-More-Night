@@ -1,0 +1,27 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://48b00my3eqy6"]
+
+[ext_resource type="Material" uid="uid://b03ugubxxi7u2" path="res://Environment/Skybox/sky.tres" id="1_qm4d4"]
+
+[sub_resource type="Sky" id="Sky_sudva"]
+sky_material = ExtResource("1_qm4d4")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_sudva")
+ambient_light_source = 2
+ambient_light_color = Color(0.2, 0.372549, 0.411765, 1)
+ambient_light_energy = 2.0
+tonemap_mode = 2
+ssil_enabled = true
+glow_levels/3 = 2.0
+glow_intensity = 0.2
+glow_blend_mode = 0
+glow_hdr_threshold = 1.31
+fog_enabled = true
+fog_sky_affect = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.025
+volumetric_fog_albedo = Color(0.6, 0.6, 0.6, 1)
+volumetric_fog_gi_inject = 0.0
+volumetric_fog_sky_affect = 0.0

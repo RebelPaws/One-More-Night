@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvrtk8xubn71k"]
+
+[ext_resource type="Environment" uid="uid://48b00my3eqy6" path="res://Environment/Skybox/World_Enviro.tres" id="2_5j258"]
+[ext_resource type="Script" path="res://World_Generator.gd" id="3_tlyft"]
+[ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="4_ss8dc"]
+
+[sub_resource type="Animation" id="Animation_16s06"]
+resource_name = "Day"
+length = 60.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 29.9, 60),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(4.71239, 0, 0), Vector3(-1.5708, 0, 0), Vector3(-7.49619, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.3, 21.6, 40.9, 52.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_night"
+}, {
+"args": [],
+"method": &"end_night"
+}, {
+"args": [],
+"method": &"start_night"
+}, {
+"args": [],
+"method": &"end_night"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(21.8, 53.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"night_survived"
+}, {
+"args": [],
+"method": &"night_survived"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../UI/Game_Speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 22.4, 52.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [8.5],
+"method": &"set_night_skip_pos"
+}, {
+"args": [39.0],
+"method": &"set_night_skip_pos"
+}, {
+"args": [8.5],
+"method": &"set_night_skip_pos"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UI/Game_Speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Enemy_Manager")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(23, 53.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enemies_retreat"
+}, {
+"args": [],
+"method": &"enemies_retreat"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n36l"]
+_data = {
+"Day": SubResource("Animation_16s06")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.825734, 0.564059, 0, -0.564059, 0.825734, -0.9, 6.074, 7.663)
+current = true
+fov = 80.0
+
+[node name="Sky" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Sky"]
+environment = ExtResource("2_5j258")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Sky"]
+transform = Transform3D(1, 0, 0, 0, 9.65599e-07, 0.999999, 0, -1, 9.65598e-07, 0.606105, 2.60517, 0.518529)
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 6.0
+directional_shadow_mode = 1
+
+[node name="Day_Cycle" type="AnimationPlayer" parent="Sky"]
+libraries = {
+"": SubResource("AnimationLibrary_0n36l")
+}
+autoplay = "Day"
+speed_scale = 0.2
+
+[node name="Grid_Map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.12851, -4.39999, -2.30749)
+script = ExtResource("3_tlyft")
+grid_size = 20
+hex_tile = ExtResource("4_ss8dc")
+tile_size = 9.0

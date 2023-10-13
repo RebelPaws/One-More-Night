@@ -10,17 +10,15 @@ config_version=5
 
 [application]
 
-config/name="OMN Definitive"
+config/name="One More Night"
 run/main_scene="res://Systems/GameWorld.tscn"
-config/features=PackedStringArray("4.1", "GL Compatibility")
-run/max_fps=60
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameInfo="*res://Systems/GameInfo.gd"
-TowerInfo="*res://Interface/Tower_Info.gd"
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
+GameInfo="*res://Systems/GameInfo.gd"
 
 [display]
 
@@ -29,17 +27,13 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="viewport"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/FMOD/plugin.cfg")
-
 [fmod]
 
-settings/banks_path="res://Audio/"
+settings/banks_path="res://banks/Desktop"
 settings/fmod_output_type=0
 settings/fmod_debug_flags=0
-settings/fmod_debug_mode=2
-settings/banks_to_load_at_startup=Array[String](["res://Audio/Master.bank"])
+settings/fmod_debug_mode=1
+settings/banks_to_load_at_startup=Array[String]([])
 settings/banks_preload_samples=false
 settings/banks_flags=0
 settings/sample_rate=48000
@@ -57,6 +51,26 @@ settings/init_with_3d_righthanded=true
 
 [input]
 
+Zoom_In={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
+]
+}
+Zoom_Out={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
+Rotate_Y_C={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"echo":false,"script":null)
+]
+}
+Rotate_Y_CC={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"echo":false,"script":null)
+]
+}
 Move_Up={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"echo":false,"script":null)
@@ -67,50 +81,16 @@ Move_Down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"echo":false,"script":null)
 ]
 }
-Rotate_Y_C={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"echo":false,"script":null)
-]
-}
-Rotate_Y_CC={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"echo":false,"script":null)
-]
-}
-Zoom_In={
-"deadzone": 0.3,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":61,"key_label":0,"unicode":61,"echo":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(166, 10),"global_position":Vector2(170, 53),"factor":1.0,"button_index":4,"canceled":false,"pressed":true,"double_click":false,"script":null)
-]
-}
-Zoom_Out={
-"deadzone": 0.3,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":45,"key_label":0,"unicode":45,"echo":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(182, 10),"global_position":Vector2(186, 53),"factor":1.0,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
-]
-}
 
 [rendering]
 
-renderer/rendering_method.mobile="gl_compatibility"
-
-[shader_globals]
-
-specular_smoothness={
-"type": "float",
-"value": 5.0
-}
-outline_width={
-"type": "float",
-"value": 5.0
-}
-outline_color={
-"type": "color",
-"value": Color(0, 0, 0, 1)
-}
-fresnel_smoothness={
-"type": "float",
-"value": 5.0
-}
+lights_and_shadows/directional_shadow/size=8192
+lights_and_shadows/directional_shadow/size.mobile=4096
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=4
+lights_and_shadows/directional_shadow/16_bits=false
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=4
+lights_and_shadows/positional_shadow/atlas_size=8192
+lights_and_shadows/positional_shadow/atlas_size.mobile=4096
+lights_and_shadows/positional_shadow/atlas_16_bits=false

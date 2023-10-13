@@ -2,14 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://ct6nc7cdbyuax" path="res://Characters/Enemies/Enemy_Core/Enemy.tscn" id="1_8mfxl"]
 [ext_resource type="Script" path="res://Characters/Enemies/Skeleton_Minion/Skeleton_Minion.gd" id="2_1op2e"]
-[ext_resource type="Shader" path="res://Shaders/cel-shader-base.gdshader" id="3_8jpdh"]
-[ext_resource type="Material" uid="uid://dg7w3urgqmy0r" path="res://Materials/Characters/Skeleton_Bone.material" id="3_ncxqw"]
-[ext_resource type="Material" uid="uid://dnvlpeg4no6w3" path="res://Materials/Others/outline.tres" id="3_wcx6j"]
-[ext_resource type="Shader" path="res://Materials/Shaders/cel-shader-base.gdshader" id="4_vb022"]
-[ext_resource type="Material" uid="uid://bqsynug2kv81m" path="res://Materials/Characters/Metal_Silver.material" id="5_r2a3q"]
-[ext_resource type="Material" uid="uid://ctdnqpvttx5bd" path="res://Materials/Characters/Hurt.material" id="8_h0jup"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="8_iv2yu"]
-[ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="8_xadrv"]
+[ext_resource type="Material" uid="uid://bfdmkn50etk3i" path="res://Characters/Enemies/Skeleton_Minion/Materials/Belt.material" id="3_dqjma"]
+[ext_resource type="Material" uid="uid://52da0jjchnpa" path="res://Characters/Enemies/Skeleton_Minion/Materials/Bone.material" id="4_rvyde"]
+[ext_resource type="Material" uid="uid://d0up7w5bnbd5i" path="res://Characters/Enemies/Skeleton_Minion/Materials/Pants.material" id="5_nb5n7"]
+[ext_resource type="Material" uid="uid://c0crjcfjtijgj" path="res://Characters/Enemies/Skeleton_Minion/Materials/Belt_Buckle.material" id="6_vgnj5"]
+[ext_resource type="Material" uid="uid://3tlnmqwqy7yk" path="res://Characters/Enemies/Skeleton_Minion/Materials/Wristband.material" id="7_05qyb"]
+[ext_resource type="Material" uid="uid://blg27kl2pke45" path="res://Characters/Enemies/Skeleton_Minion/Materials/Eyes.material" id="8_43a8a"]
+[ext_resource type="Material" uid="uid://b16xn8x235m53" path="res://Test/Shaders/Cel_Material.material" id="8_h0jup"]
+[ext_resource type="Shader" path="res://Test/Shaders/Cel_Shade.gdshader" id="8_xadrv"]
+[ext_resource type="Material" uid="uid://dflm0ajx4dumf" path="res://Characters/Enemies/General_Materials/Hurt.material" id="9_tuhx2"]
+[ext_resource type="Material" uid="uid://sypnsscktjsp" path="res://Characters/Enemies/General_Materials/Hurt_Accent.material" id="10_fljet"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtnsj"]
 resource_name = "BrownDark"
@@ -133,25 +135,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a6gyc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c20a2"]
-render_priority = 0
-shader = ExtResource("3_8jpdh")
-shader_parameter/color = Color(0.443137, 0.356863, 0.266667, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_brltr"]
-render_priority = 0
-next_pass = ExtResource("3_wcx6j")
-shader = ExtResource("3_8jpdh")
-shader_parameter/color = Color(0.34902, 0.196078, 0.00784314, 1)
-shader_parameter/specular = Color(0.25098, 0.25098, 0.25098, 0.501961)
-shader_parameter/fresnel = Color(0.219608, 0.219608, 0.219608, 0.301961)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkyj8"]
 resource_name = "Stone"
@@ -299,11 +282,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbwhg"]
-render_priority = 0
-next_pass = ExtResource("3_wcx6j")
-shader = ExtResource("4_vb022")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xv8i3"]
 resource_name = "Glow"
 vertex_color_use_as_albedo = true
@@ -343,16 +321,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_js5ol")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8lsk"]
-render_priority = 0
-next_pass = ExtResource("3_wcx6j")
-shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.909804, 0.203922, 0, 1)
-shader_parameter/specular = Color(0.682353, 0.384314, 0.337255, 0.501961)
-shader_parameter/fresnel = Color(0.219608, 0.219608, 0.219608, 0.301961)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_hlrtc"]
 _surfaces = [{
 "aabb": AABB(-0.273626, -0.152352, -0.0570074, 0.547252, 0.319053, 0.398222),
@@ -384,20 +352,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hlrtc")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wiltg"]
-render_priority = 0
-shader = ExtResource("8_iv2yu")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mysni"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_wiltg")
-shader = ExtResource("3_8jpdh")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hf5hd"]
 size = Vector3(1.7706, 1.69806, 1.646)
@@ -651,6 +605,85 @@ _data = {
 "Run": SubResource("Animation_wu0an")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c20a2"]
+render_priority = 0
+shader = ExtResource("8_xadrv")
+shader_parameter/albedo = Color(0.792157, 0.878431, 0.909804, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n8lsk"]
+render_priority = 0
+next_pass = ExtResource("8_h0jup")
+shader = ExtResource("8_xadrv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brltr"]
+render_priority = 0
+next_pass = ExtResource("8_h0jup")
+shader = ExtResource("8_xadrv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbwhg"]
+render_priority = 0
+next_pass = ExtResource("8_h0jup")
+shader = ExtResource("8_xadrv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
 [sub_resource type="Animation" id="Animation_7vw3r"]
 resource_name = "Regular"
 tracks/0/type = "value"
@@ -675,7 +708,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ncxqw")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -699,7 +732,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_r2a3q")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -711,7 +744,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_r2a3q")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -723,7 +756,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ncxqw")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -735,7 +768,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_r2a3q")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -747,7 +780,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ncxqw")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -759,7 +792,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ncxqw")]
+"values": [ExtResource("8_h0jup")]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -795,68 +828,128 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_ncxqw")]
+"values": [ExtResource("8_h0jup")]
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wcq4g"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.513726, 0.815686, 0.870588, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4gwu7"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.513726, 0.815686, 0.870588, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gv05e"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.513726, 0.815686, 0.870588, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ikbw"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.266667, 0.494118, 0.509804, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p68mj"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.219608, 0.596078, 0.678431, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_db1ru"]
 render_priority = 0
-next_pass = ExtResource("3_wcx6j")
+next_pass = ExtResource("8_h0jup")
 shader = ExtResource("8_xadrv")
-shader_parameter/color = Color(0.513726, 0.815686, 0.870588, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = true
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
 
 [sub_resource type="Animation" id="Animation_j2xpt"]
 resource_name = "Snow"
@@ -954,24 +1047,24 @@ transform = Transform3D(-0.98908, -0.0599684, -0.134628, -0.0594205, 0.9982, -0.
 transform = Transform3D(0.953716, 0.0288214, -0.299322, 0, 0.995397, 0.0958458, 0.300706, -0.0914098, 0.949327, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ve75i")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_c20a2")
-surface_material_override/1 = ExtResource("3_ncxqw")
-surface_material_override/2 = SubResource("ShaderMaterial_brltr")
-surface_material_override/3 = ExtResource("5_r2a3q")
+surface_material_override/0 = ExtResource("3_dqjma")
+surface_material_override/1 = ExtResource("4_rvyde")
+surface_material_override/2 = ExtResource("5_nb5n7")
+surface_material_override/3 = ExtResource("6_vgnj5")
 
 [node name="character_skeleton_minion_armLeft" type="MeshInstance3D" parent="Normal_Mesh/character_skeleton_minion_body" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.204048, 0.633556, -1.63913e-07)
 mesh = SubResource("ArrayMesh_3a0k8")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("5_r2a3q")
-surface_material_override/1 = ExtResource("3_ncxqw")
+surface_material_override/0 = ExtResource("7_05qyb")
+surface_material_override/1 = ExtResource("4_rvyde")
 
 [node name="character_skeleton_minion_armRight" type="MeshInstance3D" parent="Normal_Mesh/character_skeleton_minion_body" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.204048, 0.633557, 2.98023e-08)
 mesh = SubResource("ArrayMesh_6p04x")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("5_r2a3q")
-surface_material_override/1 = ExtResource("3_ncxqw")
+surface_material_override/0 = ExtResource("7_05qyb")
+surface_material_override/1 = ExtResource("4_rvyde")
 
 [node name="character_skeleton_minion_head" type="MeshInstance3D" parent="Normal_Mesh/character_skeleton_minion_body" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 4.47035e-08, 0.704536, 5.96046e-08)
@@ -979,20 +1072,20 @@ mesh = SubResource("ArrayMesh_iioda")
 skeleton = NodePath("")
 blend_shapes/Angry = 0.0
 blend_shapes/Happy = 0.0
-surface_material_override/0 = ExtResource("3_ncxqw")
-surface_material_override/1 = SubResource("ShaderMaterial_wbwhg")
+surface_material_override/0 = ExtResource("4_rvyde")
+surface_material_override/1 = ExtResource("4_rvyde")
 
 [node name="character_skeleton_minion_eyes" type="MeshInstance3D" parent="Normal_Mesh/character_skeleton_minion_body/character_skeleton_minion_head" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 0.424515, 0.258715)
 mesh = SubResource("ArrayMesh_4fks8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_n8lsk")
+surface_material_override/0 = ExtResource("8_43a8a")
 
 [node name="character_skeleton_minion_jaw" type="MeshInstance3D" parent="Normal_Mesh/character_skeleton_minion_body/character_skeleton_minion_head" index="1"]
 transform = Transform3D(1, 7.45057e-09, -2.29105e-07, -7.45058e-09, 1, -2.98023e-08, 2.29105e-07, 2.98023e-08, 1, 0, 0.126701, 0.0399227)
 mesh = SubResource("ArrayMesh_lsmjh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_ncxqw")
+surface_material_override/0 = ExtResource("4_rvyde")
 
 [node name="Hurt_Mesh" type="Node3D" parent="." index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.835462, 0)
@@ -1002,24 +1095,24 @@ visible = false
 transform = Transform3D(1, 1.55098e-08, 1.38682e-09, -1.55098e-08, 0.984137, 0.177411, 1.38679e-09, -0.177411, 0.984137, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ve75i")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("8_h0jup")
-surface_material_override/1 = ExtResource("8_h0jup")
-surface_material_override/2 = ExtResource("8_h0jup")
-surface_material_override/3 = ExtResource("8_h0jup")
+surface_material_override/0 = ExtResource("9_tuhx2")
+surface_material_override/1 = ExtResource("9_tuhx2")
+surface_material_override/2 = ExtResource("9_tuhx2")
+surface_material_override/3 = ExtResource("10_fljet")
 
 [node name="character_skeleton_minion_armLeft" type="MeshInstance3D" parent="Hurt_Mesh/character_skeleton_minion_body" index="0"]
 transform = Transform3D(1, -6.27381e-08, 1.48305e-07, 6.27381e-08, -0.696414, -0.71764, 1.48305e-07, 0.71764, -0.696414, 0.204048, 0.633556, 4.65661e-10)
 mesh = SubResource("ArrayMesh_3a0k8")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("8_h0jup")
-surface_material_override/1 = ExtResource("8_h0jup")
+surface_material_override/0 = ExtResource("10_fljet")
+surface_material_override/1 = ExtResource("9_tuhx2")
 
 [node name="character_skeleton_minion_armRight" type="MeshInstance3D" parent="Hurt_Mesh/character_skeleton_minion_body" index="1"]
 transform = Transform3D(1, -5.94747e-08, 1.51497e-07, 5.94747e-08, -0.732923, -0.680312, 1.51497e-07, 0.680312, -0.732923, -0.204048, 0.633556, 0)
 mesh = SubResource("ArrayMesh_6p04x")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("8_h0jup")
-surface_material_override/1 = ExtResource("8_h0jup")
+surface_material_override/0 = ExtResource("10_fljet")
+surface_material_override/1 = ExtResource("9_tuhx2")
 
 [node name="character_skeleton_minion_head" type="MeshInstance3D" parent="Hurt_Mesh/character_skeleton_minion_body" index="2"]
 transform = Transform3D(1, -1.84582e-08, 1.97082e-09, 1.84582e-08, 0.977456, -0.211137, 1.97084e-09, 0.211137, 0.977456, 1.39698e-09, 0.704536, 0)
@@ -1027,20 +1120,20 @@ mesh = SubResource("ArrayMesh_iioda")
 skeleton = NodePath("")
 blend_shapes/Angry = 0.0
 blend_shapes/Happy = 0.0
-surface_material_override/0 = ExtResource("8_h0jup")
-surface_material_override/1 = ExtResource("8_h0jup")
+surface_material_override/0 = ExtResource("9_tuhx2")
+surface_material_override/1 = ExtResource("9_tuhx2")
 
 [node name="character_skeleton_minion_eyes" type="MeshInstance3D" parent="Hurt_Mesh/character_skeleton_minion_body/character_skeleton_minion_head" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 0.424515, 0.258715)
 mesh = SubResource("ArrayMesh_4fks8")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_mysni")
+surface_material_override/0 = ExtResource("10_fljet")
 
 [node name="character_skeleton_minion_jaw" type="MeshInstance3D" parent="Hurt_Mesh/character_skeleton_minion_body/character_skeleton_minion_head" index="1"]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 9.31323e-10, -0.0598063, 0.0399227)
 mesh = SubResource("ArrayMesh_lsmjh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("8_h0jup")
+surface_material_override/0 = ExtResource("9_tuhx2")
 
 [node name="Health_Manager" parent="." index="3"]
 health_max = 3.0

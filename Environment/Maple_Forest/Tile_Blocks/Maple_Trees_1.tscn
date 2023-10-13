@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqr64ma6ayruh"]
+
+[ext_resource type="Script" path="res://Environment/Tree_Manage.gd" id="1_fq4aq"]
+[ext_resource type="PackedScene" uid="uid://c3gdqlf5sxl7j" path="res://Environment/Maple_Forest/Trees/Maple_Tree.tscn" id="2_o0o84"]
+
+[node name="Maple_Trees_1" type="Node3D"]
+script = ExtResource("1_fq4aq")
+
+[node name="Maple_Tree" parent="." instance=ExtResource("2_o0o84")]
+
+[node name="Maple_Tree2" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(479.099, 0, -375.149, 0, 608.5, 0, 375.149, 0, 479.099, -3.90093, 0, 3.17273)
+
+[node name="Maple_Tree3" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(-206.532, 0, -572.378, 0, 608.5, 0, 572.378, 0, -206.532, -1.30005, 0, -0.61241)
+
+[node name="Maple_Tree4" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(-599.612, 0, 103.625, 0, 608.5, 0, -103.625, 0, -599.612, -3.19111, 0, -2.92843)
+
+[node name="Maple_Tree5" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(-599.612, 0, 103.625, 0, 608.5, 0, -103.625, 0, -599.612, 0.472497, 0, -4.57547)
+
+[node name="Maple_Tree6" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(246.694, 0, 556.25, 0, 608.5, 0, -556.25, 0, 246.694, 4.70235, 0, -2.49183)
+
+[node name="Maple_Tree7" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(246.694, 0, 556.25, 0, 608.5, 0, -556.25, 0, 246.694, 4.70235, 0, 2.04339)
+
+[node name="Maple_Tree8" parent="." instance=ExtResource("2_o0o84")]
+transform = Transform3D(547.89, 0, 264.742, 0, 608.5, 0, -264.742, 0, 547.89, 3.32259, 0, 0.783)
