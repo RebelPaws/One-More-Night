@@ -3877,8 +3877,8 @@ vertical_alignment = 1
 
 [node name="Options" type="Control" parent="UI/Title"]
 anchors_preset = 0
-offset_left = 264.0
-offset_right = 304.0
+offset_left = 240.0
+offset_right = 280.0
 offset_bottom = 40.0
 
 [node name="Play" type="TextureButton" parent="UI/Title/Options"]

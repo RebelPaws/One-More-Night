@@ -38,38 +38,45 @@ func modify_currency(_amount):
 
 #This will start enemies attacking
 func start_night():
-	$Audio/Music.switch_track("Night")
-	$Enemy_Manager._toggle(true)
+	$Audio/Music.switch_track("Night") #We switch the music track to the night variant
+	$Enemy_Manager._toggle(true) #We now allow enemies to spawn
 	
-	$UI/Game_Speed.toggle_skip_night(false)
+	$UI/Game_Speed.toggle_skip_night(false) #We don't allow the skip to night to work at night
 
 #This will end enemies attacking
 func end_night():
-	$UI/Game_Speed.toggle_skip_night(true)
-	$Enemy_Manager.enemies_spawned = 0
+	$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
+	$Enemy_Manager.enemies_spawned = 0 #We set the amount of enemies currently spawned to 0
 	
-	$Audio/Music.switch_track("Morning")
+	$Audio/Music.switch_track("Morning") #We switch the music track to the morning variant
 	
-	$Enemy_Manager._toggle(false)
+	$Enemy_Manager._toggle(false) #Then we stop enemies from spawning
 
 #This starts the game to play
 func start_game():
-	GameInfo.game_state = "Play"
-	$UI/Title/Audio/ButtonPress.play()
-	await get_tree().create_timer(0.2).timeout
-	$UI/Title/Audio/ButtonPress.stop()
+	GameInfo.game_state = "Play" #Sets the game state to Play
 	
-	$UI/Game_Speed/Anim.play("Toggle")
-	$UI/Build.show()
-	$Tower/Health.show()
+	$UI/Title/Audio/ButtonPress.play() #then we play the button press sound
+	await get_tree().create_timer(0.2).timeout #Wait a second
+	$UI/Title/Audio/ButtonPress.stop() #And make sure it stopped (I forgot what issue made this needed)
+	
+	$UI/Game_Speed/Anim.play("Toggle") #Brings up the game speed UI
+	$UI/Build.show() #Shows the build button
+	
+	#Shows 3D Tower information
+	$Tower/Health.show() 
 	$Tower/Armor.show()
 	$Tower/Currency.show()
-	$UI/Title.hide()
-	GameInfo.game_is_in_play = true
+	
+	$UI/Title.hide() #Hides the title
+	GameInfo.game_is_in_play = true #Make sure the game knows it's in play
 
+#This handles quitting the game
 func quit_game():
 	get_tree().quit()
 
-
+#When a day cycle finishes we set it to play again
 func day_finished(anim_name):
 	$Sky/Day_Cycle.play("Day")
+
+

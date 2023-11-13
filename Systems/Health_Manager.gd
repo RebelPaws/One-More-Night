@@ -1,7 +1,7 @@
 extends Node3D
 
-signal Damaged
-signal Damaged_Default
+signal Damaged #This sends out the damage signal with health variables
+signal Damaged_Default #This sends out the damage signal without the health variables
 signal Dead
 signal Healed
 signal ArmorChanged
@@ -9,16 +9,16 @@ signal ArmorChanged
 @export var health_max : float ##This is the most health the object can have.
 @onready var health_current = health_max #This is the current health of the object.
 
-var is_hurt = false
+var is_hurt = false #This is to see if the object is still in its hurt state
 
-@export var armor : float:
+@export var armor : float: ##This is the amount of armor the object has to negate damage.
 	set(val):
-		armor = val
-		emit_signal("ArmorChanged", val)
+		armor = val #We set the armor to the new value
+		emit_signal("ArmorChanged", val) #Then we send out the armor change signal to update visual indicators
 
 func _ready():
-	_heal(0)
-	armor = armor
+	_heal(0) #This just updates the health visuals
+	armor = armor #This updates the armor visuals
 
 #This handles getting the health percent
 func _get_percent():
