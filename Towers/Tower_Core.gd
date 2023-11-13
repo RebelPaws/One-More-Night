@@ -16,7 +16,7 @@ func _ready():
 func _add_armor():
 	#Note: This should only be applied once unless the tower gets a perk to add armor more than once.
 	var health_manager = get_parent().get_parent().get_node("Health_Manager") #We get the health manager node we need
-	var armor = Towers._get_tower_info(tower_id)[3] #This gets the tower's armor
+	var armor = Towers._get_tower_info(tower_id, tower_category)[2][level] #This gets the tower's armor
 	
 	health_manager.armor += armor #Finally we add the health manager's armor to the tower's armor
 

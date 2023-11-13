@@ -40,14 +40,14 @@ func select_category(_new_category):
 	
 	$Anim.play("Show_" + _new_category)
 
-func buy_tower(tower_name):
+func buy_tower(tower_name, tower_category):
 	$Audio/ButtonPress.play()
 	await get_tree().create_timer(0.2).timeout
 	$Audio/ButtonPress.stop()
 	
 	var game_info = get_parent().get_parent()
 	var tower_blocks = game_info.get_node("Tower/Blocks")
-	var tower_info = Towers._get_tower_info(tower_name) #[0 = scene, 1 = cost, 2 = damage]
+	var tower_info = Towers._get_tower_info(tower_name, tower_category) #[0 = scene, 1 = cost, 2 = damage]
 	
 	var tower_anchor_point = tower_blocks.get_child(tower_blocks.get_child_count()-1).get_node("Anchor").global_position
 	

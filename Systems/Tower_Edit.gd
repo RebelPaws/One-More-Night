@@ -40,7 +40,7 @@ func disable():
 	$Stats.get_node(tower_lock_on.tower_category).hide()
 
 func upgrade_tower():
-	var _cost = Towers._get_tower_info(tower_lock_on.tower_id)["Cost"]
+	var _cost = Towers._get_tower_info(tower_lock_on.tower_id, tower_lock_on.tower_category)["Cost"]
 
 func sell_tower():
 	var to_refund = Towers.towers[tower_lock_on.tower_id]["Cost"][tower_lock_on.level]
