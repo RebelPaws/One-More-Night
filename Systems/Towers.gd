@@ -2,8 +2,6 @@ extends Node
 
 var tower_info = {
 	"Archer": {
-				"Scene": preload("res://Towers/Attack/Archer_Tower.tscn"),
-				
 				"Costs": {1: 20, 
 						2: 30, 
 						3: 40, 
@@ -19,8 +17,6 @@ var tower_info = {
 					
 				},
 	"Shield": {
-				"Scene": preload("res://Towers/Defense/Shield_Tower.tscn"),
-				
 				"Costs": {1: 30, 
 						2: 60, 
 						3: 100, 
@@ -35,8 +31,6 @@ var tower_info = {
 					 5: 20}, 
 				},
 	"Healer": {
-				"Scene": preload("res://Towers/Support/Healer_Tower.tscn"),
-				
 				"Costs": {1: 50, 
 						2: 100, 
 						3: 150, 
@@ -52,8 +46,16 @@ var tower_info = {
 	},
 }
 
+var scenes = {
+				"Archer": preload("res://Towers/Attack/Archer_Tower.tscn"),
+				"Shield": preload("res://Towers/Defense/Shield_Tower.tscn"),
+				"Healer": preload("res://Towers/Support/Healer_Tower.tscn")
+			}
+
 func _get_tower_info(_tower_id, _tower_category):
-	var scene = tower_info[_tower_id]["Scene"]
+	if not _tower_id in tower_info: return
+	
+	var scene = scenes[_tower_id]
 	var cost = tower_info[_tower_id]["Costs"]
 	
 	match _tower_category:

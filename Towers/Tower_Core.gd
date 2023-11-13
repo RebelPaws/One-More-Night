@@ -9,9 +9,6 @@ var target_list = [] #This is the list of possible targets
 @export var tower_category : String ##This is the category of the tower
 
 
-func _ready():
-	_add_armor() #This adds the armor value to our main health once it exists
-
 #This handles adding up armor
 func _add_armor():
 	#Note: This should only be applied once unless the tower gets a perk to add armor more than once.
