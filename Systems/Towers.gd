@@ -1,5 +1,12 @@
 extends Node
 
+#This holds info for each tower
+#Structure:
+#{Tower_Name: {Costs: {Tower_Level: Cost_Value},
+#             {Category_Stat: {Tower_Level: Stat_Power}
+#             } 
+#}
+#Everything is broken into dictionaries since upgrades are a thing this makes it easier to set the upgraded stats
 var tower_info = {
 	"Archer": {
 				"Costs": {1: 20, 
@@ -46,18 +53,22 @@ var tower_info = {
 	},
 }
 
+#This holds the scenes preloaded to use in the game
+#These were held in tower_info but some issue was creating a crash error for the Healer tower block
 var scenes = {
 				"Archer": preload("res://Towers/Attack/Archer_Tower.tscn"),
 				"Shield": preload("res://Towers/Defense/Shield_Tower.tscn"),
 				"Healer": preload("res://Towers/Support/Healer_Tower.tscn")
 			}
 
+#This grabs all the needed info to send to wherever it needs to go
 func _get_tower_info(_tower_id, _tower_category):
-	if not _tower_id in tower_info: return
+	if not _tower_id in tower_info: return #This ensures a non-tower won't slip through and crash the game
 	
-	var scene = scenes[_tower_id]
-	var cost = tower_info[_tower_id]["Costs"]
+	var scene = scenes[_tower_id] #The tower block scene preloaded
+	var cost = tower_info[_tower_id]["Costs"] #The tower costs
 	
+	#Since not all towers have the same stats this sends the category special stat where it needs to go
 	match _tower_category:
 		"Attack":
 			var damage = tower_info[_tower_id]["Damage"]
