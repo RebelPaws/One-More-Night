@@ -52,6 +52,7 @@ func end_night():
 	
 	$Enemy_Manager._toggle(false)
 
+#This starts the game to play
 func start_game():
 	GameInfo.game_state = "Play"
 	$UI/Title/Audio/ButtonPress.play()

@@ -752,7 +752,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822065, 0.996599, -0.00542713, -0.996316, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.0243801, 0.00343295, 0.999696, 0.0822065, 0.996599, -0.00542713, -0.996316, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -3860,7 +3860,7 @@ offset_left = 10.0
 offset_top = 149.0
 offset_right = 1929.0
 offset_bottom = 305.0
-text = "Engine Update!"
+text = "Contractors Update!"
 label_settings = SubResource("LabelSettings_48fgh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -3877,15 +3877,16 @@ vertical_alignment = 1
 
 [node name="Options" type="Control" parent="UI/Title"]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 264.0
+offset_right = 304.0
 offset_bottom = 40.0
 
 [node name="Play" type="TextureButton" parent="UI/Title/Options"]
 layout_mode = 0
 offset_left = 17.0
-offset_top = 750.0
+offset_top = 870.0
 offset_right = 801.0
-offset_bottom = 1086.0
+offset_bottom = 1206.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("28_6ncor")
 texture_hover = ExtResource("29_ya5w0")
@@ -3902,12 +3903,56 @@ label_settings = SubResource("LabelSettings_hnysj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Options" type="TextureButton" parent="UI/Title/Options"]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 883.0
+offset_right = 1233.0
+offset_bottom = 1219.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("28_6ncor")
+texture_hover = ExtResource("29_ya5w0")
+texture_focused = ExtResource("29_ya5w0")
+
+[node name="Label" type="Label" parent="UI/Title/Options/Options"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -6.0
+offset_right = 677.0
+offset_bottom = 275.0
+text = "Options"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="TextureButton" parent="UI/Title/Options"]
+layout_mode = 0
+offset_left = 793.0
+offset_top = 883.0
+offset_right = 1577.0
+offset_bottom = 1219.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("28_6ncor")
+texture_hover = ExtResource("29_ya5w0")
+texture_focused = ExtResource("29_ya5w0")
+
+[node name="Label" type="Label" parent="UI/Title/Options/Credits"]
+layout_mode = 0
+offset_left = 78.4999
+offset_top = 11.5
+offset_right = 694.5
+offset_bottom = 292.5
+text = "Credits"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Quit" type="TextureButton" parent="UI/Title/Options"]
 layout_mode = 0
-offset_left = 60.0001
-offset_top = 933.0
-offset_right = 844.0
-offset_bottom = 1269.0
+offset_left = 1172.0
+offset_top = 877.0
+offset_right = 1956.0
+offset_bottom = 1213.0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("28_6ncor")
 texture_pressed = ExtResource("30_58qkj")
