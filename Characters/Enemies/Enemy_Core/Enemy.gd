@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
 signal TargetReached
+signal Enable
 
 @export var gravity : float
 @export var move_speed : float
+var ground_level = 2.5
 @export var currency_worth : int
 
 @onready var nav_agent = $NavigationAgent3D
@@ -26,8 +28,10 @@ var retreat = false
 func _enable():
 	set_physics_process(true)
 	active = true
+	can_attack = true
 	
 	is_target_reached = false
+	emit_signal("Enable")
 
 func move():
 	var current_location = global_transform.origin
@@ -35,6 +39,7 @@ func move():
 	var new_velocity = (next_location - current_location).normalized() * move_speed
 	
 	velocity = new_velocity
+	global_position.y = ground_level
 	look_at(nav_agent.get_next_path_position())
 	move_and_slide()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://1spp8udlt2bw"]
+[gd_scene load_steps=54 format=3 uid="uid://1spp8udlt2bw"]
 
 [ext_resource type="PackedScene" uid="uid://ct6nc7cdbyuax" path="res://Characters/Enemies/Enemy_Core/Enemy.tscn" id="1_8mfxl"]
 [ext_resource type="Script" path="res://Characters/Enemies/Skeleton_Minion/Skeleton_Minion.gd" id="2_1op2e"]
@@ -12,6 +12,9 @@
 [ext_resource type="Shader" path="res://Test/Shaders/Cel_Shade.gdshader" id="8_xadrv"]
 [ext_resource type="Material" uid="uid://dflm0ajx4dumf" path="res://Characters/Enemies/General_Materials/Hurt.material" id="9_tuhx2"]
 [ext_resource type="Material" uid="uid://sypnsscktjsp" path="res://Characters/Enemies/General_Materials/Hurt_Accent.material" id="10_fljet"]
+[ext_resource type="EventAsset" uid="uid://h5iq0xh5f0jo" path="res://addons/FMOD/editor/resources/events/{d65cd93c-c57c-4186-b4ff-1d1b6e2d711c}.tres" id="11_5x416"]
+[ext_resource type="EventAsset" uid="uid://nwu3grncmj1t" path="res://addons/FMOD/editor/resources/events/{e0109767-133c-4bf2-af20-c53f40dcf5b5}.tres" id="12_yk040"]
+[ext_resource type="EventAsset" uid="uid://cfge8bfh3u3tg" path="res://addons/FMOD/editor/resources/events/{61d4bd47-2e1d-4fe6-8c6e-de9267fe0860}.tres" id="13_cyebv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtnsj"]
 resource_name = "BrownDark"
@@ -1038,7 +1041,7 @@ collision_mask = 0
 script = ExtResource("2_1op2e")
 gravity = 0.0
 move_speed = 1.5
-currency_worth = 5
+currency_worth = 1
 
 [node name="Normal_Mesh" type="Node3D" parent="." index="0"]
 transform = Transform3D(-0.98908, -0.0599684, -0.134628, -0.0594205, 0.9982, -0.00808784, 0.134871, 1.50874e-07, -0.990863, 0, -0.835462, 0)
@@ -1136,7 +1139,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("9_tuhx2")
 
 [node name="Health_Manager" parent="." index="3"]
-health_max = 3.0
+health_max = 4.0
 
 [node name="Collider" parent="Health_Manager/HitBox" index="0"]
 shape = SubResource("BoxShape3D_hf5hd")
@@ -1155,12 +1158,15 @@ shape = SubResource("BoxShape3D_340p8")
 wait_time = 5.0
 
 [node name="Death_Sound" parent="Sounds" index="0"]
+event = ExtResource("11_5x416")
 trigger_once = true
 
 [node name="Hurt_Sound" parent="Sounds" index="1"]
+event = ExtResource("12_yk040")
 trigger_once = true
 
 [node name="Attack_Sound" parent="Sounds" index="2"]
+event = ExtResource("13_cyebv")
 trigger_once = true
 
 [node name="Anim" type="AnimationPlayer" parent="." index="9"]
@@ -1173,6 +1179,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ydfjx")
 }
 
+[connection signal="Enable" from="." to="." method="set_state" binds= ["Run"]]
 [connection signal="TargetReached" from="." to="." method="_on_target_reached"]
 [connection signal="timeout" from="Attack_Timer" to="." method="attack_ready"]
 

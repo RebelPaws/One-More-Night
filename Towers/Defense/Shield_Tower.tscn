@@ -102,9 +102,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_npwoq")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0vdxu"]
-size = Vector3(4.059, 5000, 5.067)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_og83i"]
 resource_name = "knight_texture"
 vertex_color_use_as_albedo = true
@@ -143,10 +140,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y5quv")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vdxu"]
+size = Vector3(4.059, 5000, 5.067)
+
 [node name="Shield_Tower" instance=ExtResource("1_o10u0")]
 script = ExtResource("2_hjovx")
-armor_value = 5.0
 chance_for_perfect_defense = 15.0
+tower_id = "Shield"
+tower_category = "Defense"
 
 [node name="Anchor" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954794, 0)
@@ -159,9 +160,8 @@ surface_material_override/0 = ExtResource("5_xrvf6")
 surface_material_override/1 = ExtResource("3_4j0tf")
 surface_material_override/2 = ExtResource("6_rkf45")
 
-[node name="CollisionShape3D" parent="Detection_Range" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0813359, 0)
-shape = SubResource("BoxShape3D_0vdxu")
+[node name="Cam_Anchor" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.18195, 0)
 
 [node name="Shields" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54212, 0, 1.24955)
@@ -201,3 +201,9 @@ transform = Transform3D(-23.1673, 1.42534e-06, 32.6079, -2.60799e-13, 40, -1.748
 mesh = SubResource("ArrayMesh_qfgjc")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("6_gelkt")
+
+[node name="CollisionShape3D" parent="Detection_Range" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0813359, 0)
+shape = SubResource("BoxShape3D_0vdxu")
+
+[editable path="3D_Click"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cl2obvg7njald"]
+[gd_scene load_steps=13 format=3 uid="uid://cl2obvg7njald"]
 
 [ext_resource type="Script" path="res://Interface/Remove_Decor_Menu.gd" id="1_k1vnm"]
 [ext_resource type="Texture2D" uid="uid://c0hixiqotujae" path="res://Interface/Menu_Background.png" id="2_sdlvj"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="3_s8u4e"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="4_bhch0"]
 [ext_resource type="Texture2D" uid="uid://dir8wjgwb6hd7" path="res://Interface/Buttons/Rectangle/Button_Rect_Focused.png" id="5_3pr5q"]
-[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Interface/Currency/Coin_Icon.png" id="6_ycmxc"]
+[ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="6_ycmxc"]
+[ext_resource type="AudioStream" uid="uid://dkrmh8xw0xowo" path="res://Audio/SFX/Tree_Chop.mp3" id="7_ov7g5"]
+[ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="8_bbj6g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wn18k"]
 font = ExtResource("3_s8u4e")
@@ -81,6 +83,7 @@ scale = Vector2(0.531, 0.348981)
 texture = ExtResource("2_sdlvj")
 
 [node name="Header" type="Label" parent="."]
+layout_mode = 0
 offset_left = 539.76
 offset_top = 306.28
 offset_right = 1316.76
@@ -91,6 +94,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Remove" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 591.76
 offset_top = 513.28
 offset_right = 1375.76
@@ -107,6 +111,7 @@ scale = Vector2(0.645, 0.645)
 texture = ExtResource("6_ycmxc")
 
 [node name="Cost" type="Label" parent="Remove"]
+layout_mode = 0
 offset_left = 228.0
 offset_top = 46.0
 offset_right = 755.0
@@ -117,6 +122,7 @@ label_settings = SubResource("LabelSettings_5edki")
 vertical_alignment = 1
 
 [node name="Cancel" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 982.76
 offset_top = 513.28
 offset_right = 1766.76
@@ -128,6 +134,7 @@ texture_hover = ExtResource("5_3pr5q")
 texture_focused = ExtResource("5_3pr5q")
 
 [node name="Cost" type="Label" parent="Cancel"]
+layout_mode = 0
 offset_left = 65.7537
 offset_top = 52.0548
 offset_right = 784.754
@@ -142,5 +149,14 @@ libraries = {
 "": SubResource("AnimationLibrary_evu4d")
 }
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Cut_Tree" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_ov7g5")
+
+[node name="ButtonPress" type="StudioEventEmitter3D" parent="Audio"]
+event = ExtResource("8_bbj6g")
+
 [connection signal="pressed" from="Remove" to="." method="remove_object"]
 [connection signal="pressed" from="Cancel" to="." method="cancel"]
+[connection signal="current_animation_changed" from="Anim" to="." method="_on_anim_current_animation_changed"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcwixsuialvfr"]
+
+[ext_resource type="Script" path="res://Systems/Cam_Rig.gd" id="1_vdco4"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u5wk5"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 40.0
+dof_blur_far_transition = 35.0
+dof_blur_amount = 0.04
+
+[node name="Cam_Rig" type="Node3D"]
+transform = Transform3D(-0.99863, 0, -0.0523361, 0, 1, 0, 0.0523361, 0, -0.99863, 45.1268, 0.66285, 54.5311)
+script = ExtResource("1_vdco4")
+vertical_speed = 10.0
+rotation_speed = {
+"X-Axis": 0.0,
+"Y-Axis": 0.5,
+"Z-Axis": 0.0
+}
+zoom_speed = 0.3
+tower_blocks_path = NodePath("../Tower/Blocks")
+
+[node name="X" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 0, 0)
+
+[node name="Z" type="Node3D" parent="X"]
+
+[node name="Camera3D" type="Camera3D" parent="X/Z"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.839, 19.015)
+attributes = SubResource("CameraAttributesPractical_u5wk5")
+current = true

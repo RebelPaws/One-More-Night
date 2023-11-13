@@ -1,0 +1,135 @@
+[gd_scene load_steps=5 format=3 uid="uid://vihhwf7qn4f4"]
+
+[ext_resource type="Environment" uid="uid://48b00my3eqy6" path="res://Environment/Skybox/World_Enviro.tres" id="1_rin47"]
+
+[sub_resource type="Animation" id="Animation_16s06"]
+resource_name = "Day"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 50.1, 90.2, 99.7, 119.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.77348, 0, 0), Vector3(6.20814, 0, 0), Vector3(8.00233, 0, 0), Vector3(8.76155, 0, 0), Vector3(11.116, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(50.2, 99.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_night"
+}, {
+"args": [],
+"method": &"end_night"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(99.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"night_survived"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../UI/Game_Speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 99.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [48.0],
+"method": &"set_night_skip_pos"
+}, {
+"args": [33.5],
+"method": &"set_night_skip_pos"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../UI/Game_Speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Enemy_Manager")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(99.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enemies_retreat"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rdlap"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.610167, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n36l"]
+_data = {
+"Day": SubResource("Animation_16s06"),
+"RESET": SubResource("Animation_rdlap")
+}
+
+[node name="Sky" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_rin47")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.819552, -0.573004, 0, 0.573004, 0.819552, 0.606105, 2.60517, 0.518529)
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 6.0
+shadow_blur = 2.0
+directional_shadow_mode = 1
+directional_shadow_max_distance = 500.0
+
+[node name="Day_Cycle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0n36l")
+}
+autoplay = "Day"
+speed_scale = 0.2

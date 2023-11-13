@@ -1,23 +1,16 @@
 extends Node
 
+var music_bank
+
+func _ready():
+	music_bank = get_node(GameInfo.biome)
+	music_bank.play()
+
 func switch_track(_time_of_day):
+	var tween = create_tween()
+	
 	match _time_of_day:
 		"Morning":
-			fade($Night_Addition)
-			fade_in($Morning_Addition)
-		"Afternoon":
-			fade($Morning_Addition)
-			fade_in($Afternoon_Addition)
+			tween.tween_property(music_bank, "parameter_dayNight", 30, 2)
 		"Night":
-			fade($Afternoon_Addition)
-			fade_in($Night_Addition)
-
-func fade(_track):
-	while _track.volume_db > -20:
-				_track.volume_db -= 1
-				await get_tree().create_timer(0.1).timeout
-
-func fade_in(_track):
-	while _track.volume_db < 0:
-				_track.volume_db += 1
-				await get_tree().create_timer(0.1).timeout
+			tween.tween_property(music_bank, "parameter_dayNight", 65, 4)

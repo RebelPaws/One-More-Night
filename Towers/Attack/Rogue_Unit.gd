@@ -3,6 +3,7 @@ extends Node3D
 @export var arrow_tscn : PackedScene
 
 var chance_for_perfect_shot = 20.0
+var damage = 1.0
 
 func shoot(_target):
 	var arrow = $Arrow_Container._get_unused_object()
@@ -13,6 +14,7 @@ func shoot(_target):
 	
 	arrow.global_position = $Shoot_Point.global_position
 	arrow.target = _target
+	arrow.get_node("DamageBox").damage = damage
 	
 	if chance_roll <= chance_for_perfect_shot:
 		arrow.seek_target = true

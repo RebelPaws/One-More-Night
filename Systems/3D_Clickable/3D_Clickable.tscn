@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://buwvf4b5miec0"]
+
+[ext_resource type="Script" path="res://Systems/3D_Clickable/Object_Click.gd" id="1_avvo8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbc2j"]
+size = Vector3(0.00607093, 0.00742346, 0.00405174)
+
+[node name="3D_Click" type="Area3D"]
+script = ExtResource("1_avvo8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00414287, 0)
+shape = SubResource("BoxShape3D_xbc2j")
+
+[connection signal="input_event" from="." to="." method="clicked"]

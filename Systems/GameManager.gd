@@ -2,34 +2,43 @@ extends Node3D
 
 signal CurrencyChanged
 
-var currency = 100
-var currency_total = 0
+@export var currency = 100 ##This is the count for gold currency. Value is starting amount.
+var currency_total = 0 #This is just to count up the total gained gold for stats
 
-var nights_survived = 0
+@export var mana = 0 ##This is the count for mana currency. Value is starting amount.
+var mana_total = 0 #This is just to count up the total gained mana for stats
+
+var nights_survived = 0 #This is how many nights have been survived
+
 
 func _ready():
-	modify_currency(0)
+	GameInfo.game_state = "Menu" #The game starts in a title screen aka Menu mode
+	modify_currency(0) #This updates the currency to reflect the starting currency
+	
+	$Cam_Rig.target = $Tower #This sets the starting target to the tower
 
+#This will handle what happens when a night is survived
 func night_survived():
-	nights_survived += 1
+	nights_survived += 1 #Add to the amount of nights survived
 
+#This will handle checking for needed currency
 func has_currency(_needed):
-	if currency >= _needed:
-		return true
+	if currency >= _needed: #If the player has the needed currency
+		return true #Return true
 	
-	return false
+	return false #Otherwise Return false
 
+#This handles modifying currency
 func modify_currency(_amount):
-	currency += _amount
-	emit_signal("CurrencyChanged", currency)
+	currency += _amount #The amount is added to the currency count. To subtract just send a negative amount
+	emit_signal("CurrencyChanged", currency) #Then send out the signal to update currency visuals
 	
-	if _amount > 0:
+	if _amount > 0: #If gold is being added, add it to the currency total
 		currency_total += _amount
 
 #This will start enemies attacking
 func start_night():
-	$Night_Music.play()
-	$Day_Music.stop()
+	$Audio/Music.switch_track("Night")
 	$Enemy_Manager._toggle(true)
 	
 	$UI/Game_Speed.toggle_skip_night(false)
@@ -38,12 +47,18 @@ func start_night():
 func end_night():
 	$UI/Game_Speed.toggle_skip_night(true)
 	$Enemy_Manager.enemies_spawned = 0
-	$Day_Music.play()
-	$Night_Music.stop()
+	
+	$Audio/Music.switch_track("Morning")
+	
 	$Enemy_Manager._toggle(false)
 
 func start_game():
-	$UI/Game_Speed.show()
+	GameInfo.game_state = "Play"
+	$UI/Title/Audio/ButtonPress.play()
+	await get_tree().create_timer(0.2).timeout
+	$UI/Title/Audio/ButtonPress.stop()
+	
+	$UI/Game_Speed/Anim.play("Toggle")
 	$UI/Build.show()
 	$Tower/Health.show()
 	$Tower/Armor.show()
@@ -53,3 +68,7 @@ func start_game():
 
 func quit_game():
 	get_tree().quit()
+
+
+func day_finished(anim_name):
+	$Sky/Day_Cycle.play("Day")

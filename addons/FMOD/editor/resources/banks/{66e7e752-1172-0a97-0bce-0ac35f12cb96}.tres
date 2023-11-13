@@ -2,7 +2,7 @@
 
 [resource]
 file_path = "res://Audio//Master.strings.bank"
-modified_time = 1696811983
+modified_time = 1696844835
 path = "bank:/Master.strings"
 guid = "{66e7e752-1172-0a97-0bce-0ac35f12cb96}"
 name = "Master.strings"

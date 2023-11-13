@@ -1,4 +1,4 @@
-[gd_resource type="ProjectCache" load_steps=26 format=3 uid="uid://pagb2jnuwh8r"]
+[gd_resource type="ProjectCache" load_steps=23 format=3 uid="uid://pagb2jnuwh8r"]
 
 [ext_resource type="BankAsset" uid="uid://daufm74kykm4x" path="res://addons/FMOD/editor/resources/banks/{fefac786-6009-46d5-8d87-803daee1cd0e}.tres" id="1_a4x8w"]
 [ext_resource type="BankAsset" uid="uid://drnx0cvdafke5" path="res://addons/FMOD/editor/resources/banks/{66e7e752-1172-0a97-0bce-0ac35f12cb96}.tres" id="2_muyh8"]
@@ -9,9 +9,11 @@
 [ext_resource type="BusAsset" uid="uid://cn60g2wfuj6ev" path="res://addons/FMOD/editor/resources/busses/{4bcfead7-5159-4459-a8bb-68e1c29ab3d2}.tres" id="7_0ai7k"]
 [ext_resource type="BusAsset" uid="uid://b6n7aqjrwjgtf" path="res://addons/FMOD/editor/resources/busses/{28d96730-7f78-4f4e-9904-41ce029a92be}.tres" id="8_bx3x2"]
 [ext_resource type="EventAsset" uid="uid://bvg4fknjdtjh4" path="res://addons/FMOD/editor/resources/events/{9aa6bea1-1145-4754-b16a-3a6845a70880}.tres" id="9_bal8c"]
+[ext_resource type="EventAsset" uid="uid://b2umxa3bxkeuc" path="res://addons/FMOD/editor/resources/events/{5dff2e81-f719-49f2-87b0-adfbfb657856}.tres" id="9_wg8ja"]
 [ext_resource type="EventAsset" uid="uid://dgeots46brhgf" path="res://addons/FMOD/editor/resources/events/{2ac7c96b-f052-4834-9fe7-8d47c072ab16}.tres" id="10_wpxtp"]
 [ext_resource type="EventAsset" uid="uid://cu0473ccm8gti" path="res://addons/FMOD/editor/resources/events/{a333156e-f8d8-4d1e-b7b4-be5dacbc2123}.tres" id="11_22nyb"]
 [ext_resource type="EventAsset" uid="uid://cfge8bfh3u3tg" path="res://addons/FMOD/editor/resources/events/{61d4bd47-2e1d-4fe6-8c6e-de9267fe0860}.tres" id="12_lhoia"]
+[ext_resource type="EventAsset" uid="uid://dq560bqkdq7pl" path="res://addons/FMOD/editor/resources/events/{35ac2166-cbac-4d18-8ef9-ba084aafcec3}.tres" id="12_rtpgn"]
 [ext_resource type="EventAsset" uid="uid://h5iq0xh5f0jo" path="res://addons/FMOD/editor/resources/events/{d65cd93c-c57c-4186-b4ff-1d1b6e2d711c}.tres" id="13_d0kqm"]
 [ext_resource type="EventAsset" uid="uid://nwu3grncmj1t" path="res://addons/FMOD/editor/resources/events/{e0109767-133c-4bf2-af20-c53f40dcf5b5}.tres" id="14_jw3gu"]
 [ext_resource type="EventAsset" uid="uid://o54ruuvlarrq" path="res://addons/FMOD/editor/resources/events/{12147500-7e94-4702-8e12-1aaf9c9b1112}.tres" id="15_yewg5"]
@@ -19,51 +21,7 @@
 [ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="17_0twju"]
 [ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="18_wf0bp"]
 [ext_resource type="ParameterAsset" uid="uid://duwfebkywikax" path="res://addons/FMOD/editor/resources/parameters/{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}.tres" id="19_4ecuy"]
-
-[sub_resource type="ParameterAsset" id="ParameterAsset_mdhcp"]
-path = "parameter:/dayNight"
-guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
-name = "dayNight"
-
-[sub_resource type="EventAsset" id="EventAsset_kljah"]
-min_distance = 1.0
-max_distance = 20.0
-parameters = {
-"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_mdhcp")
-}
-path = "event:/maple/mapleForest"
-guid = "{5dff2e81-f719-49f2-87b0-adfbfb657856}"
-name = "mapleForest"
-
-[sub_resource type="ParameterAsset" id="ParameterAsset_wa17r"]
-path = "parameter:/dayNight"
-guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
-name = "dayNight"
-
-[sub_resource type="EventAsset" id="EventAsset_nrhny"]
-min_distance = 1.0
-max_distance = 20.0
-parameters = {
-"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_wa17r")
-}
-path = "event:/oak/oakForest"
-guid = "{35ac2166-cbac-4d18-8ef9-ba084aafcec3}"
-name = "oakForest"
-
-[sub_resource type="ParameterAsset" id="ParameterAsset_7n44c"]
-path = "parameter:/dayNight"
-guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
-name = "dayNight"
-
-[sub_resource type="EventAsset" id="EventAsset_wfpck"]
-min_distance = 1.0
-max_distance = 20.0
-parameters = {
-"{c67ac9a0-bfec-46e0-ba32-e180241b86e0}": SubResource("ParameterAsset_7n44c")
-}
-path = "event:/snow/snowLevel"
-guid = "{4ee1bc1f-293a-42ed-ad20-17269a869b8c}"
-name = "snowLevel"
+[ext_resource type="EventAsset" uid="uid://diw475d7cc7gu" path="res://addons/FMOD/editor/resources/events/{4ee1bc1f-293a-42ed-ad20-17269a869b8c}.tres" id="21_h8o3c"]
 
 [resource]
 banks = {
@@ -77,9 +35,9 @@ banks = {
 events = {
 "{12147500-7e94-4702-8e12-1aaf9c9b1112}": ExtResource("15_yewg5"),
 "{2ac7c96b-f052-4834-9fe7-8d47c072ab16}": ExtResource("10_wpxtp"),
-"{35ac2166-cbac-4d18-8ef9-ba084aafcec3}": SubResource("EventAsset_nrhny"),
-"{4ee1bc1f-293a-42ed-ad20-17269a869b8c}": SubResource("EventAsset_wfpck"),
-"{5dff2e81-f719-49f2-87b0-adfbfb657856}": SubResource("EventAsset_kljah"),
+"{35ac2166-cbac-4d18-8ef9-ba084aafcec3}": ExtResource("12_rtpgn"),
+"{4ee1bc1f-293a-42ed-ad20-17269a869b8c}": ExtResource("21_h8o3c"),
+"{5dff2e81-f719-49f2-87b0-adfbfb657856}": ExtResource("9_wg8ja"),
 "{61d4bd47-2e1d-4fe6-8c6e-de9267fe0860}": ExtResource("12_lhoia"),
 "{63243b9a-9af9-446e-858b-8ca4d6bc1335}": ExtResource("17_0twju"),
 "{77b0da36-31df-43ed-ad7f-7e9333ba97b8}": ExtResource("16_5nlo1"),
@@ -139,7 +97,7 @@ event_tree = [{
 "item_type": 1,
 "node_name": "mapleForest",
 "path": "event:/maple/mapleForest",
-"resource": SubResource("EventAsset_kljah")
+"resource": ExtResource("9_wg8ja")
 }],
 "item_type": 7,
 "node_name": "maple",
@@ -163,7 +121,7 @@ event_tree = [{
 "item_type": 1,
 "node_name": "oakForest",
 "path": "event:/oak/oakForest",
-"resource": SubResource("EventAsset_nrhny")
+"resource": ExtResource("12_rtpgn")
 }],
 "item_type": 7,
 "node_name": "oak",
@@ -229,7 +187,7 @@ event_tree = [{
 "item_type": 1,
 "node_name": "snowLevel",
 "path": "event:/snow/snowLevel",
-"resource": SubResource("EventAsset_wfpck")
+"resource": ExtResource("21_h8o3c")
 }],
 "item_type": 7,
 "node_name": "snow",

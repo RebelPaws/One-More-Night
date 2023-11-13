@@ -3,6 +3,8 @@ extends Control
 func _open():
 	if GameInfo.game_is_in_play == false: return
 	
+	GameInfo.game_state = "Menu"
+	
 	get_parent().get_node("Build").hide()
 	get_parent().get_node("Game_Speed").hide()
 	

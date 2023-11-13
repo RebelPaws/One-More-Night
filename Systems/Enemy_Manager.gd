@@ -32,8 +32,8 @@ func add_kill():
 	confirmed_kills += 1
 	enemies_spawned -= 1
 	
-	get_parent().get_node("Terror_Param").value = enemies_spawned
-	get_parent().get_node("Terror_Param").trigger()
+	get_parent().get_node("Audio/Terror_Param").value = enemies_spawned
+	get_parent().get_node("Audio/Terror_Param").trigger()
 
 func spawn_enemy():
 	if GameInfo.game_is_in_play == false: return
@@ -50,14 +50,15 @@ func spawn_enemy():
 	new_enemy.show()
 	new_enemy._enable()
 	new_enemy.get_node("Health_Manager").connect("Dead", add_kill)
+	new_enemy.get_node("Health_Manager").reset()
 	new_enemy.retreat_pos = spawn_position
 	
 	$Spawn_Timer.wait_time = randf_range(spawn_time_range[0], spawn_time_range[1])
 	$Spawn_Timer.start()
 	
 	enemies_spawned += 1
-	get_parent().get_node("Terror_Param").value = enemies_spawned
-	get_parent().get_node("Terror_Param").trigger()
+	get_parent().get_node("Audio/Terror_Param").value = enemies_spawned
+	get_parent().get_node("Audio/Terror_Param").trigger()
 
 func enemies_retreat():
 	emit_signal("Retreat")

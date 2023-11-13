@@ -219,7 +219,10 @@ size = Vector3(9.44741, 5000, 10.4683)
 
 [node name="Archer_Tower" instance=ExtResource("1_1nron")]
 script = ExtResource("2_dlf6t")
-attack_time_default = 2.0
+damage = 1
+attack_time_default = 2.5
+tower_id = "Archer"
+tower_category = "Attack"
 
 [node name="Anchor" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954794, 0)
@@ -236,9 +239,8 @@ surface_material_override/4 = ExtResource("3_3ttjc")
 surface_material_override/5 = ExtResource("2_hbxcp")
 surface_material_override/6 = ExtResource("3_3ttjc")
 
-[node name="CollisionShape3D" parent="Detection_Range" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0813359, 0)
-shape = SubResource("BoxShape3D_0vdxu")
+[node name="Cam_Anchor" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.986006, 0)
 
 [node name="Units" type="Node3D" parent="." index="3"]
 
@@ -254,4 +256,10 @@ transform = Transform3D(-0.0181447, 0, -0.088152, 0, 0.09, 0, 0.088152, 0, -0.01
 wait_time = 2.0
 one_shot = true
 
+[node name="CollisionShape3D" parent="Detection_Range" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0813359, 0)
+shape = SubResource("BoxShape3D_0vdxu")
+
 [connection signal="timeout" from="Attack_Timer" to="." method="attack_reset"]
+
+[editable path="3D_Click"]

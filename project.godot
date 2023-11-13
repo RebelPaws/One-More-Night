@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 GameInfo="*res://Systems/GameInfo.gd"
+Towers="*res://Systems/Towers.gd"
 
 [display]
 
@@ -29,7 +30,7 @@ window/stretch/mode="viewport"
 
 [fmod]
 
-settings/banks_path="res://banks/Desktop"
+settings/banks_path="res://Audio"
 settings/fmod_output_type=0
 settings/fmod_debug_flags=0
 settings/fmod_debug_mode=1
@@ -85,12 +86,9 @@ Move_Down={
 [rendering]
 
 lights_and_shadows/directional_shadow/size=8192
-lights_and_shadows/directional_shadow/size.mobile=4096
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
-lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=4
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=3
 lights_and_shadows/directional_shadow/16_bits=false
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality=4
-lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=4
-lights_and_shadows/positional_shadow/atlas_size=8192
-lights_and_shadows/positional_shadow/atlas_size.mobile=4096
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=3
 lights_and_shadows/positional_shadow/atlas_16_bits=false

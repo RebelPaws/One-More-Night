@@ -23,6 +23,7 @@ func generate_world():
 		for y in range(grid_size):
 			var new_tile = hex_tile.instantiate()
 			add_child(new_tile)
+			new_tile.owner = get_parent().owner
 			new_tile.translate(Vector3(tile_coordinates.x, 0 , tile_coordinates.y))
 			tile_coordinates.y += tile_size
 

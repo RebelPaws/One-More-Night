@@ -67,4 +67,6 @@ func hitbox_hit(area):
 	var damage = area.damage #We grab the damage from the hazard
 	_take_damage(damage) #Then we apply the damage to the object
 
-
+func reset():
+	health_current = health_max
+	is_hurt = false

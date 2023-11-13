@@ -2,7 +2,8 @@
 
 [ext_resource type="Material" uid="uid://bddkyfx3ovody" path="res://Environment/Maple_Forest/Trees/Materials/Maple_Tree_Trunk.material" id="1_fohgq"]
 [ext_resource type="Material" uid="uid://c61ugoghs7pwp" path="res://Environment/Maple_Forest/Trees/Materials/Maple_Tree_Leaves.material" id="2_xprub"]
-[ext_resource type="Script" path="res://Systems/Object_Click.gd" id="3_8krr3"]
+[ext_resource type="Script" path="res://Systems/Decor_Manager.gd" id="3_sp0o6"]
+[ext_resource type="PackedScene" uid="uid://buwvf4b5miec0" path="res://Systems/3D_Clickable/3D_Clickable.tscn" id="4_o17q1"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hh2o7"]
 _surfaces = [{
@@ -56,21 +57,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hh2o7")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xbc2j"]
-size = Vector3(0.00607093, 0.00742346, 0.00405174)
-
 [node name="Maple_Tree" type="MeshInstance3D"]
 transform = Transform3D(608.5, 0, 0, 0, 608.5, 0, 0, 0, 608.5, -0.266065, 0, 4.49785)
 mesh = SubResource("ArrayMesh_boool")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_fohgq")
 surface_material_override/1 = ExtResource("2_xprub")
-script = ExtResource("3_8krr3")
+script = ExtResource("3_sp0o6")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="3D_Click" parent="." instance=ExtResource("4_o17q1")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00414287, 0)
-shape = SubResource("BoxShape3D_xbc2j")
-
-[connection signal="input_event" from="Area3D" to="." method="clicked"]
+[connection signal="ObjectClicked" from="3D_Click" to="." method="open_decor_menu"]
