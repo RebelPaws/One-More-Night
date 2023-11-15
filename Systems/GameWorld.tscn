@@ -1,7 +1,7 @@
-[gd_scene load_steps=84 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=85 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
-[ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Sky.tscn" id="2_2t3rh"]
+[ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
 [ext_resource type="Script" path="res://Towers/Tower.gd" id="3_87d61"]
 [ext_resource type="PackedScene" uid="uid://dcwixsuialvfr" path="res://Systems/Cam_Rig.tscn" id="3_iekil"]
 [ext_resource type="Script" path="res://Interface/Currency_UI.gd" id="4_wmpif"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bm08npaxrl23n" path="res://Systems/Token_List.tscn" id="15_52ut1"]
 [ext_resource type="Script" path="res://Systems/Pool_Manager.gd" id="16_et66q"]
 [ext_resource type="PackedScene" uid="uid://1spp8udlt2bw" path="res://Characters/Enemies/Skeleton_Minion/Skeleton_Minion.tscn" id="17_1kf0g"]
-[ext_resource type="Script" path="res://World_Generator.gd" id="18_633u0"]
+[ext_resource type="Script" path="res://Systems/World_Generator.gd" id="18_633u0"]
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
@@ -44,14 +44,15 @@
 [ext_resource type="EventAsset" uid="uid://b2umxa3bxkeuc" path="res://addons/FMOD/editor/resources/events/{5dff2e81-f719-49f2-87b0-adfbfb657856}.tres" id="40_rqu04"]
 [ext_resource type="EventAsset" uid="uid://dq560bqkdq7pl" path="res://addons/FMOD/editor/resources/events/{35ac2166-cbac-4d18-8ef9-ba084aafcec3}.tres" id="41_7d8h4"]
 [ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="41_h3mk2"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="EventAsset" uid="uid://diw475d7cc7gu" path="res://addons/FMOD/editor/resources/events/{4ee1bc1f-293a-42ed-ad20-17269a869b8c}.tres" id="42_3735w"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="42_rlhlc"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="43_4hy5k"]
-[ext_resource type="Texture2D" uid="uid://c0hixiqotujae" path="res://Interface/Menu_Background.png" id="43_af1v5"]
 [ext_resource type="BankAsset" uid="uid://b5kcrpkiyghej" path="res://addons/FMOD/editor/resources/banks/{57e3e267-3726-4819-bb75-85cb8a640fa7}.tres" id="43_twvh8"]
 [ext_resource type="BankAsset" uid="uid://bf0y6iv74sp3o" path="res://addons/FMOD/editor/resources/banks/{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}.tres" id="44_uoc1m"]
 [ext_resource type="ParameterAsset" uid="uid://duwfebkywikax" path="res://addons/FMOD/editor/resources/parameters/{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}.tres" id="45_pt0eu"]
+[ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Attack/Archer/Archer_Tower.tscn" id="53_bmuy6"]
 
 [sub_resource type="Curve3D" id="Curve3D_ygevi"]
 _data = {
@@ -576,6 +577,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_su8i3"]
 resource_name = "Toggle"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -594,6 +596,12 @@ _data = {
 "Toggle": SubResource("Animation_su8i3")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_amvmj"]
+font = ExtResource("5_a3okp")
+font_size = 91
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_6ebu0"]
 font = ExtResource("5_a3okp")
 font_size = 150
@@ -603,7 +611,6 @@ outline_color = Color(0.192157, 0.192157, 0.192157, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_c7r2k"]
 font = ExtResource("5_a3okp")
 font_size = 91
-font_color = Color(1, 0.4, 0.388235, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -611,12 +618,6 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("5_a3okp")
 font_size = 56
 outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_amvmj"]
-font = ExtResource("5_a3okp")
-font_size = 91
-outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_dvua3"]
@@ -752,7 +753,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.0243801, 0.00343295, 0.999696, 0.0822065, 0.996599, -0.00542713, -0.996316, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822064, 0.996599, -0.00542713, -0.996315, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -4293,42 +4294,44 @@ libraries = {
 "": SubResource("AnimationLibrary_s4xuq")
 }
 
-[node name="Back" type="TextureButton" parent="UI/Tower_Edit"]
+[node name="Naming" type="HBoxContainer" parent="UI/Tower_Edit"]
 layout_mode = 0
-offset_left = -1.99998
-offset_top = 20.0
-offset_right = 782.0
-offset_bottom = 356.0
-scale = Vector2(0.435, 0.435)
-texture_normal = ExtResource("28_6ncor")
-texture_pressed = ExtResource("30_58qkj")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
+offset_left = 639.0
+offset_top = 17.0
+offset_right = 1136.0
+offset_bottom = 110.0
+theme_override_constants/separation = 35
+alignment = 1
 
-[node name="Label" type="Label" parent="UI/Tower_Edit/Back"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 12.0
-offset_right = 766.0
-offset_bottom = 291.0
-text = "Exit Edit Mode"
-label_settings = SubResource("LabelSettings_6ebu0")
+[node name="Name" type="Label" parent="UI/Tower_Edit/Naming"]
+layout_mode = 2
+text = "Tower Name"
+label_settings = SubResource("LabelSettings_amvmj")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Upgrade" type="TextureButton" parent="UI/Tower_Edit"]
+[node name="Level" type="Label" parent="UI/Tower_Edit/Naming"]
+layout_mode = 2
+text = "Lvl. 1"
+label_settings = SubResource("LabelSettings_amvmj")
+horizontal_alignment = 1
+
+[node name="Options" type="HBoxContainer" parent="UI/Tower_Edit"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 902.0
-offset_right = 800.0
-offset_bottom = 1238.0
-scale = Vector2(0.435, 0.435)
+offset_left = -16.0
+offset_top = 936.0
+offset_right = 2344.0
+offset_bottom = 1272.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 110
+
+[node name="Upgrade" type="TextureButton" parent="UI/Tower_Edit/Options"]
+layout_mode = 2
 texture_normal = ExtResource("28_6ncor")
 texture_pressed = ExtResource("30_58qkj")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Tower_Edit/Upgrade"]
+[node name="Label" type="Label" parent="UI/Tower_Edit/Options/Upgrade"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 12.0
@@ -4339,7 +4342,7 @@ label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost" type="Label" parent="UI/Tower_Edit/Upgrade"]
+[node name="Cost" type="Label" parent="UI/Tower_Edit/Options/Upgrade"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = -193.0
@@ -4349,30 +4352,43 @@ text = "0"
 label_settings = SubResource("LabelSettings_6ebu0")
 vertical_alignment = 1
 
-[node name="CoinIcon" type="Sprite2D" parent="UI/Tower_Edit/Upgrade"]
+[node name="CoinIcon" type="Sprite2D" parent="UI/Tower_Edit/Options/Upgrade"]
 position = Vector2(135.632, -64.3677)
 scale = Vector2(0.419, 0.419)
 texture = ExtResource("43_4hy5k")
 
-[node name="Sell" type="TextureButton" parent="UI/Tower_Edit"]
-layout_mode = 0
-offset_left = 432.0
-offset_top = 902.0
-offset_right = 1216.0
-offset_bottom = 1238.0
-scale = Vector2(0.435, 0.435)
+[node name="Sell" type="TextureButton" parent="UI/Tower_Edit/Options"]
+layout_mode = 2
 texture_normal = ExtResource("28_6ncor")
 texture_pressed = ExtResource("30_58qkj")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Tower_Edit/Sell"]
+[node name="Label" type="Label" parent="UI/Tower_Edit/Options/Sell"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 12.0
 offset_right = 766.0
 offset_bottom = 291.0
 text = "Sell"
+label_settings = SubResource("LabelSettings_6ebu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="UI/Tower_Edit/Options"]
+layout_mode = 2
+texture_normal = ExtResource("28_6ncor")
+texture_pressed = ExtResource("30_58qkj")
+texture_hover = ExtResource("29_ya5w0")
+texture_focused = ExtResource("29_ya5w0")
+
+[node name="Label" type="Label" parent="UI/Tower_Edit/Options/Back"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 766.0
+offset_bottom = 291.0
+text = "Exit Edit Mode"
 label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -4388,46 +4404,81 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MenuBackground" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack"]
-position = Vector2(310, 457)
-scale = Vector2(0.415, 0.415)
-texture = ExtResource("43_af1v5")
+[node name="Damage" type="Control" parent="UI/Tower_Edit/Stats/Attack"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -12.0
+offset_top = 23.0
+offset_right = 199.0
+offset_bottom = 103.0
 
-[node name="Damage" type="Label" parent="UI/Tower_Edit/Stats/Attack"]
+[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Attack/Damage"]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 277.0
-offset_right = 190.0
-offset_bottom = 370.0
+offset_left = 48.0
+offset_right = 245.0
+offset_bottom = 93.0
 text = "0"
 label_settings = SubResource("LabelSettings_c7r2k")
 
-[node name="Damage_Header" type="Label" parent="UI/Tower_Edit/Stats/Attack"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 298.0
-offset_right = 137.0
-offset_bottom = 355.0
-text = "DMG"
-label_settings = SubResource("LabelSettings_hmsmg")
+[node name="Damage_Icon" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack/Damage"]
+position = Vector2(24, 40)
+rotation = -0.420624
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("22_bckr0")
 
-[node name="Attack_Rate" type="Label" parent="UI/Tower_Edit/Stats/Attack"]
+[node name="Health" type="Control" parent="UI/Tower_Edit/Stats/Attack"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -28.0
+offset_top = 125.0
+offset_right = 94.0
+offset_bottom = 206.0
+
+[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Attack/Health"]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 345.0
-offset_right = 258.0
-offset_bottom = 438.0
+offset_left = 85.5999
+offset_top = -3.4875
+offset_right = 563.6
+offset_bottom = 89.5125
+text = "0"
+label_settings = SubResource("LabelSettings_c7r2k")
+
+[node name="Heart" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack/Health"]
+position = Vector2(42.6, 31.5125)
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("42_4ttje")
+
+[node name="Attack_Rate" type="Control" parent="UI/Tower_Edit/Stats/Attack"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -25.0
+offset_top = 203.0
+offset_right = 296.0
+offset_bottom = 310.0
+
+[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Attack/Attack_Rate"]
+layout_mode = 0
+offset_left = 178.042
+offset_top = 26.0417
+offset_right = 315.042
+offset_bottom = 119.042
 text = "2/sec"
 label_settings = SubResource("LabelSettings_amvmj")
 
-[node name="Attack_Rate_Header" type="Label" parent="UI/Tower_Edit/Stats/Attack"]
+[node name="Attack_Rate_Header" type="Label" parent="UI/Tower_Edit/Stats/Attack/Attack_Rate"]
 layout_mode = 0
-offset_left = 47.0
-offset_top = 366.0
-offset_right = 133.0
-offset_bottom = 423.0
-text = "At. Speed"
+offset_left = 61.0416
+offset_top = 52.0417
+offset_right = 165.042
+offset_bottom = 109.042
+text = "Speed"
 label_settings = SubResource("LabelSettings_hmsmg")
+
+[node name="Damage_Icon_Speed" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack/Attack_Rate"]
+position = Vector2(39.0416, 52.0416)
+rotation = -0.420624
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("22_bckr0")
 
 [node name="Pause_Menu" type="Control" parent="UI"]
 layout_mode = 3
@@ -4529,6 +4580,13 @@ parameter_dayNight = 30.0
 
 [node name="SFX" type="Node" parent="Audio"]
 
+[node name="Towers" type="Node" parent="."]
+
+[node name="Archer" parent="Towers" instance=ExtResource("53_bmuy6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.4176, 0)
+visible = false
+active = false
+
 [connection signal="CurrencyChanged" from="." to="Tower/Currency" method="_update_currency"]
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
@@ -4559,9 +4617,9 @@ parameter_dayNight = 30.0
 [connection signal="pressed" from="UI/Game_Speed/Speeds/2X" to="UI/Game_Speed" method="_set_speed" binds= [2]]
 [connection signal="pressed" from="UI/Game_Speed/Speeds/4X" to="UI/Game_Speed" method="_set_speed" binds= [4]]
 [connection signal="pressed" from="UI/Game_Speed/Speeds/Skip_to_Night" to="UI/Game_Speed" method="skip_to_night"]
-[connection signal="pressed" from="UI/Tower_Edit/Back" to="UI/Tower_Edit" method="disable"]
-[connection signal="pressed" from="UI/Tower_Edit/Upgrade" to="UI/Tower_Edit" method="upgrade_tower"]
-[connection signal="pressed" from="UI/Tower_Edit/Sell" to="UI/Tower_Edit" method="sell_tower"]
+[connection signal="pressed" from="UI/Tower_Edit/Options/Upgrade" to="UI/Tower_Edit" method="upgrade_tower"]
+[connection signal="pressed" from="UI/Tower_Edit/Options/Sell" to="UI/Tower_Edit" method="sell_tower"]
+[connection signal="pressed" from="UI/Tower_Edit/Options/Back" to="UI/Tower_Edit" method="disable"]
 [connection signal="pressed" from="UI/Pause_Menu/Options/Resume" to="UI/Game_Speed" method="_set_speed" binds= [1.0]]
 [connection signal="pressed" from="UI/Pause_Menu/Options/Quit" to="." method="quit_game"]
 

@@ -1,12 +1,73 @@
 extends Node3D
 
-var level = 1 #This is the tower's level which will determine everything about it.
+@export var active = true ##This determines whether the object is active or not
 
-var target_list = [] #This is the list of possible targets
-@export var target_groups = ["Enemy"] ##These are the groups that can be targeted
-
+@export_category("Tower Identification")
 @export var tower_id : String ##This is the tower's ID in all game files
 @export var tower_category : String ##This is the category of the tower
+
+#This holds all the info needed for the tower to operate
+#All of it is right here for easy editing
+@export_category("Basic Info")
+@export var costs = {1: 20, 
+						2: 5, 
+						3: 5, 
+						4: 5, 
+						5: 5
+					}
+
+@export var health = {1: 20, 
+						2: 5, 
+						3: 5, 
+						4: 5, 
+						5: 5
+					}
+
+@export_subgroup("Attack")
+@export var attack_damage = {1: 20, 
+							2: 5, 
+							3: 5, 
+							4: 5, 
+							5: 5
+							}
+
+@export var attack_rate = {1: 20, 
+						2: 5, 
+						3: 5, 
+						4: 5, 
+						5: 5
+						}
+
+@export_subgroup("Defense")
+@export var armor = {1: 20, 
+						2: 5, 
+						3: 5, 
+						4: 5, 
+						5: 5
+						}
+
+@export_subgroup("Healing")
+@export var healing = {1: 20, 
+						2: 5, 
+						3: 5, 
+						4: 5, 
+						5: 5
+						}
+
+@export var healing_rate = {1: 20, 
+							2: 5, 
+							3: 5, 
+							4: 5, 
+							5: 5
+							}
+
+@export_category("Level Info")
+var level = 1 #This is the tower's level which will determine everything about it.
+@export var level_cap = 5 ##This is the tower's max level
+
+@export_category("Target Settings")
+var target_list = [] #This is the list of possible targets
+@export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
 
 #This handles adding up armor
@@ -42,3 +103,16 @@ func unit_lost(body):
 #This will open up the tower edit menu when clicked
 func open_tower_menu():
 	get_parent().get_parent().get_parent().get_node("UI/Tower_Edit").enable(self)
+
+func level_up():
+	level = clamp(level + 1, 1, level_cap)
+
+#This will return the cost whether it's level 1 or another level
+func _get_cost(_type):
+	match _type:
+		"Build":
+			return costs[1]
+		"Upgrade":
+			return costs[level + 1]
+
+

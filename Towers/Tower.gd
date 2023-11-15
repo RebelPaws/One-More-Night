@@ -1,5 +1,6 @@
 extends Node3D
 
+#This is the tower controller
 
 #This updates the health visual of the tower
 func update_health(_health):
