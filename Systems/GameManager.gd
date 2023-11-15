@@ -12,7 +12,8 @@ var nights_survived = 0 #This is how many nights have been survived
 
 
 func _ready():
-	DataManager._load_game()
+	DataManager._load_game() #This will try to load game data right away
+	
 	GameInfo.game_state = "Menu" #The game starts in a title screen aka Menu mode
 	modify_currency(0) #This updates the currency to reflect the starting currency
 	
@@ -20,8 +21,6 @@ func _ready():
 
 #This starts the game to play
 func start_game():
-	DataManager._save_game(10, 50)
-	
 	GameInfo.game_state = "Play" #Sets the game state to Play
 	
 	$UI/Title/Audio/ButtonPress.play() #then we play the button press sound

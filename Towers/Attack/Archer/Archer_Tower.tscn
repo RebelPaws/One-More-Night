@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://en03cr3ftlh7" path="res://Towers/Materials/Tower_Wood.material" id="3_juc37"]
 [ext_resource type="Material" uid="uid://dx8q2pldjgp6c" path="res://Towers/Materials/Tower_Stone_Base.material" id="4_6uh55"]
 [ext_resource type="Material" uid="uid://cf6a6hhr2fw3r" path="res://Towers/Materials/Tower_Stone_Accent.material" id="5_gl86g"]
-[ext_resource type="PackedScene" uid="uid://bw0adrqc8c7xy" path="res://Characters/Units/Archer/Archer_Unit.tscn" id="6_7emtt"]
+[ext_resource type="PackedScene" uid="uid://bw0adrqc8c7xy" path="res://Towers/Attack/Archer/Archer_Unit/Archer_Unit.tscn" id="6_vmfjj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5ujg"]
 resource_name = "BrownDark.007"
@@ -242,12 +242,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.986006, 0)
 
 [node name="Units" type="Node3D" parent="." index="3"]
 
-[node name="Archer_Unit" parent="Units" index="0" instance=ExtResource("6_7emtt")]
+[node name="Archer_Unit" parent="Units" index="0" instance=ExtResource("6_vmfjj")]
 
-[node name="Archer_Unit3" parent="Units" index="1" instance=ExtResource("6_7emtt")]
+[node name="Archer_Unit3" parent="Units" index="1" instance=ExtResource("6_vmfjj")]
 transform = Transform3D(-0.0855995, 0, -0.0277981, 0, 0.09, 0, 0.0277981, 0, -0.0855995, 0.0337205, -0.148373, -0.771088)
 
-[node name="Archer_Unit5" parent="Units" index="2" instance=ExtResource("6_7emtt")]
+[node name="Archer_Unit5" parent="Units" index="2" instance=ExtResource("6_vmfjj")]
 transform = Transform3D(-0.0181447, 0, -0.088152, 0, 0.09, 0, 0.088152, 0, -0.0181447, -0.651894, -0.358685, -0.152935)
 
 [node name="Attack_Timer" type="Timer" parent="." index="4"]

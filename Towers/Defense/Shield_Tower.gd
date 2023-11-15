@@ -4,5 +4,7 @@ extends "res://Towers/Tower_Core.gd"
 @export var chance_for_perfect_defense : float ##This is the chance for a perfect defense that will void all damage
 
 func _ready():
+	if not active: return
+	
 	_add_armor() #Adds armor to the health
 

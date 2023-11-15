@@ -7,6 +7,9 @@ extends "res://Towers/Tower_Core.gd"
 @export var chance_to_quick_cast : float
 
 func heal():
+	if not active:
+		return
+	
 	var chance_roll = randf_range(0, 100)
 	var health_manager = get_parent().get_parent().get_node("Health_Manager")
 	

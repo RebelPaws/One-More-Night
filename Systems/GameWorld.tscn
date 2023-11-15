@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=87 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -53,6 +53,8 @@
 [ext_resource type="BankAsset" uid="uid://bf0y6iv74sp3o" path="res://addons/FMOD/editor/resources/banks/{291d4b5d-6f5a-4c23-8964-78b7c1b0cf55}.tres" id="44_uoc1m"]
 [ext_resource type="ParameterAsset" uid="uid://duwfebkywikax" path="res://addons/FMOD/editor/resources/parameters/{fa9d0210-4efa-4a52-80a8-8a8e61d4878f}.tres" id="45_pt0eu"]
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Attack/Archer/Archer_Tower.tscn" id="53_bmuy6"]
+[ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Defense/Shield_Tower.tscn" id="54_achsv"]
+[ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Support/Healer_Tower.tscn" id="55_2ugdr"]
 
 [sub_resource type="Curve3D" id="Curve3D_ygevi"]
 _data = {
@@ -4584,6 +4586,15 @@ parameter_dayNight = 30.0
 
 [node name="Archer" parent="Towers" instance=ExtResource("53_bmuy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.4176, 0)
+visible = false
+active = false
+
+[node name="Shield" parent="Towers" instance=ExtResource("54_achsv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.8461, 0)
+visible = false
+active = false
+
+[node name="Healer" parent="Towers" instance=ExtResource("55_2ugdr")]
 visible = false
 active = false
 
