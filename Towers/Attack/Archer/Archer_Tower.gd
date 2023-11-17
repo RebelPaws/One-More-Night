@@ -5,6 +5,14 @@ var chance_for_quickdraw = 35.0
 
 func _ready():
 	attack()
+	#var detection_range = get_node("Detection_Range")
+	#var click = get_node("3D_Click")
+	
+	#detection_range.body_entered.connect(unit_detected)
+	#detection_range.body_exited.connect(unit_lost)
+	
+	#click.ObjectClicked.connect(open_tower_menu)
+	
 
 #This creates a list of potential targets
 func create_target_list():
@@ -44,8 +52,10 @@ func attack():
 	
 	for archer in $Units.get_children():
 		archer.damage = attack_damage[level]
-		var new_target = new_targets["Closest"].pick_random()
-		if new_target == null: 
+		var new_target = null
+		if new_targets["Closest"].size() > 0:
+			new_target = new_targets["Closest"].pick_random()
+		else: 
 			$Attack_Timer.start()
 			return
 		

@@ -69,14 +69,14 @@ var level = 1 #This is the tower's level which will determine everything about i
 var target_list = [] #This is the list of possible targets
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
-
 #This handles adding up armor
 func _add_armor():
 	#Note: This should only be applied once unless the tower gets a perk to add armor more than once.
 	var health_manager = get_parent().get_parent().get_node("Health_Manager") #We get the health manager node we need
-	var armor = Towers._get_tower_info(tower_id, tower_category)[2][level] #This gets the tower's armor
+	#var armor = Towers._get_tower_info(tower_id, tower_category)[2][level] #This gets the tower's armor
+	var armor_buff = armor.get(level)
 	
-	health_manager.armor += armor #Finally we add the health manager's armor to the tower's armor
+	health_manager.armor += armor_buff #Finally we add the health manager's armor to the tower's armor
 
 #This handles unit detection and sees if it can be added to the target list
 func unit_detected(body):

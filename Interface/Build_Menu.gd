@@ -1,6 +1,9 @@
 extends Control
 
 var menu = "None"
+var archer_tower_scene = preload("res://Towers/Attack/Archer/Archer_Tower.tscn")
+var shield_tower_scene = preload("res://Towers/Defense/Shield_Tower.tscn")
+#var healer_tower_scene = preload()
 
 func back():
 	$Audio/ButtonPress.play()
@@ -54,7 +57,12 @@ func buy_tower(tower_name, tower_category):
 	if game_info.has_currency(tower_info._get_cost("Build")):
 		$Audio/TowerBuild.play()
 		
-		var new_tower = tower_info.duplicate()
+		#var new_tower = tower_info.duplicate()
+		var new_tower
+		if tower_name == "Archer":
+			new_tower = archer_tower_scene.instantiate()
+		elif tower_name == "Shield":
+			new_tower = shield_tower_scene.instantiate()
 		tower_blocks.add_child(new_tower)
 		new_tower.global_position = tower_anchor_point
 		new_tower.active = true

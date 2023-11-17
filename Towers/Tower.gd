@@ -1,6 +1,10 @@
 extends Node3D
 
+@onready var hit_box = get_node("Health_Manager/HitBox")
+
 #This is the tower controller
+func _ready():
+	hit_box.set_collision_mask(8)
 
 #This updates the health visual of the tower
 func update_health(_health):

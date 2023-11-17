@@ -9,6 +9,7 @@ func shoot(_target):
 	var arrow = $Arrow_Container._get_unused_object()
 	if arrow == null: 
 		return
+	#print_debug(_target)
 	
 	var chance_roll = randf_range(0, 100)
 	

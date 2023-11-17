@@ -41,15 +41,17 @@ func spawn_enemy():
 	
 	var new_enemy = $Enemy_List.get_child($Enemy_List.get_child_count()-1)._get_unused_object()
 	if new_enemy == null: return
-	
-	new_enemy.target = get_parent().get_node("Tower/Minion_Target")
+
 	
 	$Spawn_Area/Spawn_Position.progress_ratio = randf_range(0, 1)
 	var spawn_position = $Spawn_Area/Spawn_Position.global_position
 	new_enemy.global_position = spawn_position
+	new_enemy.target = get_parent().get_node("Tower/Minion_Target")
 	new_enemy.show()
 	new_enemy._enable()
-	new_enemy.get_node("Health_Manager").connect("Dead", add_kill)
+	if new_enemy.dead_connected == false:
+		new_enemy.get_node("Health_Manager").connect("Dead", add_kill)
+		new_enemy.dead_connected = true
 	new_enemy.get_node("Health_Manager").reset()
 	new_enemy.retreat_pos = spawn_position
 	

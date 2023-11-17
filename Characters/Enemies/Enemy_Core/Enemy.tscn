@@ -25,6 +25,7 @@ path_height_offset = 0.1
 path_max_distance = 3.01
 
 [node name="DamageBox" parent="." groups=["Enemy"] instance=ExtResource("3_owsia")]
+collision_layer = 8
 
 [node name="Attack_Timer" type="Timer" parent="."]
 

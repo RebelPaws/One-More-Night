@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 signal TargetReached
 signal Enable
+var dead_connected = false
 
 @export var gravity : float
 @export var move_speed : float
@@ -39,6 +40,7 @@ func move():
 	var new_velocity = (next_location - current_location).normalized() * move_speed
 	
 	velocity = new_velocity
+	
 	global_position.y = ground_level
 	look_at(nav_agent.get_next_path_position())
 	move_and_slide()

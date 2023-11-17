@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=86 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -19,10 +19,9 @@
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="21_810qw"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="21_ky7vq"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="28_tcols"]
 [ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="29_n55hd"]
@@ -44,7 +43,7 @@
 [ext_resource type="EventAsset" uid="uid://b2umxa3bxkeuc" path="res://addons/FMOD/editor/resources/events/{5dff2e81-f719-49f2-87b0-adfbfb657856}.tres" id="40_rqu04"]
 [ext_resource type="EventAsset" uid="uid://dq560bqkdq7pl" path="res://addons/FMOD/editor/resources/events/{35ac2166-cbac-4d18-8ef9-ba084aafcec3}.tres" id="41_7d8h4"]
 [ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="41_h3mk2"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Interface/Health/Heart.png" id="42_4ttje"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="EventAsset" uid="uid://diw475d7cc7gu" path="res://addons/FMOD/editor/resources/events/{4ee1bc1f-293a-42ed-ad20-17269a869b8c}.tres" id="42_3735w"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="42_rlhlc"]
@@ -701,7 +700,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Health"]
 transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
-texture = ExtResource("21_ky7vq")
+texture = ExtResource("42_4ttje")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
@@ -755,7 +754,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822064, 0.996599, -0.00542713, -0.996315, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822063, 0.996599, -0.00542713, -0.996314, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -3554,7 +3553,7 @@ disabled = true
 [node name="Support_Icon" type="Sprite2D" parent="UI/Build/Categories/Support_Button"]
 position = Vector2(141, 82.9995)
 scale = Vector2(0.157574, 0.157574)
-texture = ExtResource("21_ky7vq")
+texture = ExtResource("42_4ttje")
 
 [node name="Label" type="Label" parent="UI/Build/Categories/Support_Button"]
 layout_mode = 0
@@ -3777,7 +3776,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 [node name="Heal_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 position = Vector2(137, -12)
 scale = Vector2(0.037, 0.037)
-texture = ExtResource("21_ky7vq")
+texture = ExtResource("42_4ttje")
 
 [node name="Heal" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0

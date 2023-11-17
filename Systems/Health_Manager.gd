@@ -34,16 +34,21 @@ func _take_damage(_damage):
 	if reduction_percent > 0.9: reduction_percent = 0.9
 	
 	if get_parent().name == "Tower":
+		#print_debug("Damage: "+ str(_damage))
+		_damage=0
 		for block in get_parent().get_node("Blocks").get_children():
 			if "Shield" in block.name:
 				var chance_roll = randf_range(0, 100)
 				if chance_roll <= block.chance_for_perfect_defense:
+					await get_tree().create_timer(0.3).timeout
+					is_hurt = false
 					return
 	
 	_damage -= (_damage * reduction_percent)
 	
-	health_current = clamp(floor(health_current - _damage), 0, health_max) #Damage is reduced and health is clamped
 	
+	health_current = clamp(floor(health_current - _damage), 0, health_max) #Damage is reduced and health is clamped
+
 	if health_current == 0: #If health is 0 then the object is dead
 		emit_signal("Dead") #We emit the dead signal
 		return #Then leave the function

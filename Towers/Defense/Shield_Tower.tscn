@@ -143,7 +143,7 @@ shadow_mesh = SubResource("ArrayMesh_y5quv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vdxu"]
 size = Vector3(4.059, 5000, 5.067)
 
-[node name="Shield_Tower" instance=ExtResource("1_o10u0")]
+[node name="Shield_Tower" groups=["shield"] instance=ExtResource("1_o10u0")]
 script = ExtResource("2_hjovx")
 chance_for_perfect_defense = 15.0
 tower_id = "Shield"

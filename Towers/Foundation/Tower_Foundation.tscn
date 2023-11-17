@@ -156,3 +156,5 @@ shape = SubResource("ConvexPolygonShape3D_ahv1s")
 
 [node name="Anchor" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)
+
+[editable path="3D_Click"]
