@@ -2,7 +2,7 @@ extends Node3D
 
 signal CurrencyChanged
 
-@export var currency = 1000 ##This is the count for gold currency. Value is starting amount.
+@export var currency = 100 ##This is the count for gold currency. Value is starting amount.
 var currency_total = 0 #This is just to count up the total gained gold for stats
 
 @export var mana = 0 ##This is the count for mana currency. Value is starting amount.

@@ -20,6 +20,12 @@ func _get_unused_object():
 	for object in self.get_children():
 		if object.active == false:
 			return object
-	
+		
+	return null
+
+func _cleanup_active_objects():
+	for object in self.get_children():
+		if object.active:
+			object._disable()
 	
 	return null

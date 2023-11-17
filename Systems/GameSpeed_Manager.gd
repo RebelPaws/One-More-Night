@@ -24,6 +24,7 @@ func _set_speed(_speed):
 func skip_to_night():
 	var day_animator = get_parent().get_parent().get_node("Sky/Day_Cycle") #We grab the sky animator
 	day_animator.seek(night_skip_to) #Then we seek to the night skip position
+	toggle_skip_night(false)
 
 #This toggles the ability to skip to night
 func toggle_skip_night(value):

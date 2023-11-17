@@ -35,7 +35,7 @@ func _take_damage(_damage):
 	
 	if get_parent().name == "Tower":
 		#print_debug("Damage: "+ str(_damage))
-		_damage=0
+		#_damage=0
 		for block in get_parent().get_node("Blocks").get_children():
 			if "Shield" in block.name:
 				var chance_roll = randf_range(0, 100)

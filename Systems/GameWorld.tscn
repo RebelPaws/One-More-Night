@@ -753,10 +753,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822063, 0.996599, -0.00542713, -0.996314, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822062, 0.996599, -0.00542713, -0.996313, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
+one_shot = true
+
+[node name="Retreat_Timer" type="Timer" parent="Enemy_Manager"]
+wait_time = 15.0
 one_shot = true
 
 [node name="Container" type="Node3D" parent="Enemy_Manager"]
@@ -4604,6 +4608,7 @@ active = false
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower/TowerHealed_Sound" method="play"]
 [connection signal="timeout" from="Enemy_Manager/Spawn_Timer" to="Enemy_Manager" method="spawn_enemy"]
+[connection signal="timeout" from="Enemy_Manager/Retreat_Timer" to="Enemy_Manager" method="_on_retreat_timer_timeout"]
 [connection signal="pressed" from="UI/Build/Categories/Attack_Button" to="UI/Build" method="select_category" binds= ["Attack"]]
 [connection signal="pressed" from="UI/Build/Categories/Defense_Button" to="UI/Build" method="select_category" binds= ["Defense"]]
 [connection signal="pressed" from="UI/Build/Categories/Support_Button" to="UI/Build" method="select_category" binds= ["Support"]]

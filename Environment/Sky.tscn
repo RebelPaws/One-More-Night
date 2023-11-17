@@ -61,7 +61,7 @@ tracks/3/keys = {
 "args": [48.0],
 "method": &"set_night_skip_pos"
 }, {
-"args": [33.5],
+"args": [8.0],
 "method": &"set_night_skip_pos"
 }]
 }
@@ -118,7 +118,7 @@ _data = {
 environment = ExtResource("1_rin47")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819552, -0.573004, 0, 0.573004, 0.819552, 0.606105, 2.60517, 0.518529)
+transform = Transform3D(1, 0, 0, 0, -0.736344, -0.676607, 0, 0.676607, -0.736344, 0.606105, 2.60517, 0.518529)
 light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_bias = 0.01

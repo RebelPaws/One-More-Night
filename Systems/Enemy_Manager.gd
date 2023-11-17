@@ -1,6 +1,8 @@
 extends Node3D
 
 signal Retreat
+@onready var retreat_timer = get_node("Retreat_Timer")
+
 
 var confirmed_kills = 0
 
@@ -64,3 +66,10 @@ func spawn_enemy():
 
 func enemies_retreat():
 	emit_signal("Retreat")
+	if retreat_timer.is_stopped():
+		retreat_timer.start(15)
+
+
+func _on_retreat_timer_timeout():
+	for i in $Enemy_List.get_children():
+		i._cleanup_active_objects()
