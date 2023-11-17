@@ -10,7 +10,7 @@ var can_spawn = false: #This tells the manager when enemies can spawn
 		can_spawn = val
 		spawn_enemy()
 
-@export var spawn_time_range = [0.2, 1.0]
+@export var spawn_time_range = [0.5, 3.0]
 
 var enemies_spawned = 0
 

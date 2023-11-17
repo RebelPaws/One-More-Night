@@ -738,7 +738,6 @@ transform = Transform3D(1, 0, -1.02445e-08, 0, 1, 0, 1.02445e-08, 0, 1, 0.115177
 
 [node name="Enemy_Manager" type="Node3D" parent="."]
 script = ExtResource("14_6tske")
-spawn_time_range = [0.5, 3.0]
 
 [node name="Enemy_List" parent="Enemy_Manager" instance=ExtResource("15_52ut1")]
 script = null

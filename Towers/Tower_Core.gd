@@ -31,11 +31,12 @@ extends Node3D
 							5: 5
 							}
 
-@export var attack_rate = {1: 20, 
-						2: 5, 
-						3: 5, 
-						4: 5, 
-						5: 5
+#Updated attack rate to make sense
+@export var attack_rate = {1: 2, 
+						2: 2, 
+						3: 2, 
+						4: 1, 
+						5: 1
 						}
 
 @export_subgroup("Defense")

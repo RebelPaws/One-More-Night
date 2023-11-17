@@ -35,14 +35,21 @@ func _enable():
 	emit_signal("Enable")
 
 func move():
+	#Make sure that the enemy is on the ground
+	if global_position.y != ground_level:
+		global_position.y = ground_level
+	
+	#set up the location/velocity variables
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * move_speed
 	
+	#assign the calculated velocity to the velocity
 	velocity = new_velocity
 	
-	global_position.y = ground_level
-	look_at(nav_agent.get_next_path_position())
+	#set the look at to the next_location and the position to the calculated position
+	look_at_from_position(current_location, next_location)
+	#move this bad boy
 	move_and_slide()
 
 func target_reached():

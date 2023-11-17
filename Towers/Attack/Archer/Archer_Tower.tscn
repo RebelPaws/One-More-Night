@@ -221,6 +221,13 @@ size = Vector3(9.44741, 5000, 10.4683)
 script = ExtResource("2_oudqd")
 tower_id = "Archer"
 tower_category = "Attack"
+attack_rate = {
+1: 2,
+2: 2,
+3: 2,
+4: 1,
+5: 1
+}
 
 [node name="Anchor" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954794, 0)
