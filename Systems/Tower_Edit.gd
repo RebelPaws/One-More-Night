@@ -6,7 +6,7 @@ var tower_lock_on #This is the tower being focused on
 
 @export var refund_rate = 1.0 ##This is what percent of the tower cost is refunded during sales
 
-@onready var game_root = get_parent().get_parent()
+@onready var game_root = Commands.get_root()
 @onready var tower_info = game_root.get_node("Towers")
 
 #This pulls up the menu
@@ -67,27 +67,28 @@ func disable():
 #Handles upgrading the tower
 func upgrade_tower():
 	#We get the upgrade cost first
-	var _cost = Towers._get_tower_info(tower_lock_on.tower_id, tower_lock_on.tower_category)[1][tower_lock_on.level]
+	var _cost = tower_lock_on.costs[tower_lock_on.level + 1]
 	
 	#If the player doesn't have the needed gold then they can't upgrade
-	if not game_root.has_currency(_cost): return
+	if not game_root.has_currency("Gold", _cost): return
 	
-	game_root.modify_currency(-_cost) #If they can afford it we'll take their gold
+	game_root.modify_currency("Gold", -_cost) #If they can afford it we'll take their gold
 	
 	tower_lock_on.level_up() #This will level up the tower
 	await get_tree().create_timer(0.1).timeout #This gives the game a half-second to get all the logic through
 	#This way before we update the info it should be all increased
 	
 	var stats_node = $Stats.get_node(tower_lock_on.tower_category)
-	var tower_info = Towers._get_tower_info(tower_lock_on.tower_id, tower_lock_on.tower_category)
+	
 	match tower_lock_on.tower_category:
 		"Attack":
-			$Stats/Attack/Health/Amount.text = str(tower_info[2][tower_lock_on.level])
-			$Stats/Attack/Damage/Amount.text = str(tower_info[3][tower_lock_on.level])
-			$Stats/Attack/Attack_Rate/Amount.text = str(tower_info[4][tower_lock_on.level]) + "/sec"
+			$Stats/Attack/Health/Amount.text = str(tower_lock_on.health[tower_lock_on.level])
+			$Stats/Attack/Damage/Amount.text = str(tower_lock_on.attack_damage[tower_lock_on.level])
+			$Stats/Attack/Attack_Rate/Amount.text = str(tower_lock_on.costs[tower_lock_on.level]) + "/sec"
 		
 		"Defense":
 			pass
+		
 		"Support":
 			pass
 	
@@ -96,7 +97,7 @@ func upgrade_tower():
 #Handles selling the tower
 func sell_tower():
 	#This is the amount to refund
-	var to_refund = tower_lock_on.cost[tower_lock_on.level] * refund_rate
+	var to_refund = tower_lock_on.costs[tower_lock_on.level] * refund_rate
 	
 	game_root.modify_currency(to_refund) #Then we send the currency back
 	disable() #And disable the menu since the tower is now gone
@@ -117,7 +118,7 @@ func update_upgrade():
 	$Options/Upgrade.show()
 	
 	#Then we update the cost text
-	$Options/Upgrade/Cost.text = str(tower_lock_on.cost[tower_lock_on.level])
+	$Options/Upgrade/Cost.text = str(tower_lock_on.costs[tower_lock_on.level + 1])
 	
 	
 	#We update the upgrade cost

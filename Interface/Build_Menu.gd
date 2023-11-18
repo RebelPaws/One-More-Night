@@ -3,7 +3,7 @@ extends Control
 var menu = "None"
 var archer_tower_scene = preload("res://Towers/Attack/Archer/Archer_Tower.tscn")
 var shield_tower_scene = preload("res://Towers/Defense/Shield_Tower.tscn")
-#var healer_tower_scene = preload()
+var healer_tower_scene = preload("res://Towers/Support/Healer_Tower.tscn")
 
 func back():
 	$Audio/ButtonPress.play()
@@ -13,6 +13,7 @@ func back():
 	match menu:
 		"Categories":
 			$Anim.play_backwards("Show_Categories")
+			get_parent().get_node("Game_Speed/Anim").play("Toggle")
 			GameInfo.game_state = "Play"
 		"Attack":
 			$Anim.play_backwards("Show_Attack")
@@ -30,6 +31,8 @@ func show_categories():
 	$Audio/ButtonPress.play()
 	await get_tree().create_timer(0.2).timeout
 	$Audio/ButtonPress.stop()
+	
+	get_parent().get_node("Game_Speed/Anim").play_backwards("Toggle")
 	
 	$Anim.play("Show_Categories")
 	menu = "Categories"
@@ -59,10 +62,16 @@ func buy_tower(tower_name, tower_category):
 		
 		#var new_tower = tower_info.duplicate()
 		var new_tower
-		if tower_name == "Archer":
-			new_tower = archer_tower_scene.instantiate()
-		elif tower_name == "Shield":
-			new_tower = shield_tower_scene.instantiate()
+		
+		match tower_name:
+			"Archer":
+				new_tower = archer_tower_scene.instantiate()
+			"Shield":
+				new_tower = shield_tower_scene.instantiate()
+			"Healer":
+				new_tower = healer_tower_scene.instantiate()
+		
+		
 		tower_blocks.add_child(new_tower)
 		new_tower.global_position = tower_anchor_point
 		new_tower.active = true

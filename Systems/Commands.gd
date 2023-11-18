@@ -17,9 +17,12 @@ func _input(event):
 		if Input.is_action_just_pressed("Cheat_Input_4"): cheats_input.append(4)
 	
 	match cheats_input:
-		[1, 1, 1, 1]: #Gold Cheat
-			print("Money cheat")
+		[1,1,1,1]: #Gold Cheat
 			get_root().modify_currency("Gold", 1000)
+			cheat_code_end()
+		
+		[1,3,3,2]: #Health Max Cheat
+			#Max health
 			cheat_code_end()
 	
 	if activate_cheats:

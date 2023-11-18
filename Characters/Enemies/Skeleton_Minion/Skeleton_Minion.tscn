@@ -1041,7 +1041,8 @@ collision_mask = 0
 script = ExtResource("2_1op2e")
 gravity = 0.0
 move_speed = 1.5
-currency_worth = 1
+gold_worth = 5
+mana_worth = 1
 
 [node name="Normal_Mesh" type="Node3D" parent="." index="0"]
 transform = Transform3D(-0.98908, -0.0599684, -0.134628, -0.0594205, 0.9982, -0.00808784, 0.134871, 1.50874e-07, -0.990863, 0, -0.835462, 0)

@@ -6,7 +6,8 @@ func _open():
 	GameInfo.game_state = "Menu"
 	
 	get_parent().get_node("Build").hide()
-	get_parent().get_node("Game_Speed").hide()
+	get_parent().get_node("Game_Speed/Anim").play_backwards("Toggle")
+	get_parent().get_node("Currency_UI/Anim").play_backwards("Toggle")
 	
 	update_stats()
 	GameInfo.game_is_in_play = false

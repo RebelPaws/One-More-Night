@@ -32,12 +32,12 @@ func start_game():
 	$UI/Title/Audio/ButtonPress.stop() #And make sure it stopped (I forgot what issue made this needed)
 	
 	$UI/Game_Speed/Anim.play("Toggle") #Brings up the game speed UI
+	$UI/Currency_UI/Anim.play("Toggle")
 	$UI/Build.show() #Shows the build button
 	
 	#Shows 3D Tower information
 	$Tower/Health.show() 
 	$Tower/Armor.show()
-	$Tower/Currency.show()
 	
 	$UI/Title.hide() #Hides the title
 	GameInfo.game_is_in_play = true #Make sure the game knows it's in play
@@ -64,9 +64,11 @@ func modify_currency(_type, _amount):
 	match _type:
 		"Gold":
 			gold += _amount #The amount is added to the currency count. To subtract just send a negative amount
+			$UI/Currency_UI/Gold_Label.text = str(gold)
 			emit_signal("GoldChanged", gold) #Then send out the signal to update currency visuals
 		"Mana":
 			mana += _amount
+			$UI/Currency_UI/Mana_Label.text = str(mana)
 			emit_signal("ManaChanged", mana)
 	
 	if _amount > 0: #If gold is being added, add it to the currency total
