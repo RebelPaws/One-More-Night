@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=92 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -21,9 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="28_tcols"]
+[ext_resource type="PackedScene" uid="uid://dkl4s0oj3x2sr" path="res://Interface/Buttons/Template/button_template.tscn" id="29_arder"]
 [ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="29_n55hd"]
 [ext_resource type="Texture2D" uid="uid://dir8wjgwb6hd7" path="res://Interface/Buttons/Rectangle/Button_Rect_Focused.png" id="29_ya5w0"]
 [ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="30_4yi7m"]
@@ -73,6 +74,21 @@ font_size = 160
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
+[sub_resource type="Animation" id="Animation_2j1ua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-928, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_buuxp"]
 resource_name = "Toggle"
 length = 0.3
@@ -87,21 +103,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-928, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2j1ua"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-928, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_46i3i"]
@@ -550,12 +551,6 @@ font_color = Color(0.901961, 0.866667, 0.568627, 1)
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
-font = ExtResource("5_a3okp")
-font_size = 270
-outline_size = 10
-outline_color = Color(0.196078, 0.196078, 0.196078, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_muo2u"]
 font = ExtResource("5_a3okp")
 font_size = 136
@@ -572,6 +567,12 @@ outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 font = ExtResource("5_a3okp")
 font_size = 120
 font_color = Color(0.984314, 0.364706, 0.368627, 1)
+outline_size = 10
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
+font = ExtResource("5_a3okp")
+font_size = 270
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
@@ -731,6 +732,7 @@ texture = ExtResource("42_4ttje")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
+visible = false
 script = ExtResource("9_2n73j")
 
 [node name="Count" type="Label3D" parent="Tower/Armor"]
@@ -779,7 +781,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.0243799, 0.00343295, 0.999696, 0.0822061, 0.996599, -0.00542713, -0.996311, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.0243799, 0.00343295, 0.999696, 0.0822059, 0.996599, -0.00542713, -0.996309, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -3957,93 +3959,56 @@ offset_left = 240.0
 offset_right = 280.0
 offset_bottom = 40.0
 
-[node name="Play" type="TextureButton" parent="UI/Title/Options"]
+[node name="Play" parent="UI/Title/Options" instance=ExtResource("29_arder")]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 870.0
-offset_right = 801.0
-offset_bottom = 1206.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("28_6ncor")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
-
-[node name="Label" type="Label" parent="UI/Title/Options/Play"]
-layout_mode = 0
-offset_left = 61.0
-offset_top = -6.0
-offset_right = 677.0
-offset_bottom = 275.0
-text = "Play"
-label_settings = SubResource("LabelSettings_hnysj")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Options" type="TextureButton" parent="UI/Title/Options"]
-layout_mode = 0
-offset_left = 449.0
 offset_top = 883.0
-offset_right = 1233.0
 offset_bottom = 1219.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("28_6ncor")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Title/Options/Options"]
+[node name="Timer" parent="UI/Title/Options/Play" index="2"]
+wait_time = 0.2
+
+[node name="Options" parent="UI/Title/Options" instance=ExtResource("29_arder")]
 layout_mode = 0
-offset_left = 61.0
-offset_top = -6.0
-offset_right = 677.0
-offset_bottom = 275.0
-text = "Options"
-label_settings = SubResource("LabelSettings_hnysj")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 402.0
+offset_top = 883.0
+offset_right = 1186.0
+offset_bottom = 1219.0
+scale = Vector2(0.4, 0.4)
 
-[node name="Credits" type="TextureButton" parent="UI/Title/Options"]
+[node name="Label" parent="UI/Title/Options/Options" index="0"]
+text = "Options"
+
+[node name="Timer" parent="UI/Title/Options/Options" index="2"]
+wait_time = 0.2
+
+[node name="Credits" parent="UI/Title/Options" instance=ExtResource("29_arder")]
 layout_mode = 0
 offset_left = 793.0
 offset_top = 883.0
 offset_right = 1577.0
 offset_bottom = 1219.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("28_6ncor")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Title/Options/Credits"]
-layout_mode = 0
-offset_left = 78.4999
-offset_top = 11.5
-offset_right = 694.5
-offset_bottom = 292.5
+[node name="Label" parent="UI/Title/Options/Credits" index="0"]
 text = "Credits"
-label_settings = SubResource("LabelSettings_hnysj")
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="Quit" type="TextureButton" parent="UI/Title/Options"]
+[node name="Timer" parent="UI/Title/Options/Credits" index="2"]
+wait_time = 0.2
+
+[node name="Quit" parent="UI/Title/Options" instance=ExtResource("29_arder")]
 layout_mode = 0
-offset_left = 1172.0
-offset_top = 877.0
-offset_right = 1956.0
-offset_bottom = 1213.0
+offset_left = 1170.0
+offset_top = 883.0
+offset_right = 1954.0
+offset_bottom = 1219.0
 scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("28_6ncor")
-texture_pressed = ExtResource("30_58qkj")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Title/Options/Quit"]
-layout_mode = 0
-offset_right = 776.0
-offset_bottom = 308.0
-text = "Quit
-"
-label_settings = SubResource("LabelSettings_hnysj")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" parent="UI/Title/Options/Quit" index="0"]
+text = "Quit"
+
+[node name="Timer" parent="UI/Title/Options/Quit" index="2"]
+wait_time = 0.2
 
 [node name="Audio" type="Node" parent="UI/Title"]
 
@@ -4096,17 +4061,37 @@ offset_left = 288.0
 offset_right = 328.0
 offset_bottom = 40.0
 
-[node name="Currency" type="Control" parent="UI/GameOver/Stats"]
+[node name="Gold" type="Control" parent="UI/GameOver/Stats"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CoinIcon" type="Sprite2D" parent="UI/GameOver/Stats/Currency"]
+[node name="CoinIcon" type="Sprite2D" parent="UI/GameOver/Stats/Gold"]
 position = Vector2(600, 229.098)
 scale = Vector2(0.268293, 0.268293)
 texture = ExtResource("43_4hy5k")
 
-[node name="Subtitle2" type="Label" parent="UI/GameOver/Stats/Currency"]
+[node name="Subtitle" type="Label" parent="UI/GameOver/Stats/Gold"]
+layout_mode = 0
+offset_left = 643.0
+offset_top = 169.0
+offset_right = 1289.0
+offset_bottom = 309.0
+text = "0"
+label_settings = SubResource("LabelSettings_muo2u")
+
+[node name="Mana" type="Control" parent="UI/GameOver/Stats"]
+anchors_preset = 0
+offset_top = 104.0
+offset_right = 40.0
+offset_bottom = 144.0
+
+[node name="ManaIcon" type="Sprite2D" parent="UI/GameOver/Stats/Mana"]
+position = Vector2(600, 229.098)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("41_grbsa")
+
+[node name="Subtitle" type="Label" parent="UI/GameOver/Stats/Mana"]
 layout_mode = 0
 offset_left = 643.0
 offset_top = 169.0
@@ -4117,19 +4102,11 @@ label_settings = SubResource("LabelSettings_muo2u")
 
 [node name="Towers" type="Control" parent="UI/GameOver/Stats"]
 anchors_preset = 0
+offset_top = 104.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 144.0
 
-[node name="Subtitle5" type="Label" parent="UI/GameOver/Stats/Towers"]
-layout_mode = 0
-offset_left = 645.0
-offset_top = 285.0
-offset_right = 1291.0
-offset_bottom = 425.0
-text = "0"
-label_settings = SubResource("LabelSettings_muo2u")
-
-[node name="Subtitle6" type="Label" parent="UI/GameOver/Stats/Towers"]
+[node name="TowerLabel" type="Label" parent="UI/GameOver/Stats/Towers"]
 layout_mode = 0
 offset_left = 171.0
 offset_top = 287.0
@@ -4138,22 +4115,22 @@ offset_bottom = 411.0
 text = "Stories Built"
 label_settings = SubResource("LabelSettings_317w6")
 
-[node name="Kills" type="Control" parent="UI/GameOver/Stats"]
-anchors_preset = 0
-offset_left = -40.0
-offset_top = 99.0
-offset_bottom = 139.0
-
-[node name="Subtitle3" type="Label" parent="UI/GameOver/Stats/Kills"]
+[node name="Subtitle" type="Label" parent="UI/GameOver/Stats/Towers"]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 311.0
-offset_right = 1331.0
-offset_bottom = 451.0
+offset_left = 645.0
+offset_top = 285.0
+offset_right = 1291.0
+offset_bottom = 425.0
 text = "0"
 label_settings = SubResource("LabelSettings_muo2u")
 
-[node name="Subtitle4" type="Label" parent="UI/GameOver/Stats/Kills"]
+[node name="Kills" type="Control" parent="UI/GameOver/Stats"]
+anchors_preset = 0
+offset_left = -40.0
+offset_top = 203.0
+offset_bottom = 243.0
+
+[node name="KillsLabel" type="Label" parent="UI/GameOver/Stats/Kills"]
 layout_mode = 0
 offset_left = 174.0
 offset_top = 313.0
@@ -4161,6 +4138,15 @@ offset_right = 666.0
 offset_bottom = 437.0
 text = "Enemies Slain"
 label_settings = SubResource("LabelSettings_ectpw")
+
+[node name="Subtitle" type="Label" parent="UI/GameOver/Stats/Kills"]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 311.0
+offset_right = 1331.0
+offset_bottom = 451.0
+text = "0"
+label_settings = SubResource("LabelSettings_muo2u")
 
 [node name="Options" type="Control" parent="UI/GameOver"]
 anchors_preset = 0
@@ -4694,8 +4680,8 @@ active = false
 [connection signal="pressed" from="UI/Build/Build_Button" to="UI/Build" method="show_categories"]
 [connection signal="animation_changed" from="UI/Build/Anim" to="UI/Build" method="_on_anim_animation_changed"]
 [connection signal="current_animation_changed" from="UI/Build/Anim" to="UI/Build" method="_on_anim_current_animation_changed"]
-[connection signal="pressed" from="UI/Title/Options/Play" to="." method="start_game"]
-[connection signal="pressed" from="UI/Title/Options/Quit" to="." method="quit_game"]
+[connection signal="function_trigger" from="UI/Title/Options/Play" to="." method="start_game"]
+[connection signal="function_trigger" from="UI/Title/Options/Quit" to="." method="quit_game"]
 [connection signal="pressed" from="UI/GameOver/Options/Play" to="UI/GameOver" method="try_again"]
 [connection signal="pressed" from="UI/GameOver/Options/Quit" to="UI/GameOver" method="quit_game"]
 [connection signal="pressed" from="UI/Game_Speed/Speeds/Pause" to="UI/Game_Speed" method="_set_speed" binds= [0]]
@@ -4710,3 +4696,7 @@ active = false
 [connection signal="pressed" from="UI/Pause_Menu/Options/Quit" to="." method="quit_game"]
 
 [editable path="Sky"]
+[editable path="UI/Title/Options/Play"]
+[editable path="UI/Title/Options/Options"]
+[editable path="UI/Title/Options/Credits"]
+[editable path="UI/Title/Options/Quit"]

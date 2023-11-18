@@ -3,6 +3,20 @@ extends Node3D
 signal GoldChanged
 signal ManaChanged
 
+#Onready Nodes
+@onready var cam_rig = get_node("Cam_Rig")
+@onready var tower_node = get_node("Tower")
+
+@onready var title_screen = get_node("UI/Title")
+@onready var currency_ui = get_node("UI/Currency_UI")
+@onready var build_menu = get_node("UI/Build")
+@onready var game_speed_buttons = get_node("UI/Game_Speed")
+
+#@onready var audio = get_node("Audio")
+@onready var music = get_node("Audio/Music")
+@onready var enemy_manager = get_node("Enemy_Manager")
+@onready var day_cycle = get_node("Sky/Day_Cycle")
+
 @export_category("Currency Settings")
 @export var gold = 100 ##This is the count for gold currency. Value is starting amount.
 var gold_total = 0 #This is just to count up the total gained gold for stats
@@ -21,25 +35,25 @@ func _ready():
 	modify_currency("Gold", 0) #This updates the gold to reflect the starting currency
 	modify_currency("Mana", 0) #This updates the mana to reflect the starting currency
 	
-	$Cam_Rig.target = $Tower #This sets the starting target to the tower
+	cam_rig.target = tower_node #This sets the starting target to the tower
 
 #This starts the game to play
 func start_game():
-	GameInfo.game_state = "Play" #Sets the game state to Play
-	
-	$UI/Title/Audio/ButtonPress.play() #then we play the button press sound
+	"""
+	title_screen.get_node("Audio/ButtonPress").play() #then we play the button press sound
 	await get_tree().create_timer(0.2).timeout #Wait a second
-	$UI/Title/Audio/ButtonPress.stop() #And make sure it stopped (I forgot what issue made this needed)
-	
-	$UI/Game_Speed/Anim.play("Toggle") #Brings up the game speed UI
-	$UI/Currency_UI/Anim.play("Toggle")
-	$UI/Build.show() #Shows the build button
+	title_screen.get_node("Audio/ButtonPress").stop() #And make sure it stopped (I forgot what issue made this needed)
+	"""
+	GameInfo.game_state = "Play" #Sets the game state to Play
+	game_speed_buttons.get_node("Anim").play("Toggle") #Brings up the game speed UI
+	currency_ui.get_node("Anim").play("Toggle")
+	build_menu.show() #Shows the build button
 	
 	#Shows 3D Tower information
-	$Tower/Health.show() 
-	$Tower/Armor.show()
+	tower_node.setup()
+	tower_node.show_health_armor()
 	
-	$UI/Title.hide() #Hides the title
+	title_screen.hide() #Hides the title
 	GameInfo.game_is_in_play = true #Make sure the game knows it's in play
 
 #This handles quitting the game
@@ -64,11 +78,11 @@ func modify_currency(_type, _amount):
 	match _type:
 		"Gold":
 			gold += _amount #The amount is added to the currency count. To subtract just send a negative amount
-			$UI/Currency_UI/Gold_Label.text = str(gold)
+			currency_ui.get_node("Gold_Label").text = str(gold)
 			emit_signal("GoldChanged", gold) #Then send out the signal to update currency visuals
 		"Mana":
 			mana += _amount
-			$UI/Currency_UI/Mana_Label.text = str(mana)
+			currency_ui.get_node("Mana_Label").text = str(mana)
 			emit_signal("ManaChanged", mana)
 	
 	if _amount > 0: #If gold is being added, add it to the currency total
@@ -81,19 +95,19 @@ func modify_currency(_type, _amount):
 
 #This will start enemies attacking
 func start_night():
-	$Audio/Music.switch_track("Night") #We switch the music track to the night variant
-	$Enemy_Manager._toggle(true) #We now allow enemies to spawn
+	music.switch_track("Night") #We switch the music track to the night variant
+	enemy_manager._toggle(true) #We now allow enemies to spawn
 	
-	$UI/Game_Speed.toggle_skip_night(false) #We don't allow the skip to night to work at night
+	game_speed_buttons.toggle_skip_night(false) #We don't allow the skip to night to work at night
 
 #This will end enemies attacking
 func end_night():
 	#$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
-	$Enemy_Manager.enemies_spawned = 0 #We set the amount of enemies currently spawned to 0
+	enemy_manager.enemies_spawned = 0 #We set the amount of enemies currently spawned to 0
 	
-	$Audio/Music.switch_track("Morning") #We switch the music track to the morning variant
+	music.switch_track("Morning") #We switch the music track to the morning variant
 	
-	$Enemy_Manager._toggle(false) #Then we stop enemies from spawning
+	enemy_manager._toggle(false) #Then we stop enemies from spawning
 	night_survived()
 
 #This will handle what happens when a night is survived
@@ -102,9 +116,9 @@ func night_survived():
 
 #When a day cycle finishes we set it to play again
 func day_finished(_anim_name):
-	$Sky/Day_Cycle.stop()
-	$Sky/Day_Cycle.play("Day")
+	day_cycle.stop()
+	day_cycle.play("Day")
 
 
 func night_skip_button_active():
-	$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
+	game_speed_buttons.toggle_skip_night(true) #Now that it's day they can skip to night again
