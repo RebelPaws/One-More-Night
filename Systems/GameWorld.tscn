@@ -731,7 +731,6 @@ texture = ExtResource("42_4ttje")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
-visible = false
 script = ExtResource("9_2n73j")
 
 [node name="Count" type="Label3D" parent="Tower/Armor"]
@@ -743,7 +742,7 @@ outline_size = 20
 horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Armor"]
-transform = Transform3D(0.02, 0, -1.60071e-10, 0, 0.02, 0, 1.60071e-10, 0, 0.02, -0.872658, 0.651967, 0.00926018)
+transform = Transform3D(0.255, 0, -2.04091e-09, 0, 0.255, 0, 2.04091e-09, 0, 0.255, -0.872658, 0.651967, 0.00926018)
 texture = ExtResource("20_i37xf")
 
 [node name="Health_Manager" parent="Tower" instance=ExtResource("12_sy8pw")]
@@ -4429,10 +4428,10 @@ text = "0"
 label_settings = SubResource("LabelSettings_6ebu0")
 vertical_alignment = 1
 
-[node name="CoinIcon" type="Sprite2D" parent="UI/Tower_Edit/Options/Upgrade"]
+[node name="Coin_Icon" type="Sprite2D" parent="UI/Tower_Edit/Options/Upgrade"]
 position = Vector2(135.632, -64.3677)
-scale = Vector2(0.419, 0.419)
-texture = ExtResource("43_4hy5k")
+scale = Vector2(0.249, 0.249)
+texture = ExtResource("21_4866x")
 
 [node name="Sell" type="TextureButton" parent="UI/Tower_Edit/Options"]
 layout_mode = 2
