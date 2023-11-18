@@ -69,7 +69,6 @@ func start_night():
 #This will end enemies attacking
 func end_night():
 	#$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
-	print_debug("end_night")
 	$Enemy_Manager.enemies_spawned = 0 #We set the amount of enemies currently spawned to 0
 	
 	$Audio/Music.switch_track("Morning") #We switch the music track to the morning variant
