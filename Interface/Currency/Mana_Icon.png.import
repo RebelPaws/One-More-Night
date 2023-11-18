@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1iyjoldus3ya"
-path="res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"
+uid="uid://ce2b60v214c8m"
+path="res://.godot/imported/Mana_Icon.png-6a7500618314de8935aaeb2b27ee4566.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Branding/KayKit_logo.png"
-dest_files=["res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"]
+source_file="res://Interface/Currency/Mana_Icon.png"
+dest_files=["res://.godot/imported/Mana_Icon.png-6a7500618314de8935aaeb2b27ee4566.ctex"]
 
 [params]
 

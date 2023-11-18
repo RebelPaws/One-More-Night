@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
 [ext_resource type="Script" path="res://Towers/Tower.gd" id="3_87d61"]
 [ext_resource type="PackedScene" uid="uid://dcwixsuialvfr" path="res://Systems/Cam_Rig.tscn" id="3_iekil"]
-[ext_resource type="Script" path="res://Interface/Currency_UI.gd" id="4_wmpif"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="5_a3okp"]
 [ext_resource type="Script" path="res://Interface/Health_UI.gd" id="7_jibyv"]
 [ext_resource type="Script" path="res://Interface/Armor_UI.gd" id="9_2n73j"]
@@ -17,11 +16,12 @@
 [ext_resource type="Script" path="res://Systems/World_Generator.gd" id="18_633u0"]
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="20_i37xf"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="21_810qw"]
+[ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="28_tcols"]
 [ext_resource type="EventAsset" uid="uid://23733nwsa2nj" path="res://addons/FMOD/editor/resources/events/{b60d65d1-0228-4bd3-9b81-81dee65d81bc}.tres" id="29_n55hd"]
@@ -668,23 +668,6 @@ transform = Transform3D(1, 0, 0, 0, 0.819552, -0.573004, 0, 0.573004, 0.819552, 
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.1268, 1.66285, 54.5311)
 script = ExtResource("3_87d61")
 
-[node name="Currency" type="Node3D" parent="Tower"]
-transform = Transform3D(0.755, 0, -9.14091e-09, 0, 0.755, 0, 9.14091e-09, 0, 0.755, 0.0139065, 1.55367, 0.962255)
-visible = false
-script = ExtResource("4_wmpif")
-
-[node name="Count" type="Label3D" parent="Tower/Currency"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.481045, 0.597611, 0.00510788)
-text = "0"
-font = ExtResource("5_a3okp")
-font_size = 282
-outline_size = 20
-horizontal_alignment = 0
-
-[node name="Sprite3D" type="Sprite3D" parent="Tower/Currency"]
-transform = Transform3D(0.315, 0, -1.86265e-09, 0, 0.315, 0, 1.86265e-09, 0, 0.315, -0.884146, 0.822362, 0.00938225)
-texture = ExtResource("43_4hy5k")
-
 [node name="Health" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -8.3819e-09, 0, 0.755, 0, 8.3819e-09, 0, 0.755, 0.0139065, 2.36082, 0.962259)
 visible = false
@@ -753,7 +736,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822061, 0.996599, -0.00542713, -0.996312, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.0243799, 0.00343295, 0.999696, 0.0822061, 0.996599, -0.00542713, -0.996312, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -3485,7 +3468,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2295, 0, 59)
 process_mode = 3
 
 [node name="Build" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3531,7 +3513,7 @@ disabled = true
 
 [node name="Armor_Icon" type="Sprite2D" parent="UI/Build/Categories/Defense_Button"]
 position = Vector2(140, 98)
-scale = Vector2(0.035, 0.035)
+scale = Vector2(0.38, 0.38)
 texture = ExtResource("20_i37xf")
 
 [node name="Label" type="Label" parent="UI/Build/Categories/Defense_Button"]
@@ -3587,6 +3569,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Attack_Towers" type="Control" parent="UI/Build"]
+visible = false
 anchors_preset = 0
 offset_top = 344.0
 offset_right = 40.0
@@ -3615,8 +3598,8 @@ vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Attack_Towers/Archer_Tower"]
 position = Vector2(20, -12)
-scale = Vector2(0.177, 0.177)
-texture = ExtResource("43_4hy5k")
+scale = Vector2(0.092, 0.092)
+texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -3690,8 +3673,8 @@ vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(20, -12)
-scale = Vector2(0.177, 0.177)
-texture = ExtResource("43_4hy5k")
+scale = Vector2(0.092, 0.092)
+texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 layout_mode = 0
@@ -3704,7 +3687,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 
 [node name="Defense_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(142, -15)
-scale = Vector2(0.01, 0.01)
+scale = Vector2(0.105, 0.105)
 texture = ExtResource("20_i37xf")
 
 [node name="Armor" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
@@ -3735,6 +3718,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Support_Towers" type="Control" parent="UI/Build"]
+visible = false
 anchors_preset = 0
 offset_left = 2.0
 offset_top = 280.0
@@ -3764,8 +3748,8 @@ vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 position = Vector2(20, -12)
-scale = Vector2(0.177, 0.177)
-texture = ExtResource("43_4hy5k")
+scale = Vector2(0.092, 0.092)
+texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0
@@ -3849,6 +3833,7 @@ event = ExtResource("29_n55hd")
 event = ExtResource("30_4yi7m")
 
 [node name="Title" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchor_left = 0.498
 anchor_top = 0.5
@@ -4547,6 +4532,12 @@ label_settings = SubResource("LabelSettings_hnysj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Currency_UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1910.0
+offset_bottom = 1084.0
+
 [node name="Audio" type="Node" parent="."]
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="Audio"]
@@ -4601,7 +4592,6 @@ active = false
 visible = false
 active = false
 
-[connection signal="CurrencyChanged" from="." to="Tower/Currency" method="_update_currency"]
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower/TowerHurt_Sound" method="play"]

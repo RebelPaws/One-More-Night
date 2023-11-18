@@ -1,21 +1,29 @@
 extends CharacterBody3D
 
+#Signal Setup
 signal TargetReached
 signal Enable
 var dead_connected = false
 
+#Variable Setup
+var active = false
+@onready var root = Commands.get_root()
+
+var state = "Idle"
+
+@export_category("Navigation Settings")
+@onready var nav_agent = $NavigationAgent3D
 @export var gravity : float
 @export var move_speed : float
-var ground_level = 2.5
-@export var currency_worth : int
+@export var ground_level = 2.5
 
-@onready var nav_agent = $NavigationAgent3D
-@onready var game_info = get_parent().get_parent().get_parent().get_parent()
+@export_category("Currency Settings")
+@export var gold_worth : int
+@export var mana_worth : int
 
-var active = false
+
 var retreat_pos : Vector3
 var can_attack = true
-
 var is_target_reached = false
 
 var target:
@@ -23,8 +31,8 @@ var target:
 		target = val
 		nav_agent.target_position = val.global_position
 
-var state = "Idle"
 var retreat = false
+
 
 func _enable():
 	set_physics_process(true)
@@ -76,4 +84,9 @@ func _disable():
 	active = false
 	retreat = false
 	global_position = Vector3(999999, 999999, 9999999)
+
+#I made this to make the payout code uniform and not needed to be added into each enemy script /S/Vespir
+func pay_worth():
+	root.modify_currency("Gold", gold_worth)
+	root.modify_currency("Mana", mana_worth)
 

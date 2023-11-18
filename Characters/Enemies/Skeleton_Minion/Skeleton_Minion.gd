@@ -42,7 +42,7 @@ func set_state(_new_state):
 			set_physics_process(false)
 			$Sounds/Death_Sound.play()
 			$Anim.play("Death")
-			game_info.modify_currency(currency_worth)
+			pay_worth()
 			await $Anim.animation_finished
 			_disable()
 	

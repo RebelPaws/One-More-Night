@@ -54,7 +54,7 @@ func buy_tower(tower_name, tower_category):
 	
 	var tower_anchor_point = tower_blocks.get_child(tower_blocks.get_child_count()-1).get_node("Anchor").global_position
 	
-	if game_info.has_currency(tower_info._get_cost("Build")):
+	if game_info.has_currency("Gold", tower_info._get_cost("Build")):
 		$Audio/TowerBuild.play()
 		
 		#var new_tower = tower_info.duplicate()
@@ -68,7 +68,7 @@ func buy_tower(tower_name, tower_category):
 		new_tower.active = true
 		new_tower.show()
 		
-		game_info.modify_currency(-tower_info._get_cost("Build"))
+		game_info.modify_currency("Gold", -tower_info._get_cost("Build"))
 		await get_tree().create_timer(0.2).timeout
 		$Audio/TowerBuild.stop()
 	else:

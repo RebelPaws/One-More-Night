@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1iyjoldus3ya"
-path="res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"
+uid="uid://canenc2rsx650"
+path="res://.godot/imported/Gold_Icon.png-20c0be993bfe85e4f432052cfba02d09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Branding/KayKit_logo.png"
-dest_files=["res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"]
+source_file="res://Interface/Currency/Gold_Icon.png"
+dest_files=["res://.godot/imported/Gold_Icon.png-20c0be993bfe85e4f432052cfba02d09.ctex"]
 
 [params]
 
