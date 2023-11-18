@@ -753,7 +753,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5374, 0, 66.4292)
 curve = SubResource("Curve3D_ygevi")
 
 [node name="Spawn_Position" type="PathFollow3D" parent="Enemy_Manager/Spawn_Area"]
-transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822062, 0.996599, -0.00542713, -0.996313, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
+transform = Transform3D(0.02438, 0.00343295, 0.999696, 0.0822061, 0.996599, -0.00542713, -0.996312, 0.0823138, 0.024015, 39.2952, 2.12905, -64.1648)
 progress = 285.191
 
 [node name="Spawn_Timer" type="Timer" parent="Enemy_Manager"]
@@ -4153,9 +4153,9 @@ anchor_top = 0.047
 anchor_right = 0.098
 anchor_bottom = 0.047
 offset_left = -169.16
-offset_top = -223.76
+offset_top = -39.76
 offset_right = 175.84
-offset_bottom = -135.76
+offset_bottom = 48.24
 script = ExtResource("33_pdm5h")
 
 [node name="Speeds" type="HBoxContainer" parent="UI/Game_Speed"]
@@ -4266,6 +4266,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Skip_to_Night" type="TextureButton" parent="UI/Game_Speed/Speeds"]
+visible = false
 layout_mode = 2
 texture_normal = ExtResource("38_nclwv")
 texture_pressed = ExtResource("39_73jf0")

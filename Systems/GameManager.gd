@@ -68,19 +68,24 @@ func start_night():
 
 #This will end enemies attacking
 func end_night():
-	$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
+	#$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
+	print_debug("end_night")
 	$Enemy_Manager.enemies_spawned = 0 #We set the amount of enemies currently spawned to 0
 	
 	$Audio/Music.switch_track("Morning") #We switch the music track to the morning variant
 	
 	$Enemy_Manager._toggle(false) #Then we stop enemies from spawning
+	night_survived()
 
 #This will handle what happens when a night is survived
 func night_survived():
 	nights_survived += 1 #Add to the amount of nights survived
 
 #When a day cycle finishes we set it to play again
-func day_finished(anim_name):
+func day_finished(_anim_name):
+	$Sky/Day_Cycle.stop()
 	$Sky/Day_Cycle.play("Day")
 
 
+func night_skip_button_active():
+	$UI/Game_Speed.toggle_skip_night(true) #Now that it's day they can skip to night again
