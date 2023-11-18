@@ -1,9 +1,11 @@
 extends Control
 
 var menu = "None"
-var archer_tower_scene = preload("res://Towers/Attack/Archer/Archer_Tower.tscn")
-var shield_tower_scene = preload("res://Towers/Defense/Shield_Tower.tscn")
-var healer_tower_scene = preload("res://Towers/Support/Healer_Tower.tscn")
+#var archer_tower_scene = preload("res://Towers/Attack/Archer/Archer_Tower.tscn")
+#var shield_tower_scene = preload("res://Towers/Defense/Shield_Tower.tscn")
+#var healer_tower_scene = preload("res://Towers/Support/Healer_Tower.tscn")
+
+
 
 func back():
 	$Audio/ButtonPress.play()
@@ -46,7 +48,7 @@ func select_category(_new_category):
 	
 	$Anim.play("Show_" + _new_category)
 
-func buy_tower(tower_name, tower_category):
+func buy_tower(tower_name, tower_category, tower_scene_string):
 	$Audio/ButtonPress.play()
 	await get_tree().create_timer(0.2).timeout
 	$Audio/ButtonPress.stop()
@@ -62,19 +64,21 @@ func buy_tower(tower_name, tower_category):
 		
 		#var new_tower = tower_info.duplicate()
 		var new_tower
-		
-		match tower_name:
-			"Archer":
-				new_tower = archer_tower_scene.instantiate()
-			"Shield":
-				new_tower = shield_tower_scene.instantiate()
-			"Healer":
-				new_tower = healer_tower_scene.instantiate()
-		
-		
+		new_tower = load(tower_scene_string).instantiate()
 		tower_blocks.add_child(new_tower)
 		new_tower.global_position = tower_anchor_point
-		new_tower.active = true
+		match tower_name:
+			"Archer":
+				new_tower.attack()
+			"Shield":
+				#new_tower = shield_tower_scene.instantiate()
+				new_tower._add_armor()
+			#"Healer":
+				#new_tower = healer_tower_scene.instantiate()
+		
+		
+		#tower_blocks.add_child(new_tower)
+		#new_tower.global_position = tower_anchor_point
 		new_tower.show()
 		
 		game_info.modify_currency("Gold", -tower_info._get_cost("Build"))
@@ -87,3 +91,4 @@ func buy_tower(tower_name, tower_category):
 
 func _on_anim_current_animation_changed(name):
 	$Anim.speed_scale = GameInfo.get_real_time()
+

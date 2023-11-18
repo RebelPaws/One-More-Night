@@ -4,6 +4,8 @@ var can_attack = true
 var chance_for_quickdraw = 35.0
 
 func _ready():
+	if not active:
+		return
 	attack()
 	#var detection_range = get_node("Detection_Range")
 	#var click = get_node("3D_Click")

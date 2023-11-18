@@ -3675,6 +3675,7 @@ disabled = true
 script = ExtResource("21_810qw")
 tower_id = "Archer"
 tower_category = "Attack"
+tower_scene_string = "res://Towers/Attack/Archer/Archer_Tower.tscn"
 
 [node name="Label" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 layout_mode = 0
@@ -3750,6 +3751,7 @@ disabled = true
 script = ExtResource("21_810qw")
 tower_id = "Shield"
 tower_category = "Defense"
+tower_scene_string = "res://Towers/Defense/Shield_Tower.tscn"
 
 [node name="Label" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 layout_mode = 0
@@ -3824,6 +3826,7 @@ disabled = true
 script = ExtResource("21_810qw")
 tower_id = "Healer"
 tower_category = "Support"
+tower_scene_string = "res://Towers/Support/Healer_Tower.tscn"
 
 [node name="Label" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 layout_mode = 0
@@ -4648,16 +4651,13 @@ parameter_dayNight = 30.0
 [node name="Archer" parent="Towers" instance=ExtResource("53_bmuy6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.4176, 0)
 visible = false
-active = false
 
 [node name="Shield" parent="Towers" instance=ExtResource("54_achsv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.8461, 0)
 visible = false
-active = false
 
 [node name="Healer" parent="Towers" instance=ExtResource("55_2ugdr")]
 visible = false
-active = false
 
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
@@ -4671,11 +4671,14 @@ active = false
 [connection signal="pressed" from="UI/Build/Categories/Defense_Button" to="UI/Build" method="select_category" binds= ["Defense"]]
 [connection signal="pressed" from="UI/Build/Categories/Support_Button" to="UI/Build" method="select_category" binds= ["Support"]]
 [connection signal="pressed" from="UI/Build/Categories/Back_Button" to="UI/Build" method="back"]
-[connection signal="pressed" from="UI/Build/Attack_Towers/Archer_Tower" to="UI/Build" method="buy_tower" binds= ["Archer", "Attack"]]
+[connection signal="buy_tower_clicked" from="UI/Build/Attack_Towers/Archer_Tower" to="UI/Build" method="buy_tower"]
+[connection signal="pressed" from="UI/Build/Attack_Towers/Archer_Tower" to="UI/Build/Attack_Towers/Archer_Tower" method="_on_pressed"]
 [connection signal="pressed" from="UI/Build/Attack_Towers/Back_Button" to="UI/Build" method="back"]
-[connection signal="pressed" from="UI/Build/Defense_Towers/Shield_Tower" to="UI/Build" method="buy_tower" binds= ["Shield", "Defense"]]
+[connection signal="buy_tower_clicked" from="UI/Build/Defense_Towers/Shield_Tower" to="UI/Build" method="buy_tower"]
+[connection signal="pressed" from="UI/Build/Defense_Towers/Shield_Tower" to="UI/Build/Defense_Towers/Shield_Tower" method="_on_pressed"]
 [connection signal="pressed" from="UI/Build/Defense_Towers/Back_Button" to="UI/Build" method="back"]
-[connection signal="pressed" from="UI/Build/Support_Towers/Healer_Tower" to="UI/Build" method="buy_tower" binds= ["Healer", "Support"]]
+[connection signal="buy_tower_clicked" from="UI/Build/Support_Towers/Healer_Tower" to="UI/Build" method="buy_tower"]
+[connection signal="pressed" from="UI/Build/Support_Towers/Healer_Tower" to="UI/Build/Support_Towers/Healer_Tower" method="_on_pressed"]
 [connection signal="pressed" from="UI/Build/Support_Towers/Back_Button" to="UI/Build" method="back"]
 [connection signal="pressed" from="UI/Build/Build_Button" to="UI/Build" method="show_categories"]
 [connection signal="animation_changed" from="UI/Build/Anim" to="UI/Build" method="_on_anim_animation_changed"]

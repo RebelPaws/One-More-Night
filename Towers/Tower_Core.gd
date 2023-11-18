@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var active = true ##This determines whether the object is active or not
+@export var active : bool ##This determines whether the object is active or not
 
 @export_category("Tower Identification")
 @export var tower_id : String ##This is the tower's ID in all game files

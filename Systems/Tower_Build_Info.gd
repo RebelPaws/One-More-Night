@@ -2,10 +2,14 @@ extends Button
 
 #This sets up the info for the build menu tower block buttons
 
-@onready var game_root = get_parent().get_parent().get_parent().get_parent()
+@onready var game_root = get_tree().get_root().get_node("Game")
 
 @export var tower_id : String ##The name or id of the tower block
 @export var tower_category : String ##The category the tower is in (Attack, Defense, Support)
+@export var tower_scene_string : String ##The scene to instantiate
+#@export var tower_cost : int
+
+signal buy_tower_clicked(id_name : String, category : String, scene_string : String)
 
 func _ready():
 	update_info()
@@ -26,3 +30,6 @@ func update_info():
 		"Support":
 			get_node("Heal").text = str(tower.healing[tower.level])
 
+
+func _on_pressed():
+	emit_signal("buy_tower_clicked", tower_id, tower_category, tower_scene_string)
