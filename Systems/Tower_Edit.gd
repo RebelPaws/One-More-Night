@@ -7,7 +7,6 @@ var tower_lock_on #This is the tower being focused on
 @export var refund_rate = 1.0 ##This is what percent of the tower cost is refunded during sales
 
 @onready var game_root = Commands.get_root()
-@onready var tower_info = game_root.get_node("Towers")
 
 #This pulls up the menu
 func enable(tower_focused):
