@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Systems/World_Generator.gd" id="18_633u0"]
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="20_i37xf"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="21_810qw"]
 [ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
@@ -744,7 +744,7 @@ outline_size = 20
 horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Armor"]
-transform = Transform3D(0.255, 0, -2.04091e-09, 0, 0.255, 0, 2.04091e-09, 0, 0.255, -0.872658, 0.651967, 0.00926018)
+transform = Transform3D(0.022, 0, -1.76079e-10, 0, 0.022, 0, 1.76079e-10, 0, 0.022, -0.872658, 0.651967, 0.00926018)
 texture = ExtResource("20_i37xf")
 
 [node name="Health_Manager" parent="Tower" instance=ExtResource("12_sy8pw")]
@@ -3604,7 +3604,7 @@ disabled = true
 
 [node name="Armor_Icon" type="Sprite2D" parent="UI/Build/Categories/Defense_Button"]
 position = Vector2(140, 98)
-scale = Vector2(0.38, 0.38)
+scale = Vector2(0.038, 0.038)
 texture = ExtResource("20_i37xf")
 
 [node name="Label" type="Label" parent="UI/Build/Categories/Defense_Button"]
@@ -3779,7 +3779,7 @@ label_settings = SubResource("LabelSettings_qkqbi")
 
 [node name="Defense_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 position = Vector2(142, -15)
-scale = Vector2(0.105, 0.105)
+scale = Vector2(0.01, 0.01)
 texture = ExtResource("20_i37xf")
 
 [node name="Armor" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
