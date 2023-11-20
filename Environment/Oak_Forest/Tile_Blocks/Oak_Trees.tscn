@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv1ulq2pkqh31"]
+[gd_scene load_steps=17 format=3 uid="uid://cv1ulq2pkqh31"]
 
-[ext_resource type="Script" path="res://Environment/Tree_Manage.gd" id="1_o0xg7"]
 [ext_resource type="Material" uid="uid://d2twujlw4ape2" path="res://Environment/Oak_Forest/Trees/Oak_Tree_1/Materials/Oak_Tree_Trunk.material" id="2_75pbr"]
+[ext_resource type="Script" path="res://Systems/Decor_Manager.gd" id="3_mimmv"]
 [ext_resource type="Material" uid="uid://dqc1dr3mhukwx" path="res://Environment/Oak_Forest/Trees/Oak_Tree_1/Materials/Oak_Tree_Leaves.material" id="3_psy4c"]
 [ext_resource type="Material" uid="uid://qjhga0ahls18" path="res://Environment/Maple_Forest/Ground/Materials/Maple_Forest_Grass.material" id="4_6j5yw"]
+[ext_resource type="PackedScene" uid="uid://buwvf4b5miec0" path="res://Systems/3D_Clickable/3D_Clickable.tscn" id="4_hb8q3"]
 [ext_resource type="Material" uid="uid://dib1op24jkii7" path="res://Environment/Materials/Dirt.material" id="5_p4xk6"]
 [ext_resource type="Script" path="res://Systems/Tile_Biome_Info.gd" id="6_ohjwt"]
 [ext_resource type="PackedScene" uid="uid://cqr64ma6ayruh" path="res://Environment/Maple_Forest/Tile_Blocks/Maple_Trees_1.tscn" id="7_uwbio"]
@@ -141,7 +142,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qr33i")
 
 [node name="Maple_Trees_1" type="Node3D"]
-script = ExtResource("1_o0xg7")
 
 [node name="detail_treeA2" type="MeshInstance3D" parent="."]
 transform = Transform3D(608.5, 0, 0, 0, 608.5, 0, 0, 0, 608.5, 0.0991861, 2.02776, 1.54884)
@@ -149,6 +149,10 @@ mesh = SubResource("ArrayMesh_boool")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_75pbr")
 surface_material_override/1 = ExtResource("3_psy4c")
+script = ExtResource("3_mimmv")
+
+[node name="3D_Click" parent="detail_treeA2" instance=ExtResource("4_hb8q3")]
+transform = Transform3D(0.00164339, 0, 0, 0, 0.00164339, 0, 0, 0, 0.00164339, -0.000163001, -0.00333239, -0.00254534)
 
 [node name="detail_treeA3" type="MeshInstance3D" parent="."]
 transform = Transform3D(608.5, 0, 0, 0, 608.5, 0, 0, 0, 608.5, 0.0991861, 2.02776, -1.70876)
@@ -156,6 +160,10 @@ mesh = SubResource("ArrayMesh_boool")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_75pbr")
 surface_material_override/1 = ExtResource("3_psy4c")
+script = ExtResource("3_mimmv")
+
+[node name="3D_Click2" parent="detail_treeA3" instance=ExtResource("4_hb8q3")]
+transform = Transform3D(0.00164339, 0, 0, 0, 0.00164339, 0, 0, 0, 0.00164339, -0.000163001, -0.00333239, 0.00280815)
 
 [node name="detail_treeA4" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.59854, 0, -608.483, 0, 608.5, 0, 608.483, 0, 4.59854, 1.60144, 2.02776, -0.0160167)
@@ -163,6 +171,10 @@ mesh = SubResource("ArrayMesh_boool")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_75pbr")
 surface_material_override/1 = ExtResource("3_psy4c")
+script = ExtResource("3_mimmv")
+
+[node name="3D_Click" parent="detail_treeA4" instance=ExtResource("4_hb8q3")]
+transform = Transform3D(1.24193e-05, 0, 0.00164334, 0, 0.00164339, 0, -0.00164334, 0, 1.24193e-05, 6.43203e-06, -0.00333239, 0.00263191)
 
 [node name="Maple_Forest" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

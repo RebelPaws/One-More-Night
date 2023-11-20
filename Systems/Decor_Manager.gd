@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 #This gets the game root for us
-@onready var game_root = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
+@onready var game_root = get_tree().get_root().get_node("Game")
 
 @export var cost_to_remove = 5 ##This is the cost to remove the decor from the map
 

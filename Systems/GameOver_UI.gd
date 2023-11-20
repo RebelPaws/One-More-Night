@@ -13,7 +13,7 @@ func _open():
 	GameInfo.game_state = "Menu"
 	
 	UI_node.get_node("Build").hide()
-	UI_node.get_node("Game_Speed/Anim").play_backwards("Toggle")
+	UI_node.get_node("Game_Speed")._on_build_game_speed_toggle()
 	UI_node.get_node("Currency_UI/Anim").play_backwards("Toggle")
 	
 	update_stats()
