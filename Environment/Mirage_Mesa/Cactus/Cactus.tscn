@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://6bsedk7ydm4a"]
+[gd_scene load_steps=7 format=3 uid="uid://6bsedk7ydm4a"]
 
 [ext_resource type="Material" uid="uid://b16xn8x235m53" path="res://Test/Shaders/Cel_Material.material" id="1_0gfqk"]
 [ext_resource type="Shader" path="res://Test/Shaders/Cel_Shade.gdshader" id="2_34ltj"]
-[ext_resource type="Script" path="res://Systems/Decor_Manager.gd" id="3_wj0w8"]
-[ext_resource type="PackedScene" uid="uid://buwvf4b5miec0" path="res://Systems/3D_Clickable/3D_Clickable.tscn" id="4_8yfvy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swq2n"]
 resource_name = "cacturs_2"
@@ -68,6 +66,3 @@ transform = Transform3D(46.9549, 88.2907, 1.05251e-05, 0, -1.19209e-05, 100, 88.
 mesh = SubResource("ArrayMesh_mmfw1")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_315wf")
-script = ExtResource("3_wj0w8")
-
-[node name="3D_Click" parent="." instance=ExtResource("4_8yfvy")]
