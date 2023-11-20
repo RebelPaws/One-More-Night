@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=84 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="PackedScene" uid="uid://5ybisss3x2lm" path="res://Interface/Buttons/Template/build_button_template.tscn" id="22_cu4m7"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="24_lge0f"]
 [ext_resource type="Script" path="res://Interface/Buttons/Template/back_button_template.gd" id="25_4mymi"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="25_fj146"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
@@ -3141,7 +3140,7 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Icon" parent="UI/Build/Categories/Support_Button" index="0"]
 scale = Vector2(0.19, 0.19)
-texture = ExtResource("24_lge0f")
+texture = ExtResource("42_4ttje")
 
 [node name="Label" parent="UI/Build/Categories/Support_Button" index="1"]
 text = "Support"
