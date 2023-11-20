@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://5ybisss3x2lm"]
+
+[ext_resource type="Texture2D" uid="uid://b4n7ipbo5gduk" path="res://Interface/Buttons/Square/Button_Square_Normal.png" id="1_1rnhk"]
+[ext_resource type="Texture2D" uid="uid://dkhimaosi08as" path="res://Interface/Buttons/Square/Button_Square_Pressed.png" id="2_gh3q2"]
+[ext_resource type="Script" path="res://Interface/Buttons/Template/button_template.gd" id="3_02k00"]
+[ext_resource type="Texture2D" uid="uid://g046psmclqur" path="res://Interface/Buttons/Square/Button_Square_Focused.png" id="3_qdf02"]
+[ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="4_hfsge"]
+[ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="5_ul2xr"]
+[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="7_gmvn6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d3ao"]
+bg_color = Color(0.145098, 0.145098, 0.145098, 0.529412)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.258824, 0.258824, 0.258824, 0.0823529)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_evl2d"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.101961, 0.101961, 0.101961, 1)
+Label/font_sizes/font_size = 80
+Label/fonts/font = ExtResource("4_hfsge")
+Label/styles/normal = SubResource("StyleBoxFlat_3d3ao")
+
+[node name="BuildButtonTemplate" type="TextureButton"]
+offset_right = 336.0
+offset_bottom = 336.0
+theme = SubResource("Theme_evl2d")
+texture_normal = ExtResource("1_1rnhk")
+texture_pressed = ExtResource("2_gh3q2")
+texture_hover = ExtResource("3_qdf02")
+texture_focused = ExtResource("3_qdf02")
+script = ExtResource("3_02k00")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(168, 143)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("7_gmvn6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 239.0
+offset_right = 302.0
+offset_bottom = 336.0
+text = "[Text]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPress" type="StudioEventEmitter3D" parent="."]
+event = ExtResource("5_ul2xr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

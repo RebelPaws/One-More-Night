@@ -1,7 +1,10 @@
 extends TextureButton
 
+class_name ButtonTemplate
+
 @onready var buttonpress_sound = get_node("ButtonPress")
 @onready var timer = get_node("Timer")
+@onready var label = get_node("Label")
 
 signal function_trigger
 

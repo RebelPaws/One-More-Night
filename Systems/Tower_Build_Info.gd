@@ -1,4 +1,4 @@
-extends Button
+extends ButtonTemplate
 
 #This sets up the info for the build menu tower block buttons
 
@@ -8,6 +8,7 @@ extends Button
 @export var tower_category : String ##The category the tower is in (Attack, Defense, Support)
 @export var tower_scene_string : String ##The scene to instantiate
 #@export var tower_cost : int
+@onready var cost_label = get_node("Cost")
 
 signal buy_tower_clicked(id_name : String, category : String, scene_string : String)
 
@@ -19,7 +20,7 @@ func update_info():
 	var tower = game_root.get_node("Towers").get_node(tower_id)
 	if tower == null: return
 	
-	$Cost.text = str(-tower._get_cost("Build")) #Set the cost label
+	cost_label.text = str(-tower._get_cost("Build")) #Set the cost label
 	
 	#Then we set the category special stat
 	match tower_category:
@@ -31,5 +32,5 @@ func update_info():
 			get_node("Heal").text = str(tower.healing[tower.level])
 
 
-func _on_pressed():
+func _on_function_trigger():
 	emit_signal("buy_tower_clicked", tower_id, tower_category, tower_scene_string)

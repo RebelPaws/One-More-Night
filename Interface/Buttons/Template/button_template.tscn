@@ -27,7 +27,7 @@ offset_left = 61.0
 offset_top = 24.0
 offset_right = 677.0
 offset_bottom = 266.0
-text = "Play"
+text = "[Text]"
 label_settings = SubResource("LabelSettings_hnysj")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -36,6 +36,7 @@ vertical_alignment = 1
 event = ExtResource("4_5banv")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

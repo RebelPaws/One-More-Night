@@ -45,7 +45,7 @@ func start_game():
 	title_screen.get_node("Audio/ButtonPress").stop() #And make sure it stopped (I forgot what issue made this needed)
 	"""
 	GameInfo.game_state = "Play" #Sets the game state to Play
-	game_speed_buttons.get_node("Anim").play("Toggle") #Brings up the game speed UI
+	game_speed_buttons._on_build_game_speed_toggle() #Brings up the game speed UI
 	currency_ui.get_node("Anim").play("Toggle")
 	build_menu.show() #Shows the build button
 	
