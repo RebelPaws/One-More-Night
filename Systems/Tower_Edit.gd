@@ -41,7 +41,7 @@ func enable(tower_focused):
 	$Anim.play("Toggle") #We'll play the toggle animation now
 	
 	#And play the game speed toggle backwards to remove it
-	get_parent().get_node("Game_Speed/Anim").play_backwards("Toggle") 
+	get_parent().get_node("Game_Speed")._on_build_game_speed_toggle()
 	
 	$Options/Upgrade.grab_focus()
 
@@ -57,7 +57,7 @@ func disable():
 	await $Anim.animation_finished #We'll wait for the un-toggle animation to finish
 	active = false #Then we deactive the menu
 	
-	get_parent().get_node("Game_Speed/Anim").play("Toggle") #We'll now toggle the game speed UI again
+	get_parent().get_node("Game_Speed")._on_build_game_speed_toggle() #We'll now toggle the game speed UI again
 	get_parent().get_node("Build").show() #And show the build button
 	
 	$Stats.get_node(tower_lock_on.tower_category).hide() #The stats UI will also go away
@@ -98,7 +98,7 @@ func sell_tower():
 	#This is the amount to refund
 	var to_refund = tower_lock_on.costs[tower_lock_on.level] * refund_rate
 	
-	game_root.modify_currency(to_refund) #Then we send the currency back
+	game_root.modify_currency("Gold", to_refund) #Then we send the currency back
 	disable() #And disable the menu since the tower is now gone
 	
 	await get_tree().create_timer(0.5).timeout #This is to ensure everything is done before we free the tower block

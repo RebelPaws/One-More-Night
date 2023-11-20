@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://Interface/Buttons/Template/back_button_template.gd" id="25_4mymi"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="25_fj146"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="28_tcols"]
 [ext_resource type="PackedScene" uid="uid://dkl4s0oj3x2sr" path="res://Interface/Buttons/Template/button_template.tscn" id="29_arder"]
@@ -3448,7 +3448,7 @@ texture = ExtResource("42_4ttje")
 [node name="Label" parent="UI/Build/Support_Towers/Healer_Tower" index="1"]
 offset_left = 27.75
 offset_right = 307.75
-text = "Shield Wall"
+text = "Healers"
 
 [node name="Heal" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 clip_children = 2
