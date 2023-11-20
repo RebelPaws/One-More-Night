@@ -9,7 +9,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
 font = ExtResource("3_kw3lh")
 font_size = 240
-outline_size = 10
+outline_size = 20
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ButtonTemplate" type="TextureButton"]

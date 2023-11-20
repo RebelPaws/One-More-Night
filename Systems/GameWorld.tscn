@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=86 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
 [ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="20_i37xf"]
+[ext_resource type="Script" path="res://Interface/menu_template.gd" id="21_22ett"]
 [ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="PackedScene" uid="uid://5ybisss3x2lm" path="res://Interface/Buttons/Template/build_button_template.tscn" id="22_cu4m7"]
@@ -228,6 +229,19 @@ font = ExtResource("5_a3okp")
 font_size = 56
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4s10"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.470588)
+border_width_left = 400
+border_width_top = 300
+border_width_right = 400
+border_width_bottom = 300
+border_color = Color(0.105882, 0.105882, 0.105882, 0)
+border_blend = true
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_fsulb")
@@ -3100,14 +3114,20 @@ anchors_preset = 0
 offset_top = 1080.0
 offset_right = 468.0
 offset_bottom = 1211.0
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(0, 1080)
+position_on_screen = Vector2(0, 780)
 
-[node name="Attack_Button" parent="UI/Build/Categories" instance=ExtResource("22_cu4m7")]
+[node name="Attack_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
 offset_left = 610.0
 offset_top = 34.0
 offset_right = 946.0
 offset_bottom = 370.0
 scale = Vector2(0.7, 0.7)
+script = ExtResource("25_4mymi")
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Attack_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Attack_Button" index="0"]
 scale = Vector2(0.35, 0.35)
@@ -3115,13 +3135,16 @@ scale = Vector2(0.35, 0.35)
 [node name="Label" parent="UI/Build/Categories/Attack_Button" index="1"]
 text = "Attack	"
 
-[node name="Defense_Button" parent="UI/Build/Categories" instance=ExtResource("22_cu4m7")]
+[node name="Defense_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
 offset_left = 890.0
 offset_top = 34.0
 offset_right = 1226.0
 offset_bottom = 370.0
 scale = Vector2(0.7, 0.7)
+script = ExtResource("25_4mymi")
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Defense_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Defense_Button" index="0"]
 scale = Vector2(0.051, 0.051)
@@ -3130,13 +3153,16 @@ texture = ExtResource("20_i37xf")
 [node name="Label" parent="UI/Build/Categories/Defense_Button" index="1"]
 text = "Defense"
 
-[node name="Support_Button" parent="UI/Build/Categories" instance=ExtResource("22_cu4m7")]
+[node name="Support_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
 offset_left = 1170.0
 offset_top = 34.0
 offset_right = 1506.0
 offset_bottom = 370.0
 scale = Vector2(0.7, 0.7)
+script = ExtResource("25_4mymi")
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Support_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Support_Button" index="0"]
 scale = Vector2(0.19, 0.19)
@@ -3145,7 +3171,7 @@ texture = ExtResource("42_4ttje")
 [node name="Label" parent="UI/Build/Categories/Support_Button" index="1"]
 text = "Support"
 
-[node name="Back_Button" type="TextureButton" parent="UI/Build/Categories"]
+[node name="Back_Button" type="TextureButton" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 184.0
@@ -3156,7 +3182,8 @@ texture_normal = ExtResource("28_6ncor")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 script = ExtResource("25_4mymi")
-menu_leaving = "Categories"
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Build_Control")
 
 [node name="Label" type="Label" parent="UI/Build/Categories/Back_Button"]
 layout_mode = 0
@@ -3179,9 +3206,12 @@ one_shot = true
 [node name="Attack_Towers" type="Control" parent="UI/Build"]
 visible = false
 anchors_preset = 0
-offset_top = 344.0
+offset_top = 1080.0
 offset_right = 283.0
-offset_bottom = 471.0
+offset_bottom = 1207.0
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(0, 1080)
+position_on_screen = Vector2(0, 780)
 
 [node name="Archer_Tower" parent="UI/Build/Attack_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3203,6 +3233,7 @@ scale = Vector2(0.22, 0.22)
 text = "Archer"
 
 [node name="Damage" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 166.0
 offset_top = 66.0
@@ -3217,11 +3248,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Attack_Towers/Archer_Tower"]
+clip_children = 2
 position = Vector2(211, 206)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 94.0
 offset_top = 160.0
@@ -3236,7 +3269,15 @@ text = "-50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back_Button" type="TextureButton" parent="UI/Build/Attack_Towers"]
+[node name="GrayOut" type="ColorRect" parent="UI/Build/Attack_Towers/Archer_Tower"]
+visible = false
+self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 337.0
+offset_bottom = 335.0
+
+[node name="Back_Button" type="TextureButton" parent="UI/Build/Attack_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 184.0
@@ -3247,7 +3288,8 @@ texture_normal = ExtResource("28_6ncor")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 script = ExtResource("25_4mymi")
-menu_leaving = "Attack"
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Categories")
 
 [node name="Label" type="Label" parent="UI/Build/Attack_Towers/Back_Button"]
 layout_mode = 0
@@ -3273,6 +3315,9 @@ anchors_preset = 0
 offset_top = 1080.0
 offset_right = 324.0
 offset_bottom = 1201.0
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(0, 1080)
+position_on_screen = Vector2(0, 780)
 
 [node name="Shield_Tower" parent="UI/Build/Defense_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3297,6 +3342,7 @@ offset_right = 307.75
 text = "Shield Wall"
 
 [node name="Armor" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 166.0
 offset_top = 66.0
@@ -3311,11 +3357,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
+clip_children = 2
 position = Vector2(211, 206)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 94.0
 offset_top = 160.0
@@ -3330,7 +3378,15 @@ text = "-30"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back_Button" type="TextureButton" parent="UI/Build/Defense_Towers"]
+[node name="GrayOut" type="ColorRect" parent="UI/Build/Defense_Towers/Shield_Tower"]
+visible = false
+self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 337.0
+offset_bottom = 335.0
+
+[node name="Back_Button" type="TextureButton" parent="UI/Build/Defense_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 184.0
@@ -3341,7 +3397,8 @@ texture_normal = ExtResource("28_6ncor")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 script = ExtResource("25_4mymi")
-menu_leaving = "Defense"
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Categories")
 
 [node name="Label" type="Label" parent="UI/Build/Defense_Towers/Back_Button"]
 layout_mode = 0
@@ -3367,6 +3424,9 @@ anchors_preset = 0
 offset_top = 1080.0
 offset_right = 318.0
 offset_bottom = 1207.0
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(0, 1080)
+position_on_screen = Vector2(0, 780)
 
 [node name="Healer_Tower" parent="UI/Build/Support_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3391,11 +3451,12 @@ offset_right = 307.75
 text = "Shield Wall"
 
 [node name="Heal" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 166.0
 offset_top = 66.0
-offset_right = 255.0
-offset_bottom = 163.0
+offset_right = 276.0
+offset_bottom = 198.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 96
@@ -3405,16 +3466,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
+clip_children = 2
 position = Vector2(211, 206)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
+clip_children = 2
 layout_mode = 0
 offset_left = 94.0
 offset_top = 160.0
-offset_right = 183.0
-offset_bottom = 257.0
+offset_right = 199.0
+offset_bottom = 259.0
 theme_override_colors/font_color = Color(1, 0.752941, 0.713726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
@@ -3424,7 +3487,15 @@ text = "-50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Back_Button" type="TextureButton" parent="UI/Build/Support_Towers"]
+[node name="GrayOut" type="ColorRect" parent="UI/Build/Support_Towers/Healer_Tower"]
+visible = false
+self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 337.0
+offset_bottom = 335.0
+
+[node name="Back_Button" type="TextureButton" parent="UI/Build/Support_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 184.0
@@ -3435,7 +3506,8 @@ texture_normal = ExtResource("28_6ncor")
 texture_hover = ExtResource("29_ya5w0")
 texture_focused = ExtResource("29_ya5w0")
 script = ExtResource("25_4mymi")
-menu_leaving = "Support"
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Categories")
 
 [node name="Label" type="Label" parent="UI/Build/Support_Towers/Back_Button"]
 layout_mode = 0
@@ -3460,14 +3532,20 @@ anchors_preset = 0
 offset_top = 780.0
 offset_right = 691.0
 offset_bottom = 1077.0
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(0, 1080)
+position_on_screen = Vector2(0, 780)
 
-[node name="Build_Button" parent="UI/Build/Build_Control" instance=ExtResource("29_arder")]
+[node name="Build_Button" parent="UI/Build/Build_Control" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("29_arder")]
 layout_mode = 0
 offset_left = 17.0
-offset_top = 140.0
+offset_top = 160.0
 offset_right = 801.0
-offset_bottom = 476.0
+offset_bottom = 496.0
 scale = Vector2(0.34, 0.34)
+script = ExtResource("25_4mymi")
+menu_leaving = NodePath("..")
+menu_entering = NodePath("../../Categories")
 
 [node name="Label" parent="UI/Build/Build_Control/Build_Button" index="0"]
 text = "Build"
@@ -3491,8 +3569,8 @@ anchor_right = 0.498
 anchor_bottom = 0.5
 offset_left = -956.16
 offset_top = -540.0
-offset_right = 957.84
-offset_bottom = 553.0
+offset_right = 963.84
+offset_bottom = 540.0
 
 [node name="Subtitle" type="Label" parent="UI/Title"]
 layout_mode = 0
@@ -4085,6 +4163,7 @@ texture = ExtResource("22_bckr0")
 
 [node name="Pause_Menu" type="Control" parent="UI"]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -4094,13 +4173,21 @@ offset_bottom = 40.0
 grow_vertical = 0
 script = ExtResource("46_8w4dk")
 
+[node name="PauseBackground" type="PanelContainer" parent="UI/Pause_Menu"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 1960.0
+offset_bottom = 1120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4s10")
+
 [node name="Resume" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
 process_mode = 3
 layout_mode = 0
-offset_left = 90.0
-offset_top = 74.0
-offset_right = 874.0
-offset_bottom = 410.0
+offset_left = 764.0
+offset_top = 373.0
+offset_right = 1548.0
+offset_bottom = 709.0
 
 [node name="Label" parent="UI/Pause_Menu/Resume" index="0"]
 text = "Resume"
@@ -4111,10 +4198,10 @@ process_mode = 3
 [node name="Quit" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
 process_mode = 3
 layout_mode = 0
-offset_left = 133.0
-offset_top = 257.0
-offset_right = 917.0
-offset_bottom = 593.0
+offset_left = 803.2
+offset_top = 556.0
+offset_right = 1587.2
+offset_bottom = 892.0
 scale = Vector2(0.4, 0.4)
 
 [node name="Label" parent="UI/Pause_Menu/Quit" index="0"]
@@ -4182,28 +4269,29 @@ visible = false
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower/TowerHealed_Sound" method="play"]
 [connection signal="timeout" from="Enemy_Manager/Spawn_Timer" to="Enemy_Manager" method="spawn_enemy"]
 [connection signal="timeout" from="Enemy_Manager/Retreat_Timer" to="Enemy_Manager" method="_on_retreat_timer_timeout"]
-[connection signal="function_trigger" from="UI/Build/Categories/Attack_Button" to="UI/Build" method="select_category" binds= ["Attack"]]
-[connection signal="function_trigger" from="UI/Build/Categories/Defense_Button" to="UI/Build" method="select_category" binds= ["Defense"]]
-[connection signal="function_trigger" from="UI/Build/Categories/Support_Button" to="UI/Build" method="select_category" binds= ["Support"]]
-[connection signal="leave_menu" from="UI/Build/Categories/Back_Button" to="UI/Build" method="back"]
+[connection signal="leave_menu" from="UI/Build/Categories/Attack_Button" to="UI/Build/Categories" method="change_menu"]
+[connection signal="leave_menu" from="UI/Build/Categories/Defense_Button" to="UI/Build/Categories" method="change_menu"]
+[connection signal="leave_menu" from="UI/Build/Categories/Support_Button" to="UI/Build/Categories" method="change_menu"]
+[connection signal="leave_menu" from="UI/Build/Categories/Back_Button" to="UI/Build/Categories" method="change_menu"]
 [connection signal="pressed" from="UI/Build/Categories/Back_Button" to="UI/Build/Categories/Back_Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="UI/Build/Categories/Back_Button/Timer" to="UI/Build/Categories/Back_Button" method="_on_timer_timeout" flags=18]
 [connection signal="buy_tower_clicked" from="UI/Build/Attack_Towers/Archer_Tower" to="UI/Build" method="buy_tower"]
 [connection signal="function_trigger" from="UI/Build/Attack_Towers/Archer_Tower" to="UI/Build/Attack_Towers/Archer_Tower" method="_on_function_trigger"]
-[connection signal="leave_menu" from="UI/Build/Attack_Towers/Back_Button" to="UI/Build" method="back"]
+[connection signal="leave_menu" from="UI/Build/Attack_Towers/Back_Button" to="UI/Build/Attack_Towers" method="change_menu"]
 [connection signal="pressed" from="UI/Build/Attack_Towers/Back_Button" to="UI/Build/Attack_Towers/Back_Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="UI/Build/Attack_Towers/Back_Button/Timer" to="UI/Build/Attack_Towers/Back_Button" method="_on_timer_timeout" flags=18]
 [connection signal="buy_tower_clicked" from="UI/Build/Defense_Towers/Shield_Tower" to="UI/Build" method="buy_tower"]
 [connection signal="function_trigger" from="UI/Build/Defense_Towers/Shield_Tower" to="UI/Build/Defense_Towers/Shield_Tower" method="_on_function_trigger"]
-[connection signal="leave_menu" from="UI/Build/Defense_Towers/Back_Button" to="UI/Build" method="back"]
+[connection signal="leave_menu" from="UI/Build/Defense_Towers/Back_Button" to="UI/Build/Defense_Towers" method="change_menu"]
 [connection signal="pressed" from="UI/Build/Defense_Towers/Back_Button" to="UI/Build/Defense_Towers/Back_Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="UI/Build/Defense_Towers/Back_Button/Timer" to="UI/Build/Defense_Towers/Back_Button" method="_on_timer_timeout" flags=18]
 [connection signal="buy_tower_clicked" from="UI/Build/Support_Towers/Healer_Tower" to="UI/Build" method="buy_tower"]
 [connection signal="function_trigger" from="UI/Build/Support_Towers/Healer_Tower" to="UI/Build/Support_Towers/Healer_Tower" method="_on_function_trigger"]
-[connection signal="leave_menu" from="UI/Build/Support_Towers/Back_Button" to="UI/Build" method="back"]
+[connection signal="leave_menu" from="UI/Build/Support_Towers/Back_Button" to="UI/Build/Support_Towers" method="change_menu"]
 [connection signal="pressed" from="UI/Build/Support_Towers/Back_Button" to="UI/Build/Support_Towers/Back_Button" method="_on_pressed" flags=18]
 [connection signal="timeout" from="UI/Build/Support_Towers/Back_Button/Timer" to="UI/Build/Support_Towers/Back_Button" method="_on_timer_timeout" flags=18]
-[connection signal="function_trigger" from="UI/Build/Build_Control/Build_Button" to="UI/Build" method="select_category" binds= ["Categories"]]
+[connection signal="function_trigger" from="UI/Build/Build_Control/Build_Button" to="UI/Build/Build_Control" method="change_menu" binds= [NodePath(".."), NodePath("../../Categories")]]
+[connection signal="leave_menu" from="UI/Build/Build_Control/Build_Button" to="UI/Build/Build_Control" method="change_menu"]
 [connection signal="function_trigger" from="UI/Title/Options/Play" to="." method="start_game"]
 [connection signal="function_trigger" from="UI/Title/Options/Quit" to="." method="quit_game"]
 [connection signal="pressed" from="UI/GameOver/Options/Play" to="UI/GameOver" method="try_again"]

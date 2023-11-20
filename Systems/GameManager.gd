@@ -79,18 +79,15 @@ func modify_currency(_type, _amount):
 		"Gold":
 			gold += _amount #The amount is added to the currency count. To subtract just send a negative amount
 			currency_ui.get_node("Gold_Label").text = str(gold)
-			emit_signal("GoldChanged", gold) #Then send out the signal to update currency visuals
+			emit_signal("GoldChanged") #Then send out the signal to update currency visuals
+			if _amount > 0: #If gold is being added, add it to the currency total
+				gold_total += _amount
 		"Mana":
 			mana += _amount
 			currency_ui.get_node("Mana_Label").text = str(mana)
-			emit_signal("ManaChanged", mana)
-	
-	if _amount > 0: #If gold is being added, add it to the currency total
-		match _type:
-			"Gold":
-					gold_total += _amount
-			"Mana":
-					mana_total += _amount
+			emit_signal("ManaChanged")
+			if _amount > 0: #If mana is being added, add it to the currency total
+				mana_total += _amount
 
 
 #This will start enemies attacking

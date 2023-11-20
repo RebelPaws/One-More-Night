@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="7_gmvn6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d3ao"]
-bg_color = Color(0.145098, 0.145098, 0.145098, 0.529412)
+bg_color = Color(0.145098, 0.145098, 0.145098, 0.403922)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
@@ -24,11 +24,13 @@ corner_radius_bottom_left = 20
 [sub_resource type="Theme" id="Theme_evl2d"]
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0.101961, 0.101961, 0.101961, 1)
+Label/constants/outline_size = 10
 Label/font_sizes/font_size = 80
 Label/fonts/font = ExtResource("4_hfsge")
 Label/styles/normal = SubResource("StyleBoxFlat_3d3ao")
 
 [node name="BuildButtonTemplate" type="TextureButton"]
+clip_children = 2
 offset_right = 336.0
 offset_bottom = 336.0
 theme = SubResource("Theme_evl2d")
