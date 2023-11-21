@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1iyjoldus3ya"
-path="res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"
+uid="uid://dynrgurp2ts03"
+path="res://.godot/imported/Diamond_Button_Focused.png-2256d1e770040b89daa253a2b4702d3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Branding/KayKit_logo.png"
-dest_files=["res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"]
+source_file="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Focused.png"
+dest_files=["res://.godot/imported/Diamond_Button_Focused.png-2256d1e770040b89daa253a2b4702d3a.ctex"]
 
 [params]
 

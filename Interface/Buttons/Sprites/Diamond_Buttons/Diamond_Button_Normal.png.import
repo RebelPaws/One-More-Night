@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvl2x7fnqxbbf"
-path="res://.godot/imported/Button_Rect_Normal.png-159a570234e5065fd781b257c58fd0e4.ctex"
+uid="uid://vcdmhkaiperm"
+path="res://.godot/imported/Diamond_Button_Normal.png-d974836901ce007ceb8fa1463db4d92a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png"
-dest_files=["res://.godot/imported/Button_Rect_Normal.png-159a570234e5065fd781b257c58fd0e4.ctex"]
+source_file="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Normal.png"
+dest_files=["res://.godot/imported/Diamond_Button_Normal.png-d974836901ce007ceb8fa1463db4d92a.ctex"]
 
 [params]
 

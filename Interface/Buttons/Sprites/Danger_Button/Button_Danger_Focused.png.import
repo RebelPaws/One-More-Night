@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4n7ipbo5gduk"
-path="res://.godot/imported/Button_Square_Normal.png-1a6444c75c3cb8e49372e05ae0be47a8.ctex"
+uid="uid://omygxj2xq7m"
+path="res://.godot/imported/Button_Danger_Focused.png-ba34e01633dc07b48d4018aed079a3dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interface/Buttons/Square/Button_Square_Normal.png"
-dest_files=["res://.godot/imported/Button_Square_Normal.png-1a6444c75c3cb8e49372e05ae0be47a8.ctex"]
+source_file="res://Interface/Buttons/Sprites/Danger_Button/Button_Danger_Focused.png"
+dest_files=["res://.godot/imported/Button_Danger_Focused.png-ba34e01633dc07b48d4018aed079a3dd.ctex"]
 
 [params]
 

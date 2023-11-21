@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1iyjoldus3ya"
-path="res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"
+uid="uid://b7aw8vbu2o0fa"
+path="res://.godot/imported/Button_Rect_Pressed.png-5534f91c9c71d8bc927f9d87a5e0db6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Branding/KayKit_logo.png"
-dest_files=["res://.godot/imported/KayKit_logo.png-8bcf4be77f54c196fd5c8aee0744ec88.ctex"]
+source_file="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Pressed.png"
+dest_files=["res://.godot/imported/Button_Rect_Pressed.png-5534f91c9c71d8bc927f9d87a5e0db6a.ctex"]
 
 [params]
 

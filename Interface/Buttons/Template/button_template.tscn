@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkl4s0oj3x2sr"]
+[gd_scene load_steps=9 format=3 uid="uid://dkl4s0oj3x2sr"]
 
-[ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Rectangle/Button_Rect_Normal.png" id="1_vb6cu"]
-[ext_resource type="Texture2D" uid="uid://dir8wjgwb6hd7" path="res://Interface/Buttons/Rectangle/Button_Rect_Focused.png" id="2_25143"]
+[ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Normal.png" id="1_vb6cu"]
+[ext_resource type="Texture2D" uid="uid://b7aw8vbu2o0fa" path="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Pressed.png" id="2_5mmam"]
+[ext_resource type="Texture2D" uid="uid://dir8wjgwb6hd7" path="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Focused.png" id="2_25143"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="3_kw3lh"]
 [ext_resource type="Script" path="res://Interface/Buttons/Template/button_template.gd" id="3_nniam"]
 [ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="4_5banv"]
+[ext_resource type="Texture2D" uid="uid://dnvjcxhiek5xv" path="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Disabled.png" id="4_lurw1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
 font = ExtResource("3_kw3lh")
@@ -17,7 +19,9 @@ offset_right = 784.0
 offset_bottom = 336.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("1_vb6cu")
+texture_pressed = ExtResource("2_5mmam")
 texture_hover = ExtResource("2_25143")
+texture_disabled = ExtResource("4_lurw1")
 texture_focused = ExtResource("2_25143")
 script = ExtResource("3_nniam")
 
