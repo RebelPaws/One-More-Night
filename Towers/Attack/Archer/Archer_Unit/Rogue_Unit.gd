@@ -4,12 +4,14 @@ extends Node3D
 @onready var area_to_shoot = get_node("Area3D/CollisionShape3D")
 @onready var attack_rate_timer = get_node("Timer")
 @onready var game_world = get_tree().get_root().get_node("Game")
+@onready var tower_node = get_parent().get_parent().get_parent().get_parent()
 
 var path_following : PathFollow3D
 
 var speed : float = 0.0
 var chance_for_perfect_shot = 20.0
 var damage = 5.0
+var attack_rate = 2.0
 var ground_from_location : float
 var collision_shape_points : PackedVector3Array
 
@@ -64,6 +66,12 @@ func _physics_process(delta):
 		if snapped(get_parent().get_progress_ratio(), .01) == ratio_walking_to:
 			toggle_walking()
 			#rotation_degrees.y -= 90
+
+func update_stats():
+	damage = tower_node.attack_damage[tower_node.level]
+	attack_rate = tower_node.attack_rate[tower_node.level]
+	attack_rate_timer.wait_time = attack_rate
+	
 
 func toggle_walking():
 	if is_walking:

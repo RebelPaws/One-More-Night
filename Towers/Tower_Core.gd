@@ -24,11 +24,11 @@ extends Node3D
 					}
 
 @export_subgroup("Attack")
-@export var attack_damage = {1: 20, 
+@export var attack_damage = {1: 5, 
 							2: 5, 
-							3: 5, 
-							4: 5, 
-							5: 5
+							3: 10, 
+							4: 10, 
+							5: 15
 							}
 
 #Updated attack rate to make sense
@@ -109,6 +109,8 @@ func open_tower_menu():
 
 func level_up():
 	level = clamp(level + 1, 1, level_cap)
+	for path in get_node("Units/Path3D").get_children():
+		path.get_child(0).update_stats()
 
 #This will return the cost whether it's level 1 or another level
 func _get_cost(_type):
