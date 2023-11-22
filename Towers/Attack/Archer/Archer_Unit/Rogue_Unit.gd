@@ -15,7 +15,9 @@ var attack_rate = 2.0
 var ground_from_location : float
 var collision_shape_points : PackedVector3Array
 
-var target_list : Array = []
+var target_list : Array = [] # This is for targets in range
+
+var passed_target_list : Array[Array] = [] # This is for targets from the tower
 
 var attack_ready = true
 var is_prepared = false
@@ -56,6 +58,8 @@ func prepare_archer():
 	#gott have 'em facing out
 	rotation_degrees.y = -90
 	
+	path_following.set_progress_ratio(randf())
+	
 	is_prepared = true
 
 func _physics_process(delta):
@@ -85,6 +89,8 @@ func toggle_walking():
 		if ratio_walking_to < prog_ratio:
 			distance_forward = ratio_walking_to + 1 - prog_ratio
 			distance_back = prog_ratio - ratio_walking_to
+		elif ratio_walking_to == prog_ratio:
+			return
 		else:
 			distance_forward = ratio_walking_to - prog_ratio
 			distance_back = prog_ratio + 1 - ratio_walking_to
@@ -147,15 +153,38 @@ func attack():
 
 func _on_area_3d_body_entered(body):
 	target_list.append(body)
-	if attack_ready:
+	if attack_ready and target_list.size() == 1:
 		attack()
 
 
 func _on_area_3d_body_exited(body):
 	target_list.erase(body)
+	for i in passed_target_list:
+		print(i)
+		print(passed_target_list)
+		if i.has(body):
+			passed_target_list.erase(i)
+	if target_list.size() == 0 and passed_target_list.size() > 0:
+		get_passed_target()
 
 
 func _on_timer_timeout():
 	attack_ready = true
 	if target_list.size() > 0:
 		attack()
+	elif passed_target_list.size() > 0:
+		get_passed_target()
+
+func get_passed_target():
+	if is_walking:
+		return
+	else:
+		var target_array : Array = []
+		for i in passed_target_list:
+			if target_array.size() == 0:
+				target_array = i
+			elif global_position.distance_to(i[0].global_position) < global_position.distance_to(target_array[0].global_position):
+				target_array = i
+		ratio_walking_to = target_array[1]
+		toggle_walking()
+		#passed_target_list.erase(target_array)

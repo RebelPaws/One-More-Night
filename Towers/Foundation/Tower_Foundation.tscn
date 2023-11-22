@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2qkth4w6d5km"]
+[gd_scene load_steps=15 format=3 uid="uid://d2qkth4w6d5km"]
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_wforb"]
 [ext_resource type="Material" uid="uid://dx8q2pldjgp6c" path="res://Towers/Materials/Tower_Stone_Base.material" id="2_7eja7"]
@@ -138,6 +138,9 @@ points = PackedVector3Array(-0.147225, 0.831295, -0.0215547, 0.135294, 0.0149557
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6d4h"]
 size = Vector3(25, 4, 25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwehy"]
+size = Vector3(5, 4, 5)
+
 [node name="Tower_Foundation" instance=ExtResource("1_wforb")]
 
 [node name="Towers" type="Node3D" parent="." index="0"]
@@ -163,6 +166,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)
 [node name="CollisionShape3D" parent="Detection_Range" index="0"]
 shape = SubResource("BoxShape3D_r6d4h")
 
+[node name="CollisionShape3D" parent="Nearby_Detection_Range" index="0"]
+shape = SubResource("BoxShape3D_uwehy")
+
+[node name="Timer" type="Timer" parent="." index="6"]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="body_entered" from="Detection_Range" to="." method="_on_foundation_detect_body"]
+[connection signal="body_exited" from="Detection_Range" to="." method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="Nearby_Detection_Range" to="." method="_on_nearby_detection_range_body_entered"]
+[connection signal="body_exited" from="Nearby_Detection_Range" to="." method="_on_nearby_detection_range_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="pass_targets_to_archer"]
 
 [editable path="3D_Click"]

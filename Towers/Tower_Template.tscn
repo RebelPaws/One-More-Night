@@ -20,6 +20,12 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection_Range"]
 
+[node name="Nearby_Detection_Range" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nearby_Detection_Range"]
+
 [node name="3D_Click" parent="." instance=ExtResource("2_e13ii")]
 
 [node name="CollisionShape3D" parent="3D_Click" index="0"]

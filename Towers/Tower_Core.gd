@@ -68,6 +68,7 @@ var level = 1 #This is the tower's level which will determine everything about i
 
 @export_category("Target Settings")
 var target_list = [] #This is the list of possible targets
+var near_target_list = [] #This is the list of near possible targets
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
 signal enemy_detected(enemy)
@@ -136,23 +137,92 @@ func get_closest_path_node(target, path_node):
 	
 	return closest_path_id
 
-func _on_foundation_detect_body(body):
-	#emit_signal("enemy_detected", body)
-	var closest_path_id : int
-	for i in get_parent().get_children():
+
+func signal_archer_unit():
+	var passed_target
+	if near_target_list.size() == 0:
+		passed_target = target_list[0]
+	else:
+		passed_target = near_target_list[0]
+	var archer_found = false
+	var checks = 1
+	while archer_found == false and checks != get_parent().get_child_count():
+		var closest_path_id : int
+		for i in get_parent().get_children():
+			if i.tower_id == "Archer":
+				var path_holder = i.get_node("Units/Path3D")
+				closest_path_id = get_closest_path_node(passed_target, path_holder)
+				var nearest_archer = null
+				for path in path_holder.get_children():
+					if nearest_archer == null:
+						nearest_archer = path.get_child(0)
+					elif path.child(0).global_position.distance_to(passed_target.global_position) < nearest_archer.global_position.distance_to(passed_target.global_position):
+						nearest_archer = path.get_child(0)
+				if nearest_archer != null:	
+					#nearest_archer.speed = .2
+					nearest_archer.passed_target_list.append([passed_target, nearest_archer.path_progress_ratios.get(closest_path_id)])
+					#nearest_archer.ratio_walking_to = nearest_archer.path_progress_ratios.get(closest_path_id)
+					#nearest_archer.toggle_walking()
+					archer_found = true
+					if nearest_archer.target_list.size() == 0:
+						nearest_archer.get_passed_target()
+					if near_target_list.has(passed_target):
+						near_target_list.erase(passed_target)
+				continue
+			checks += 1
+	if near_target_list.size() > 0:
+		get_node("Timer").start()
+	
+	"""for i in get_parent().get_children():
 		if i.tower_id == "Archer":
-			closest_path_id = get_closest_path_node(body, i.get_node("Units/Path3D"))
+			
 			var nearest_archer = null
-			for path in i.get_node("Units/Path3D").get_children():
-				if path.get_child(0).target_list.size() > 0:
-					return
-				elif path.get_child(0).is_walking == true:
-					return
-				elif nearest_archer == null:
-					nearest_archer = path.get_child(0)
+			if is_near:
+				for path in i.get_node("Units/Path3D").get_children():
+					if path.get_child(0).target_list.size() > 0:
+						continue
+					elif path.get_child(0).is_walking == true:
+						return
+					elif nearest_archer == null:
+						nearest_archer = path.get_child(0)
+			else:
+				for path in i.get_node("Units/Path3D").get_children():
+					if nearest_archer != null:
+						return
+					elif path.get_child(0).is_walking == true:
+						return
+					else:
+						nearest_archer = path.get_child(0)
+						return
 			if nearest_archer != null:	
 				#nearest_archer.speed = .2
 				nearest_archer.ratio_walking_to = nearest_archer.path_progress_ratios.get(closest_path_id)
-				nearest_archer.toggle_walking()
-				
-				 
+				nearest_archer.toggle_walking()"""
+
+func _on_foundation_detect_body(body):
+	target_list.append(body)
+	if $Timer.is_stopped():
+		$Timer.start()
+	#emit_signal("enemy_detected", body)
+	#signal_archer_unit()
+	
+
+func _on_nearby_detection_range_body_entered(body):
+	target_list.erase(body)
+	near_target_list.append(body)
+	if $Timer.is_stopped():
+		$Timer.start()
+	#signal_archer_unit()
+
+
+func _on_detection_range_body_exited(body):
+	if target_list.has(body):
+		target_list.erase(body)
+
+
+func _on_nearby_detection_range_body_exited(body):
+	near_target_list.erase(body)
+
+
+func pass_targets_to_archer():
+	signal_archer_unit()
