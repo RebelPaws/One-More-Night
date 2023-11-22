@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2qkth4w6d5km"]
+[gd_scene load_steps=14 format=3 uid="uid://d2qkth4w6d5km"]
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_wforb"]
 [ext_resource type="Material" uid="uid://dx8q2pldjgp6c" path="res://Towers/Materials/Tower_Stone_Base.material" id="2_7eja7"]
@@ -135,6 +135,9 @@ shadow_mesh = SubResource("ArrayMesh_cyeiw")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ahv1s"]
 points = PackedVector3Array(-0.147225, 0.831295, -0.0215547, 0.135294, 0.0149557, -1.9685, 0.480771, -0.236159, 0.0414023, -0.492702, -0.487275, -0.0843151, -0.403801, -0.400278, -1.90897, 0.277534, -0.700595, -1.91567, 0.229533, 0.768645, -0.0215547, 0.418011, -0.173165, -1.78002, 0.386533, -0.738562, -0.0843151, -0.201435, -0.831052, 0.00230125, -0.288165, -0.731571, -1.73851, -0.398365, -0.141841, -1.78002, -0.304126, 0.611505, 0.00992382, 0.51225, -0.581421, -0.96355, -0.209986, -0.0163691, -1.9685, 0.51225, -0.236159, -1.05759, -0.050574, -0.801328, -1.92987, -0.461224, -0.173338, 0.0414023, 0.100119, -0.860086, 0.000886641, 0.189859, -0.797172, -1.74448, -0.366985, -0.769887, -0.0843151, 0.292392, 0.643002, 0.00992382, 0.355152, -0.141841, -1.9685, -0.404142, -0.578042, -1.73229, -0.429844, -0.204662, -1.78002, -0.0216064, 0.862792, -0.0215547, -0.0804419, -0.828693, -1.74598, 0.393206, -0.488083, -1.90744, 0.166675, 0.831295, 0.00992382, -0.304126, -0.0790188, -1.9685, -0.272746, 0.391715, 0.0414023, -0.492702, -0.298809, -0.0528365)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6d4h"]
+size = Vector3(25, 4, 25)
+
 [node name="Tower_Foundation" instance=ExtResource("1_wforb")]
 
 [node name="Towers" type="Node3D" parent="." index="0"]
@@ -156,5 +159,10 @@ shape = SubResource("ConvexPolygonShape3D_ahv1s")
 
 [node name="Anchor" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)
+
+[node name="CollisionShape3D" parent="Detection_Range" index="0"]
+shape = SubResource("BoxShape3D_r6d4h")
+
+[connection signal="body_entered" from="Detection_Range" to="." method="_on_foundation_detect_body"]
 
 [editable path="3D_Click"]

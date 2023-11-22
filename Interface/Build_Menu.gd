@@ -46,8 +46,10 @@ func buy_tower(tower_name, tower_category, tower_scene_string):
 	var random_rotation = randi_range(0,359)
 	match tower_name:
 		"Archer":
-			new_tower.attack()
 			new_tower.set_rotation_degrees(Vector3(0,random_rotation,0))
+			new_tower.spawn_archer()
+			new_tower.attack()
+			
 		"Shield":
 			#new_tower = shield_tower_scene.instantiate()
 			new_tower._add_armor()

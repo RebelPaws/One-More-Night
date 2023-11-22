@@ -14,7 +14,7 @@ func _open():
 	
 	UI_node.get_node("Build").hide()
 	UI_node.get_node("Game_Speed")._on_build_game_speed_toggle()
-	UI_node.get_node("Currency_UI/Anim").play_backwards("Toggle")
+	UI_node.get_node("Currency_UI/").toggle_menu()
 	
 	update_stats()
 	GameInfo.game_is_in_play = false
