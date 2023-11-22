@@ -3,7 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_60w2p"]
 [ext_resource type="Script" path="res://Towers/Attack/Archer/Archer_Tower.gd" id="2_oudqd"]
 [ext_resource type="ArrayMesh" uid="uid://bag2vo6vtoajg" path="res://Towers/Attack/Archer/Models/Archer_Tower_Lvl_1.mesh" id="3_meph0"]
-[ext_resource type="PackedScene" uid="uid://bw0adrqc8c7xy" path="res://Towers/Attack/Archer/Archer_Unit/Archer_Unit.tscn" id="6_vmfjj"]
+
+[sub_resource type="Curve3D" id="Curve3D_qv6sh"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.557136, -0.0476835, -0.276181, 0, 0, 0, 0, 0, 0, -0.604, -0.048, 0.095, 0, 0, 0, 0, 0, 0, -0.337, -0.003, 0.55, 0, 0, 0, 0, 0, 0, 0.168, -0.003, 0.59, 0, 0, 0, 0, 0, 0, 0.523, -0.003, 0.37, 0, 0, 0, 0, 0, 0, 0.708, -0.028, -0.045, 0, 0, 0, 0, 0, 0, 0.608, -0.028, -0.33, 0, 0, 0, 0, 0, 0, 0.293, -0.048, -0.565, 0, 0, 0, 0, 0, 0, -0.142, -0.048, -0.615, 0, 0, 0, 0, 0, 0, -0.557136, -0.0476835, -0.276181),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0vdxu"]
 size = Vector3(9.44741, 5000, 10.4683)
@@ -14,10 +21,17 @@ tower_id = "Archer"
 tower_category = "Attack"
 costs = {
 1: 50,
+2: 25,
+3: 25,
+4: 25,
+5: 25
+}
+attack_damage = {
+1: 5,
 2: 5,
-3: 5,
-4: 5,
-5: 5
+3: 10,
+4: 10,
+5: 10
 }
 
 [node name="Anchor" parent="." index="0"]
@@ -32,12 +46,12 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.986006, 0)
 
 [node name="Units" type="Node3D" parent="." index="3"]
+transform = Transform3D(0.999999, 0, 2.98023e-08, 0, 1, 0, 0, 0, 0.999999, 0.352138, -0.000268489, -0.287402)
 
-[node name="Archer_Unit" parent="Units" index="0" instance=ExtResource("6_vmfjj")]
-transform = Transform3D(-0.0105331, 0, 0.0893815, 0, 0.09, 0, -0.0893815, 0, -0.0105331, 0.590105, -0.167487, -0.0792155)
-
-[node name="Archer_Unit3" parent="Units" index="1" instance=ExtResource("6_vmfjj")]
-transform = Transform3D(-0.0855995, 0, -0.0277981, 0, 0.09, 0, 0.0277981, 0, -0.0855995, -0.458234, -0.165809, -0.403453)
+[node name="Path3D" type="Path3D" parent="Units" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352138, -0.134533, 0.287402)
+rotation_order = 0
+curve = SubResource("Curve3D_qv6sh")
 
 [node name="Attack_Timer" type="Timer" parent="." index="4"]
 wait_time = 2.0

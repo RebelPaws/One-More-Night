@@ -2,11 +2,23 @@ extends "res://Towers/Tower_Core.gd"
 
 var can_attack = true
 var chance_for_quickdraw = 35.0
+@onready var archer_scene = preload("res://Towers/Attack/Archer/Archer_Unit/Archer_Unit.tscn")
+@onready var units_holder = get_node("Units")
+@onready var walking_path = get_node("Units/Path3D")
+
+var top_y_value : float = 0.0
+
+#var archer_locations : Dictionary = {0: [Vector3(0.614,-.153,-.079), Vector3(0,95.1,0)],
+		#1: [Vector3(-0.318,-0.166,-0.535), Vector3(0,-149.6,0)],
+		#2: [Vector3(-0.17,-0.128,.518), Vector3(0,-13.9,0)]}
 
 func _ready():
 	if not active:
 		return
-	attack()
+	
+	spawn_archer()
+	
+	#attack()
 	#var detection_range = get_node("Detection_Range")
 	#var click = get_node("3D_Click")
 	
@@ -15,6 +27,23 @@ func _ready():
 	
 	#click.ObjectClicked.connect(open_tower_menu)
 	
+func spawn_archer():
+	var new_path_follow = PathFollow3D.new()
+	new_path_follow.rotation_mode = PathFollow3D.ROTATION_Y
+	new_path_follow.use_model_front = true
+	new_path_follow.loop = true
+	walking_path.add_child(new_path_follow)
+	var new_archer = archer_scene.instantiate()
+	new_archer.hide()
+	new_path_follow.add_child(new_archer)
+	#new_archer.position = archer_locations[archer_info][0]
+	#new_archer.rotation_degrees = archer_locations[archer_info][1]
+	#new_archer.rotation_degrees.y += rotation_degrees.y
+	new_archer.prepare_archer()
+	
+	new_archer.show()
+	
+
 
 #This creates a list of potential targets
 func create_target_list():
@@ -44,7 +73,8 @@ func create_target_list():
 	return targets
 
 func attack():
-	var new_targets = create_target_list()
+	pass
+	"""var new_targets = create_target_list()
 	
 	if $Detection_Range.get_overlapping_bodies().size() <= 0: 
 		$Attack_Timer.start()
@@ -70,7 +100,7 @@ func attack():
 	else: #If the archer doesn't get lucky
 		$Attack_Timer.wait_time = attack_rate[level] #It just sets it to the default time
 	
-	$Attack_Timer.start()
+	$Attack_Timer.start()"""
 
 func attack_reset():
 	can_attack = true

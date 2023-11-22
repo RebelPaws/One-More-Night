@@ -8,6 +8,8 @@ func get_root():
 
 
 func _input(event):
+	if Input.is_action_pressed("Cheat_Key_1"):
+		pass
 	var activate_cheats = Input.is_action_pressed("Cheat_Key_1") and Input.is_action_pressed("Cheat_Key_2") and not cheat_mode
 	
 	if cheat_mode:

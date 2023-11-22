@@ -4,7 +4,9 @@ class_name MenuTemplate
 
 @export var position_off_screen : Vector2
 @export var position_on_screen : Vector2
-var wait_time = 0.2
+
+var wait_time : float = 0.2
+var in_view : bool = false
 
 func change_menu(old_menu : Control, new_menu : Control):
 	var time_mod : float
@@ -23,5 +25,18 @@ func change_menu(old_menu : Control, new_menu : Control):
 	old_menu.hide()
 	tween_new_menu.play()
 	
+
 	
+func toggle_menu():
+	var time_mod : float
+	if get_tree().paused == true:
+		time_mod = 1
+	else:
+		time_mod = Engine.time_scale
+	var tween = get_tree().create_tween()
+	if in_view:
+		tween.tween_property(self, "position", position_off_screen, time_mod*.6).set_trans(Tween.TRANS_SPRING)
+	else:
+		tween.tween_property(self, "position", position_on_screen, time_mod*.6).set_trans(Tween.TRANS_CUBIC)
+	tween.play()
 

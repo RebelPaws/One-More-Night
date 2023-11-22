@@ -46,7 +46,7 @@ func start_game():
 	"""
 	GameInfo.game_state = "Play" #Sets the game state to Play
 	game_speed_buttons._on_build_game_speed_toggle() #Brings up the game speed UI
-	currency_ui.get_node("Anim").play("Toggle")
+	currency_ui.toggle_menu()
 	build_menu.show() #Shows the build button
 	
 	#Shows 3D Tower information

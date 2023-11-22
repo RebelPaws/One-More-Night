@@ -70,6 +70,8 @@ var level = 1 #This is the tower's level which will determine everything about i
 var target_list = [] #This is the list of possible targets
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
+signal enemy_detected(enemy)
+
 #This handles adding up armor
 func _add_armor():
 	#Note: This should only be applied once unless the tower gets a perk to add armor more than once.
@@ -117,3 +119,38 @@ func _get_cost(_type):
 			return costs[level + 1]
 
 
+func get_closest_path_node(target, path_node):
+	var closest_path_node : Vector3 = Vector3.ZERO
+	var closest_path_id : int = 0
+	for i in path_node.curve.get_point_count():
+		if closest_path_node == Vector3.ZERO:
+			closest_path_node = path_node.curve.get_point_position(i)
+			closest_path_id = i
+		else:
+			if target.global_position.distance_to(path_node.curve.get_point_position(i)) < target.global_position.distance_to(closest_path_node):
+				#closest_path_node = path_node.curve.get_point_position(i)
+				closest_path_node = path_node.curve.get_point_position(i)
+				closest_path_id = i
+	
+	return closest_path_id
+
+func _on_foundation_detect_body(body):
+	#emit_signal("enemy_detected", body)
+	var closest_path_id : int
+	for i in get_parent().get_children():
+		if i.tower_id == "Archer":
+			closest_path_id = get_closest_path_node(body, i.get_node("Units/Path3D"))
+			var nearest_archer = null
+			for path in i.get_node("Units/Path3D").get_children():
+				if path.get_child(0).target_list.size() > 0:
+					return
+				elif path.get_child(0).is_walking == true:
+					return
+				elif nearest_archer == null:
+					nearest_archer = path.get_child(0)
+			if nearest_archer != null:	
+				#nearest_archer.speed = .2
+				nearest_archer.ratio_walking_to = nearest_archer.path_progress_ratios.get(closest_path_id)
+				nearest_archer.toggle_walking()
+				
+				 

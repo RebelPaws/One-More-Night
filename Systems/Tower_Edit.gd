@@ -84,6 +84,8 @@ func upgrade_tower():
 			$Stats/Attack/Health/Amount.text = str(tower_lock_on.health[tower_lock_on.level])
 			$Stats/Attack/Damage/Amount.text = str(tower_lock_on.attack_damage[tower_lock_on.level])
 			$Stats/Attack/Attack_Rate/Amount.text = str(tower_lock_on.costs[tower_lock_on.level]) + "/sec"
+			if tower_lock_on.level == 3 or tower_lock_on.level == 5:
+				tower_lock_on.spawn_archer()
 		
 		"Defense":
 			pass
