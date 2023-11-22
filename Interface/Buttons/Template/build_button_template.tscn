@@ -26,15 +26,14 @@ corner_radius_bottom_left = 20
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0.101961, 0.101961, 0.101961, 1)
 Label/constants/outline_size = 10
-Label/font_sizes/font_size = 80
+Label/font_sizes/font_size = 200
 Label/fonts/font = ExtResource("4_hfsge")
 Label/styles/normal = SubResource("StyleBoxFlat_3d3ao")
 
 [node name="BuildButtonTemplate" type="TextureButton"]
 self_modulate = Color(0.933333, 0.686275, 0.486275, 1)
-offset_right = 1200.0
-offset_bottom = 1300.0
-scale = Vector2(0.2, 0.2)
+offset_right = 892.0
+offset_bottom = 1071.0
 theme = SubResource("Theme_evl2d")
 texture_normal = ExtResource("2_u2lbf")
 texture_pressed = ExtResource("3_fjv34")
@@ -50,11 +49,11 @@ scale = Vector2(0.72, 0.72)
 texture = ExtResource("7_gmvn6")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 240.0
+layout_mode = 0
+offset_left = 90.0
 offset_top = 740.0
-offset_right = 656.0
+offset_right = 806.0
 offset_bottom = 999.0
-theme_override_font_sizes/font_size = 241
 text = "[Text]"
 horizontal_alignment = 1
 vertical_alignment = 1

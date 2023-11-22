@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=85 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://Interface/Buttons/Template/back_button_template.gd" id="25_4mymi"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="25_fj146"]
 [ext_resource type="Script" path="res://Systems/GameOver_UI.gd" id="27_ncdx1"]
-[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_logo.png" id="27_vn81t"]
+[ext_resource type="Texture2D" uid="uid://c1iyjoldus3ya" path="res://Branding/KayKit_Logo.png" id="27_vn81t"]
 [ext_resource type="Texture2D" uid="uid://cvl2x7fnqxbbf" path="res://Interface/Buttons/Sprites/Rectangle/Button_Rect_Normal.png" id="28_6ncor"]
 [ext_resource type="EventAsset" uid="uid://20p7twti7umi" path="res://addons/FMOD/editor/resources/events/{77b0da36-31df-43ed-ad7f-7e9333ba97b8}.tres" id="28_tcols"]
 [ext_resource type="PackedScene" uid="uid://dkl4s0oj3x2sr" path="res://Interface/Buttons/Template/button_template.tscn" id="29_arder"]
@@ -93,6 +93,8 @@ font = ExtResource("5_a3okp")
 font_size = 240
 outline_size = 10
 outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhqii"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eltgn"]
 
@@ -3098,6 +3100,7 @@ offset_bottom = 40.0
 script = ExtResource("19_b3jvd")
 
 [node name="Categories" type="Control" parent="UI/Build"]
+visible = false
 anchors_preset = 0
 offset_top = 1080.0
 offset_right = 468.0
@@ -3108,17 +3111,14 @@ position_on_screen = Vector2(0, 780)
 
 [node name="Attack_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
-offset_left = 610.0
+offset_left = 586.0
 offset_top = 34.0
-offset_right = 946.0
-offset_bottom = 370.0
-scale = Vector2(0.7, 0.7)
+offset_right = 1478.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_4mymi")
 menu_leaving = NodePath("..")
 menu_entering = NodePath("../../Attack_Towers")
-
-[node name="Icon" parent="UI/Build/Categories/Attack_Button" index="0"]
-scale = Vector2(0.35, 0.35)
 
 [node name="Label" parent="UI/Build/Categories/Attack_Button" index="1"]
 text = "Attack	"
@@ -3127,15 +3127,15 @@ text = "Attack	"
 layout_mode = 0
 offset_left = 890.0
 offset_top = 34.0
-offset_right = 1226.0
-offset_bottom = 370.0
-scale = Vector2(0.7, 0.7)
+offset_right = 1782.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_4mymi")
 menu_leaving = NodePath("..")
 menu_entering = NodePath("../../Defense_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Defense_Button" index="0"]
-scale = Vector2(0.051, 0.051)
+scale = Vector2(0.089, 0.089)
 texture = ExtResource("20_i37xf")
 
 [node name="Label" parent="UI/Build/Categories/Defense_Button" index="1"]
@@ -3143,17 +3143,17 @@ text = "Defense"
 
 [node name="Support_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
-offset_left = 1170.0
+offset_left = 1196.0
 offset_top = 34.0
-offset_right = 1506.0
-offset_bottom = 370.0
-scale = Vector2(0.7, 0.7)
+offset_right = 2088.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_4mymi")
 menu_leaving = NodePath("..")
 menu_entering = NodePath("../../Support_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Support_Button" index="0"]
-scale = Vector2(0.19, 0.19)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("42_4ttje")
 
 [node name="Label" parent="UI/Build/Categories/Support_Button" index="1"]
@@ -3203,19 +3203,19 @@ position_on_screen = Vector2(0, 780)
 
 [node name="Archer_Tower" parent="UI/Build/Attack_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 20.0
-offset_right = 706.0
-offset_bottom = 356.0
-scale = Vector2(0.8, 0.8)
+offset_left = 586.0
+offset_top = 34.0
+offset_right = 1478.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_fj146")
 tower_id = "Archer"
 tower_category = "Attack"
 tower_scene_string = "res://Towers/Attack/Archer/Archer_Tower.tscn"
 
 [node name="Icon" parent="UI/Build/Attack_Towers/Archer_Tower" index="0"]
-position = Vector2(126, 108)
-scale = Vector2(0.22, 0.22)
+position = Vector2(380, 432)
+scale = Vector2(0.5, 0.5)
 
 [node name="Label" parent="UI/Build/Attack_Towers/Archer_Tower" index="1"]
 text = "Archer"
@@ -3223,35 +3223,35 @@ text = "Archer"
 [node name="Damage" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 166.0
-offset_top = 66.0
-offset_right = 255.0
-offset_bottom = 163.0
+offset_left = 498.0
+offset_top = 369.0
+offset_right = 613.0
+offset_bottom = 541.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 96
-theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
+theme_override_font_sizes/font_size = 170
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qhqii")
 text = "+5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Attack_Towers/Archer_Tower"]
 clip_children = 2
-position = Vector2(211, 206)
-scale = Vector2(0.1, 0.1)
+position = Vector2(544, 637)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Attack_Towers/Archer_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 94.0
-offset_top = 160.0
-offset_right = 183.0
-offset_bottom = 257.0
+offset_left = 283.0
+offset_top = 550.0
+offset_right = 493.0
+offset_bottom = 731.0
 theme_override_colors/font_color = Color(1, 0.752941, 0.713726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "-50"
 horizontal_alignment = 1
@@ -3309,36 +3309,35 @@ position_on_screen = Vector2(0, 780)
 
 [node name="Shield_Tower" parent="UI/Build/Defense_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 20.0
-offset_right = 706.0
-offset_bottom = 356.0
-scale = Vector2(0.8, 0.8)
+offset_left = 586.0
+offset_top = 34.0
+offset_right = 1478.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_fj146")
 tower_id = "Shield"
 tower_category = "Defense"
 tower_scene_string = "res://Towers/Defense/Shield_Tower.tscn"
 
 [node name="Icon" parent="UI/Build/Defense_Towers/Shield_Tower" index="0"]
-position = Vector2(126, 108)
-scale = Vector2(0.03, 0.03)
+position = Vector2(400, 432)
+scale = Vector2(0.06, 0.06)
 texture = ExtResource("20_i37xf")
 
 [node name="Label" parent="UI/Build/Defense_Towers/Shield_Tower" index="1"]
-offset_left = 27.75
-offset_right = 307.75
+offset_right = 812.0
 text = "Shield Wall"
 
 [node name="Armor" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 166.0
-offset_top = 66.0
-offset_right = 255.0
-offset_bottom = 163.0
+offset_left = 498.0
+offset_top = 369.0
+offset_right = 613.0
+offset_bottom = 541.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 170
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "+5"
 horizontal_alignment = 1
@@ -3346,21 +3345,21 @@ vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Defense_Towers/Shield_Tower"]
 clip_children = 2
-position = Vector2(211, 206)
-scale = Vector2(0.1, 0.1)
+position = Vector2(544, 637)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Defense_Towers/Shield_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 94.0
-offset_top = 160.0
-offset_right = 183.0
-offset_bottom = 257.0
+offset_left = 283.0
+offset_top = 550.0
+offset_right = 467.0
+offset_bottom = 711.0
 theme_override_colors/font_color = Color(1, 0.752941, 0.713726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "-30"
 horizontal_alignment = 1
@@ -3418,36 +3417,36 @@ position_on_screen = Vector2(0, 780)
 
 [node name="Healer_Tower" parent="UI/Build/Support_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
-offset_left = 370.0
-offset_top = 20.0
-offset_right = 706.0
-offset_bottom = 356.0
-scale = Vector2(0.8, 0.8)
+offset_left = 586.0
+offset_top = 34.0
+offset_right = 1478.0
+offset_bottom = 1105.0
+scale = Vector2(0.337, 0.337)
 script = ExtResource("25_fj146")
 tower_id = "Healer"
 tower_category = "Support"
 tower_scene_string = "res://Towers/Support/Healer_Tower.tscn"
 
 [node name="Icon" parent="UI/Build/Support_Towers/Healer_Tower" index="0"]
-position = Vector2(126, 108)
-scale = Vector2(0.085, 0.085)
+position = Vector2(400, 432)
+scale = Vector2(0.18, 0.18)
 texture = ExtResource("42_4ttje")
 
 [node name="Label" parent="UI/Build/Support_Towers/Healer_Tower" index="1"]
-offset_left = 27.75
-offset_right = 307.75
+offset_left = 217.0
+offset_right = 688.0
 text = "Healers"
 
 [node name="Heal" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 166.0
-offset_top = 66.0
-offset_right = 276.0
-offset_bottom = 198.0
+offset_left = 498.0
+offset_top = 369.0
+offset_right = 608.0
+offset_bottom = 541.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 170
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "+1"
 horizontal_alignment = 1
@@ -3455,21 +3454,21 @@ vertical_alignment = 1
 
 [node name="Cost_Icon" type="Sprite2D" parent="UI/Build/Support_Towers/Healer_Tower"]
 clip_children = 2
-position = Vector2(211, 206)
-scale = Vector2(0.1, 0.1)
+position = Vector2(544, 637)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("21_4866x")
 
 [node name="Cost" type="Label" parent="UI/Build/Support_Towers/Healer_Tower"]
 clip_children = 2
 layout_mode = 0
-offset_left = 94.0
-offset_top = 160.0
-offset_right = 199.0
-offset_bottom = 259.0
+offset_left = 283.0
+offset_top = 550.0
+offset_right = 469.0
+offset_bottom = 711.0
 theme_override_colors/font_color = Color(1, 0.752941, 0.713726, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 160
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "-50"
 horizontal_alignment = 1
@@ -4151,6 +4150,7 @@ texture = ExtResource("22_bckr0")
 
 [node name="Pause_Menu" type="Control" parent="UI"]
 process_mode = 3
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 2
