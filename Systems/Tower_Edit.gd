@@ -8,6 +8,9 @@ var tower_lock_on #This is the tower being focused on
 
 @onready var game_root = Commands.get_root()
 
+@onready var game_info = get_tree().get_root().get_node("Game")
+@onready var tower_node = game_info.get_node("Tower")
+
 #This pulls up the menu
 func enable(tower_focused):
 	#If the menu is already active or another menu is we don't allow it to open up
@@ -23,7 +26,7 @@ func enable(tower_focused):
 	var cam = get_parent().get_parent().get_node("Cam_Rig") #We grab the camera rig
 	cam.target = tower_focused.get_node("Cam_Anchor") #Now we give it a new target to move to
 	cam.lock_zoom = true #We lock in the zoom so it'll be focused on the tower block being focused
-	cam.zoom_to(5.0) #And we move the zoom to a set zoom for now
+	cam.zoom_to(10.0) #And we move the zoom to a set zoom for now
 	
 	$Naming/Name.text = tower_lock_on.tower_id
 	
@@ -31,19 +34,34 @@ func enable(tower_focused):
 	
 	#Now we check to see if this is the last tower block built aka the peak
 	if get_parent().get_parent().get_node("Tower").get_last_tower() == tower_focused:
-		$Options/Sell.show() #If it is we show the sell option
+		if tower_lock_on.can_sell:
+			$Edit_Mode/Options/Sell.show() #If it is we show the sell option
+		
+		tower_lock_on.get_node("Build_Button").show()
+		tower_lock_on.get_node("Build_Button/Cost").text = str(-game_info.get_node("Towers").get_node("Base").costs[1])
+		tower_lock_on.get_node("Build_Button").connect("ObjectClicked", build_next_level)
 	else: #If not we won't since they can't.
-		$Options/Sell.hide()
+		$Edit_Mode/Options/Sell.hide()
+		tower_lock_on.get_node("Build_Button").hide()
 	
 	#This will get the specific category of stats for the tower
 	$Stats.get_node(tower_lock_on.tower_category).show() 
 	
 	$Anim.play("Toggle") #We'll play the toggle animation now
 	
+	if tower_lock_on.can_upgrade:
+		$Edit_Mode.show()
+	else:
+		$Edit_Mode.hide()
+	
+	if tower_lock_on.tower_category == "Base": #If it's the base tower we need to stage it as a category
+		$Edit_Mode.hide()
+		$Stage_Mode.show()
+	
 	#And play the game speed toggle backwards to remove it
 	get_parent().get_node("Game_Speed")._on_build_game_speed_toggle()
 	
-	$Options/Upgrade.grab_focus()
+	$Edit_Mode/Options/Upgrade.grab_focus()
 
 #This puts away the menu
 func disable():
@@ -112,14 +130,37 @@ func update_upgrade():
 	
 	#We check to see if the tower is max level yet
 	if tower_lock_on.level == tower_lock_on.level_cap:
-		$Options/Upgrade.hide()
+		$Edit_Mode/Options/Upgrade.hide()
 		return #If there's nothing left to upgrade we hide the upgrade button and leave
 	
 	#If the tower block isn't max level we'll update the info and ensure the upgrade button is shown
-	$Options/Upgrade.show()
+	$Edit_Mode/Options/Upgrade.show()
 	
 	#Then we update the cost text
-	$Options/Upgrade/Cost.text = str(tower_lock_on.costs[tower_lock_on.level + 1])
+	$Edit_Mode/Options/Upgrade/Cost.text = str(tower_lock_on.costs[tower_lock_on.level + 1])
 	
 	
 	#We update the upgrade cost
+
+#This builds the empty tower
+func build_next_level():
+	var tower_blocks = tower_node.get_node("Blocks")
+	var tower_info = game_info.get_node("Towers").get_node("Base")
+	
+	var cost = tower_info._get_cost("Build") #This is the cost of the base tower
+	var tower_anchor_point = tower_blocks.get_child(tower_blocks.get_child_count()-1).get_node("Anchor").global_position
+	
+	if game_root.has_currency("Gold", cost):
+		game_root.modify_currency("Gold", -cost)
+		tower_lock_on.get_node("Build_Button").hide()
+		
+		var new_tower = game_info.get_node("Towers").get_scene("Base").instantiate()
+		tower_blocks.add_child(new_tower)
+		new_tower.active = true
+		new_tower.global_position = tower_anchor_point
+
+#This will set the category the tower is in so we can prime it for upgrading 
+func set_tower_mode(_category):
+	tower_lock_on.tower_category = _category
+	$Stage_Mode.hide()
+	$Edit_Mode.show()

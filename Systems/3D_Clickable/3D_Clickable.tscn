@@ -7,9 +7,17 @@ size = Vector3(0.00607093, 0.00742346, 0.00405174)
 
 [node name="3D_Click" type="Area3D"]
 script = ExtResource("1_avvo8")
+button_textures = {
+"Disabled": null,
+"Focused": null,
+"Normal": null,
+"Pressed": null
+}
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00414287, 0)
 shape = SubResource("BoxShape3D_xbc2j")
 
 [connection signal="input_event" from="." to="." method="clicked"]
+[connection signal="mouse_entered" from="." to="." method="set_button_texture" binds= ["Focused"]]
+[connection signal="mouse_exited" from="." to="." method="set_button_texture" binds= ["Normal"]]

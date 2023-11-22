@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://p0tedmi70r33"]
+
+[ext_resource type="PackedScene" uid="uid://dkl4s0oj3x2sr" path="res://Interface/Buttons/Template/button_template.tscn" id="1_u3vci"]
+[ext_resource type="Texture2D" uid="uid://vcdmhkaiperm" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Normal.png" id="2_h5uao"]
+[ext_resource type="Texture2D" uid="uid://dycyfhuurcept" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Pressed.png" id="3_lhta5"]
+[ext_resource type="Texture2D" uid="uid://dynrgurp2ts03" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Focused.png" id="4_e21ui"]
+[ext_resource type="Texture2D" uid="uid://cjv00ot8fu03b" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Disabled.png" id="5_b2op8"]
+[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="8_a02ug"]
+
+[node name="Tower_Mode_Button" instance=ExtResource("1_u3vci")]
+offset_right = 902.0
+offset_bottom = 1080.0
+texture_normal = ExtResource("2_h5uao")
+texture_pressed = ExtResource("3_lhta5")
+texture_hover = ExtResource("4_e21ui")
+texture_disabled = ExtResource("5_b2op8")
+texture_focused = ExtResource("4_e21ui")
+
+[node name="Label" parent="." index="0"]
+offset_left = 158.0
+offset_top = 90.0
+offset_right = 774.0
+offset_bottom = 332.0
+text = "Mode"
+
+[node name="ButtonPress" parent="." index="1"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
+script = null
+
+[node name="Mode_Icon" type="Sprite2D" parent="." index="3"]
+position = Vector2(462, 496)
+scale = Vector2(0.74, 0.74)
+texture = ExtResource("8_a02ug")

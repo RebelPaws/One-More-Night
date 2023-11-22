@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://blun14gvggwky"]
+[gd_scene load_steps=8 format=3 uid="uid://blun14gvggwky"]
 
 [ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_cx1dw"]
 
@@ -94,11 +94,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6pg7p")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_c7kdl"]
+height = 1.20712
+radius = 0.442798
+
 [node name="Tower_Base" instance=ExtResource("1_cx1dw")]
+tower_id = "Base"
+tower_category = "Base"
+costs = {
+1: 30,
+2: 5,
+3: 5,
+4: 5,
+5: 5
+}
 
 [node name="Mesh" type="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0442915, -0.687242, 0.364537)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0567642, -0.762793, 0.364537)
 mesh = SubResource("ArrayMesh_piujw")
 skeleton = NodePath("")
 
+[node name="Anchor" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.971035, 0)
+
+[node name="CollisionShape3D" parent="3D_Click" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0429002, -0.288494, -0.038219)
+shape = SubResource("CylinderShape3D_c7kdl")
+
 [editable path="3D_Click"]
+[editable path="Build_Button"]

@@ -1,22 +1,28 @@
 [gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://b2umxa3bxkeuc"]
 
 [sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_y7fel"]
+resource_local_to_scene = false
+resource_name = ""
 data1 = 2367018974
 data2 = 2247537550
 
 [sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v"]
+resource_local_to_scene = false
+resource_name = ""
 name = "dayNight"
-id = SubResource("FMOD_STUDIO_PARAMETER_ID_y7fel")
 maximum = 100.0
 guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
 
 [sub_resource type="ParameterAsset" id="ParameterAsset_mdhcp"]
-parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_cbb8v")
+resource_local_to_scene = false
+resource_name = ""
 path = "parameter:/dayNight"
 guid = "{c67ac9a0-bfec-46e0-ba32-e180241b86e0}"
 name = "dayNight"
 
 [resource]
+resource_local_to_scene = false
+resource_name = ""
 min_distance = 1.0
 max_distance = 20.0
 parameters = {

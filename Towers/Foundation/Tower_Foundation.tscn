@@ -139,6 +139,9 @@ points = PackedVector3Array(-0.147225, 0.831295, -0.0215547, 0.135294, 0.0149557
 size = Vector3(25, 4, 25)
 
 [node name="Tower_Foundation" instance=ExtResource("1_wforb")]
+tower_id = "Foundation"
+tower_category = "Foundation"
+can_sell = false
 
 [node name="Towers" type="Node3D" parent="." index="0"]
 
@@ -163,6 +166,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)
 [node name="CollisionShape3D" parent="Detection_Range" index="0"]
 shape = SubResource("BoxShape3D_r6d4h")
 
+[node name="CollisionShape3D" parent="3D_Click" index="0"]
+transform = Transform3D(1.38, 0, 0, 0, 0.995, 0, 0, 0, 2.885, 0.003, 0.928, -0.038)
+
+[node name="Build_Button" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29792, 0)
+is_button = true
+
 [connection signal="body_entered" from="Detection_Range" to="." method="_on_foundation_detect_body"]
 
 [editable path="3D_Click"]
+[editable path="Build_Button"]

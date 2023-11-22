@@ -65,6 +65,8 @@ extends Node3D
 @export_category("Level Info")
 var level = 1 #This is the tower's level which will determine everything about it.
 @export var level_cap = 5 ##This is the tower's max level
+@export var can_upgrade = true
+@export var can_sell = true
 
 @export_category("Target Settings")
 var target_list = [] #This is the list of possible targets
