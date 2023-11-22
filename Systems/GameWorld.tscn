@@ -3100,14 +3100,13 @@ offset_bottom = 40.0
 script = ExtResource("19_b3jvd")
 
 [node name="Categories" type="Control" parent="UI/Build"]
-visible = false
 anchors_preset = 0
 offset_top = 1080.0
 offset_right = 468.0
-offset_bottom = 1211.0
+offset_bottom = 1468.0
 script = ExtResource("21_22ett")
 position_off_screen = Vector2(0, 1080)
-position_on_screen = Vector2(0, 780)
+position_on_screen = Vector2(0, 700)
 
 [node name="Attack_Button" parent="UI/Build/Categories" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3199,7 +3198,7 @@ offset_right = 283.0
 offset_bottom = 1207.0
 script = ExtResource("21_22ett")
 position_off_screen = Vector2(0, 1080)
-position_on_screen = Vector2(0, 780)
+position_on_screen = Vector2(0, 700)
 
 [node name="Archer_Tower" parent="UI/Build/Attack_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3305,7 +3304,7 @@ offset_right = 324.0
 offset_bottom = 1201.0
 script = ExtResource("21_22ett")
 position_off_screen = Vector2(0, 1080)
-position_on_screen = Vector2(0, 780)
+position_on_screen = Vector2(0, 700)
 
 [node name="Shield_Tower" parent="UI/Build/Defense_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3413,7 +3412,7 @@ offset_right = 318.0
 offset_bottom = 1207.0
 script = ExtResource("21_22ett")
 position_off_screen = Vector2(0, 1080)
-position_on_screen = Vector2(0, 780)
+position_on_screen = Vector2(0, 700)
 
 [node name="Healer_Tower" parent="UI/Build/Support_Towers" instance=ExtResource("22_cu4m7")]
 layout_mode = 0
@@ -3516,12 +3515,12 @@ one_shot = true
 
 [node name="Build_Control" type="Control" parent="UI/Build"]
 anchors_preset = 0
-offset_top = 780.0
+offset_top = 700.0
 offset_right = 691.0
-offset_bottom = 1077.0
+offset_bottom = 997.0
 script = ExtResource("21_22ett")
 position_off_screen = Vector2(0, 1080)
-position_on_screen = Vector2(0, 780)
+position_on_screen = Vector2(0, 700)
 
 [node name="Build_Button" parent="UI/Build/Build_Control" node_paths=PackedStringArray("menu_leaving", "menu_entering") instance=ExtResource("29_arder")]
 layout_mode = 0
@@ -3647,7 +3646,7 @@ offset_bottom = 553.0
 script = ExtResource("27_ncdx1")
 
 [node name="KayKitLogo" type="Sprite2D" parent="UI/GameOver"]
-position = Vector2(1552.25, 980.25)
+position = Vector2(1599.25, 980.25)
 scale = Vector2(0.329102, 0.329102)
 texture = ExtResource("27_vn81t")
 
@@ -3668,7 +3667,7 @@ offset_left = 6.0
 offset_top = 942.0
 offset_right = 1925.0
 offset_bottom = 1058.0
-text = "Crafted by Vespir, Evan; and"
+text = "Crafted by Vespir, Evan, DBron; and      "
 label_settings = SubResource("LabelSettings_48fgh")
 horizontal_alignment = 1
 vertical_alignment = 1

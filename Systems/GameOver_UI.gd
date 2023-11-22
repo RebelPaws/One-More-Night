@@ -14,11 +14,18 @@ func _open():
 	
 	UI_node.get_node("Build").hide()
 	UI_node.get_node("Game_Speed")._on_build_game_speed_toggle()
+	UI_node.get_node("Game_Speed")._set_speed(1)
 	UI_node.get_node("Currency_UI/").toggle_menu()
 	
 	update_stats()
 	GameInfo.game_is_in_play = false
 	show()
+	var tween_fade_in = get_tree().create_tween()
+	
+	tween_fade_in.tween_property(self, "modulate", Color8(255,255,255,255), 1.0).set_trans(Tween.TRANS_QUART)
+	tween_fade_in.play()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().paused = true
 
 func update_stats():
 	var nights_survived = game_manager.nights_survived
