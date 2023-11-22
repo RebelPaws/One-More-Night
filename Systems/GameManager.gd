@@ -119,3 +119,12 @@ func day_finished(_anim_name):
 
 func night_skip_button_active():
 	game_speed_buttons.toggle_skip_night(true) #Now that it's day they can skip to night again
+
+func game_over():
+	GameInfo.game_state = "Menu"
+	game_speed_buttons._set_speed(1)
+	game_speed_buttons._on_build_game_speed_toggle()
+	build_menu.hide()
+	currency_ui.toggle_menu()
+	await get_tree().create_timer(1.0).timeout
+	get_node("UI/GameOver")._open()

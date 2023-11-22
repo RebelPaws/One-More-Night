@@ -3038,6 +3038,7 @@ offset_left = -400.0
 offset_bottom = 400.0
 mouse_filter = 2
 script = ExtResource("21_22ett")
+position_off_screen = Vector2(-400, 0)
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Currency_UI"]
 layout_mode = 0
@@ -3100,6 +3101,7 @@ offset_bottom = 40.0
 script = ExtResource("19_b3jvd")
 
 [node name="Categories" type="Control" parent="UI/Build"]
+visible = false
 anchors_preset = 0
 offset_top = 1080.0
 offset_right = 468.0
@@ -3191,7 +3193,6 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Attack_Towers" type="Control" parent="UI/Build"]
-visible = false
 anchors_preset = 0
 offset_top = 1080.0
 offset_right = 283.0
@@ -3255,14 +3256,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "-50"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="GrayOut" type="ColorRect" parent="UI/Build/Attack_Towers/Archer_Tower"]
-visible = false
-self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 337.0
-offset_bottom = 335.0
 
 [node name="Back_Button" type="TextureButton" parent="UI/Build/Attack_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
@@ -3364,14 +3357,6 @@ text = "-30"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GrayOut" type="ColorRect" parent="UI/Build/Defense_Towers/Shield_Tower"]
-visible = false
-self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 337.0
-offset_bottom = 335.0
-
 [node name="Back_Button" type="TextureButton" parent="UI/Build/Defense_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
 offset_left = 40.0
@@ -3472,14 +3457,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_eltgn")
 text = "-50"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="GrayOut" type="ColorRect" parent="UI/Build/Support_Towers/Healer_Tower"]
-visible = false
-self_modulate = Color(0.0196078, 0.0196078, 0.0196078, 0.784314)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 337.0
-offset_bottom = 335.0
 
 [node name="Back_Button" type="TextureButton" parent="UI/Build/Support_Towers" node_paths=PackedStringArray("menu_leaving", "menu_entering")]
 layout_mode = 0
@@ -4149,7 +4126,6 @@ texture = ExtResource("22_bckr0")
 
 [node name="Pause_Menu" type="Control" parent="UI"]
 process_mode = 3
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 2
@@ -4251,7 +4227,7 @@ visible = false
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower/TowerHurt_Sound" method="play"]
-[connection signal="Dead" from="Tower/Health_Manager" to="UI/GameOver" method="_open"]
+[connection signal="Dead" from="Tower/Health_Manager" to="." method="game_over"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower/TowerHealed_Sound" method="play"]
 [connection signal="timeout" from="Enemy_Manager/Spawn_Timer" to="Enemy_Manager" method="spawn_enemy"]

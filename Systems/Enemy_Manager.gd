@@ -2,7 +2,7 @@ extends Node3D
 
 signal Retreat
 @onready var retreat_timer = get_node("Retreat_Timer")
-
+@onready var game_manager = get_parent()
 
 var confirmed_kills = 0
 
@@ -13,6 +13,12 @@ var can_spawn = false: #This tells the manager when enemies can spawn
 		spawn_enemy()
 
 @export var spawn_time_range = [0.5, 3.0]
+@export var spawn_time_range_night : Dictionary = {
+	0: [3.0, 6.0],
+	3: [2.0, 4.0],
+	6: [1.0, 3.0],
+	9: [0.5, 3.0]
+}
 
 var enemies_spawned = 0
 
@@ -24,6 +30,9 @@ func _toggle(_value):
 	match _value:
 		true:
 			can_spawn = true
+			if spawn_time_range_night.has(game_manager.nights_survived):
+				spawn_time_range = spawn_time_range_night[game_manager.nights_survived]
+				print(spawn_time_range)
 			return
 		false:
 			can_spawn = true

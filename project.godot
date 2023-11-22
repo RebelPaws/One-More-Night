@@ -23,6 +23,10 @@ Towers="*res://Systems/Towers.gd"
 DataManager="*res://Systems/Data_Manager.gd"
 Commands="*res://Systems/Commands.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.419608)
+
 [display]
 
 window/size/viewport_width=1920

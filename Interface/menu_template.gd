@@ -36,7 +36,11 @@ func toggle_menu():
 	var tween = get_tree().create_tween()
 	if in_view:
 		tween.tween_property(self, "position", position_off_screen, time_mod*.6).set_trans(Tween.TRANS_SPRING)
+		in_view = false
 	else:
 		tween.tween_property(self, "position", position_on_screen, time_mod*.6).set_trans(Tween.TRANS_CUBIC)
+		in_view = true
 	tween.play()
+
+
 

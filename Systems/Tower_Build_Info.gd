@@ -47,7 +47,7 @@ func _on_function_trigger():
 func _toggle_button():
 	if game_info.has_currency("Gold", game_info.get_node("Towers").get_node(tower_id)._get_cost("Build")):
 		disabled = false
-		get_node("GrayOut").hide()
+		modulate = Color8(255,255,255,255)
 	else:
 		disabled = true
-		get_node("GrayOut").show()
+		modulate = Color8(100,100,100,255)

@@ -1,24 +1,15 @@
 extends Control
 
-var UI_node : CanvasLayer
-var game_manager : Node3D 
+#@onready var UI_node : CanvasLayer = get_parent()
+@onready var game_manager : Node3D = get_tree().get_root().get_node("Game")
 
 
 func _open():
-	game_manager = get_tree().get_root().get_node("Game")
-	UI_node = get_parent()
-		
 	if GameInfo.game_is_in_play == false: return
-	
-	GameInfo.game_state = "Menu"
-	
-	UI_node.get_node("Build").hide()
-	UI_node.get_node("Game_Speed")._on_build_game_speed_toggle()
-	UI_node.get_node("Game_Speed")._set_speed(1)
-	UI_node.get_node("Currency_UI/").toggle_menu()
-	
+		
 	update_stats()
 	GameInfo.game_is_in_play = false
+	modulate = Color8(255,255,255,0)
 	show()
 	var tween_fade_in = get_tree().create_tween()
 	
@@ -26,6 +17,7 @@ func _open():
 	tween_fade_in.play()
 	await get_tree().create_timer(1.0).timeout
 	get_tree().paused = true
+
 
 func update_stats():
 	var nights_survived = game_manager.nights_survived
@@ -51,6 +43,7 @@ func update_stats():
 	DataManager._save_game(0, nights_survived)
 
 func try_again():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func quit_game():

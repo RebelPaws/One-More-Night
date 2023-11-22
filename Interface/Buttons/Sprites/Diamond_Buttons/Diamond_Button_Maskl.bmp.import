@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bu3u87reob8f6"
+path="res://.godot/imported/Diamond_Button_Maskl.bmp-0c0aed8ea6e7a7640540cb216fc717a8.res"
+
+[deps]
+
+source_file="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Maskl.bmp"
+dest_files=["res://.godot/imported/Diamond_Button_Maskl.bmp-0c0aed8ea6e7a7640540cb216fc717a8.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

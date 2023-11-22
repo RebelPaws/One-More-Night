@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5ybisss3x2lm"]
+[gd_scene load_steps=12 format=3 uid="uid://5ybisss3x2lm"]
 
 [ext_resource type="Texture2D" uid="uid://vcdmhkaiperm" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Normal.png" id="2_u2lbf"]
 [ext_resource type="Script" path="res://Interface/Buttons/Template/button_template.gd" id="3_02k00"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="4_hfsge"]
 [ext_resource type="Texture2D" uid="uid://cjv00ot8fu03b" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Disabled.png" id="5_3lso3"]
 [ext_resource type="EventAsset" uid="uid://b7cbjbcis88jm" path="res://addons/FMOD/editor/resources/events/{63243b9a-9af9-446e-858b-8ca4d6bc1335}.tres" id="5_ul2xr"]
+[ext_resource type="BitMap" uid="uid://bu3u87reob8f6" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Maskl.bmp" id="6_tq3ro"]
 [ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="7_gmvn6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d3ao"]
@@ -40,6 +41,7 @@ texture_pressed = ExtResource("3_fjv34")
 texture_hover = ExtResource("4_4vfu1")
 texture_disabled = ExtResource("5_3lso3")
 texture_focused = ExtResource("4_4vfu1")
+texture_click_mask = ExtResource("6_tq3ro")
 ignore_texture_size = true
 script = ExtResource("3_02k00")
 
