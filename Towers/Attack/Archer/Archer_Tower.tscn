@@ -26,13 +26,6 @@ costs = {
 4: 25,
 5: 25
 }
-attack_damage = {
-1: 5,
-2: 5,
-3: 10,
-4: 10,
-5: 10
-}
 
 [node name="Anchor" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954794, 0)
