@@ -135,9 +135,6 @@ func update_upgrade():
 	#If the tower block isn't max level we'll update the info and ensure the upgrade button is shown
 	$Edit_Mode/Options/Upgrade.show()
 	
-	#Then we update the cost text
-	$Edit_Mode/Options/Upgrade/Cost.text = str(tower_lock_on.costs[tower_lock_on.level + 1])
-	
 	
 	#We update the upgrade cost
 

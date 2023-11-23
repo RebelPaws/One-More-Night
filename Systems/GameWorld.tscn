@@ -2984,7 +2984,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2295, 0, 59)
 process_mode = 3
 
 [node name="Currency_UI" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -400.0
@@ -3994,9 +3993,9 @@ libraries = {
 
 [node name="Naming" type="HBoxContainer" parent="UI/Tower_Edit"]
 layout_mode = 0
-offset_left = 639.0
+offset_left = 1.0
 offset_top = 17.0
-offset_right = 1136.0
+offset_right = 1921.0
 offset_bottom = 110.0
 theme_override_constants/separation = 35
 alignment = 1
@@ -4438,31 +4437,7 @@ rotation = -0.420624
 scale = Vector2(0.145, 0.145)
 texture = ExtResource("22_bckr0")
 
-[node name="Back" type="TextureButton" parent="UI/Tower_Edit"]
-layout_mode = 2
-offset_left = 1609.0
-offset_top = 944.0
-offset_right = 2393.0
-offset_bottom = 1280.0
-scale = Vector2(0.34, 0.34)
-texture_normal = ExtResource("28_6ncor")
-texture_pressed = ExtResource("30_58qkj")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
-
-[node name="Label" type="Label" parent="UI/Tower_Edit/Back"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 12.0
-offset_right = 766.0
-offset_bottom = 291.0
-text = "Exit Edit Mode"
-label_settings = SubResource("LabelSettings_6ebu0")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Edit_Mode" type="Control" parent="UI/Tower_Edit"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -4471,7 +4446,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = -16.0
 offset_top = 936.0
-offset_right = 2556.0
+offset_right = 4804.0
 offset_bottom = 1272.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/separation = 110
@@ -4494,21 +4469,6 @@ label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cost" type="Label" parent="UI/Tower_Edit/Edit_Mode/Options/Upgrade"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = -193.0
-offset_right = 690.0
-offset_bottom = 86.0
-text = "0"
-label_settings = SubResource("LabelSettings_6ebu0")
-vertical_alignment = 1
-
-[node name="Coin_Icon" type="Sprite2D" parent="UI/Tower_Edit/Edit_Mode/Options/Upgrade"]
-position = Vector2(135.632, -64.3677)
-scale = Vector2(0.249, 0.249)
-texture = ExtResource("21_4866x")
-
 [node name="Sell" type="TextureButton" parent="UI/Tower_Edit/Edit_Mode/Options"]
 layout_mode = 2
 texture_normal = ExtResource("28_6ncor")
@@ -4523,6 +4483,24 @@ offset_top = 12.0
 offset_right = 766.0
 offset_bottom = 291.0
 text = "Sell"
+label_settings = SubResource("LabelSettings_6ebu0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="UI/Tower_Edit/Edit_Mode/Options"]
+layout_mode = 2
+texture_normal = ExtResource("28_6ncor")
+texture_pressed = ExtResource("30_58qkj")
+texture_hover = ExtResource("29_ya5w0")
+texture_focused = ExtResource("29_ya5w0")
+
+[node name="Label" type="Label" parent="UI/Tower_Edit/Edit_Mode/Options/Back"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 766.0
+offset_bottom = 291.0
+text = "Exit Edit Mode"
 label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -4614,9 +4592,9 @@ visible = false
 [connection signal="pressed" from="UI/Game_Speed/Speeds/Skip_to_Night" to="UI/Game_Speed" method="skip_to_night"]
 [connection signal="function_trigger" from="UI/Pause_Menu/Resume" to="UI/Game_Speed" method="_set_speed" binds= [1]]
 [connection signal="function_trigger" from="UI/Pause_Menu/Quit" to="." method="quit_game"]
-[connection signal="pressed" from="UI/Tower_Edit/Back" to="UI/Tower_Edit" method="disable"]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Upgrade" to="UI/Tower_Edit" method="upgrade_tower"]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Sell" to="UI/Tower_Edit" method="sell_tower"]
+[connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Back" to="UI/Tower_Edit" method="disable"]
 
 [editable path="Sky"]
 [editable path="UI/Build/Categories/Attack_Button"]
