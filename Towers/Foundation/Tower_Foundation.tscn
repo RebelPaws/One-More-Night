@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d2qkth4w6d5km"]
 
-[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_wforb"]
+[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Base/Tower_Base.tscn" id="1_wforb"]
 [ext_resource type="Material" uid="uid://dx8q2pldjgp6c" path="res://Towers/Materials/Tower_Stone_Base.material" id="2_7eja7"]
 [ext_resource type="Material" uid="uid://en03cr3ftlh7" path="res://Towers/Materials/Tower_Wood.material" id="3_jfekd"]
 [ext_resource type="Material" uid="uid://cf6a6hhr2fw3r" path="res://Towers/Materials/Tower_Stone_Accent.material" id="4_3j4dj"]
@@ -160,8 +160,11 @@ collision_mask = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Towers/Tower_Foundation/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_ahv1s")
 
-[node name="Anchor" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.64025, 0)
+[node name="Anchor" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87956, 0)
+
+[node name="Cam_Anchor" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.814505, 0)
 
 [node name="CollisionShape3D" parent="Detection_Range" index="0"]
 shape = SubResource("BoxShape3D_r6d4h")
@@ -169,11 +172,12 @@ shape = SubResource("BoxShape3D_r6d4h")
 [node name="CollisionShape3D" parent="3D_Click" index="0"]
 transform = Transform3D(1.38, 0, 0, 0, 0.995, 0, 0, 0, 2.885, 0.003, 0.928, -0.038)
 
-[node name="Build_Button" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.29792, 0)
-is_button = true
+[node name="Build_Buttons" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73545, 0)
 
 [connection signal="body_entered" from="Detection_Range" to="." method="_on_foundation_detect_body"]
 
 [editable path="3D_Click"]
-[editable path="Build_Button"]
+[editable path="Build_Buttons/Attack"]
+[editable path="Build_Buttons/Defense"]
+[editable path="Build_Buttons/Support"]

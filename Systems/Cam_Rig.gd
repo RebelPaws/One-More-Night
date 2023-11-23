@@ -74,4 +74,13 @@ func control_process(delta):
 func zoom_to(new_zoom):
 	#We tween the current zoom to the zoom we want
 	var tween = create_tween()
-	tween.tween_property($X/Z/Camera3D, "position", Vector3($X/Z/Camera3D.position.x, $X/Z/Camera3D.position.y, new_zoom), 2)
+	tween.tween_property($X/Z/Camera3D, "position", Vector3($X/Z/Camera3D.position.x, $X/Z/Camera3D.position.y, new_zoom), 0.5)
+
+#This is an auto-zoom feature
+func rotate_to(new_x, new_y, new_z):
+	#We tween the current zoom to the zoom we want
+	var tween = create_tween()
+	
+	tween.tween_property($X, "rotation", Vector3(new_x, 0, 0), 0.6)
+	tween.tween_property(self, "rotation", Vector3(0, new_y, 0), 0.6)
+

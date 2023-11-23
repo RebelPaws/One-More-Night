@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cs2ftfvlbso0n"]
 
-[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_o10u0"]
+[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Base/Tower_Base.tscn" id="1_o10u0"]
 [ext_resource type="Script" path="res://Towers/Defense/Shield_Tower.gd" id="2_hjovx"]
 [ext_resource type="Material" uid="uid://en03cr3ftlh7" path="res://Towers/Materials/Tower_Wood.material" id="3_4j0tf"]
 [ext_resource type="Material" uid="uid://dx8q2pldjgp6c" path="res://Towers/Materials/Tower_Stone_Base.material" id="5_xrvf6"]

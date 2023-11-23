@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://qn788ae8urul"]
 
-[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_5o5qg"]
+[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Base/Tower_Base.tscn" id="1_5o5qg"]
 [ext_resource type="Script" path="res://Towers/Support/Healer_Tower.gd" id="2_300j4"]
 [ext_resource type="Material" uid="uid://en03cr3ftlh7" path="res://Towers/Materials/Tower_Wood.material" id="3_27nl6"]
 [ext_resource type="Material" uid="uid://cudccodhk5put" path="res://Towers/Materials/Tower_DoorFrame.material" id="4_doarh"]

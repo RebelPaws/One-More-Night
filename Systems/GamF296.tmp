@@ -42,10 +42,10 @@
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="43_4hy5k"]
-[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="44_nkilj"]
+[ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Interface/Armor/Armor.png" id="44_nkilj"]
 [ext_resource type="Script" path="res://Systems/Tower_Info.gd" id="45_5si87"]
 [ext_resource type="Script" path="res://Systems/Pause_Menu.gd" id="46_8w4dk"]
-[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Base/Tower_Base.tscn" id="48_nnmy5"]
+[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="48_nnmy5"]
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Attack/Archer/Archer_Tower.tscn" id="53_bmuy6"]
 [ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Defense/Shield_Tower.tscn" id="54_achsv"]
 [ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Support/Healer_Tower.tscn" id="55_2ugdr"]
@@ -147,19 +147,6 @@ font_size = 306
 outline_size = 10
 outline_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4s10"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 0.470588)
-border_width_left = 400
-border_width_top = 300
-border_width_right = 400
-border_width_bottom = 300
-border_color = Color(0.105882, 0.105882, 0.105882, 0)
-border_blend = true
-corner_radius_top_left = 400
-corner_radius_top_right = 400
-corner_radius_bottom_right = 400
-corner_radius_bottom_left = 400
-
 [sub_resource type="Animation" id="Animation_su8i3"]
 resource_name = "Toggle"
 length = 0.3
@@ -204,6 +191,19 @@ font = ExtResource("5_a3okp")
 font_size = 150
 outline_size = 10
 outline_color = Color(0.192157, 0.192157, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4s10"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.470588)
+border_width_left = 400
+border_width_top = 300
+border_width_right = 400
+border_width_bottom = 300
+border_color = Color(0.105882, 0.105882, 0.105882, 0)
+border_blend = true
+corner_radius_top_left = 400
+corner_radius_top_right = 400
+corner_radius_bottom_right = 400
+corner_radius_bottom_left = 400
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_fsulb")
@@ -3029,8 +3029,8 @@ script = ExtResource("21_22ett")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Currency_UI"]
 layout_mode = 0
-offset_right = 347.0
-offset_bottom = 153.0
+offset_right = 400.0
+offset_bottom = 400.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wblue")
 
 [node name="Gold_Icon" type="Sprite2D" parent="UI/Currency_UI"]
@@ -3050,13 +3050,11 @@ label_settings = SubResource("LabelSettings_jd8be")
 vertical_alignment = 1
 
 [node name="Mana_Icon" type="Sprite2D" parent="UI/Currency_UI"]
-visible = false
 position = Vector2(80, 172)
 scale = Vector2(0.165, 0.165)
 texture = ExtResource("41_grbsa")
 
 [node name="Mana_Label" type="Label" parent="UI/Currency_UI"]
-visible = false
 layout_mode = 2
 offset_left = 140.0
 offset_top = 140.0
@@ -3067,13 +3065,11 @@ text = "0
 label_settings = SubResource("LabelSettings_jd8be")
 
 [node name="Health_Icon" type="Sprite2D" parent="UI/Currency_UI"]
-visible = false
 position = Vector2(80, 270)
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("42_4ttje")
 
 [node name="Health_Label" type="Label" parent="UI/Currency_UI"]
-visible = false
 layout_mode = 2
 offset_left = 140.0
 offset_top = 240.0
@@ -3833,9 +3829,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Remove_Decor_Menu" parent="UI" instance=ExtResource("37_2ooyn")]
-offset_top = -1120.0
-offset_bottom = -1120.0
-mouse_filter = 2
 
 [node name="Game_Speed" type="Control" parent="UI"]
 layout_mode = 3
@@ -3961,63 +3954,14 @@ position = Vector2(176.667, 143.333)
 scale = Vector2(2.485, 2.485)
 texture = ExtResource("38_bn0jb")
 
-[node name="Pause_Menu" type="Control" parent="UI"]
-process_mode = 3
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_vertical = 0
-script = ExtResource("46_8w4dk")
-
-[node name="PauseBackground" type="PanelContainer" parent="UI/Pause_Menu"]
-layout_mode = 0
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 1960.0
-offset_bottom = 1120.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_n4s10")
-
-[node name="Resume" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
-process_mode = 3
-layout_mode = 0
-offset_left = 764.0
-offset_top = 373.0
-offset_right = 1548.0
-offset_bottom = 709.0
-
-[node name="Label" parent="UI/Pause_Menu/Resume" index="0"]
-text = "Resume"
-
-[node name="Timer" parent="UI/Pause_Menu/Resume" index="2"]
-process_mode = 3
-
-[node name="Quit" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
-process_mode = 3
-layout_mode = 0
-offset_left = 803.2
-offset_top = 556.0
-offset_right = 1587.2
-offset_bottom = 892.0
-scale = Vector2(0.4, 0.4)
-
-[node name="Label" parent="UI/Pause_Menu/Quit" index="0"]
-text = "Quit"
-
-[node name="Timer" parent="UI/Pause_Menu/Quit" index="2"]
-process_mode = 3
-
 [node name="Tower_Edit" type="Control" parent="UI"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 5.0
-offset_top = 1.0
-offset_right = 1927.0
-offset_bottom = 1072.0
+offset_left = 30.0
+offset_top = 6.0
+offset_right = 70.0
+offset_bottom = 46.0
 mouse_filter = 2
 script = ExtResource("42_nkma5")
 
@@ -4049,7 +3993,6 @@ label_settings = SubResource("LabelSettings_amvmj")
 horizontal_alignment = 1
 
 [node name="Stats" type="Control" parent="UI/Tower_Edit"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -4132,172 +4075,6 @@ text = "Speed"
 label_settings = SubResource("LabelSettings_hmsmg")
 
 [node name="Damage_Icon_Speed" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack/Attack_Rate"]
-position = Vector2(39.0416, 52.0416)
-rotation = -0.420624
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("22_bckr0")
-
-[node name="Defense" type="Control" parent="UI/Tower_Edit/Stats"]
-visible = false
-anchors_preset = 0
-offset_top = 280.0
-offset_right = 40.0
-offset_bottom = 320.0
-
-[node name="Damage" type="Control" parent="UI/Tower_Edit/Stats/Defense"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -12.0
-offset_top = 23.0
-offset_right = 199.0
-offset_bottom = 103.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Defense/Damage"]
-layout_mode = 0
-offset_left = 48.0
-offset_right = 245.0
-offset_bottom = 93.0
-text = "0"
-label_settings = SubResource("LabelSettings_c7r2k")
-
-[node name="Damage_Icon" type="Sprite2D" parent="UI/Tower_Edit/Stats/Defense/Damage"]
-position = Vector2(24, 40)
-rotation = -0.420624
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("22_bckr0")
-
-[node name="Health" type="Control" parent="UI/Tower_Edit/Stats/Defense"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -28.0
-offset_top = 125.0
-offset_right = 94.0
-offset_bottom = 206.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Defense/Health"]
-layout_mode = 0
-offset_left = 85.5999
-offset_top = -3.4875
-offset_right = 563.6
-offset_bottom = 89.5125
-text = "0"
-label_settings = SubResource("LabelSettings_c7r2k")
-
-[node name="Heart" type="Sprite2D" parent="UI/Tower_Edit/Stats/Defense/Health"]
-position = Vector2(42.6, 31.5125)
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("42_4ttje")
-
-[node name="Attack_Rate" type="Control" parent="UI/Tower_Edit/Stats/Defense"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -25.0
-offset_top = 203.0
-offset_right = 296.0
-offset_bottom = 310.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Defense/Attack_Rate"]
-layout_mode = 0
-offset_left = 178.042
-offset_top = 26.0417
-offset_right = 315.042
-offset_bottom = 119.042
-text = "2/sec"
-label_settings = SubResource("LabelSettings_amvmj")
-
-[node name="Attack_Rate_Header" type="Label" parent="UI/Tower_Edit/Stats/Defense/Attack_Rate"]
-layout_mode = 0
-offset_left = 61.0416
-offset_top = 52.0417
-offset_right = 165.042
-offset_bottom = 109.042
-text = "Speed"
-label_settings = SubResource("LabelSettings_hmsmg")
-
-[node name="Damage_Icon_Speed" type="Sprite2D" parent="UI/Tower_Edit/Stats/Defense/Attack_Rate"]
-position = Vector2(39.0416, 52.0416)
-rotation = -0.420624
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("22_bckr0")
-
-[node name="Support" type="Control" parent="UI/Tower_Edit/Stats"]
-visible = false
-anchors_preset = 0
-offset_top = 280.0
-offset_right = 40.0
-offset_bottom = 320.0
-
-[node name="Damage" type="Control" parent="UI/Tower_Edit/Stats/Support"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -12.0
-offset_top = 23.0
-offset_right = 199.0
-offset_bottom = 103.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Support/Damage"]
-layout_mode = 0
-offset_left = 48.0
-offset_right = 245.0
-offset_bottom = 93.0
-text = "0"
-label_settings = SubResource("LabelSettings_c7r2k")
-
-[node name="Damage_Icon" type="Sprite2D" parent="UI/Tower_Edit/Stats/Support/Damage"]
-position = Vector2(24, 40)
-rotation = -0.420624
-scale = Vector2(0.145, 0.145)
-texture = ExtResource("22_bckr0")
-
-[node name="Health" type="Control" parent="UI/Tower_Edit/Stats/Support"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -28.0
-offset_top = 125.0
-offset_right = 94.0
-offset_bottom = 206.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Support/Health"]
-layout_mode = 0
-offset_left = 85.5999
-offset_top = -3.4875
-offset_right = 563.6
-offset_bottom = 89.5125
-text = "0"
-label_settings = SubResource("LabelSettings_c7r2k")
-
-[node name="Heart" type="Sprite2D" parent="UI/Tower_Edit/Stats/Support/Health"]
-position = Vector2(42.6, 31.5125)
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("42_4ttje")
-
-[node name="Attack_Rate" type="Control" parent="UI/Tower_Edit/Stats/Support"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -25.0
-offset_top = 203.0
-offset_right = 296.0
-offset_bottom = 310.0
-
-[node name="Amount" type="Label" parent="UI/Tower_Edit/Stats/Support/Attack_Rate"]
-layout_mode = 0
-offset_left = 178.042
-offset_top = 26.0417
-offset_right = 315.042
-offset_bottom = 119.042
-text = "2/sec"
-label_settings = SubResource("LabelSettings_amvmj")
-
-[node name="Attack_Rate_Header" type="Label" parent="UI/Tower_Edit/Stats/Support/Attack_Rate"]
-layout_mode = 0
-offset_left = 61.0416
-offset_top = 52.0417
-offset_right = 165.042
-offset_bottom = 109.042
-text = "Speed"
-label_settings = SubResource("LabelSettings_hmsmg")
-
-[node name="Damage_Icon_Speed" type="Sprite2D" parent="UI/Tower_Edit/Stats/Support/Attack_Rate"]
 position = Vector2(39.0416, 52.0416)
 rotation = -0.420624
 scale = Vector2(0.145, 0.145)
@@ -4562,6 +4339,55 @@ label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Pause_Menu" type="Control" parent="UI"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_vertical = 0
+script = ExtResource("46_8w4dk")
+
+[node name="PauseBackground" type="PanelContainer" parent="UI/Pause_Menu"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 1960.0
+offset_bottom = 1120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n4s10")
+
+[node name="Resume" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
+process_mode = 3
+layout_mode = 0
+offset_left = 764.0
+offset_top = 373.0
+offset_right = 1548.0
+offset_bottom = 709.0
+
+[node name="Label" parent="UI/Pause_Menu/Resume" index="0"]
+text = "Resume"
+
+[node name="Timer" parent="UI/Pause_Menu/Resume" index="2"]
+process_mode = 3
+
+[node name="Quit" parent="UI/Pause_Menu" instance=ExtResource("29_arder")]
+process_mode = 3
+layout_mode = 0
+offset_left = 803.2
+offset_top = 556.0
+offset_right = 1587.2
+offset_bottom = 892.0
+scale = Vector2(0.4, 0.4)
+
+[node name="Label" parent="UI/Pause_Menu/Quit" index="0"]
+text = "Quit"
+
+[node name="Timer" parent="UI/Pause_Menu/Quit" index="2"]
+process_mode = 3
+
 [node name="Audio" type="Node" parent="."]
 
 [node name="StudioBankLoader" type="StudioBankLoader" parent="Audio"]
@@ -4603,6 +4429,8 @@ visible = false
 
 [node name="Healer" parent="Towers" instance=ExtResource("55_2ugdr")]
 visible = false
+tower_id = ""
+tower_category = ""
 
 [node name="Base" parent="Towers" instance=ExtResource("48_nnmy5")]
 
@@ -4647,11 +4475,11 @@ visible = false
 [connection signal="pressed" from="UI/Game_Speed/Speeds/2X" to="UI/Game_Speed" method="_set_speed" binds= [2]]
 [connection signal="pressed" from="UI/Game_Speed/Speeds/4X" to="UI/Game_Speed" method="_set_speed" binds= [4]]
 [connection signal="pressed" from="UI/Game_Speed/Speeds/Skip_to_Night" to="UI/Game_Speed" method="skip_to_night"]
-[connection signal="function_trigger" from="UI/Pause_Menu/Resume" to="UI/Game_Speed" method="_set_speed" binds= [1]]
-[connection signal="function_trigger" from="UI/Pause_Menu/Quit" to="." method="quit_game"]
 [connection signal="pressed" from="UI/Tower_Edit/Back" to="UI/Tower_Edit" method="disable"]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Upgrade" to="UI/Tower_Edit" method="upgrade_tower"]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Sell" to="UI/Tower_Edit" method="sell_tower"]
+[connection signal="function_trigger" from="UI/Pause_Menu/Resume" to="UI/Game_Speed" method="_set_speed" binds= [1]]
+[connection signal="function_trigger" from="UI/Pause_Menu/Quit" to="." method="quit_game"]
 
 [editable path="Sky"]
 [editable path="UI/Build/Categories/Attack_Button"]

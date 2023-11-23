@@ -1,5 +1,7 @@
 extends Node3D
 
+signal BuildNextLevel
+
 @export var active : bool ##This determines whether the object is active or not
 
 @export_category("Tower Identification")
@@ -154,5 +156,7 @@ func _on_foundation_detect_body(body):
 				#nearest_archer.speed = .2
 				nearest_archer.ratio_walking_to = nearest_archer.path_progress_ratios.get(closest_path_id)
 				nearest_archer.toggle_walking()
-				
-				 
+ 
+
+func build_new_tower(_category):
+	emit_signal("BuildNextLevel", _category)

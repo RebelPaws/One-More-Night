@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba1jx6g27gxml"
-path.s3tc="res://.godot/imported/Damage_Icon_Red.png-d7d55b3336b1524f6f5be64e075941cf.s3tc.ctex"
+uid="uid://cocgw653sqvmi"
+path.s3tc="res://.godot/imported/Armor_Icon.png-a1599814eaccb7771449ef002618016d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Interface/Damage_Icon_Red.png"
-dest_files=["res://.godot/imported/Damage_Icon_Red.png-d7d55b3336b1524f6f5be64e075941cf.s3tc.ctex"]
+source_file="res://Interface/Armor/Armor_Icon.png"
+dest_files=["res://.godot/imported/Armor_Icon.png-a1599814eaccb7771449ef002618016d.s3tc.ctex"]
 
 [params]
 

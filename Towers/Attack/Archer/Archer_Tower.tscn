@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://basdgpgqvhhed"]
 
-[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Template.tscn" id="1_60w2p"]
+[ext_resource type="PackedScene" uid="uid://chcfn41cdw6hq" path="res://Towers/Tower_Base/Tower_Base.tscn" id="1_60w2p"]
 [ext_resource type="Script" path="res://Towers/Attack/Archer/Archer_Tower.gd" id="2_oudqd"]
 [ext_resource type="ArrayMesh" uid="uid://bag2vo6vtoajg" path="res://Towers/Attack/Archer/Models/Archer_Tower_Lvl_1.mesh" id="3_meph0"]
 
