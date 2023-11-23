@@ -26,7 +26,7 @@ func enable(tower_focused):
 	var cam = get_parent().get_parent().get_node("Cam_Rig") #We grab the camera rig
 	cam.target = tower_focused.get_node("Cam_Anchor") #Now we give it a new target to move to
 	cam.lock_zoom = true #We lock in the zoom so it'll be focused on the tower block being focused
-	cam.zoom_to(8.0) #And we move the zoom to a set zoom for now
+	cam.zoom_to(6.0) #And we move the zoom to a set zoom for now
 	cam.rotate_to(-0.3, 3.1, 0) ##And rotate the camera back to the front of the tower
 	
 	$Naming/Name.text = tower_lock_on.tower_id
@@ -69,7 +69,7 @@ func disable():
 	cam.target = get_parent().get_parent().get_node("Tower") #We'll set it's new tower back to the tower foundation
 	cam.lock_zoom = false #We'll unlock the zoom
 	cam.zoom_to(15.0) #But we'll move the zoom back for the player too
-	cam.rotate_to(-0.5, 3.1, 0)
+	cam.rotate_to(-0.5, cam.rotation.y, cam.rotation.z)
 	
 	await $Anim.animation_finished #We'll wait for the un-toggle animation to finish
 	active = false #Then we deactive the menu

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://chcfn41cdw6hq"]
+[gd_scene load_steps=17 format=3 uid="uid://chcfn41cdw6hq"]
 
 [ext_resource type="Script" path="res://Towers/Tower_Core.gd" id="1_rx1ec"]
 [ext_resource type="ArrayMesh" uid="uid://2v5ggkhgt4ga" path="res://Towers/Tower_Base/Tower_Base.mesh" id="2_asnjb"]
@@ -7,15 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dynrgurp2ts03" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Focused.png" id="5_t8drq"]
 [ext_resource type="Texture2D" uid="uid://vcdmhkaiperm" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Normal.png" id="6_24ten"]
 [ext_resource type="Texture2D" uid="uid://dycyfhuurcept" path="res://Interface/Buttons/Sprites/Diamond_Buttons/Diamond_Button_Pressed.png" id="7_lidso"]
-[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="8_c5em4"]
+[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Stats/Icons/Damage_Icon_Red.png" id="8_riau4"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="9_6pcpa"]
-[ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="10_p6dul"]
-[ext_resource type="Texture2D" uid="uid://cocgw653sqvmi" path="res://Interface/Armor/Armor_Icon.png" id="11_2we40"]
+[ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Stats/Icons/Gold_Icon.png" id="10_y068w"]
+[ext_resource type="Texture2D" uid="uid://cocgw653sqvmi" path="res://Interface/Stats/Icons/Armor_Icon.png" id="11_w2e6w"]
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="12_j01m4"]
+[ext_resource type="PackedScene" uid="uid://c7nav4aosewie" path="res://Systems/Health_Manager.tscn" id="13_ttfv2"]
+[ext_resource type="PackedScene" uid="uid://cij6rtpwnufk0" path="res://Interface/Stats/3D_Stat.tscn" id="14_if8wi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i6574"]
 height = 1.2981
-radius = 0.476934
+radius = 0.596453
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8eq1a"]
 size = Vector3(0.275044, 0.478086, 0.256124)
@@ -28,6 +30,8 @@ tower_category = "Base"
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0898008, 0.148405, 0.394984)
 mesh = ExtResource("2_asnjb")
+
+[node name="Health_Manager" parent="." instance=ExtResource("13_ttfv2")]
 
 [node name="Anchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15291, 0)
@@ -50,11 +54,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0429002, -0.18198, -0.03821
 shape = SubResource("CylinderShape3D_i6574")
 
 [node name="Build_Buttons" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0390274, 0.849755, -0.041814)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0390274, 0.998472, -0.041814)
 visible = false
 
 [node name="Attack" parent="Build_Buttons" instance=ExtResource("3_aa1i8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300859, 0.704721, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383849, 0.704721, 0)
 is_button = true
 button_textures = {
 "Disabled": ExtResource("4_3ja06"),
@@ -73,8 +77,8 @@ modulate = Color(1, 0.396078, 0.356863, 1)
 texture = ExtResource("6_24ten")
 
 [node name="Sprite3D2" type="Sprite3D" parent="Build_Buttons/Attack"]
-transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0.0206714, 0.00191946)
-texture = ExtResource("8_c5em4")
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, 0.0206714, 0.0416084)
+texture = ExtResource("8_riau4")
 
 [node name="Label" type="Label3D" parent="Build_Buttons/Attack"]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.0236269, 0.266735, 0.00101185)
@@ -92,7 +96,7 @@ horizontal_alignment = 0
 [node name="Gold_Icon" type="Sprite3D" parent="Build_Buttons/Attack"]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.113396, -0.217885, 0)
 visible = false
-texture = ExtResource("10_p6dul")
+texture = ExtResource("10_y068w")
 
 [node name="Defense" parent="Build_Buttons" instance=ExtResource("3_aa1i8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00726068, 0.704721, 0)
@@ -115,7 +119,7 @@ texture = ExtResource("6_24ten")
 
 [node name="Sprite3D3" type="Sprite3D" parent="Build_Buttons/Defense"]
 transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0.00123921, 0.0102651, 0.00191946)
-texture = ExtResource("11_2we40")
+texture = ExtResource("11_w2e6w")
 
 [node name="Label" type="Label3D" parent="Build_Buttons/Defense"]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -0.00606537, 0.266735, 0.00101185)
@@ -133,10 +137,10 @@ horizontal_alignment = 0
 [node name="Gold_Icon" type="Sprite3D" parent="Build_Buttons/Defense"]
 transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.113396, -0.217885, 0)
 visible = false
-texture = ExtResource("10_p6dul")
+texture = ExtResource("10_y068w")
 
 [node name="Support" parent="Build_Buttons" instance=ExtResource("3_aa1i8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330583, 0.704721, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.429226, 0.704721, 0)
 is_button = true
 button_textures = {
 "Disabled": ExtResource("4_3ja06"),
@@ -165,15 +169,32 @@ font = ExtResource("9_6pcpa")
 font_size = 397
 
 [node name="Cost" type="Label3D" parent="Build_Buttons"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00994974, 0.424524, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0630803, 0.424524, 0)
 text = "-0"
 font = ExtResource("9_6pcpa")
 horizontal_alignment = 0
+metadata/_edit_lock_ = true
 
 [node name="Gold_Icon" type="Sprite3D" parent="Build_Buttons"]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0789101, 0.43005, 0)
-texture = ExtResource("10_p6dul")
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, -0.0257796, 0.43005, 0)
+texture = ExtResource("10_y068w")
+metadata/_edit_lock_ = true
 
+[node name="Stats" type="Node3D" parent="."]
+visible = false
+
+[node name="Health" parent="Stats" instance=ExtResource("14_if8wi")]
+transform = Transform3D(0.385, 0, -4.27423e-09, 0, 0.385, 0, 4.27423e-09, 0, 0.385, 0.154937, 0.564647, 0.474543)
+
+[node name="Armor" parent="Stats" instance=ExtResource("14_if8wi")]
+transform = Transform3D(0.385, 0, -4.27423e-09, 0, 0.385, 0, 4.27423e-09, 0, 0.385, 0.148835, 0.164448, 0.474543)
+
+[node name="Icon" parent="Stats/Armor" index="1"]
+transform = Transform3D(0.275, 0, -1.60071e-09, 0, 0.275, 0, 1.60071e-09, 0, 0.275, -0.939209, 0.834566, 0.0099659)
+texture = ExtResource("11_w2e6w")
+
+[connection signal="ArmorChanged" from="Health_Manager" to="Stats/Armor" method="update_stat"]
+[connection signal="Damaged" from="Health_Manager" to="Stats/Health" method="update_stat"]
 [connection signal="body_entered" from="Detection_Range" to="." method="unit_detected"]
 [connection signal="body_exited" from="Detection_Range" to="." method="unit_lost"]
 [connection signal="ObjectClicked" from="3D_Click" to="." method="open_tower_menu"]
@@ -185,3 +206,4 @@ texture = ExtResource("10_p6dul")
 [editable path="Build_Buttons/Attack"]
 [editable path="Build_Buttons/Defense"]
 [editable path="Build_Buttons/Support"]
+[editable path="Stats/Armor"]

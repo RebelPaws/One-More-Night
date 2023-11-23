@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cocgw653sqvmi"
-path.s3tc="res://.godot/imported/Armor_Icon.png-a1599814eaccb7771449ef002618016d.s3tc.ctex"
+uid="uid://bdagf2js54d2o"
+path.s3tc="res://.godot/imported/Health_Icon.png-3e862c38afa20ab08aec5d5025d8a2ea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Interface/Armor/Armor_Icon.png"
-dest_files=["res://.godot/imported/Armor_Icon.png-a1599814eaccb7771449ef002618016d.s3tc.ctex"]
+source_file="res://Interface/Stats/Icons/Health_Icon.png"
+dest_files=["res://.godot/imported/Health_Icon.png-3e862c38afa20ab08aec5d5025d8a2ea.s3tc.ctex"]
 
 [params]
 

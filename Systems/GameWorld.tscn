@@ -1,12 +1,10 @@
-[gd_scene load_steps=73 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=71 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
 [ext_resource type="Script" path="res://Towers/Tower.gd" id="3_87d61"]
 [ext_resource type="PackedScene" uid="uid://dcwixsuialvfr" path="res://Systems/Cam_Rig.tscn" id="3_iekil"]
 [ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="5_a3okp"]
-[ext_resource type="Script" path="res://Interface/Health_UI.gd" id="7_jibyv"]
-[ext_resource type="Script" path="res://Interface/Armor_UI.gd" id="9_2n73j"]
 [ext_resource type="PackedScene" uid="uid://c7nav4aosewie" path="res://Systems/Health_Manager.tscn" id="12_sy8pw"]
 [ext_resource type="PackedScene" uid="uid://d2qkth4w6d5km" path="res://Towers/Foundation/Tower_Foundation.tscn" id="13_yk463"]
 [ext_resource type="Script" path="res://Systems/Enemy_Manager.gd" id="14_6tske"]
@@ -15,10 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://1spp8udlt2bw" path="res://Characters/Enemies/Skeleton_Minion/Skeleton_Minion.tscn" id="17_1kf0g"]
 [ext_resource type="Script" path="res://Systems/World_Generator.gd" id="18_633u0"]
 [ext_resource type="PackedScene" uid="uid://citafdildktbl" path="res://Environment/Tile.tscn" id="18_ivqro"]
-[ext_resource type="Script" path="res://Interface/Build_Menu.gd" id="19_b3jvd"]
-[ext_resource type="Script" path="res://Interface/menu_template.gd" id="21_22ett"]
-[ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Currency/Gold_Icon.png" id="21_4866x"]
-[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Damage_Icon_Red.png" id="22_bckr0"]
+[ext_resource type="Script" path="res://Interface/Menus/Build_Menu.gd" id="19_b3jvd"]
+[ext_resource type="Script" path="res://Interface/Menus/menu_template.gd" id="21_22ett"]
+[ext_resource type="Texture2D" uid="uid://canenc2rsx650" path="res://Interface/Stats/Icons/Gold_Icon.png" id="21_4866x"]
+[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Stats/Icons/Damage_Icon_Red.png" id="22_bckr0"]
 [ext_resource type="PackedScene" uid="uid://5ybisss3x2lm" path="res://Interface/Buttons/Template/build_button_template.tscn" id="22_cu4m7"]
 [ext_resource type="Script" path="res://Interface/Buttons/Template/back_button_template.gd" id="25_4mymi"]
 [ext_resource type="Script" path="res://Systems/Tower_Build_Info.gd" id="25_fj146"]
@@ -32,13 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://b4n7ipbo5gduk" path="res://Interface/Buttons/Sprites/Square/Button_Square_Normal.png" id="33_pn8f2"]
 [ext_resource type="Texture2D" uid="uid://dkhimaosi08as" path="res://Interface/Buttons/Sprites/Square/Button_Square_Pressed.png" id="34_ecbhy"]
 [ext_resource type="Texture2D" uid="uid://g046psmclqur" path="res://Interface/Buttons/Sprites/Square/Button_Square_Focused.png" id="35_xdpig"]
-[ext_resource type="PackedScene" uid="uid://cl2obvg7njald" path="res://Interface/Remove_Decor_Menu.tscn" id="37_2ooyn"]
+[ext_resource type="PackedScene" uid="uid://cl2obvg7njald" path="res://Interface/Menus/Remove_Decor_Menu.tscn" id="37_2ooyn"]
 [ext_resource type="Texture2D" uid="uid://b8mqcow5v7td8" path="res://Interface/Skip_to_Night_Icon.png" id="38_bn0jb"]
 [ext_resource type="Texture2D" uid="uid://djvm6k5curyyy" path="res://Interface/Buttons/Sprites/Danger_Button/Button_Danger_Normal.png" id="38_nclwv"]
 [ext_resource type="Texture2D" uid="uid://bnsk2l0oespva" path="res://Interface/Buttons/Sprites/Danger_Button/Button_Danger_Pressed.png" id="39_73jf0"]
 [ext_resource type="Script" path="res://Systems/Music_Manager.gd" id="39_afsdx"]
 [ext_resource type="Texture2D" uid="uid://omygxj2xq7m" path="res://Interface/Buttons/Sprites/Danger_Button/Button_Danger_Focused.png" id="40_nplh3"]
-[ext_resource type="Texture2D" uid="uid://ce2b60v214c8m" path="res://Interface/Currency/Mana_Icon.png" id="41_grbsa"]
+[ext_resource type="Texture2D" uid="uid://ce2b60v214c8m" path="res://Interface/Stats/Icons/Mana_Icon.png" id="41_grbsa"]
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="43_4hy5k"]
@@ -219,40 +217,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 45.126
 [node name="Tower" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.1268, 1.66285, 54.5311)
 script = ExtResource("3_87d61")
-
-[node name="Health" type="Node3D" parent="Tower"]
-transform = Transform3D(0.755, 0, -8.3819e-09, 0, 0.755, 0, 8.3819e-09, 0, 0.755, 0.0139065, 2.36082, 0.962259)
-visible = false
-script = ExtResource("7_jibyv")
-
-[node name="Count" type="Label3D" parent="Tower/Health"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.481045, 0.597611, 0.00510788)
-text = "0"
-font = ExtResource("5_a3okp")
-font_size = 282
-outline_size = 20
-horizontal_alignment = 0
-
-[node name="Sprite3D" type="Sprite3D" parent="Tower/Health"]
-transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
-texture = ExtResource("42_4ttje")
-
-[node name="Armor" type="Node3D" parent="Tower"]
-transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
-visible = false
-script = ExtResource("9_2n73j")
-
-[node name="Count" type="Label3D" parent="Tower/Armor"]
-transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.481045, 0.597611, 0.00510788)
-text = "0"
-font = ExtResource("5_a3okp")
-font_size = 282
-outline_size = 20
-horizontal_alignment = 0
-
-[node name="Sprite3D" type="Sprite3D" parent="Tower/Armor"]
-transform = Transform3D(0.022, 0, -1.76079e-10, 0, 0.022, 0, 1.76079e-10, 0, 0.022, -0.872658, 0.651967, 0.00926018)
-texture = ExtResource("44_nkilj")
 
 [node name="Health_Manager" parent="Tower" instance=ExtResource("12_sy8pw")]
 health_max = 100.0
@@ -3020,6 +2984,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.2295, 0, 59)
 process_mode = 3
 
 [node name="Currency_UI" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -400.0

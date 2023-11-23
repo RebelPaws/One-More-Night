@@ -1,6 +1,7 @@
 extends Node3D
 
 signal BuildNextLevel
+signal Destroyed
 
 @export var active : bool ##This determines whether the object is active or not
 
@@ -75,6 +76,16 @@ var target_list = [] #This is the list of possible targets
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
 signal enemy_detected(enemy)
+
+func  _ready():
+	LenseManager.connect("OpenLense", open_stats)
+	LenseManager.connect("CloseLense", close_stats)
+
+func open_stats():
+	$Stats.show()
+
+func close_stats():
+	$Stats.hide()
 
 #This handles adding up armor
 func _add_armor():
@@ -160,3 +171,11 @@ func _on_foundation_detect_body(body):
 
 func build_new_tower(_category):
 	emit_signal("BuildNextLevel", _category)
+
+#This handles the death of a tower
+func destroy():
+	emit_signal("Destroyed")
+	
+	await get_tree().create_timer(1.0).timeout
+	self.queue_free()
+

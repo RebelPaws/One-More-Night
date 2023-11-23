@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi2i860mlhbo0"
-path="res://.godot/imported/Damage_Icon_Blue.png-f807cfb4b9426d25c879e9ff2c93772d.ctex"
+uid="uid://c0hixiqotujae"
+path="res://.godot/imported/Menu_Background.png-b4564dcc05e1eacc46889d685767202a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interface/Damage_Icon_Blue.png"
-dest_files=["res://.godot/imported/Damage_Icon_Blue.png-f807cfb4b9426d25c879e9ff2c93772d.ctex"]
+source_file="res://Interface/Menus/Menu_Background.png"
+dest_files=["res://.godot/imported/Menu_Background.png-b4564dcc05e1eacc46889d685767202a.ctex"]
 
 [params]
 

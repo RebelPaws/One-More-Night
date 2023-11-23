@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://canenc2rsx650"
-path.s3tc="res://.godot/imported/Gold_Icon.png-20c0be993bfe85e4f432052cfba02d09.s3tc.ctex"
+uid="uid://ba1jx6g27gxml"
+path.s3tc="res://.godot/imported/Damage_Icon_Red.png-33d0ac752e9b88b6aa25f0f9198825cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Interface/Currency/Gold_Icon.png"
-dest_files=["res://.godot/imported/Gold_Icon.png-20c0be993bfe85e4f432052cfba02d09.s3tc.ctex"]
+source_file="res://Interface/Stats/Icons/Damage_Icon_Red.png"
+dest_files=["res://.godot/imported/Damage_Icon_Red.png-33d0ac752e9b88b6aa25f0f9198825cd.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cij6rtpwnufk0"]
+
+[ext_resource type="Script" path="res://Interface/Stats/3D_Stat.gd" id="1_lde4j"]
+[ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="2_g757n"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="3_q44ts"]
+
+[node name="3D_Stat" type="Node3D"]
+transform = Transform3D(1, 0, -1.11019e-08, 0, 1, 0, 1.11019e-08, 0, 1, 0, 0, 0)
+script = ExtResource("1_lde4j")
+
+[node name="Amount_Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.481045, 0.597611, 0.00510788)
+text = "0"
+font = ExtResource("2_g757n")
+font_size = 282
+outline_size = 20
+horizontal_alignment = 0
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
+texture = ExtResource("3_q44ts")

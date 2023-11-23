@@ -44,6 +44,7 @@ func start_game():
 	await get_tree().create_timer(0.2).timeout #Wait a second
 	title_screen.get_node("Audio/ButtonPress").stop() #And make sure it stopped (I forgot what issue made this needed)
 	"""
+	
 	GameInfo.game_state = "Play" #Sets the game state to Play
 	game_speed_buttons._on_build_game_speed_toggle() #Brings up the game speed UI
 	currency_ui.toggle_menu()
@@ -51,7 +52,6 @@ func start_game():
 	
 	#Shows 3D Tower information
 	tower_node.setup()
-	tower_node.show_health_armor()
 	
 	title_screen.hide() #Hides the title
 	GameInfo.game_is_in_play = true #Make sure the game knows it's in play
