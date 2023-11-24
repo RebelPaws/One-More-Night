@@ -3093,6 +3093,36 @@ text = "0
 "
 label_settings = SubResource("LabelSettings_jd8be")
 
+[node name="Day_Night_Pop_Up" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 400.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("21_22ett")
+position_off_screen = Vector2(-400, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Day_Night_Pop_Up"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wblue")
+
+[node name="Health_Label" type="Label" parent="UI/Day_Night_Pop_Up"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = 240.0
+offset_right = 460.0
+offset_bottom = 313.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_jd8be")
+
 [node name="Build" type="Control" parent="UI"]
 visible = false
 layout_mode = 3

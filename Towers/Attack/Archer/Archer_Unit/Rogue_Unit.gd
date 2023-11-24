@@ -148,6 +148,12 @@ func shoot(_target):
 	if arrow == null: 
 		return
 	#print_debug(_target)
+	var aim_tween = get_tree().create_tween()
+	var new_rotation_y = global_position.angle_to(_target.global_position)
+	var new_rotation = Vector3(rotation.x, rotation.y + new_rotation_y, rotation.z)
+	aim_tween.tween_property(self, "rotation",new_rotation, 1.0).set_trans(Tween.TRANS_CUBIC)
+	aim_tween.play()
+	await get_tree().create_timer(1.0).timeout
 	
 	var chance_roll = randf_range(0, 100)
 	
@@ -184,11 +190,6 @@ func attack():
 		if target_quad == archer_quad:
 			if is_walking:
 				toggle_walking()
-			var aim_tween = get_tree().create_tween()
-			var new_rotation_y = global_position.angle_to(current_target.global_position)
-			aim_tween.tween_property(self, "rotation:y", new_rotation_y, 0.5).set_trans(Tween.TRANS_CUBIC)
-			aim_tween.play()
-			await get_tree().create_timer(0.5).timeout
 			shoot(current_target)
 			attack_ready = false
 			cooldown_timer.start()
