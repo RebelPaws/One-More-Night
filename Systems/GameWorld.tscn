@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cofg0ttdlqvdj"]
+[gd_scene load_steps=72 format=3 uid="uid://cofg0ttdlqvdj"]
 
 [ext_resource type="Script" path="res://Systems/GameManager.gd" id="1_fsulb"]
 [ext_resource type="PackedScene" uid="uid://vihhwf7qn4f4" path="res://Environment/Sky.tscn" id="2_2t3rh"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://ce2b60v214c8m" path="res://Interface/Stats/Icons/Mana_Icon.png" id="41_grbsa"]
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
+[ext_resource type="PackedScene" uid="uid://nloidc3tgvnv" path="res://Interface/Menus/Tower_Editing/Upgrade_Tree.tscn" id="42_rm4bw"]
 [ext_resource type="Texture2D" uid="uid://bfj4b8r71gsnw" path="res://Objects/Projectiles/Interface/Currency/Coin_Icon.png" id="43_4hy5k"]
 [ext_resource type="Texture2D" uid="uid://7ul77m4r7uq1" path="res://Objects/Projectiles/Interface/Armor/Armor.png" id="44_nkilj"]
 [ext_resource type="Script" path="res://Systems/Tower_Info.gd" id="45_5si87"]
@@ -4505,10 +4506,7 @@ label_settings = SubResource("LabelSettings_6ebu0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Upgrade_Tree" type="Control" parent="UI/Tower_Edit"]
-anchors_preset = 0
-offset_right = 1909.0
-offset_bottom = 1079.0
+[node name="Upgrade_Tree" parent="UI/Tower_Edit" instance=ExtResource("42_rm4bw")]
 
 [node name="Audio" type="Node" parent="."]
 

@@ -6,7 +6,7 @@ var equipped_perks = []
 var perk_list = {
 					"Archer": {
 										"Name": "Archer",
-										"Description": "Blast the enemies with polterguist power!",
+										"Description": "Shoot your enemies from sky or land; they'll feel the power of the bow",
 										
 										"Perks": {
 													"Seeker": {
@@ -18,8 +18,6 @@ var perk_list = {
 												},
 											},
 				}
-
-var upgrades_in_menu = []
 
 func get_upgrade():
 	var _name 

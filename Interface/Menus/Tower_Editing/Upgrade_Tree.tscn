@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://nloidc3tgvnv"]
+
+[ext_resource type="Script" path="res://Interface/Menus/Tower_Editing/Upgrade_Tree.gd" id="1_7bder"]
+[ext_resource type="PackedScene" uid="uid://waegg1432e8b" path="res://Interface/Buttons/Template/Upgrade_Button.tscn" id="1_c057d"]
+[ext_resource type="Texture2D" uid="uid://ba1jx6g27gxml" path="res://Interface/Stats/Icons/Damage_Icon_Red.png" id="2_0qtkg"]
+[ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="3_hw073"]
+[ext_resource type="Texture2D" uid="uid://c0hixiqotujae" path="res://Interface/Menus/Menu_Background.png" id="3_jmuix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
+font = ExtResource("3_hw073")
+font_size = 240
+outline_size = 20
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Upgrade_Tree" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1909.0
+offset_bottom = 1079.0
+script = ExtResource("1_7bder")
+
+[node name="Unit_Selection" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attack" type="Control" parent="Unit_Selection"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Archer" parent="Unit_Selection/Attack" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 520.0
+offset_right = 1215.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Unit_Selection/Attack/Archer" index="1"]
+visible = false
+text = "They'll slay your enemies from afar with the power of the bow!"
+
+[node name="Icon" parent="Unit_Selection/Attack/Archer" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Soldier" parent="Unit_Selection/Attack" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 520.0
+offset_right = 1367.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Unit_Selection/Attack/Soldier" index="1"]
+visible = false
+text = "They'll slay your enemies from afar with the power of the bow!"
+
+[node name="Icon" parent="Unit_Selection/Attack/Soldier" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Defense" type="Control" parent="Unit_Selection"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Support" type="Control" parent="Unit_Selection"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Info" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 1500.0
+offset_top = 445.0
+offset_right = 1540.0
+offset_bottom = 485.0
+
+[node name="MenuBackground" type="Sprite2D" parent="Info"]
+position = Vector2(10.6385, 216.75)
+scale = Vector2(0.419415, 0.433256)
+texture = ExtResource("3_jmuix")
+
+[node name="Upgrade_Tutorial" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -275.361
+offset_top = -151.25
+offset_right = 1495.64
+offset_bottom = 119.75
+scale = Vector2(0.34, 0.34)
+text = "Choose 1 Upgrade"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+
+[node name="Upgrade_Name" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -275.361
+offset_top = -43.2499
+offset_right = 1495.64
+offset_bottom = 227.75
+scale = Vector2(0.34, 0.34)
+text = "Name"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+
+[node name="Upgrade_Description" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = -261.361
+offset_top = 37.7501
+offset_right = 1919.64
+offset_bottom = 1569.75
+scale = Vector2(0.265, 0.265)
+text = "This is where the upgrade will be described so the player knows what they're selecting."
+label_settings = SubResource("LabelSettings_hnysj")
+autowrap_mode = 3
+
+[connection signal="SelectUpgrade" from="Unit_Selection/Attack/Archer" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Unit_Selection/Attack/Archer" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Unit_Selection/Attack/Soldier" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Unit_Selection/Attack/Soldier" to="." method="update_info"]
+
+[editable path="Unit_Selection/Attack/Archer"]
+[editable path="Unit_Selection/Attack/Soldier"]

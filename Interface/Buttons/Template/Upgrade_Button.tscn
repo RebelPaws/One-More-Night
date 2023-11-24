@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://waegg1432e8b"]
+
+[ext_resource type="PackedScene" uid="uid://dkl4s0oj3x2sr" path="res://Interface/Buttons/Template/button_template.tscn" id="1_5wh0g"]
+[ext_resource type="Texture2D" uid="uid://bpg6w2c68ak7w" path="res://Interface/Buttons/Sprites/Upgrade_Button/Upgrade_Button_Normal.png" id="2_cedii"]
+[ext_resource type="Texture2D" uid="uid://cevbbkbboy7bi" path="res://Interface/Buttons/Sprites/Upgrade_Button/Upgrade_Button_Pressed.png" id="3_41t1k"]
+[ext_resource type="Texture2D" uid="uid://brmrw80yifq3e" path="res://Interface/Buttons/Sprites/Upgrade_Button/Upgrade_Button_Focused.png" id="4_rkipi"]
+[ext_resource type="Texture2D" uid="uid://df45d4xjauum1" path="res://Interface/Buttons/Sprites/Upgrade_Button/Upgrade_Button_Disabled.png" id="5_76umg"]
+[ext_resource type="FontFile" uid="uid://du5v7o0vymbvu" path="res://Objects/Projectiles/Interface/Fonts/Main_Font.ttf" id="6_44kom"]
+[ext_resource type="Script" path="res://Interface/Buttons/Template/Upgrade_Button.gd" id="6_spaxj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnysj"]
+font = ExtResource("6_44kom")
+font_size = 240
+outline_size = 20
+outline_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Upgrade_Button" instance=ExtResource("1_5wh0g")]
+offset_right = 639.0
+offset_bottom = 625.0
+texture_normal = ExtResource("2_cedii")
+texture_pressed = ExtResource("3_41t1k")
+texture_hover = ExtResource("4_rkipi")
+texture_disabled = ExtResource("5_76umg")
+texture_focused = ExtResource("4_rkipi")
+script = ExtResource("6_spaxj")
+
+[node name="Label" parent="." index="0"]
+visible = false
+offset_left = 22.0
+offset_top = 650.0
+offset_right = 638.0
+offset_bottom = 892.0
+text = "Ignore"
+
+[node name="Description" type="Label" parent="." index="1"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 954.0
+offset_right = 1862.0
+offset_bottom = 1196.0
+text = "Put Upgrade Description Here"
+label_settings = SubResource("LabelSettings_hnysj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="." index="4"]
+position = Vector2(350, 280)
+
+[connection signal="function_trigger" from="." to="." method="choose_upgrade"]
+[connection signal="mouse_entered" from="." to="." method="update_upgrade_info"]
