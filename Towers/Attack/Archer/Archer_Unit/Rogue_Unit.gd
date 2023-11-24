@@ -12,7 +12,7 @@ var path_following : PathFollow3D
 var speed : float = 0.0
 var chance_for_perfect_shot = 20.0
 var damage = 5.0
-var attack_rate = 1.5
+var attack_rate = 1.0
 var cooldown_rate = 0.5
 
 #Possibly to be deleted
@@ -88,6 +88,10 @@ func _physics_process(delta):
 	if is_walking:
 		var parent_progress = get_parent().get_progress()
 		get_parent().set_progress(parent_progress + speed*delta)
+		if speed < 0:
+			rotation_degrees.y = 180
+		else:
+			rotation_degrees.y = 0
 		if PLAY_STATE == "DAY":
 			pass
 		elif PLAY_STATE == "NIGHT":
@@ -106,14 +110,14 @@ func update_stats():
 
 func toggle_walking():
 	if is_walking:
-		rotation_degrees.y = -90
-		speed = 0.0
 		is_walking = false
+		if current_target == null:
+			rotation_degrees.y = -90			
+		speed = 0.0
+
 	else:
 		if PLAY_STATE == "DAY":
 			speed = [0.2, -0.2].pick_random()
-			if speed < 0:
-				rotation_degrees.y = 180
 			is_walking = true
 		elif PLAY_STATE == "NIGHT":
 			if current_target == null:
@@ -136,10 +140,8 @@ func walk_to_node(): # This is for walking to a node for a "current_target" in a
 	
 	if distance_forward < distance_back:
 		speed = 0.2
-		rotation_degrees.y += 90
 	else:
 		speed = -0.2
-		rotation_degrees.y -= 90
 
 func shoot(_target):
 	var arrow = $Arrow_Container._get_unused_object()
@@ -183,9 +185,8 @@ func attack():
 			if is_walking:
 				toggle_walking()
 			var aim_tween = get_tree().create_tween()
-			var new_rotation = global_position.angle_to(current_target.global_position)
-			
-			aim_tween.tween_property(self, "rotation", new_rotation, 0.5)
+			var new_rotation_y = global_position.angle_to(current_target.global_position)
+			aim_tween.tween_property(self, "rotation:y", new_rotation_y, 0.5).set_trans(Tween.TRANS_CUBIC)
 			aim_tween.play()
 			await get_tree().create_timer(0.5).timeout
 			shoot(current_target)

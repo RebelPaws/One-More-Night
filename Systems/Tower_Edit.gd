@@ -31,9 +31,12 @@ func enable(tower_focused):
 	
 	#Now we check to see if this is the last tower block built aka the peak
 	if get_parent().get_parent().get_node("Tower").get_last_tower() == tower_focused:
-		$Options/Sell.show() #If it is we show the sell option
+		#$Options/Sell.show() #If it is we show the sell option
+		$Options/Sell.set_modulate(Color8(255,255,255,255))
+		$Options/Sell.disabled = false
 	else: #If not we won't since they can't.
-		$Options/Sell.hide()
+		$Options/Sell.set_modulate(Color8(100,100,100,255))
+		$Options/Sell.disabled = true
 	
 	#This will get the specific category of stats for the tower
 	$Stats.get_node(tower_lock_on.tower_category).show() 
@@ -74,7 +77,7 @@ func upgrade_tower():
 	game_root.modify_currency("Gold", -_cost) #If they can afford it we'll take their gold
 	
 	tower_lock_on.level_up() #This will level up the tower
-	await get_tree().create_timer(0.1).timeout #This gives the game a half-second to get all the logic through
+	await get_tree().create_timer(0.2).timeout #This gives the game a bit of time to get all the logic through
 	#This way before we update the info it should be all increased
 	
 	var stats_node = $Stats.get_node(tower_lock_on.tower_category)
@@ -112,11 +115,13 @@ func update_upgrade():
 	
 	#We check to see if the tower is max level yet
 	if tower_lock_on.level == tower_lock_on.level_cap:
-		$Options/Upgrade.hide()
+		$Options/Upgrade.set_modulate(Color8(100,100,100,255))
+		$Options/Sell.disabled = true
 		return #If there's nothing left to upgrade we hide the upgrade button and leave
 	
 	#If the tower block isn't max level we'll update the info and ensure the upgrade button is shown
-	$Options/Upgrade.show()
+	$Options/Upgrade.set_modulate(Color8(255,255,255,255))
+	$Options/Sell.disabled = false
 	
 	#Then we update the cost text
 	$Options/Upgrade/Cost.text = str(tower_lock_on.costs[tower_lock_on.level + 1])
