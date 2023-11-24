@@ -20,6 +20,12 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection_Range"]
 
+[node name="Near_Detection_Range" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Near_Detection_Range"]
+
 [node name="3D_Click" parent="." instance=ExtResource("2_e13ii")]
 
 [node name="CollisionShape3D" parent="3D_Click" index="0"]
@@ -28,6 +34,8 @@ shape = SubResource("CylinderShape3D_i6574")
 
 [connection signal="body_entered" from="Detection_Range" to="." method="unit_detected"]
 [connection signal="body_exited" from="Detection_Range" to="." method="unit_lost"]
+[connection signal="body_entered" from="Near_Detection_Range" to="." method="unit_detected"]
+[connection signal="body_exited" from="Near_Detection_Range" to="." method="unit_lost"]
 [connection signal="ObjectClicked" from="3D_Click" to="." method="open_tower_menu"]
 
 [editable path="3D_Click"]

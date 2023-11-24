@@ -6,6 +6,7 @@ signal ManaChanged
 #Onready Nodes
 @onready var cam_rig = get_node("Cam_Rig")
 @onready var tower_node = get_node("Tower")
+@onready var tower_foundation = get_node("Tower/Blocks/Tower_Foundation")
 
 @onready var title_screen = get_node("UI/Title")
 @onready var currency_ui = get_node("UI/Currency_UI")
@@ -24,6 +25,8 @@ var gold_total = 0 #This is just to count up the total gained gold for stats
 @export var mana = 0 ##This is the count for mana currency. Value is starting amount.
 var mana_total = 0 #This is just to count up the total gained mana for stats
 
+
+var PLAY_STATE = "DAY" # This is to track whether it is NIGHT or DAY
 var nights_survived = 0 #This is how many nights have been survived
 
 
@@ -94,8 +97,11 @@ func modify_currency(_type, _amount):
 func start_night():
 	music.switch_track("Night") #We switch the music track to the night variant
 	enemy_manager._toggle(true) #We now allow enemies to spawn
-	
 	game_speed_buttons.toggle_skip_night(false) #We don't allow the skip to night to work at night
+	PLAY_STATE = "NIGHT"
+	for tower in get_node("Tower/Blocks").get_children():
+		if tower.has_method("start_night"):
+			tower.start_night()
 
 #This will end enemies attacking
 func end_night():
@@ -106,6 +112,10 @@ func end_night():
 	
 	enemy_manager._toggle(false) #Then we stop enemies from spawning
 	night_survived()
+	PLAY_STATE = "DAY"
+	for tower in get_node("Tower/Blocks").get_children():
+		if tower.has_method("start_day"):
+			tower.start_day()
 
 #This will handle what happens when a night is survived
 func night_survived():

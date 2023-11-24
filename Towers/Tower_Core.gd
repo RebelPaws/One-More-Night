@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var active : bool ##This determines whether the object is active or not
+@export var active : bool = true ##This determines whether the object is active or not
 
 @export_category("Tower Identification")
 @export var tower_id : String ##This is the tower's ID in all game files
@@ -68,6 +68,7 @@ var level = 1 #This is the tower's level which will determine everything about i
 
 @export_category("Target Settings")
 var target_list = [] #This is the list of possible targets
+var near_target_list = [] #This is the possible targets that are close to the tower
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
 signal enemy_detected(enemy)
@@ -83,25 +84,34 @@ func _add_armor():
 
 #This handles unit detection and sees if it can be added to the target list
 func unit_detected(body):
-	for group in target_groups: #For each group we can target we'll check the unit for
-		if body.is_in_group(group): #If the unit is in the target group
-			target_list.append(body) #We add them to the list
-			return #Then we exit the function
+	if tower_id == "Foundation":
+		for group in target_groups: #For each group we can target we'll check the unit for
+			if body.is_in_group(group): #If the unit is in the target group
+				if target_list.has(body):
+					near_target_list.append(body)
+					return
+				else:
+					target_list.append(body) #We add them to the list
+					return #Then we exit the function
 		
 		#Otherwise the loop will run until it either finds the right group or the unit isn't what it's looking for0
 
 #This handles removing units from the target list
 func unit_lost(body):
-	var index = 0 #We set this so we can easily identify the position of the unit in the target list
+	#var index = 0 #We set this so we can easily identify the position of the unit in the target list
+	if tower_id == "Foundation":
+		if target_list.has(body):
+			target_list.erase(body)
+		if near_target_list.has(body):
+			near_target_list.erase(body)
 	
-	
-	if body in target_list: #First we check to see if the unit is even in the target list
+	"""if body in target_list: #First we check to see if the unit is even in the target list
 		for unit in target_list: #If they are we go through each unit to find them
 			if target_list[index] == unit: #We check to see if the current array position is the unit
 				target_list.remove_at(index) #If it is we remove it from the target list
 				return #Then leave the function
 			
-			index += 1 #Otherwise we go to the next position in the target list
+			index += 1 #Otherwise we go to the next position in the target list"""
 
 #This will open up the tower edit menu when clicked
 func open_tower_menu():
@@ -121,22 +131,9 @@ func _get_cost(_type):
 			return costs[level + 1]
 
 
-func get_closest_path_node(target, path_node):
-	var closest_path_node : Vector3 = Vector3.ZERO
-	var closest_path_id : int = 0
-	for i in path_node.curve.get_point_count():
-		if closest_path_node == Vector3.ZERO:
-			closest_path_node = path_node.curve.get_point_position(i)
-			closest_path_id = i
-		else:
-			if target.global_position.distance_to(path_node.curve.get_point_position(i)) < target.global_position.distance_to(closest_path_node):
-				#closest_path_node = path_node.curve.get_point_position(i)
-				closest_path_node = path_node.curve.get_point_position(i)
-				closest_path_id = i
-	
-	return closest_path_id
 
-func _on_foundation_detect_body(body):
+
+"""func _on_foundation_detect_body(body):
 	#emit_signal("enemy_detected", body)
 	var closest_path_id : int
 	for i in get_parent().get_children():
@@ -153,6 +150,6 @@ func _on_foundation_detect_body(body):
 			if nearest_archer != null:	
 				#nearest_archer.speed = .2
 				nearest_archer.ratio_walking_to = nearest_archer.path_progress_ratios.get(closest_path_id)
-				nearest_archer.toggle_walking()
+				nearest_archer.toggle_walking()"""
 				
 				 

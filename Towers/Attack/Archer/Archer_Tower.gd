@@ -6,6 +6,8 @@ var chance_for_quickdraw = 35.0
 @onready var units_holder = get_node("Units")
 @onready var walking_path = get_node("Units/Path3D")
 
+var base_tower
+
 var top_y_value : float = 0.0
 
 #var archer_locations : Dictionary = {0: [Vector3(0.614,-.153,-.079), Vector3(0,95.1,0)],
@@ -15,7 +17,8 @@ var top_y_value : float = 0.0
 func _ready():
 	if not active:
 		return
-	
+	base_tower = get_tree().get_root().get_node("Game/Tower/Blocks/Tower_Foundation")
+	print(get_tree().get_root().get_node("Game"))
 	spawn_archer()
 	
 	#attack()
@@ -26,7 +29,16 @@ func _ready():
 	#detection_range.body_exited.connect(unit_lost)
 	
 	#click.ObjectClicked.connect(open_tower_menu)
-	
+
+func start_night():
+	for path in get_node("Units/Path3D").get_children():
+		path.get_child(0).attack_rate_timer.start()
+		path.get_child(0).PLAY_STATE = "NIGHT"
+
+func start_day():
+	for path in get_node("Units/Path3D").get_children():
+		path.get_child(0).PLAY_STATE = "DAY"
+
 func spawn_archer():
 	var new_path_follow = PathFollow3D.new()
 	new_path_follow.rotation_mode = PathFollow3D.ROTATION_Y
@@ -40,8 +52,11 @@ func spawn_archer():
 	#new_archer.rotation_degrees = archer_locations[archer_info][1]
 	#new_archer.rotation_degrees.y += rotation_degrees.y
 	new_archer.prepare_archer()
+	if get_tree().get_root().get_node("Game").PLAY_STATE == "NIGHT":
+		new_archer.PLAY_STATE = "NIGHT"
 	
 	new_archer.show()
+	#new_archer.toggle_walking()
 	
 
 
@@ -102,8 +117,23 @@ func attack():
 	
 	$Attack_Timer.start()"""
 
+func find_target(attack_position):
+	var target = null
+	if base_tower.near_target_list.size() > 0:
+		for possible_target in base_tower.near_target_list:
+			if target == null:
+				target = possible_target
+			elif attack_position.distance_to(possible_target.global_position) < attack_position.distance_to(target.global_position):
+				target = possible_target
+	elif base_tower.target_list.size() > 0:
+		for possible_target in base_tower.target_list:
+			if target == null:
+				target = possible_target
+			elif attack_position.distance_to(possible_target.global_position) < attack_position.distance_to(target.global_position):
+				target = possible_target
+	
+	return target
+
 func attack_reset():
 	can_attack = true
-	
-	attack()
 

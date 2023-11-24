@@ -41,14 +41,16 @@ func buy_tower(tower_name, tower_category, tower_scene_string):
 	#var new_tower = tower_info.duplicate()
 	var new_tower
 	new_tower = load(tower_scene_string).instantiate()
+	new_tower.tower_id = tower_name
+	new_tower.tower_category = tower_category
 	tower_blocks.add_child(new_tower)
 	new_tower.global_position = tower_anchor_point
 	var random_rotation = randi_range(0,359)
 	match tower_name:
 		"Archer":
 			new_tower.set_rotation_degrees(Vector3(0,random_rotation,0))
-			new_tower.spawn_archer()
-			new_tower.attack()
+			#new_tower.spawn_archer()
+			#new_tower.attack()
 			
 		"Shield":
 			#new_tower = shield_tower_scene.instantiate()
@@ -56,7 +58,7 @@ func buy_tower(tower_name, tower_category, tower_scene_string):
 		#"Healer":
 			#new_tower = healer_tower_scene.instantiate()
 	
-	
+
 	#tower_blocks.add_child(new_tower)
 	#new_tower.global_position = tower_anchor_point
 	new_tower.show()
