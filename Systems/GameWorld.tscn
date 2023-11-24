@@ -3797,6 +3797,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Remove_Decor_Menu" parent="UI" instance=ExtResource("37_2ooyn")]
+visible = false
 
 [node name="Game_Speed" type="Control" parent="UI"]
 layout_mode = 3

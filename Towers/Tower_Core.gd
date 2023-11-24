@@ -85,14 +85,12 @@ func _add_armor():
 #This handles unit detection and sees if it can be added to the target list
 func unit_detected(body):
 	if tower_id == "Foundation":
-		for group in target_groups: #For each group we can target we'll check the unit for
-			if body.is_in_group(group): #If the unit is in the target group
-				if target_list.has(body):
-					near_target_list.append(body)
-					return
-				else:
-					target_list.append(body) #We add them to the list
-					return #Then we exit the function
+		#for group in target_groups: #For each group we can target we'll check the unit for
+			#if body.is_in_group(group): #If the unit is in the target group
+		if target_list.has(body) == false:
+			target_list.append(body) #We add them to the list
+			#break #Then we exit the loop (if "for" comes back)
+
 		
 		#Otherwise the loop will run until it either finds the right group or the unit isn't what it's looking for0
 
@@ -102,8 +100,6 @@ func unit_lost(body):
 	if tower_id == "Foundation":
 		if target_list.has(body):
 			target_list.erase(body)
-		if near_target_list.has(body):
-			near_target_list.erase(body)
 	
 	"""if body in target_list: #First we check to see if the unit is even in the target list
 		for unit in target_list: #If they are we go through each unit to find them
@@ -153,3 +149,19 @@ func _get_cost(_type):
 				nearest_archer.toggle_walking()"""
 				
 				 
+
+
+func near_unit_detected(body):
+	if tower_id == "Foundation":
+		#for group in target_groups: #For each group we can target we'll check the unit for
+			#if body.is_in_group(group): #If the unit is in the target group
+		if near_target_list.has(body) == false:
+			near_target_list.append(body) #We add them to the list
+			#break #Then we exit the loop (if "for" comes back)
+
+
+
+func near_unit_lost(body):
+	if near_target_list.has(body):
+		near_target_list.erase(body)
+		print("Current Near Target list: " + str(near_target_list))

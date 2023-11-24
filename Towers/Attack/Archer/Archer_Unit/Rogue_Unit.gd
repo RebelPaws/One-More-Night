@@ -120,24 +120,27 @@ func toggle_walking():
 				speed = [0.2, -0.2].pick_random()
 				is_walking = true
 			else:
-				var prog_ratio = get_parent().get_progress_ratio()
-				var distance_forward : float
-				var distance_back : float
-				if ratio_walking_to < prog_ratio:
-					distance_forward = ratio_walking_to + 1 - prog_ratio
-					distance_back = prog_ratio - ratio_walking_to
-				else:
-					distance_forward = ratio_walking_to - prog_ratio
-					distance_back = prog_ratio + 1 - ratio_walking_to
-				
-				if distance_forward < distance_back:
-					speed = 0.2
-					rotation_degrees.y += 90
-				else:
-					speed = -0.2
-					rotation_degrees.y -= 90
+				walk_to_node()
 				is_walking = true
+
+func walk_to_node(): # This is for walking to a node for a "current_target" in a different quadrant
+	var prog_ratio = get_parent().get_progress_ratio()
+	var distance_forward : float
+	var distance_back : float
+	if ratio_walking_to < prog_ratio:
+		distance_forward = ratio_walking_to + 1 - prog_ratio
+		distance_back = prog_ratio - ratio_walking_to
+	else:
+		distance_forward = ratio_walking_to - prog_ratio
+		distance_back = prog_ratio + 1 - ratio_walking_to
 	
+	if distance_forward < distance_back:
+		speed = 0.2
+		rotation_degrees.y += 90
+	else:
+		speed = -0.2
+		rotation_degrees.y -= 90
+
 func shoot(_target):
 	var arrow = $Arrow_Container._get_unused_object()
 	if arrow == null: 
@@ -172,6 +175,7 @@ func aim():
 
 func attack():
 	attack_rate_timer.stop()
+	
 	if current_target != null:
 		var archer_quad = which_quadrant(global_position)
 		var target_quad = which_quadrant(current_target.global_position)
@@ -237,6 +241,10 @@ func _on_attack_timer_timeout():
 			if is_walking == false:
 				toggle_walking()
 		else:
+			if tower_node.base_tower.target_list.has(current_target):
+				tower_node.base_tower.target_list.erase(current_target)
+			if tower_node.base_tower.near_target_list.has(current_target):
+				tower_node.base_tower.near_target_list.erase(current_target)
 			attack()
 	else:
 		attack()

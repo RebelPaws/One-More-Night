@@ -34,8 +34,8 @@ shape = SubResource("CylinderShape3D_i6574")
 
 [connection signal="body_entered" from="Detection_Range" to="." method="unit_detected"]
 [connection signal="body_exited" from="Detection_Range" to="." method="unit_lost"]
-[connection signal="body_entered" from="Near_Detection_Range" to="." method="unit_detected"]
-[connection signal="body_exited" from="Near_Detection_Range" to="." method="unit_lost"]
+[connection signal="body_entered" from="Near_Detection_Range" to="." method="near_unit_detected"]
+[connection signal="body_exited" from="Near_Detection_Range" to="." method="near_unit_lost"]
 [connection signal="ObjectClicked" from="3D_Click" to="." method="open_tower_menu"]
 
 [editable path="3D_Click"]
