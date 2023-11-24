@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://chcfn41cdw6hq"]
+[gd_scene load_steps=18 format=3 uid="uid://chcfn41cdw6hq"]
 
 [ext_resource type="Script" path="res://Towers/Tower_Core.gd" id="1_rx1ec"]
 [ext_resource type="ArrayMesh" uid="uid://2v5ggkhgt4ga" path="res://Towers/Tower_Base/Tower_Base.mesh" id="2_asnjb"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="12_j01m4"]
 [ext_resource type="PackedScene" uid="uid://c7nav4aosewie" path="res://Systems/Health_Manager.tscn" id="13_ttfv2"]
 [ext_resource type="PackedScene" uid="uid://cij6rtpwnufk0" path="res://Interface/Stats/3D_Stat.tscn" id="14_if8wi"]
+[ext_resource type="PackedScene" uid="uid://cjvglus25ae05" path="res://Systems/Level_Manager.tscn" id="15_sifh4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i6574"]
 height = 1.2981
@@ -193,6 +194,15 @@ transform = Transform3D(0.385, 0, -4.27423e-09, 0, 0.385, 0, 4.27423e-09, 0, 0.3
 transform = Transform3D(0.275, 0, -1.60071e-09, 0, 0.275, 0, 1.60071e-09, 0, 0.275, -0.939209, 0.834566, 0.0099659)
 texture = ExtResource("11_w2e6w")
 
+[node name="Level_Manager" parent="." instance=ExtResource("15_sifh4")]
+level_cap = 6
+xp_requirements = {
+1: 1,
+2: 2,
+3: 3,
+4: 4
+}
+
 [connection signal="ArmorChanged" from="Health_Manager" to="Stats/Armor" method="update_stat"]
 [connection signal="Damaged" from="Health_Manager" to="Stats/Health" method="update_stat"]
 [connection signal="body_entered" from="Detection_Range" to="." method="unit_detected"]
@@ -201,6 +211,7 @@ texture = ExtResource("11_w2e6w")
 [connection signal="ObjectClicked" from="Build_Buttons/Attack" to="." method="build_new_tower" binds= ["Attack"]]
 [connection signal="ObjectClicked" from="Build_Buttons/Defense" to="." method="build_new_tower" binds= ["Defense"]]
 [connection signal="ObjectClicked" from="Build_Buttons/Support" to="." method="build_new_tower" binds= ["Support"]]
+[connection signal="LevelUp" from="Level_Manager" to="." method="level_up"]
 
 [editable path="3D_Click"]
 [editable path="Build_Buttons/Attack"]

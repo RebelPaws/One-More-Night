@@ -17,6 +17,8 @@ func enable(tower_focused):
 	#This is the counter-measure to clicky players trying to break or accidently clicking open other menus
 	if active or GameInfo.game_state == "Menu": return
 	
+	$Edit_Mode.hide()
+	
 	GameInfo.game_state = "Menu" #We set the game state to menu
 	active = true #Now we're ready to be active
 	
@@ -31,8 +33,6 @@ func enable(tower_focused):
 	
 	$Naming/Name.text = tower_lock_on.tower_id
 	
-	update_upgrade()
-	
 	#Now we check to see if this is the last tower block built aka the peak
 	if get_parent().get_parent().get_node("Tower").get_last_tower() == tower_focused:
 		if tower_lock_on.can_sell:
@@ -45,15 +45,21 @@ func enable(tower_focused):
 		$Edit_Mode/Options/Sell.hide()
 		tower_lock_on.get_node("Build_Buttons").hide()
 	
+	if tower_lock_on.tower_id == "Base":
+		$Upgrade_Tree.enable(tower_lock_on)
+	else:
+		if tower_lock_on.can_upgrade:
+			$Edit_Mode.show()
+			
+			if tower_lock_on.upgrade_ready:
+				$Edit_Mode/Options/Upgrade.show()
+			else:
+				$Edit_Mode/Options/Upgrade.hide()
+	
 	#This will get the specific category of stats for the tower
 	$Stats.get_node(tower_lock_on.tower_category).show() 
 	
 	$Anim.play("Toggle") #We'll play the toggle animation now
-	
-	if tower_lock_on.can_upgrade:
-		$Edit_Mode.show()
-	else:
-		$Edit_Mode.hide()
 	
 	#And play the game speed toggle backwards to remove it
 	get_parent().get_node("Game_Speed")._on_build_game_speed_toggle()
@@ -80,37 +86,22 @@ func disable():
 	$Stats.get_node(tower_lock_on.tower_category).hide() #The stats UI will also go away
 	GameInfo.game_state = "Play" #And game state is set back to Play
 
+func toggle_upgrade_menu(_state):
+	match _state:
+		true:
+			$Upgrade_Tree.enable(tower_lock_on)
+			$Edit_Mode.hide()
+		false:
+			$Edit_Mode.show()
+
 #Handles upgrading the tower
-func upgrade_tower():
-	#We get the upgrade cost first
-	var _cost = tower_lock_on.costs[tower_lock_on.level + 1]
-	
-	#If the player doesn't have the needed gold then they can't upgrade
-	if not game_root.has_currency("Gold", _cost): return
-	
-	game_root.modify_currency("Gold", -_cost) #If they can afford it we'll take their gold
-	
-	tower_lock_on.level_up() #This will level up the tower
-	await get_tree().create_timer(0.1).timeout #This gives the game a half-second to get all the logic through
-	#This way before we update the info it should be all increased
+func upgrade_tower(_upgrade):
+	tower_lock_on.upgraded()
 	
 	var stats_node = $Stats.get_node(tower_lock_on.tower_category)
 	
-	match tower_lock_on.tower_category:
-		"Attack":
-			$Stats/Attack/Health/Amount.text = str(tower_lock_on.health[tower_lock_on.level])
-			$Stats/Attack/Damage/Amount.text = str(tower_lock_on.attack_damage[tower_lock_on.level])
-			$Stats/Attack/Attack_Rate/Amount.text = str(tower_lock_on.costs[tower_lock_on.level]) + "/sec"
-			if tower_lock_on.level == 3 or tower_lock_on.level == 5:
-				tower_lock_on.spawn_archer()
-		
-		"Defense":
-			pass
-		
-		"Support":
-			pass
-	
-	update_upgrade()
+	toggle_upgrade_menu(false)
+	update_tower()
 
 #Handles selling the tower
 func sell_tower():
@@ -123,20 +114,6 @@ func sell_tower():
 	await get_tree().create_timer(0.5).timeout #This is to ensure everything is done before we free the tower block
 	tower_lock_on.queue_free() #Then bye bye tower blocks
 	tower_lock_on = null #We null this since it'll be null anyways
-
-func update_upgrade():
-	$Naming/Level.text = "Lvl. " + str(tower_lock_on.level)
-	
-	#We check to see if the tower is max level yet
-	if tower_lock_on.level == tower_lock_on.level_cap:
-		$Edit_Mode/Options/Upgrade.hide()
-		return #If there's nothing left to upgrade we hide the upgrade button and leave
-	
-	#If the tower block isn't max level we'll update the info and ensure the upgrade button is shown
-	$Edit_Mode/Options/Upgrade.show()
-	
-	
-	#We update the upgrade cost
 
 #This builds the empty tower
 func build_next_level(_category):
@@ -155,4 +132,28 @@ func build_next_level(_category):
 		new_tower.active = true
 		new_tower.global_position = tower_anchor_point
 		new_tower.tower_category = _category
+
+func set_base_tower(_type):
+	var tower_scene = game_info.get_node("Towers").get_scene(_type).instantiate()
+	var tower_position = tower_lock_on.global_position
+	
+	tower_lock_on.queue_free()
+	tower_node.get_node("Blocks").add_child(tower_scene)
+	tower_scene.global_position = tower_position
+	tower_lock_on = tower_scene
+	
+	$Edit_Mode.show()
+	update_tower()
+
+func update_tower():
+	$Naming/Level.text = "Lvl. " + str(tower_lock_on.get_node("Level_Manager").level)
+	
+	var cam = get_parent().get_parent().get_node("Cam_Rig") #Then we grab the cam rig
+	cam.target = tower_lock_on
+	$Naming/Name.text = tower_lock_on.tower_id
+	
+	if tower_lock_on.upgrade_ready:
+		$Edit_Mode/Options/Upgrade.show()
+	else:
+		$Edit_Mode/Options/Upgrade.hide()
 

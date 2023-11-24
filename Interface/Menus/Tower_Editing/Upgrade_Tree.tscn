@@ -17,6 +17,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1909.0
 offset_bottom = 1079.0
+mouse_filter = 2
 script = ExtResource("1_7bder")
 
 [node name="Unit_Selection" type="Control" parent="."]
@@ -25,6 +26,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Attack" type="Control" parent="Unit_Selection"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -55,18 +57,159 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Description" parent="Unit_Selection/Attack/Soldier" index="1"]
 visible = false
-text = "They'll slay your enemies from afar with the power of the bow!"
+text = "Hold the tower with these determined foot soldiers on the ground!"
 
 [node name="Icon" parent="Unit_Selection/Attack/Soldier" index="4"]
 position = Vector2(330, 313.333)
 texture = ExtResource("2_0qtkg")
 
 [node name="Defense" type="Control" parent="Unit_Selection"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Support" type="Control" parent="Unit_Selection"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Upgrade_Selection" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attack" type="Control" parent="Upgrade_Selection"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Archer" type="Control" parent="Upgrade_Selection/Attack"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stat" type="Control" parent="Upgrade_Selection/Attack/Archer"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Iron Arrows" parent="Upgrade_Selection/Attack/Archer/Stat" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 520.0
+offset_right = 1215.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Archer/Stat/Iron Arrows" index="1"]
+visible = false
+text = "Make your arrows tips from iron to puncture your enemies."
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Archer/Stat/Iron Arrows" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Air Splitter" parent="Upgrade_Selection/Attack/Archer/Stat" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 520.0
+offset_right = 1367.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Archer/Stat/Air Splitter" index="1"]
+visible = false
+text = "Blast your arrows at higher speeds into your enemies."
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Archer/Stat/Air Splitter" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Perk" type="Control" parent="Upgrade_Selection/Attack/Archer"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dual Wield" parent="Upgrade_Selection/Attack/Archer/Perk" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 520.0
+offset_right = 1215.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Archer/Perk/Dual Wield" index="1"]
+visible = false
+text = "Archers now shoot two arrows per shot"
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Archer/Perk/Dual Wield" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Seeker Shot" parent="Upgrade_Selection/Attack/Archer/Perk" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 520.0
+offset_right = 1367.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Archer/Perk/Seeker Shot" index="1"]
+visible = false
+text = "With magic your arrows will always seek their target"
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Archer/Perk/Seeker Shot" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Soldier" type="Control" parent="Upgrade_Selection/Attack"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Archer" parent="Upgrade_Selection/Attack/Soldier" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 520.0
+offset_right = 1215.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Soldier/Archer" index="1"]
+visible = false
+text = "They'll slay your enemies from afar with the power of the bow!"
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Soldier/Archer" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Soldier" parent="Upgrade_Selection/Attack/Soldier" instance=ExtResource("1_c057d")]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 520.0
+offset_right = 1367.0
+offset_bottom = 1145.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Description" parent="Upgrade_Selection/Attack/Soldier/Soldier" index="1"]
+visible = false
+text = "They'll slay your enemies from afar with the power of the bow!"
+
+[node name="Icon" parent="Upgrade_Selection/Attack/Soldier/Soldier" index="4"]
+position = Vector2(330, 313.333)
+texture = ExtResource("2_0qtkg")
+
+[node name="Defense" type="Control" parent="Upgrade_Selection"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Support" type="Control" parent="Upgrade_Selection"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -120,6 +263,24 @@ autowrap_mode = 3
 [connection signal="UpdateInfo" from="Unit_Selection/Attack/Archer" to="." method="update_info"]
 [connection signal="SelectUpgrade" from="Unit_Selection/Attack/Soldier" to="." method="select_upgrade"]
 [connection signal="UpdateInfo" from="Unit_Selection/Attack/Soldier" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Archer/Stat/Iron Arrows" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Archer/Stat/Iron Arrows" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Archer/Stat/Air Splitter" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Archer/Stat/Air Splitter" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Archer/Perk/Dual Wield" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Archer/Perk/Dual Wield" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Archer/Perk/Seeker Shot" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Archer/Perk/Seeker Shot" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Soldier/Archer" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Soldier/Archer" to="." method="update_info"]
+[connection signal="SelectUpgrade" from="Upgrade_Selection/Attack/Soldier/Soldier" to="." method="select_upgrade"]
+[connection signal="UpdateInfo" from="Upgrade_Selection/Attack/Soldier/Soldier" to="." method="update_info"]
 
 [editable path="Unit_Selection/Attack/Archer"]
 [editable path="Unit_Selection/Attack/Soldier"]
+[editable path="Upgrade_Selection/Attack/Archer/Stat/Iron Arrows"]
+[editable path="Upgrade_Selection/Attack/Archer/Stat/Air Splitter"]
+[editable path="Upgrade_Selection/Attack/Archer/Perk/Dual Wield"]
+[editable path="Upgrade_Selection/Attack/Archer/Perk/Seeker Shot"]
+[editable path="Upgrade_Selection/Attack/Soldier/Archer"]
+[editable path="Upgrade_Selection/Attack/Soldier/Soldier"]

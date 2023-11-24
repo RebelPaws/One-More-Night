@@ -75,6 +75,8 @@ var level = 1 #This is the tower's level which will determine everything about i
 var target_list = [] #This is the list of possible targets
 @export var target_groups = ["Enemy"] ##These are the groups that can be targeted
 
+var upgrade_ready = false
+
 signal enemy_detected(enemy)
 
 func  _ready():
@@ -109,7 +111,6 @@ func unit_detected(body):
 func unit_lost(body):
 	var index = 0 #We set this so we can easily identify the position of the unit in the target list
 	
-	
 	if body in target_list: #First we check to see if the unit is even in the target list
 		for unit in target_list: #If they are we go through each unit to find them
 			if target_list[index] == unit: #We check to see if the current array position is the unit
@@ -123,7 +124,7 @@ func open_tower_menu():
 	get_parent().get_parent().get_parent().get_node("UI/Tower_Edit").enable(self)
 
 func level_up():
-	level = clamp(level + 1, 1, level_cap)
+	upgrade_ready = true
 
 #This will return the cost whether it's level 1 or another level
 func _get_cost(_type):
@@ -133,6 +134,8 @@ func _get_cost(_type):
 		"Upgrade":
 			return costs[level + 1]
 
+func upgraded():
+	upgrade_ready = false
 
 func get_closest_path_node(target, path_node):
 	var closest_path_node : Vector3 = Vector3.ZERO
@@ -178,4 +181,5 @@ func destroy():
 	
 	await get_tree().create_timer(1.0).timeout
 	self.queue_free()
+
 

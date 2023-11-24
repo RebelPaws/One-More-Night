@@ -3528,7 +3528,6 @@ text = "Build"
 [node name="ButtonPress" type="StudioEventEmitter3D" parent="UI/Build/Audio"]
 
 [node name="Title" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchor_left = 0.498
 anchor_top = 0.5
@@ -3977,6 +3976,7 @@ text = "Quit"
 process_mode = 3
 
 [node name="Tower_Edit" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 5.0
@@ -4439,36 +4439,25 @@ scale = Vector2(0.145, 0.145)
 texture = ExtResource("22_bckr0")
 
 [node name="Edit_Mode" type="Control" parent="UI/Tower_Edit"]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Options" type="HBoxContainer" parent="UI/Tower_Edit/Edit_Mode"]
 layout_mode = 0
-offset_left = -16.0
+offset_left = 37.0
 offset_top = 936.0
-offset_right = 4804.0
+offset_right = 4725.0
 offset_bottom = 1272.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/separation = 110
 
-[node name="Upgrade" type="TextureButton" parent="UI/Tower_Edit/Edit_Mode/Options"]
+[node name="Upgrade" parent="UI/Tower_Edit/Edit_Mode/Options" instance=ExtResource("29_arder")]
 layout_mode = 2
-texture_normal = ExtResource("28_6ncor")
-texture_pressed = ExtResource("30_58qkj")
-texture_hover = ExtResource("29_ya5w0")
-texture_focused = ExtResource("29_ya5w0")
 
-[node name="Label" type="Label" parent="UI/Tower_Edit/Edit_Mode/Options/Upgrade"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 12.0
-offset_right = 766.0
-offset_bottom = 291.0
-text = "Upgrade"
-label_settings = SubResource("LabelSettings_6ebu0")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label" parent="UI/Tower_Edit/Edit_Mode/Options/Upgrade" index="0"]
+text = "Level Up"
 
 [node name="Sell" type="TextureButton" parent="UI/Tower_Edit/Edit_Mode/Options"]
 layout_mode = 2
@@ -4507,6 +4496,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Upgrade_Tree" parent="UI/Tower_Edit" instance=ExtResource("42_rm4bw")]
+visible = false
 
 [node name="Audio" type="Node" parent="."]
 
@@ -4595,9 +4585,11 @@ visible = false
 [connection signal="pressed" from="UI/Game_Speed/Speeds/Skip_to_Night" to="UI/Game_Speed" method="skip_to_night"]
 [connection signal="function_trigger" from="UI/Pause_Menu/Resume" to="UI/Game_Speed" method="_set_speed" binds= [1]]
 [connection signal="function_trigger" from="UI/Pause_Menu/Quit" to="." method="quit_game"]
-[connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Upgrade" to="UI/Tower_Edit" method="upgrade_tower"]
+[connection signal="function_trigger" from="UI/Tower_Edit/Edit_Mode/Options/Upgrade" to="UI/Tower_Edit" method="toggle_upgrade_menu" binds= [true]]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Sell" to="UI/Tower_Edit" method="sell_tower"]
 [connection signal="pressed" from="UI/Tower_Edit/Edit_Mode/Options/Back" to="UI/Tower_Edit" method="disable"]
+[connection signal="SetBaseTower" from="UI/Tower_Edit/Upgrade_Tree" to="UI/Tower_Edit" method="set_base_tower"]
+[connection signal="Upgraded" from="UI/Tower_Edit/Upgrade_Tree" to="UI/Tower_Edit" method="upgrade_tower"]
 
 [editable path="Sky"]
 [editable path="UI/Build/Categories/Attack_Button"]
@@ -4613,3 +4605,4 @@ visible = false
 [editable path="UI/Title/Options/Quit"]
 [editable path="UI/Pause_Menu/Resume"]
 [editable path="UI/Pause_Menu/Quit"]
+[editable path="UI/Tower_Edit/Edit_Mode/Options/Upgrade"]
