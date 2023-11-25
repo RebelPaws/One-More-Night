@@ -142,18 +142,41 @@ func walk_to_node(): # This is for walking to a node for a "current_target" in a
 		speed = 0.2
 	else:
 		speed = -0.2
+		
+func rotate_towards(target: Vector3, duration: float) -> void:
+	# Calculate the 2D direction to the target
+	var position_2D = Vector2(global_position.x, global_position.z)
+	var target_2D = Vector2(target.x,target.z)
+	var new_angle = position_2D.angle_to(target_2D) + rotation.y
+	var new_rotation = Vector3(rotation.x, new_angle, rotation.z)
+	
+	# Calculate the rotation to look at the target
+	var elapsed_time = 0.0
+	while elapsed_time < duration:
+		rotation = rotation.slerp(new_rotation, elapsed_time / duration)
+		#transform.basis.slerp(target_rotation, elapsed_time / duration)
+		await get_tree().create_timer(0.05)
+		elapsed_time += get_process_delta_time()
 
+	# Ensure the final rotation is exactly the target rotation
+	rotation = new_rotation
+
+	
 func shoot(_target):
+	if is_walking:
+		toggle_walking()
 	var arrow = $Arrow_Container._get_unused_object()
 	if arrow == null: 
 		return
 	#print_debug(_target)
-	var aim_tween = get_tree().create_tween()
+	"""var aim_tween = get_tree().create_tween()
 	var new_rotation_y = global_position.angle_to(_target.global_position)
 	var new_rotation = Vector3(rotation.x, rotation.y + new_rotation_y, rotation.z)
 	aim_tween.tween_property(self, "rotation",new_rotation, 1.0).set_trans(Tween.TRANS_CUBIC)
 	aim_tween.play()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0).timeout"""
+	
+	await rotate_towards(_target.global_position, 1.0)
 	
 	var chance_roll = randf_range(0, 100)
 	
@@ -201,12 +224,11 @@ func attack():
 	else:
 		if is_walking == false:
 			toggle_walking()
-		await get_tree().create_timer(0.5).timeout
-		_on_attack_timer_timeout()
+		
+		wait_for_target()
 	
-	#attack_ready = false
-	#shoot(target)
-	#attack_rate_timer.start()
+func wait_for_target():
+	$wait_timer.start()
 		
 func get_closest_path_node(target, path_node):
 	var closest_path_node : Vector3 = Vector3.ZERO
@@ -264,3 +286,7 @@ func _on_cooldown_timer_timeout():
 	if is_walking == false:
 		toggle_walking()
 	
+
+
+func _on_wait_timer_timeout():
+	_on_attack_timer_timeout()

@@ -4261,6 +4261,7 @@ active = false
 
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
+[connection signal="Damaged" from="Tower/Health_Manager" to="Tower/Blocks/Tower_Foundation" method="_on_health_manager_damaged"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower/TowerHurt_Sound" method="play"]
 [connection signal="Dead" from="Tower/Health_Manager" to="." method="game_over"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower" method="update_health"]

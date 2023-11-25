@@ -165,3 +165,11 @@ func near_unit_lost(body):
 	if near_target_list.has(body):
 		near_target_list.erase(body)
 		print("Current Near Target list: " + str(near_target_list))
+
+
+func _on_health_manager_damaged():
+	for body in $Near_Detection_Range.get_overlapping_bodies():
+		if near_target_list.has(body):
+			continue
+		else:
+			near_target_list.push_front(body)
