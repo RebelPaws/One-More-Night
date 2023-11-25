@@ -45,10 +45,10 @@ func buy_tower(tower_name, tower_category, tower_scene_string):
 	new_tower.tower_category = tower_category
 	tower_blocks.add_child(new_tower)
 	new_tower.global_position = tower_anchor_point
-	var random_rotation = randi_range(0,359)
+	#var random_rotation = randi_range(0,359)
 	match tower_name:
-		"Archer":
-			new_tower.set_rotation_degrees(Vector3(0,random_rotation,0))
+		#"Archer":
+			#new_tower.set_rotation_degrees(Vector3(0,random_rotation,0))
 			#new_tower.spawn_archer()
 			#new_tower.attack()
 			

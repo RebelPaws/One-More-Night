@@ -40,6 +40,7 @@ var path_progress_ratios : Dictionary = {
 	8: .86#,	9: .99
 }
 
+signal has_rotated
 
 func which_quadrant(current_position):
 	var x_val = global_position.x
@@ -114,11 +115,13 @@ func toggle_walking():
 		if current_target == null:
 			rotation_degrees.y = -90			
 		speed = 0.0
+		
 
 	else:
 		if PLAY_STATE == "DAY":
 			speed = [0.2, -0.2].pick_random()
 			is_walking = true
+			
 		elif PLAY_STATE == "NIGHT":
 			if current_target == null:
 				speed = [0.2, -0.2].pick_random()
@@ -143,7 +146,7 @@ func walk_to_node(): # This is for walking to a node for a "current_target" in a
 	else:
 		speed = -0.2
 		
-func rotate_towards(target: Vector3, duration: float) -> void:
+"""func rotate_towards(target: Vector3, duration: float) -> void:
 	# Calculate the 2D direction to the target
 	var position_2D = Vector2(global_position.x, global_position.z)
 	var target_2D = Vector2(target.x,target.z)
@@ -160,25 +163,40 @@ func rotate_towards(target: Vector3, duration: float) -> void:
 
 	# Ensure the final rotation is exactly the target rotation
 	rotation = new_rotation
+	
+	emit_signal("has_rotated")"""
+
+func _rotate_towards(target: Vector3, duration: float):
+	var new_angle = get_parent().global_position.angle_to(target)
+	var rotate_tween = get_tree().create_tween()
+	rotate_tween.tween_property(self, "rotation:y", new_angle, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	print("starting rotation: " + str(rotation.y))
+	rotate_tween.play()
+	await rotate_tween.finished
+	print("finished tween, new rotation: " + str(rotation.y))
+	
 
 	
 func shoot(_target):
 	if is_walking:
 		toggle_walking()
-	var arrow = $Arrow_Container._get_unused_object()
-	if arrow == null: 
-		return
-	#print_debug(_target)
+
 	"""var aim_tween = get_tree().create_tween()
 	var new_rotation_y = global_position.angle_to(_target.global_position)
 	var new_rotation = Vector3(rotation.x, rotation.y + new_rotation_y, rotation.z)
 	aim_tween.tween_property(self, "rotation",new_rotation, 1.0).set_trans(Tween.TRANS_CUBIC)
 	aim_tween.play()
 	await get_tree().create_timer(1.0).timeout"""
-	
-	await rotate_towards(_target.global_position, 1.0)
-	
+	print("Should be a wait here for aim")
+	var y = await aim()
+	print("Aim wait over, starting rotate, another wait")
+	var x = await _rotate_towards(_target.global_position, 1.0)
+	print("Right there ^^^^")
 	var chance_roll = randf_range(0, 100)
+	var arrow = $Arrow_Container._get_unused_object()
+	if arrow == null: 
+		return
+	#print_debug(_target)
 	
 	arrow.global_position = $Shoot_Point.global_position
 	arrow.target = _target
@@ -190,6 +208,7 @@ func shoot(_target):
 		arrow.seek_target = false
 	
 	arrow.activate()
+	#cooldown_timer.start()
 	
 	$AnimationPlayer.play("2H_Ranged_Shoot")
 	$Attack.play()
@@ -199,10 +218,13 @@ func shoot(_target):
 func reload():
 	$AnimationPlayer.play("2H_Ranged_Reload")
 	await $AnimationPlayer.animation_finished
-	aim()
+	_on_cooldown_timer_timeout()
+	#aim()
 
 func aim():
 	$AnimationPlayer.play("2H_Ranged_Aiming")
+	await $AnimationPlayer.animation_finished
+	print("finished animation")
 
 func attack():
 	attack_rate_timer.stop()
@@ -211,11 +233,10 @@ func attack():
 		var archer_quad = which_quadrant(global_position)
 		var target_quad = which_quadrant(current_target.global_position)
 		if target_quad == archer_quad:
-			if is_walking:
-				toggle_walking()
+			#if is_walking:
+				#toggle_walking()
 			shoot(current_target)
 			attack_ready = false
-			cooldown_timer.start()
 		else:
 			var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
 			ratio_walking_to = path_progress_ratios.get(node_on_path)
@@ -285,6 +306,7 @@ func _on_cooldown_timer_timeout():
 	
 	if is_walking == false:
 		toggle_walking()
+		print("Walking toggle is on at cooldown timer")
 	
 
 
