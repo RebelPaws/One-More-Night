@@ -41,19 +41,20 @@ func start_day():
 
 func spawn_archer():
 	var new_path_follow = PathFollow3D.new()
-	new_path_follow.rotation_mode = PathFollow3D.ROTATION_Y
+	new_path_follow.rotation_mode = PathFollow3D.ROTATION_ORIENTED
 	new_path_follow.use_model_front = true
 	new_path_follow.loop = true
 	walking_path.add_child(new_path_follow)
 	var new_archer = archer_scene.instantiate()
 	new_archer.hide()
+	if get_tree().get_root().get_node("Game").PLAY_STATE == "NIGHT":
+		new_archer.PLAY_STATE = "NIGHT"
 	new_path_follow.add_child(new_archer)
 	#new_archer.position = archer_locations[archer_info][0]
 	#new_archer.rotation_degrees = archer_locations[archer_info][1]
 	#new_archer.rotation_degrees.y += rotation_degrees.y
 	new_archer.prepare_archer()
-	if get_tree().get_root().get_node("Game").PLAY_STATE == "NIGHT":
-		new_archer.PLAY_STATE = "NIGHT"
+
 	
 	new_archer.show()
 	#new_archer.toggle_walking()

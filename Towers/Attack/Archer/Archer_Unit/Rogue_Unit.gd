@@ -7,6 +7,9 @@ extends Node3D
 @onready var game_world = get_tree().get_root().get_node("Game")
 @onready var tower_node = get_parent().get_parent().get_parent().get_parent()
 
+#var base_tower_vector3 = Vector3(45.127, 0,54.531)
+var base_tower_vector3 : Vector3
+
 var path_following : PathFollow3D
 
 var speed : float = 0.0
@@ -14,16 +17,6 @@ var chance_for_perfect_shot = 20.0
 var damage = 5.0
 var attack_rate = 1.0
 var cooldown_rate = 0.5
-
-#Possibly to be deleted
-var ground_from_location : float
-var collision_shape_points : PackedVector3Array
-var target_list : Array = []
-var first_y_value : float = 0.0
-var position_walking_to
-var path_positions : Dictionary
-
-###
 
 var PLAY_STATE : String = "DAY" #DAY or NIGHT depending on time
 
@@ -33,26 +26,46 @@ var is_walking = false
 
 var ratio_walking_to : float
 var current_target : Node3D = null
+var walked_to_target : bool = false
 
 var path_progress_ratios : Dictionary = {
-	0: 0.0,	1: .09,	2: .23,	3: .36,
-	4: .46,	5: .58,	6: .65,	7: .75,
-	8: .86#,	9: .99
+	0: 0.0,	1: .1,	2: .2,	3: .4,
+	4: .5,	5: .6,	6: .7,	7: .8,
+	8: .9#,	9: .99
 }
 
-signal has_rotated
+#TESTING ROTATION!!!#
+"""
+var test_targets : Array = [Vector3(50,2.5,54.5), Vector3(49.937,4,57.94),
+Vector3(45.11,4,59.224),Vector3(40.287,4,57.852),Vector3(38.447,4,54.5)]
+
+var test_targets_dict : Dictionary = {1: Vector3(50,2.5,54.5), 2: Vector3(49.937,4,57.94),
+3: Vector3(45.11,4,59.224),4: Vector3(40.287,4,57.852),5: Vector3(38.447,4,54.5)}
+
+func _unhandled_key_input(event):
+	if Input.is_action_just_pressed("check_rotation"):
+		if is_walking:
+			toggle_walking()
+		var test_target = test_targets.pick_random()
+		print("test target at: " + str(test_target))
+		print("Test Target #" + str(test_targets_dict.find_key(test_target)))
+		_rotate_towards(test_target, 1.0)
+		await get_tree().create_timer(3.0).timeout
+		if is_walking == false:
+			toggle_walking()
+		
+"""
 
 func which_quadrant(current_position):
-	var x_val = global_position.x
-	var z_val = global_position.z
-	
-	if x_val < 45.07:
-		if z_val >= 54.51:
+	var x_val = current_position.x
+	var z_val = current_position.z
+	if x_val < base_tower_vector3.x:
+		if z_val >= base_tower_vector3.z:
 			return 1
 		else:
 			return 4
 	else:
-		if z_val >= 54.51:
+		if z_val >= base_tower_vector3.z:
 			return 2
 		else:
 			return 3
@@ -62,28 +75,15 @@ func which_quadrant(current_position):
 #Setup the archer to get ready!
 func prepare_archer():
 	path_following = get_parent()
-	"""var distance_to_ground : float = 0 - global_position.y
-	var distance_fluff : int = (global_position.y-4.96)/1.78
-	for i : Vector3 in area_to_shoot.get_shape().points:
-		if i.y == -40:
-			i.y = distance_to_ground-(25 + (distance_fluff*10))
-		else:
-			i.y = distance_to_ground-(distance_fluff*10)
+	base_tower_vector3 = (tower_node.global_position * Vector3(1,0,1))
+	$AnimationPlayer.set_speed_scale(2.0)
+	
+	if PLAY_STATE == "NIGHT":
+		attack_rate_timer.start()
 		
-		collision_shape_points.append(i)
-	
-	#This creates a new CollisionShape based off of the original and how high off the ground they are
-	var new_shape = ConvexPolygonShape3D.new()
-	new_shape.set_points(collision_shape_points)
-	area_to_shoot.set_shape(new_shape)
-	if first_y_value == 0.0:
-		first_y_value = new_shape.points[0].y"""
-	#gott have 'em facing out
-	#rotation_degrees.y = -90
-	
-	
 	is_prepared = true
 	toggle_walking()
+
 
 func _physics_process(delta):
 	if is_walking:
@@ -99,8 +99,9 @@ func _physics_process(delta):
 			if current_target == null:
 				return
 			else:
-				if snapped(get_parent().get_progress_ratio(), .01) == ratio_walking_to:
+				if snapped(get_parent().get_progress_ratio(), .1) == ratio_walking_to:
 					toggle_walking()
+					attack()
 			
 
 func update_stats():
@@ -112,8 +113,8 @@ func update_stats():
 func toggle_walking():
 	if is_walking:
 		is_walking = false
-		if current_target == null:
-			rotation_degrees.y = -90			
+		#if current_target == null:
+			#rotation_degrees.y = -90			
 		speed = 0.0
 		
 
@@ -124,7 +125,7 @@ func toggle_walking():
 			
 		elif PLAY_STATE == "NIGHT":
 			if current_target == null:
-				speed = [0.2, -0.2].pick_random()
+				speed = [0.5, -0.5].pick_random()
 				is_walking = true
 			else:
 				walk_to_node()
@@ -140,58 +141,59 @@ func walk_to_node(): # This is for walking to a node for a "current_target" in a
 	else:
 		distance_forward = ratio_walking_to - prog_ratio
 		distance_back = prog_ratio + 1 - ratio_walking_to
-	
+	print("Ratio Walking To: " + str(ratio_walking_to) + "\nProgress_Ratio: " + str(prog_ratio))
+	print("Distance Forward: " + str(distance_forward) + "\nDistance Back: " + str(distance_back))
 	if distance_forward < distance_back:
-		speed = 0.2
+		speed = 0.5
 	else:
-		speed = -0.2
+		speed = -0.5
 		
-"""func rotate_towards(target: Vector3, duration: float) -> void:
-	# Calculate the 2D direction to the target
-	var position_2D = Vector2(global_position.x, global_position.z)
-	var target_2D = Vector2(target.x,target.z)
-	var new_angle = position_2D.angle_to(target_2D) + rotation.y
-	var new_rotation = Vector3(rotation.x, new_angle, rotation.z)
-	
-	# Calculate the rotation to look at the target
-	var elapsed_time = 0.0
-	while elapsed_time < duration:
-		rotation = rotation.slerp(new_rotation, elapsed_time / duration)
-		#transform.basis.slerp(target_rotation, elapsed_time / duration)
-		await get_tree().create_timer(0.05)
-		elapsed_time += get_process_delta_time()
 
-	# Ensure the final rotation is exactly the target rotation
-	rotation = new_rotation
-	
-	emit_signal("has_rotated")"""
 
 func _rotate_towards(target: Vector3, duration: float):
-	var new_angle = get_parent().global_position.angle_to(target)
+	var y_null = Vector3(1,0,1)
+	var target_location = target * y_null
+	var archer_location = global_position * y_null
+	var direction_from_tower_to_target = base_tower_vector3.direction_to(target_location)
+	var direction_from_tower_to_archer = base_tower_vector3.direction_to(archer_location)
+	var new_angle_vector = (direction_from_tower_to_target-direction_from_tower_to_archer).normalized()
+	
+	var archer_angle_viewing = get_parent().rotation.y + rotation.y - PI
+	#print("parent's rotation: " + str(get_parent().rotation_degrees.y) + "\narcher rotation: " + str(rotation_degrees.y))
+	#print("archer_angle_viewing: " + str(rad_to_deg(archer_angle_viewing)))
+	if archer_angle_viewing > PI:
+		archer_angle_viewing -= 2*PI
+	elif archer_angle_viewing < -PI:
+		archer_angle_viewing += 2*PI
+	#print("archer_angle_viewing: " + str(rad_to_deg(archer_angle_viewing)))
+	
+	var global_angle = Vector3(0,0,1).signed_angle_to(new_angle_vector, Vector3.UP)
+	
+	#print("global_angle: " + str(rad_to_deg(global_angle)))
+	
+	var how_much_to_rotate = global_angle - archer_angle_viewing
+	#print("how_much_to_rotate: " + str(rad_to_deg(how_much_to_rotate)))
+	var new_rotation = rotation.y+how_much_to_rotate
+	#print("new_rotation: " + str(rad_to_deg(new_rotation)))
+	
+	
 	var rotate_tween = get_tree().create_tween()
-	rotate_tween.tween_property(self, "rotation:y", new_angle, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	print("starting rotation: " + str(rotation.y))
+	rotate_tween.tween_property(self, "rotation:y", new_rotation, duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	rotate_tween.play()
 	await rotate_tween.finished
-	print("finished tween, new rotation: " + str(rotation.y))
 	
-
 	
 func shoot(_target):
-	if is_walking:
-		toggle_walking()
-
+	if walked_to_target:
+		walked_to_target = false
 	"""var aim_tween = get_tree().create_tween()
 	var new_rotation_y = global_position.angle_to(_target.global_position)
 	var new_rotation = Vector3(rotation.x, rotation.y + new_rotation_y, rotation.z)
 	aim_tween.tween_property(self, "rotation",new_rotation, 1.0).set_trans(Tween.TRANS_CUBIC)
 	aim_tween.play()
 	await get_tree().create_timer(1.0).timeout"""
-	print("Should be a wait here for aim")
-	var y = await aim()
-	print("Aim wait over, starting rotate, another wait")
-	var x = await _rotate_towards(_target.global_position, 1.0)
-	print("Right there ^^^^")
+	var _y = await aim()
+	var _x = await _rotate_towards(_target.global_position, 1.0)
 	var chance_roll = randf_range(0, 100)
 	var arrow = $Arrow_Container._get_unused_object()
 	if arrow == null: 
@@ -222,26 +224,46 @@ func reload():
 	#aim()
 
 func aim():
+	
 	$AnimationPlayer.play("2H_Ranged_Aiming")
 	await $AnimationPlayer.animation_finished
-	print("finished animation")
 
 func attack():
 	attack_rate_timer.stop()
 	
 	if current_target != null:
-		var archer_quad = which_quadrant(global_position)
-		var target_quad = which_quadrant(current_target.global_position)
-		if target_quad == archer_quad:
-			#if is_walking:
-				#toggle_walking()
-			shoot(current_target)
-			attack_ready = false
-		else:
-			var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
-			ratio_walking_to = path_progress_ratios.get(node_on_path)
+		if current_target.global_position == Vector3(999999,999999,999999):
 			if is_walking == false:
 				toggle_walking()
+		
+			wait_for_target()
+		else:
+			var archer_quad = which_quadrant(global_position)
+			var target_quad = which_quadrant(current_target.global_position)
+			var quad_array = [archer_quad, target_quad]
+			if walked_to_target or (archer_quad == target_quad):
+				if is_walking:
+					toggle_walking()
+				shoot(current_target)
+				attack_ready = false	
+			elif tower_node.base_tower.near_target_list.has(current_target):
+				if (quad_array.has(1) and (quad_array.has(4) or quad_array.has(2))) or (quad_array.has(3) and (quad_array.has(4) or quad_array.has(2))):
+					if is_walking:
+						toggle_walking()
+					shoot(current_target)
+					attack_ready = false
+				else:
+					var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
+					ratio_walking_to = path_progress_ratios.get(node_on_path)
+					walked_to_target = true
+					if is_walking == false:
+						toggle_walking()		
+			else:
+				var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
+				ratio_walking_to = path_progress_ratios.get(node_on_path)
+				walked_to_target = true
+				if is_walking == false:
+					toggle_walking()
 	else:
 		if is_walking == false:
 			toggle_walking()
@@ -263,7 +285,8 @@ func get_closest_path_node(target, path_node):
 				#closest_path_node = path_node.curve.get_point_position(i)
 				closest_path_node = path_node.curve.get_point_position(i)
 				closest_path_id = i
-	
+	if closest_path_id == 9:
+		closest_path_id = 0
 	return closest_path_id
 func _on_area_3d_body_entered(body):
 	#target_list.append(body)
@@ -302,6 +325,7 @@ func _on_cooldown_timer_timeout():
 		pass
 	else:
 		current_target = null
+		walked_to_target = false
 	attack_rate_timer.start()
 	
 	if is_walking == false:
@@ -312,3 +336,4 @@ func _on_cooldown_timer_timeout():
 
 func _on_wait_timer_timeout():
 	_on_attack_timer_timeout()
+

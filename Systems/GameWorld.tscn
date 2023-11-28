@@ -48,7 +48,6 @@
 [ext_resource type="EventAsset" uid="uid://dq560bqkdq7pl" path="res://addons/FMOD/editor/resources/events/{35ac2166-cbac-4d18-8ef9-ba084aafcec3}.tres" id="41_7d8h4"]
 [ext_resource type="Texture2D" uid="uid://ce2b60v214c8m" path="res://Interface/Currency/Mana_Icon.png" id="41_grbsa"]
 [ext_resource type="BankAsset" uid="uid://kwefuay5louk" path="res://addons/FMOD/editor/resources/banks/{5cafb49b-9c27-4102-9052-f240c0af5ad9}.tres" id="41_h3mk2"]
-[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="42_4ttje"]
 [ext_resource type="EventAsset" uid="uid://diw475d7cc7gu" path="res://addons/FMOD/editor/resources/events/{4ee1bc1f-293a-42ed-ad20-17269a869b8c}.tres" id="42_3735w"]
 [ext_resource type="Script" path="res://Systems/Tower_Edit.gd" id="42_nkma5"]
 [ext_resource type="BankAsset" uid="uid://cmy4h4h0xfhau" path="res://addons/FMOD/editor/resources/banks/{6e5a9b98-cd98-4e47-a618-1598e74f1011}.tres" id="42_rlhlc"]
@@ -60,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://basdgpgqvhhed" path="res://Towers/Attack/Archer/Archer_Tower.tscn" id="53_bmuy6"]
 [ext_resource type="PackedScene" uid="uid://cs2ftfvlbso0n" path="res://Towers/Defense/Shield_Tower.tscn" id="54_achsv"]
 [ext_resource type="PackedScene" uid="uid://qn788ae8urul" path="res://Towers/Support/Healer_Tower.tscn" id="55_2ugdr"]
+[ext_resource type="Texture2D" uid="uid://bdagf2js54d2o" path="res://Objects/Projectiles/Interface/Health/Heart.png" id="61_1l5mc"]
 
 [sub_resource type="Curve3D" id="Curve3D_ygevi"]
 _data = {
@@ -229,7 +229,7 @@ transform = Transform3D(1, 0, 0, 0, 0.819552, -0.573004, 0, 0.573004, 0.819552, 
 [node name="Cam_Rig" parent="." instance=ExtResource("3_iekil")]
 
 [node name="Tower" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.1268, 1.66285, 54.5311)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 45.1268, 1.66285, 54.5311)
 script = ExtResource("3_87d61")
 
 [node name="Health" type="Node3D" parent="Tower"]
@@ -247,7 +247,7 @@ horizontal_alignment = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="Tower/Health"]
 transform = Transform3D(0.08, 0, -4.65661e-10, 0, 0.08, 0, 4.65661e-10, 0, 0.08, -0.939209, 0.834566, 0.0099659)
-texture = ExtResource("42_4ttje")
+texture = ExtResource("61_1l5mc")
 
 [node name="Armor" type="Node3D" parent="Tower"]
 transform = Transform3D(0.755, 0, -5.58794e-09, 0, 0.755, 0, 5.58794e-09, 0, 0.755, 0.0139065, 3.13532, 0.962267)
@@ -3081,7 +3081,7 @@ label_settings = SubResource("LabelSettings_jd8be")
 [node name="Health_Icon" type="Sprite2D" parent="UI/Currency_UI"]
 position = Vector2(80, 270)
 scale = Vector2(0.07, 0.07)
-texture = ExtResource("42_4ttje")
+texture = ExtResource("61_1l5mc")
 
 [node name="Health_Label" type="Label" parent="UI/Currency_UI"]
 layout_mode = 2
@@ -3186,7 +3186,7 @@ menu_entering = NodePath("../../Support_Towers")
 
 [node name="Icon" parent="UI/Build/Categories/Support_Button" index="0"]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("42_4ttje")
+texture = ExtResource("61_1l5mc")
 
 [node name="Label" parent="UI/Build/Categories/Support_Button" index="1"]
 text = "Support"
@@ -3445,7 +3445,7 @@ tower_scene_string = "res://Towers/Support/Healer_Tower.tscn"
 [node name="Icon" parent="UI/Build/Support_Towers/Healer_Tower" index="0"]
 position = Vector2(400, 432)
 scale = Vector2(0.18, 0.18)
-texture = ExtResource("42_4ttje")
+texture = ExtResource("61_1l5mc")
 
 [node name="Label" parent="UI/Build/Support_Towers/Healer_Tower" index="1"]
 offset_left = 217.0
@@ -4122,7 +4122,7 @@ label_settings = SubResource("LabelSettings_c7r2k")
 [node name="Heart" type="Sprite2D" parent="UI/Tower_Edit/Stats/Attack/Health"]
 position = Vector2(42.6, 31.5125)
 scale = Vector2(0.065, 0.065)
-texture = ExtResource("42_4ttje")
+texture = ExtResource("61_1l5mc")
 
 [node name="Attack_Rate" type="Control" parent="UI/Tower_Edit/Stats/Attack"]
 layout_mode = 3
@@ -4258,6 +4258,26 @@ active = false
 [node name="Healer" parent="Towers" instance=ExtResource("55_2ugdr")]
 visible = false
 active = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.00366437, 0, -0.0999328, 0, 0.1, 0, 0.0999328, 0, -0.00366437, 52, 4, 54.5)
+texture = ExtResource("61_1l5mc")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(-0.00366437, 0, -0.0999328, 0, 0.1, 0, 0.0999328, 0, -0.00366437, 38.4466, 4, 54.5)
+texture = ExtResource("61_1l5mc")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0582123, 0, -0.0813101, 0, 0.1, 0, 0.0813101, 0, -0.0582123, 49.9375, 4, 57.9402)
+texture = ExtResource("61_1l5mc")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(0.052101, 0, -0.0853551, 0, 0.1, 0, 0.0853551, 0, 0.052101, 40.2867, 4, 57.8516)
+texture = ExtResource("61_1l5mc")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0997314, 0, -0.00732382, 0, 0.1, 0, 0.00732382, 0, -0.0997314, 45.1105, 4, 59.2244)
+texture = ExtResource("61_1l5mc")
 
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
 [connection signal="Damaged" from="Tower/Health_Manager" to="Tower" method="update_health"]
