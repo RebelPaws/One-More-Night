@@ -4261,22 +4261,27 @@ active = false
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.00366437, 0, -0.0999328, 0, 0.1, 0, 0.0999328, 0, -0.00366437, 52, 4, 54.5)
+visible = false
 texture = ExtResource("61_1l5mc")
 
 [node name="Sprite3D5" type="Sprite3D" parent="."]
 transform = Transform3D(-0.00366437, 0, -0.0999328, 0, 0.1, 0, 0.0999328, 0, -0.00366437, 38.4466, 4, 54.5)
+visible = false
 texture = ExtResource("61_1l5mc")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(-0.0582123, 0, -0.0813101, 0, 0.1, 0, 0.0813101, 0, -0.0582123, 49.9375, 4, 57.9402)
+visible = false
 texture = ExtResource("61_1l5mc")
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(0.052101, 0, -0.0853551, 0, 0.1, 0, 0.0853551, 0, 0.052101, 40.2867, 4, 57.8516)
+visible = false
 texture = ExtResource("61_1l5mc")
 
 [node name="Sprite3D3" type="Sprite3D" parent="."]
 transform = Transform3D(-0.0997314, 0, -0.00732382, 0, 0.1, 0, 0.00732382, 0, -0.0997314, 45.1105, 4, 59.2244)
+visible = false
 texture = ExtResource("61_1l5mc")
 
 [connection signal="ArmorChanged" from="Tower/Health_Manager" to="Tower" method="update_armor"]
@@ -4286,6 +4291,7 @@ texture = ExtResource("61_1l5mc")
 [connection signal="Dead" from="Tower/Health_Manager" to="." method="game_over"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower" method="update_health"]
 [connection signal="Healed" from="Tower/Health_Manager" to="Tower/TowerHealed_Sound" method="play"]
+[connection signal="enemy_detected" from="Tower/Blocks/Tower_Foundation" to="Tower" method="_on_tower_foundation_enemy_detected"]
 [connection signal="timeout" from="Enemy_Manager/Spawn_Timer" to="Enemy_Manager" method="spawn_enemy"]
 [connection signal="timeout" from="Enemy_Manager/Retreat_Timer" to="Enemy_Manager" method="_on_retreat_timer_timeout"]
 [connection signal="leave_menu" from="UI/Build/Categories/Attack_Button" to="UI/Build/Categories" method="change_menu"]

@@ -1,7 +1,6 @@
 extends Node3D
 
 @export var arrow_tscn : PackedScene
-@onready var area_to_shoot = get_node("Area3D/CollisionShape3D")
 @onready var attack_rate_timer = get_node("attack_timer")
 @onready var cooldown_timer = get_node("cooldown_timer")
 @onready var game_world = get_tree().get_root().get_node("Game")
@@ -119,20 +118,22 @@ func toggle_walking():
 		
 
 	else:
+		is_walking = true
 		if PLAY_STATE == "DAY":
 			speed = [0.2, -0.2].pick_random()
-			is_walking = true
 			
 		elif PLAY_STATE == "NIGHT":
 			if current_target == null:
 				speed = [0.5, -0.5].pick_random()
-				is_walking = true
 			else:
 				walk_to_node()
-				is_walking = true
+		
 
 func walk_to_node(): # This is for walking to a node for a "current_target" in a different quadrant
 	var prog_ratio = get_parent().get_progress_ratio()
+	if snapped(prog_ratio, .1) == ratio_walking_to:
+		attack()
+		return
 	var distance_forward : float
 	var distance_back : float
 	if ratio_walking_to < prog_ratio:
@@ -145,9 +146,10 @@ func walk_to_node(): # This is for walking to a node for a "current_target" in a
 	print("Distance Forward: " + str(distance_forward) + "\nDistance Back: " + str(distance_back))
 	if distance_forward < distance_back:
 		speed = 0.5
+		print("Walking forwards")
 	else:
 		speed = -0.5
-		
+		print("Walking backwards")
 
 
 func _rotate_towards(target: Vector3, duration: float):
@@ -186,14 +188,9 @@ func _rotate_towards(target: Vector3, duration: float):
 func shoot(_target):
 	if walked_to_target:
 		walked_to_target = false
-	"""var aim_tween = get_tree().create_tween()
-	var new_rotation_y = global_position.angle_to(_target.global_position)
-	var new_rotation = Vector3(rotation.x, rotation.y + new_rotation_y, rotation.z)
-	aim_tween.tween_property(self, "rotation",new_rotation, 1.0).set_trans(Tween.TRANS_CUBIC)
-	aim_tween.play()
-	await get_tree().create_timer(1.0).timeout"""
+
 	var _y = await aim()
-	var _x = await _rotate_towards(_target.global_position, 1.0)
+	var _x = await _rotate_towards(_target.global_position, 0.6)
 	var chance_roll = randf_range(0, 100)
 	var arrow = $Arrow_Container._get_unused_object()
 	if arrow == null: 
@@ -228,42 +225,43 @@ func aim():
 	$AnimationPlayer.play("2H_Ranged_Aiming")
 	await $AnimationPlayer.animation_finished
 
-func attack():
+func attack() -> void:
 	attack_rate_timer.stop()
 	
 	if current_target != null:
-		if current_target.global_position == Vector3(999999,999999,999999):
+		if !(tower_node.base_tower.target_list.has(current_target)) and !(tower_node.base_tower.near_target_list.has(current_target)):
+			current_target = await tower_node.find_target(global_position)
+		if current_target == null:
 			if is_walking == false:
 				toggle_walking()
-		
 			wait_for_target()
-		else:
-			var archer_quad = which_quadrant(global_position)
-			var target_quad = which_quadrant(current_target.global_position)
-			var quad_array = [archer_quad, target_quad]
-			if walked_to_target or (archer_quad == target_quad):
+			return
+		var archer_quad = which_quadrant(global_position)
+		var target_quad = which_quadrant(current_target.global_position)
+		var quad_array = [archer_quad, target_quad]
+		if walked_to_target or (archer_quad == target_quad):
+			if is_walking:
+				toggle_walking()
+			shoot(current_target)
+			attack_ready = false	
+		elif tower_node.base_tower.near_target_list.has(current_target):
+			if (quad_array.has(1) and (quad_array.has(4) or quad_array.has(2))) or (quad_array.has(3) and (quad_array.has(4) or quad_array.has(2))):
 				if is_walking:
 					toggle_walking()
 				shoot(current_target)
-				attack_ready = false	
-			elif tower_node.base_tower.near_target_list.has(current_target):
-				if (quad_array.has(1) and (quad_array.has(4) or quad_array.has(2))) or (quad_array.has(3) and (quad_array.has(4) or quad_array.has(2))):
-					if is_walking:
-						toggle_walking()
-					shoot(current_target)
-					attack_ready = false
-				else:
-					var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
-					ratio_walking_to = path_progress_ratios.get(node_on_path)
-					walked_to_target = true
-					if is_walking == false:
-						toggle_walking()		
+				attack_ready = false
 			else:
 				var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
 				ratio_walking_to = path_progress_ratios.get(node_on_path)
 				walked_to_target = true
 				if is_walking == false:
-					toggle_walking()
+					toggle_walking()		
+		else:
+			var node_on_path = get_closest_path_node(current_target, get_parent().get_parent())
+			ratio_walking_to = path_progress_ratios.get(node_on_path)
+			walked_to_target = true
+			if is_walking == false:
+				toggle_walking()
 	else:
 		if is_walking == false:
 			toggle_walking()
@@ -282,23 +280,11 @@ func get_closest_path_node(target, path_node):
 			closest_path_id = i
 		else:
 			if target.global_position.distance_to(path_node.curve.get_point_position(i)) < target.global_position.distance_to(closest_path_node):
-				#closest_path_node = path_node.curve.get_point_position(i)
 				closest_path_node = path_node.curve.get_point_position(i)
 				closest_path_id = i
 	if closest_path_id == 9:
 		closest_path_id = 0
 	return closest_path_id
-func _on_area_3d_body_entered(body):
-	#target_list.append(body)
-	#if attack_ready:
-	#	attack()
-	pass
-
-
-func _on_area_3d_body_exited(body):
-	#target_list.erase(body)
-	pass
-
 
 func _on_attack_timer_timeout():
 	attack_ready = true
@@ -323,6 +309,8 @@ func _on_cooldown_timer_timeout():
 	#if current target is still in the world, keep it, otherwise null it
 	if tower_node.base_tower.target_list.has(current_target):
 		pass
+	elif tower_node.base_tower.near_target_list.has(current_target):
+		pass
 	else:
 		current_target = null
 		walked_to_target = false
@@ -330,7 +318,7 @@ func _on_cooldown_timer_timeout():
 	
 	if is_walking == false:
 		toggle_walking()
-		print("Walking toggle is on at cooldown timer")
+		#print("Walking toggle is on at cooldown timer")
 	
 
 

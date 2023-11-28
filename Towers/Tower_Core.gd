@@ -89,6 +89,9 @@ func unit_detected(body):
 			#if body.is_in_group(group): #If the unit is in the target group
 		if target_list.has(body) == false:
 			target_list.append(body) #We add them to the list
+		
+		if target_list.size() == 1 and near_target_list.size() == 0:
+			emit_signal("enemy_detected", body)
 			#break #Then we exit the loop (if "for" comes back)
 
 		

@@ -138,3 +138,12 @@ func find_target(attack_position):
 func attack_reset():
 	can_attack = true
 
+func deal_with_detected_enemy(enemy) -> bool:
+	for archer_path in walking_path.get_children():
+		if archer_path.get_child(0).current_target == null:
+			archer_path.get_child(0).current_target = enemy
+			archer_path.get_child(0).attack_rate_timer.stop()
+			archer_path.get_child(0)._attack_rate_timer.timeout
+			return true
+	
+	return false

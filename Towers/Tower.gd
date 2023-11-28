@@ -43,3 +43,12 @@ func show_health_armor():
 	health.show()
 	armor.show()
 	
+
+
+func _on_tower_foundation_enemy_detected(enemy):
+	var break_out : bool = false
+	for i in tower_blocks.get_children():
+		if i.has_method("deal_with_detected_enemy"):
+			break_out = await i.deal_with_detected_enemy(enemy)
+			if break_out:
+				break
